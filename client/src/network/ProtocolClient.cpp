@@ -41,7 +41,7 @@ void ProtocolClient::handle_message(SmartBuffer& smartBuffer) {
 void ProtocolClient::handleWorld(SmartBuffer& smartBuffer) {
     int width, height;
     smartBuffer >> width >> height;
-    EntityManager::get().createWorld();
+    EntityManager::get().createWorld(width, height);
 }
 
 void ProtocolClient::handleGameState(SmartBuffer& smartBuffer) {
@@ -49,7 +49,6 @@ void ProtocolClient::handleGameState(SmartBuffer& smartBuffer) {
     size_t bufferSize = smartBuffer.getSize() - sizeof(uint8_t);
     size_t cellSize = sizeof(uint32_t) + 3 * sizeof(float);
     size_t cellCount = bufferSize / cellSize;
-
     for (size_t i = 0; i < cellCount; i++) {
         CellData cell;
         smartBuffer >> cell.ownerId >> cell.x >> cell.y >> cell.radius;

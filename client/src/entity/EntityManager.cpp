@@ -28,11 +28,9 @@ void EntityManager::createCell(int id, float x, float y, float radius,
     entities.emplace(id, std::move(newEntity));
 }
 
-void EntityManager::createWorld() {
+void EntityManager::createWorld(int width, int height) {
     auto newEntity = GameEngine::Entity(ConfigClient::World::ID);
-    newEntity.addComponent(
-        Shape(ShapeType::Rectangle,
-              {ConfigClient::World::WIDTH, ConfigClient::World::HEIGHT}));
+    newEntity.addComponent(Shape(ShapeType::Rectangle, {width, height}));
     newEntity.addComponent(Position({{0.0f, 0.0f}}));
     newEntity.addComponent(Color(ConfigClient::World::BACKGROUND_COLOR));
     entities.emplace(ConfigClient::World::ID, std::move(newEntity));

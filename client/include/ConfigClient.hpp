@@ -18,9 +18,7 @@ static std::vector<double> BACKGROUND_COLOR = {0, 0, 0, 255};
 
 namespace World {
 constexpr int ID = 0;
-constexpr int WIDTH = 1000;
-constexpr int HEIGHT = 1000;
-static std::vector<double> BACKGROUND_COLOR = {20, 20, 20, 20};
+static std::vector<double> BACKGROUND_COLOR = {20, 20, 20, 255};
 constexpr int BORDER_WIDTH = 50;
 static std::vector<double> BORDER_COLOR = {255, 255, 255, 255};
 } // namespace World

@@ -18,7 +18,7 @@ class EntityManager {
     void setEntities(std::map<int, GameEngine::Entity> entities);
     void createCell(int id, float x, float y, float radius,
                     std::vector<double> color);
-    void createWorld();
+    void createWorld(int width, int height);
     void removeEntity(int id);
     void clearEntities();
     std::map<int, GameEngine::Entity>& getEntities();
