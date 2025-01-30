@@ -17,7 +17,7 @@ void CWorld::init(int worldWidth, int worldHeight) {
     worldRect.setSize(
         sf::Vector2f(static_cast<float>(width), static_cast<float>(height)));
     worldRect.setOrigin(width / 2.0f, height / 2.0f);
-    worldRect.setPosition(1920 / 2.0f, 1080 / 2.0f);
+    worldRect.setPosition(GameConfig::WINDOW_WIDTH / 2.0f, GameConfig::WINDOW_HEIGHT / 2.0f);
 }
 
 void CWorld::zoom(float factor) {

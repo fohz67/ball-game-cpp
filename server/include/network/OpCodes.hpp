@@ -1,6 +1,10 @@
 #pragma once
 
+#include <cstdint>
+
 enum class OpCodes : uint8_t {
     WORLD = 1,
-    JOIN = 10,
+    JOIN = 2,
+    GAME_STATE = 3,
+    VIEWPORT = 4,
 };

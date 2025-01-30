@@ -8,7 +8,7 @@ GameState& GameState::get() {
 }
 
 void GameState::run() {
-    window.create(sf::VideoMode(1920, 1080), "Ball Game");
+    window.create(sf::VideoMode(GameConfig::WINDOW_WIDTH, GameConfig::WINDOW_HEIGHT), GameConfig::WINDOW_NAME);
 
     while (window.isOpen()) {
         processEvents();
@@ -27,8 +27,7 @@ void GameState::processEvents() {
         if (event.type == sf::Event::MouseWheelScrolled) {
             if (event.mouseWheelScroll.delta > 0) {
                 CWorld::get().zoom(1.1f);
-            }
-            else if (event.mouseWheelScroll.delta < 0) {
+            } else if (event.mouseWheelScroll.delta < 0) {
                 CWorld::get().zoom(0.9f);
             }
         }

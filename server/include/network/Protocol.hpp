@@ -12,6 +12,9 @@ class Protocol {
     static void injector(char* buffer, size_t length, SmartBuffer& smartBuffer);
     static void handle_message(std::shared_ptr<asio::ip::tcp::socket> client,
                                SmartBuffer& smartBuffer);
+    static void sendWorld();
+    static void sendGameState();
+    static void sendViewport();
 
   private:
     Protocol() = default;

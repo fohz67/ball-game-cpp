@@ -1,6 +1,7 @@
 #include "network/Network.hpp"
 #include "GameConfig.hpp"
 #include "network/Protocol.hpp"
+#include "players/PlayersManager.hpp"
 
 Network& Network::get() {
     static Network instance;
@@ -10,26 +11,27 @@ Network& Network::get() {
 Network::Network()
     : acceptor(io_context,
                asio::ip::tcp::endpoint(asio::ip::tcp::v4(), GameConfig::PORT)),
-      port(port) {}
+      port(GameConfig::PORT) {}
 
 void Network::run() {
     do_accept();
+    sendThread = std::thread(&Network::send_loop, this);
     io_context.run();
 }
 
 void Network::do_accept() {
-    acceptor.async_accept(
-        [this](std::error_code ec, asio::ip::tcp::socket socket) {
-            if (!ec) {
-                std::cout << "New connection from: " << socket.remote_endpoint()
-                          << std::endl;
-                auto client_socket =
-                    std::make_shared<asio::ip::tcp::socket>(std::move(socket));
-                clients.insert(client_socket);
-                handle_client(client_socket);
-            }
-            do_accept();
-        });
+    acceptor.async_accept([this](std::error_code ec,
+                                 asio::ip::tcp::socket socket) {
+        if (!ec) {
+            auto client_socket =
+                std::make_shared<asio::ip::tcp::socket>(std::move(socket));
+            Player player = PlayersManager::get().addPlayer(client_socket);
+            std::cout << "New player connected: " << player.getId() << " from "
+                      << client_socket->remote_endpoint() << std::endl;
+            handle_client(client_socket);
+        }
+        do_accept();
+    });
 }
 
 void Network::handle_client(std::shared_ptr<asio::ip::tcp::socket> socket) {
@@ -44,24 +46,34 @@ void Network::handle_client(std::shared_ptr<asio::ip::tcp::socket> socket) {
                 Protocol::get().handle_message(socket, smartBuffer);
                 this->handle_client(socket);
             } else {
-                clients.erase(socket);
-                std::cerr << "Client disconnected: "
-                          << socket->remote_endpoint() << std::endl;
+                uint32_t playerId =
+                    PlayersManager::get().getPlayerByClient(socket)->getId();
+                PlayersManager::get().removePlayer(playerId);
+                std::cerr << "Player " << playerId << " disconnected."
+                          << std::endl;
             }
         });
 }
 
 void Network::send_to_client(std::shared_ptr<asio::ip::tcp::socket> client,
                              SmartBuffer& smartBuffer) {
-    if (clients.find(client) != clients.end()) {
+    if (client && client->is_open()) {
         asio::write(*client, asio::buffer(smartBuffer.getBuffer(),
                                           smartBuffer.getSize()));
     }
 }
 
 void Network::send_to_all(SmartBuffer& smartBuffer) {
-    for (auto& client : clients) {
-        asio::write(*client, asio::buffer(smartBuffer.getBuffer(),
-                                          smartBuffer.getSize()));
+    const auto& allPlayers = PlayersManager::get().getAllPlayers();
+    for (const auto& player : allPlayers) {
+        send_to_client(player.getClient(), smartBuffer);
+    }
+}
+
+void Network::send_loop() {
+    while (true) {
+        // Protocol::get().sendGameState();
+        // Protocol::get().sendViewport();
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
 }

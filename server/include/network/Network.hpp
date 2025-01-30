@@ -6,7 +6,7 @@
 #include <memory>
 #include <string>
 #include <thread>
-#include <unordered_set>
+#include <unordered_map>
 
 #define MAX_BUFFER_SIZE 1024
 
@@ -28,8 +28,11 @@ class Network {
     ~Network() = default;
     void do_accept();
     void handle_client(std::shared_ptr<asio::ip::tcp::socket> socket);
+    void send_loop();
     asio::io_context io_context;
     asio::ip::tcp::acceptor acceptor;
     unsigned short port;
-    std::unordered_set<std::shared_ptr<asio::ip::tcp::socket>> clients;
+    std::unordered_map<std::shared_ptr<asio::ip::tcp::socket>, uint32_t>
+        clients;
+    std::thread sendThread;
 };

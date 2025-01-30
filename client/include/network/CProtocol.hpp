@@ -15,4 +15,6 @@ class CProtocol {
   private:
     CProtocol() = default;
     ~CProtocol() = default;
+    static void handleWorld(SmartBuffer& smartBuffer);
+    static void handleGameState(SmartBuffer& smartBuffer);
 };
