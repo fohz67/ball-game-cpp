@@ -6,7 +6,8 @@
 ** the rendering of various components within the game engine.
 ** Responsibility:
 ** - Initialize and destroy the System class
-** - Render entities by calling specific system functions for each component type
+** - Render entities by calling specific system functions for each component
+*type
 */
 
 #include "System.hpp"
@@ -15,10 +16,11 @@ GameEngine::System::System() {}
 
 /**
  * @brief Renders the entities on the window.
- * 
- * This function renders the entities on the window by calling the spriteSystem, textSystem,
- * buttonSystem, buttonRectSystem, optionButtonSystem, sliderSystem, and shapeSystem functions.
- * 
+ *
+ * This function renders the entities on the window by calling the spriteSystem,
+ * textSystem, buttonSystem, buttonRectSystem, optionButtonSystem, sliderSystem,
+ * and shapeSystem functions.
+ *
  * @param window The render window where the entities will be drawn.
  * @param entities The map of entities to be rendered.
  */

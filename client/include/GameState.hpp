@@ -1,15 +1,14 @@
 #pragma once
 
-#include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
 
-class GameState
-{
-public:
+class GameState {
+  public:
     GameState();
     void run();
 
-private:
+  private:
     void processEvents();
     void update();
     void render();

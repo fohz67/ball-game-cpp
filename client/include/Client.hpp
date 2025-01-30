@@ -5,11 +5,11 @@
 #include "GameState.hpp"
 
 class Client {
-public:
+  public:
     Client(const std::string& host, unsigned short port);
     void start();
 
-private:
+  private:
     void join();
     CNetwork network;
     GameState game_state;

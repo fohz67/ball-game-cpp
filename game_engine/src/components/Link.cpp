@@ -42,7 +42,8 @@ void Link::setId(const int id) {
 /**
  * @brief Display information about the Link component.
  *
- * This function outputs a message indicating that the Link component is being displayed.
+ * This function outputs a message indicating that the Link component is being
+ * displayed.
  */
 void Link::display() const {
     std::cout << "Link component displayed!" << std::endl;

@@ -16,11 +16,11 @@
 
 /**
  * @brief Loads the sprite component of an entity if it is not already loaded.
- * 
- * This function checks if the sprite component is loaded. If not, it loads the texture from file,
- * sets the texture, texture rect, position, size, and color of the sprite. Finally, it marks
- * the sprite component as loaded.
- * 
+ *
+ * This function checks if the sprite component is loaded. If not, it loads the
+ * texture from file, sets the texture, texture rect, position, size, and color
+ * of the sprite. Finally, it marks the sprite component as loaded.
+ *
  * @param entity The entity containing the sprite component.
  * @param spriteComp The sprite component to be loaded.
  * @param textureComp The texture component to be loaded.
@@ -48,12 +48,12 @@ void GameEngine::System::loadSprite(GameEngine::Entity& entity,
 
 /**
  * @brief Renders the sprite component of an entity on the window.
- * 
- * This function checks if the entity has both sprite and texture components. If so, it loads
- * the sprite component and then draws the sprite on the window. If the position component has
- * multiple positions, it draws the sprite at each position. Otherwise, it draws the sprite at
- * the single position.
- * 
+ *
+ * This function checks if the entity has both sprite and texture components. If
+ * so, it loads the sprite component and then draws the sprite on the window. If
+ * the position component has multiple positions, it draws the sprite at each
+ * position. Otherwise, it draws the sprite at the single position.
+ *
  * @param window The render window where the sprite will be drawn.
  * @param entity The entity containing the sprite and texture components.
  */

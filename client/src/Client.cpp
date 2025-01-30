@@ -1,21 +1,19 @@
-#include <iostream>
-#include <chrono>
-#include <thread>
 #include "Client.hpp"
+#include <chrono>
+#include <iostream>
+#include <thread>
 #include "OpCodes.hpp"
 
-Client::Client(const std::string &host, unsigned short port)
+Client::Client(const std::string& host, unsigned short port)
     : network(host, port), game_state() {}
 
-void Client::start()
-{
+void Client::start() {
     network.start();
-    game_state.run();
     join();
+    game_state.run();
 }
 
-void Client::join()
-{
+void Client::join() {
     SmartBuffer smartBuffer;
     smartBuffer << static_cast<uint8_t>(OpCodes::JOIN);
     network.send(smartBuffer);

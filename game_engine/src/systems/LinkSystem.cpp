@@ -17,11 +17,12 @@
 
 /**
  * @brief Links the position of two entities.
- * 
- * This function links the position of two entities. It checks if the entity has a link component.
- * If so, it gets the linked entity and calculates the distance between the two entities. It then
- * updates the position of the entity based on the distance.
- * 
+ *
+ * This function links the position of two entities. It checks if the entity has
+ * a link component. If so, it gets the linked entity and calculates the
+ * distance between the two entities. It then updates the position of the entity
+ * based on the distance.
+ *
  * @param id The id of the entity.
  * @param entities The map of entities.
  * @param newLinkedEntityPos The new position of the linked entity.

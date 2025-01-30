@@ -21,8 +21,7 @@
  * @param soundFile The path to the sound file.
  * @param volume The volume level for the sound (typically between 0 and 100).
  */
-Sound::Sound(std::string soundFile)
-    : _soundFile(soundFile) {}
+Sound::Sound(std::string soundFile) : _soundFile(soundFile) {}
 
 /**
  * @brief Destructor for the Sound component.

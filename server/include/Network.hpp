@@ -3,23 +3,26 @@
 
 #include <asio.hpp>
 #include <iostream>
+#include <memory>
 #include <string>
 #include <thread>
 #include <unordered_set>
-#include <memory>
-#include "SmartBuffer.hpp"
 #include "OpCodes.hpp"
 #include "Protocol.hpp"
+#include "SmartBuffer.hpp"
 
 class Network {
-public:
+  public:
     Network(unsigned short port);
     void start();
-    short get_port() const { return port; }
-    void send_to_client(std::shared_ptr<asio::ip::tcp::socket> client, SmartBuffer& smartBuffer);
+    short get_port() const {
+        return port;
+    }
+    void send_to_client(std::shared_ptr<asio::ip::tcp::socket> client,
+                        SmartBuffer& smartBuffer);
     void send_to_all(SmartBuffer& smartBuffer);
 
-private:
+  private:
     void do_accept();
     void handle_client(std::shared_ptr<asio::ip::tcp::socket> socket);
 

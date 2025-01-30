@@ -19,11 +19,11 @@
 
 /**
  * @brief Renders the button component of an entity on the window.
- * 
- * This function checks if the entity has both button and position components. If so, it loads
- * the button component and then draws the button on the window. If the button is pressed, it
- * executes the callback function.
- * 
+ *
+ * This function checks if the entity has both button and position components.
+ * If so, it loads the button component and then draws the button on the window.
+ * If the button is pressed, it executes the callback function.
+ *
  * @param window The render window where the button will be drawn.
  * @param entity The entity containing the button and position components.
  */
@@ -39,24 +39,28 @@ void GameEngine::System::buttonSystem(sf::RenderWindow& window,
 
             buttonComp.getText().setFont(buttonComp.getFont());
             buttonComp.getText().setString(buttonComp.getString());
-            buttonComp.getText().setCharacterSize(buttonComp.getCharacterSize());
+            buttonComp.getText().setCharacterSize(
+                buttonComp.getCharacterSize());
             buttonComp.getText().setFillColor(sf::Color::White);
 
             sf::FloatRect textBounds = buttonComp.getText().getLocalBounds();
 
             float padding = 10.f;
             buttonComp.getButton().setSize(
-                sf::Vector2f(textBounds.width + 2 * padding, textBounds.height + 2 * padding));
+                sf::Vector2f(textBounds.width + 2 * padding,
+                             textBounds.height + 2 * padding));
             buttonComp.getButton().setFillColor(sf::Color::Transparent);
             buttonComp.getButton().setPosition(positionComp.getPositionX(0),
-                                            positionComp.getPositionY(0));
+                                               positionComp.getPositionY(0));
 
             buttonComp.getText().setOrigin(
                 textBounds.left + textBounds.width / 2,
                 textBounds.top + textBounds.height / 2);
             buttonComp.getText().setPosition(
-                buttonComp.getButton().getPosition().x + buttonComp.getButton().getSize().x / 2,
-                buttonComp.getButton().getPosition().y + buttonComp.getButton().getSize().y / 2);
+                buttonComp.getButton().getPosition().x +
+                    buttonComp.getButton().getSize().x / 2,
+                buttonComp.getButton().getPosition().y +
+                    buttonComp.getButton().getSize().y / 2);
 
             buttonComp.setIsLoaded(true);
         }
@@ -82,12 +86,12 @@ void GameEngine::System::buttonSystem(sf::RenderWindow& window,
 
 /**
  * @brief Renders the checkbox component of an entity on the window.
- * 
- * This function checks if the entity has both checkbox and position components. If so, it loads
- * the checkbox component and then draws the checkbox on the window. If the checkbox is
- * checked, it fills the button with white color. If the checkbox is pressed, it executes the
- * callback function.
- * 
+ *
+ * This function checks if the entity has both checkbox and position components.
+ * If so, it loads the checkbox component and then draws the checkbox on the
+ * window. If the checkbox is checked, it fills the button with white color. If
+ * the checkbox is pressed, it executes the callback function.
+ *
  * @param window The render window where the checkbox will be drawn.
  * @param entity The entity containing the checkbox and position components.
  */
@@ -145,11 +149,12 @@ void GameEngine::System::optionButtonSystem(sf::RenderWindow& window,
 
 /**
  * @brief Renders the slider component of an entity on the window.
- * 
- * This function checks if the entity has both slider and position components. If so, it loads
- * the slider component and then draws the slider on the window. If the slider is pressed, it
- * updates the value of the slider and executes the callback function.
- * 
+ *
+ * This function checks if the entity has both slider and position components.
+ * If so, it loads the slider component and then draws the slider on the window.
+ * If the slider is pressed, it updates the value of the slider and executes the
+ * callback function.
+ *
  * @param window The render window where the slider will be drawn.
  * @param entity The entity containing the slider and position components.
  * @param entities The map of entities.
@@ -183,9 +188,11 @@ void GameEngine::System::sliderSystem(sf::RenderWindow& window,
                 cursorShape.setFillColor(
                     sf::Color(color[0], color[1], color[2], color[3]));
             }
-            float normalizedValue = (sliderComp.getValue() - sliderComp.getMinValue()) /
-                                    (sliderComp.getMaxValue() - sliderComp.getMinValue());
-            float cursorX = barShape.getPosition().x + normalizedValue * barShape.getSize().x;
+            float normalizedValue =
+                (sliderComp.getValue() - sliderComp.getMinValue()) /
+                (sliderComp.getMaxValue() - sliderComp.getMinValue());
+            float cursorX = barShape.getPosition().x +
+                            normalizedValue * barShape.getSize().x;
 
             cursorShape.setPosition(cursorX - cursorShape.getRadius(),
                                     barShape.getPosition().y - 7);
@@ -237,11 +244,12 @@ void GameEngine::System::sliderSystem(sf::RenderWindow& window,
 
 /**
  * @brief Renders the buttonRect component of an entity on the window.
- * 
- * This function checks if the entity has both buttonRect and position components. If so, it loads
- * the buttonRect component and then draws the buttonRect on the window. If the buttonRect is
- * pressed, it executes the callback function. The buttonRect is an input where text can be written.
- * 
+ *
+ * This function checks if the entity has both buttonRect and position
+ * components. If so, it loads the buttonRect component and then draws the
+ * buttonRect on the window. If the buttonRect is pressed, it executes the
+ * callback function. The buttonRect is an input where text can be written.
+ *
  * @param window The render window where the buttonRect will be drawn.
  * @param entity The entity containing the buttonRect and position components.
  */

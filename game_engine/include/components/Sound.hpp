@@ -14,12 +14,9 @@
 class Sound : public Component {
   public:
     Sound(std::string soundFile = "");
-    Sound(const Sound& other) 
-    : _soundFile(other._soundFile), 
-      _volume(other._volume), 
-      _buffer(other._buffer), 
-      _isLoad(other._isLoad) 
-    {
+    Sound(const Sound& other)
+        : _soundFile(other._soundFile), _volume(other._volume),
+          _buffer(other._buffer), _isLoad(other._isLoad) {
         _sound.setBuffer(_buffer);
     }
 
@@ -33,12 +30,9 @@ class Sound : public Component {
         }
         return *this;
     }
-    Sound(Sound&& other) noexcept 
-        : _soundFile(std::move(other._soundFile)),
-          _volume(other._volume),
-          _buffer(std::move(other._buffer)),
-          _isLoad(other._isLoad) 
-    {
+    Sound(Sound&& other) noexcept
+        : _soundFile(std::move(other._soundFile)), _volume(other._volume),
+          _buffer(std::move(other._buffer)), _isLoad(other._isLoad) {
         _sound.setBuffer(_buffer);
     }
 
@@ -53,7 +47,6 @@ class Sound : public Component {
         return *this;
     }
 
-    
     ~Sound();
     static Sound& get();
     sf::Sound& getSound();

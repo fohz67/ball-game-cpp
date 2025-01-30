@@ -26,8 +26,10 @@
  * @param maxValue The maximum value that the slider can represent.
  * @param size The size of the slider (width, height).
  */
-Slider::Slider(float current, std::pair<double, double> lenght, std::pair<double, double> size)
-    : _minValue(lenght.first), _maxValue(lenght.second), _size(size), _currentValue(current) {}
+Slider::Slider(float current, std::pair<double, double> lenght,
+               std::pair<double, double> size)
+    : _minValue(lenght.first), _maxValue(lenght.second), _size(size),
+      _currentValue(current) {}
 
 /**
  * @brief Destructor for the Slider component.

@@ -25,7 +25,8 @@
  */
 Text::Text(const std::string& text, const std::string& fontFile,
            const unsigned int characterSize)
-    : _initText(text), _fontFile(fontFile), _charSize(characterSize), _initSize(characterSize) {}
+    : _initText(text), _fontFile(fontFile), _charSize(characterSize),
+      _initSize(characterSize) {}
 
 /**
  * @brief Destructor for the Text component.

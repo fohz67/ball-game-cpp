@@ -3,13 +3,12 @@
 #include "Network.hpp"
 #include "World.hpp"
 
-class Server
-{
-public:
+class Server {
+  public:
     Server(unsigned short port);
     void run();
 
-private:
+  private:
     Network network;
     World world;
 };
