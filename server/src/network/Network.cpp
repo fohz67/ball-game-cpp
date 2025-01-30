@@ -1,8 +1,8 @@
 #include "network/Network.hpp"
+#include "cell/CellManager.hpp"
 #include "config/Config.hpp"
 #include "network/Protocol.hpp"
 #include "player/PlayerManager.hpp"
-#include "cell/CellManager.hpp"
 
 Network& Network::get() {
     static Network instance;
@@ -56,7 +56,7 @@ void Network::handleClient(std::shared_ptr<asio::ip::tcp::socket> socket) {
 }
 
 void Network::sendToClient(std::shared_ptr<asio::ip::tcp::socket> client,
-                             SmartBuffer& smartBuffer) {
+                           SmartBuffer& smartBuffer) {
     if (client && client->is_open()) {
         asio::write(*client, asio::buffer(smartBuffer.getBuffer(),
                                           smartBuffer.getSize()));
@@ -74,6 +74,7 @@ void Network::sendLoop() {
     while (true) {
         Protocol::get().sendGameState();
         Protocol::get().sendViewport();
-        std::this_thread::sleep_for(std::chrono::milliseconds(Config::Network::FREQUENCY));
+        std::this_thread::sleep_for(
+            std::chrono::milliseconds(Config::Network::FREQUENCY));
     }
 }

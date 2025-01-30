@@ -1,7 +1,7 @@
 #include "Server.hpp"
 #include <iostream>
-#include "config/Config.hpp"
 #include "cell/CellManager.hpp"
+#include "config/Config.hpp"
 #include "player/PlayerManager.hpp"
 
 Server& Server::get() {
@@ -14,14 +14,12 @@ void Server::run() {
               << std::endl;
     std::thread updateThread(&Server::updateLoop, this);
     Network::get().run();
-    
 }
 
 void Server::updateLoop() {
     while (true) {
-        for (const auto& player : PlayerManager::get().getAllPlayers()) {
-            CellManager::get().updateCellMovement(player.getId(), player.getMouseX(), player.getMouseY());            
-        }
-        std::this_thread::sleep_for(std::chrono::milliseconds(Config::Network::FREQUENCY));
+        PlayerManager::get().updatePlayers();
+        std::this_thread::sleep_for(
+            std::chrono::milliseconds(Config::Network::FREQUENCY));
     }
 }

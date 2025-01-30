@@ -14,7 +14,7 @@ class CellManager {
     void removePlayerCells(uint32_t ownerId);
     const std::vector<Cell>& getCells() const;
     std::vector<Cell*> getPlayerCells(uint32_t playerId);
-    void calculateViewport();
+    std::pair<float, float> calculateViewport(uint32_t playerId);
     void updateCellMovement(uint32_t playerId, float mouseX, float mouseY);
 
   private:

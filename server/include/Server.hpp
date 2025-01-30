@@ -1,7 +1,7 @@
 #pragma once
 
-#include "world/World.hpp"
 #include "network/Network.hpp"
+#include "world/World.hpp"
 
 class Server {
   public:

@@ -10,6 +10,7 @@ class GameState {
     GameState& operator=(const GameState&) = delete;
     static GameState& get();
     void run();
+    void setViewport(float x, float y);
 
   private:
     GameState() = default;
@@ -17,5 +18,7 @@ class GameState {
     void processEvents();
     void render(GameEngine::System& system);
     sf::RenderWindow window;
-    sf::Color backgroundColor;
+    sf::View view;
+    float viewportX;
+    float viewportY;
 };

@@ -1,6 +1,6 @@
 #include "network/Protocol.hpp"
-#include "config/Config.hpp"
 #include "cell/CellManager.hpp"
+#include "config/Config.hpp"
 #include "network/Network.hpp"
 #include "network/OpCodes.hpp"
 #include "player/PlayerManager.hpp"
@@ -16,7 +16,7 @@ void Protocol::injector(char* buffer, size_t length, SmartBuffer& smartBuffer) {
 }
 
 void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
-                              SmartBuffer& smartBuffer) {
+                             SmartBuffer& smartBuffer) {
     uint8_t opcode;
     smartBuffer >> opcode;
 

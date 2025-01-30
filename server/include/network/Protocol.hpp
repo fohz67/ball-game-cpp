@@ -11,7 +11,7 @@ class Protocol {
     static Protocol& get();
     static void injector(char* buffer, size_t length, SmartBuffer& smartBuffer);
     static void handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
-                               SmartBuffer& smartBuffer);
+                              SmartBuffer& smartBuffer);
     static void handleMouseMove(std::shared_ptr<asio::ip::tcp::socket> client,
                                 SmartBuffer& smartBuffer);
     static void sendWorld();

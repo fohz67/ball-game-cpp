@@ -15,6 +15,7 @@ class PlayerManager {
     Player* getPlayer(uint32_t playerId);
     Player* getPlayerByClient(std::shared_ptr<asio::ip::tcp::socket> client);
     const std::vector<Player>& getAllPlayers() const;
+    void updatePlayers();
 
   private:
     PlayerManager() = default;

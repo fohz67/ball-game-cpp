@@ -17,7 +17,7 @@ class Network {
     static Network& get();
     void run();
     void sendToClient(std::shared_ptr<asio::ip::tcp::socket> client,
-                        SmartBuffer& smartBuffer);
+                      SmartBuffer& smartBuffer);
     void sendToAll(SmartBuffer& smartBuffer);
 
   private:

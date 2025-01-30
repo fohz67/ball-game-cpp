@@ -45,3 +45,15 @@ Player* PlayerManager::getPlayerByClient(
 const std::vector<Player>& PlayerManager::getAllPlayers() const {
     return players;
 }
+
+void PlayerManager::updatePlayers() {
+    for (auto& player : players) {
+        std::pair<float, float> positions = player.getMousePosition();
+        CellManager::get().updateCellMovement(player.getId(), positions.first,
+                                              positions.second);
+
+        std::pair<float, float> newViewport =
+            CellManager::get().calculateViewport(player.getId());
+        player.setViewport(newViewport.first, newViewport.second);
+    }
+}

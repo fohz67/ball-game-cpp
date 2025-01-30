@@ -2,8 +2,9 @@
 #include "ConfigClient.hpp"
 #include "cell/CellManagerClient.hpp"
 #include "entity/EntityManager.hpp"
-#include "network/OpCodes.hpp"
+#include "game/GameState.hpp"
 #include "network/NetworkClient.hpp"
+#include "network/OpCodes.hpp"
 
 ProtocolClient& ProtocolClient::get() {
     static ProtocolClient instance;
@@ -30,6 +31,7 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
         break;
     }
     case OpCodes::VIEWPORT: {
+        handleViewport(smartBuffer);
         break;
     }
     default:
@@ -60,7 +62,14 @@ void ProtocolClient::handleGameState(SmartBuffer& smartBuffer) {
     }
 }
 
-void ProtocolClient::sendMousePosition(sf::RenderWindow& window, sf::Vector2i& lastMousePos) {
+void ProtocolClient::handleViewport(SmartBuffer& smartBuffer) {
+    float x, y;
+    smartBuffer >> x >> y;
+    GameState::get().setViewport(x, y);
+}
+
+void ProtocolClient::sendMousePosition(sf::RenderWindow& window,
+                                       sf::Vector2i& lastMousePos) {
     sf::Vector2i mousePos = sf::Mouse::getPosition(window);
     sf::Vector2u windowSize = window.getSize();
     float normX = ((float)mousePos.x / windowSize.x) * 2.0f - 1.0f;

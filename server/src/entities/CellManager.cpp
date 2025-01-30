@@ -1,7 +1,7 @@
 #include "cell/CellManager.hpp"
-#include <random>
-#include <iostream>
 #include <cmath>
+#include <iostream>
+#include <random>
 #include "config/Config.hpp"
 
 CellManager& CellManager::get() {
@@ -38,7 +38,7 @@ const std::vector<Cell>& CellManager::getCells() const {
     return cells;
 }
 
-std::vector<Cell*> CellManager::getPlayerCells(uint32_t playerId)  {
+std::vector<Cell*> CellManager::getPlayerCells(uint32_t playerId) {
     std::vector<Cell*> playerCells;
     for (auto& cell : cells) {
         if (cell.getOwnerId() == playerId) {
@@ -48,10 +48,31 @@ std::vector<Cell*> CellManager::getPlayerCells(uint32_t playerId)  {
     return playerCells;
 }
 
-void CellManager::updateCellMovement(uint32_t playerId, float normMouseX, float normMouseY) {
-    std::vector<Cell*> playerCells = getPlayerCells(playerId);
-    if (playerCells.empty()) return;
+std::pair<float, float> CellManager::calculateViewport(uint32_t playerId) {
+    std::vector<Cell*> playerCells;
+    float centerX = 0.0f, centerY = 0.0f;
+    for (auto& cell : cells) {
+        if (cell.getOwnerId() == playerId) {
+            playerCells.push_back(&cell);
+        }
+    }
+    if (playerCells.empty()) {
+        return {0, 0};
+    }
+    for (const auto* cell : playerCells) {
+        centerX += cell->getX();
+        centerY += cell->getY();
+    }
+    centerX /= playerCells.size();
+    centerY /= playerCells.size();
+    return {centerX, centerY};
+}
 
+void CellManager::updateCellMovement(uint32_t playerId, float normMouseX,
+                                     float normMouseY) {
+    std::vector<Cell*> playerCells = getPlayerCells(playerId);
+    if (playerCells.empty())
+        return;
     float centerX = 0.0f, centerY = 0.0f;
     for (const auto* cell : playerCells) {
         centerX += cell->getX();
@@ -59,35 +80,30 @@ void CellManager::updateCellMovement(uint32_t playerId, float normMouseX, float 
     }
     centerX /= playerCells.size();
     centerY /= playerCells.size();
-
     float dirX = normMouseX;
     float dirY = normMouseY;
-
-    if (std::fabs(dirX) < 0.05f) dirX = 0;
-    if (std::fabs(dirY) < 0.05f) dirY = 0;
-
+    if (std::fabs(dirX) < 0.05f)
+        dirX = 0;
+    if (std::fabs(dirY) < 0.05f)
+        dirY = 0;
     for (auto* cell : playerCells) {
         float radius = cell->getRadius();
         float speed = 100.0f / std::log(radius + 1.5f);
-
         float newX = cell->getX() + dirX * speed;
         float newY = cell->getY() + dirY * speed;
-
         for (auto* otherCell : playerCells) {
-            if (cell == otherCell) continue;
-
+            if (cell == otherCell)
+                continue;
             float dx = newX - otherCell->getX();
             float dy = newY - otherCell->getY();
             float distance = std::sqrt(dx * dx + dy * dy);
             float minDist = radius + otherCell->getRadius();
-
             if (distance < minDist) {
                 float overlap = minDist - distance;
                 newX += dx / distance * overlap * 0.5f;
                 newY += dy / distance * overlap * 0.5f;
             }
         }
-
         cell->setPosition(newX, newY);
     }
 }

@@ -4,7 +4,7 @@ namespace Config {
 namespace Network {
 constexpr const int PORT = 12345;
 constexpr int FREQUENCY = 50;
-}
+} // namespace Network
 
 namespace World {
 constexpr const int WIDTH = 300;
