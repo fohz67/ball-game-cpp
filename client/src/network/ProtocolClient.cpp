@@ -1,6 +1,8 @@
 #include "network/ProtocolClient.hpp"
 #include "comps/cell/CellManagerClient.hpp"
 #include "network/OpCodes.hpp"
+#include "entity/EntityManager.hpp"
+#include "game/GameConfigClient.hpp"
 
 ProtocolClient& ProtocolClient::get() {
     static ProtocolClient instance;
@@ -27,8 +29,6 @@ void ProtocolClient::handle_message(SmartBuffer& smartBuffer) {
         break;
     }
     case OpCodes::VIEWPORT: {
-        std::cout << "Received VIEWPORT opcode" << std::endl;
-        // handleViewport(smartBuffer);
         break;
     }
     default:
@@ -41,11 +41,11 @@ void ProtocolClient::handle_message(SmartBuffer& smartBuffer) {
 void ProtocolClient::handleWorld(SmartBuffer& smartBuffer) {
     int width, height;
     smartBuffer >> width >> height;
-    WorldClient::get().init(width, height);
+    EntityManager::get().createWorld();
 }
 
 void ProtocolClient::handleGameState(SmartBuffer& smartBuffer) {
-    std::vector<CellData> cells;
+    unsigned long safer = GameConfigClient::Cell::SAFER;
     size_t bufferSize = smartBuffer.getSize() - sizeof(uint8_t);
     size_t cellSize = sizeof(uint32_t) + 3 * sizeof(float);
     size_t cellCount = bufferSize / cellSize;
@@ -53,10 +53,7 @@ void ProtocolClient::handleGameState(SmartBuffer& smartBuffer) {
     for (size_t i = 0; i < cellCount; i++) {
         CellData cell;
         smartBuffer >> cell.ownerId >> cell.x >> cell.y >> cell.radius;
-        std::cout << "Cell: " << cell.ownerId << " " << cell.x << " " << cell.y
-                  << " " << cell.radius << std::endl;
-        cells.push_back(cell);
+        EntityManager::get().createCell(cell.ownerId + safer, cell.x, cell.y, cell.radius, GameConfigClient::Cell::DEFAULT_COLOR);
+        safer++;
     }
-
-    CellManagerClient::get().updateCells(cells);
 }

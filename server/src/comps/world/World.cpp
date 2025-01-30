@@ -1,5 +1,5 @@
 #include "comps/world/World.hpp"
-#include "util/GameConfig.hpp"
+#include "game/GameConfig.hpp"
 
 World& World::get() {
     static World instance;

@@ -10,7 +10,8 @@ Client& Client::get() {
 }
 
 void Client::run(const char** av) {
-    NetworkClient::get().init(av[1], static_cast<unsigned short>(std::stoi(av[2])));
+    NetworkClient::get().init(av[1],
+                              static_cast<unsigned short>(std::stoi(av[2])));
     NetworkClient::get().run();
     join();
     GameState::get().run();

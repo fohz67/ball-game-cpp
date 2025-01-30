@@ -1,5 +1,5 @@
-#include "comps/cell/CellManager.hpp"
 #include "player/PlayerManager.hpp"
+#include "comps/cell/CellManager.hpp"
 
 PlayerManager& PlayerManager::get() {
     static PlayerManager instance;

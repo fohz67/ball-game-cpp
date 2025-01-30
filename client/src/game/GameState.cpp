@@ -1,6 +1,7 @@
-#include "util/GameState.hpp"
+#include "game/GameState.hpp"
 #include "comps/world/WorldClient.hpp"
-#include "util/GameConfigClient.hpp"
+#include "entity/EntityManager.hpp"
+#include "game/GameConfigClient.hpp"
 
 GameState& GameState::get() {
     static GameState instance;
@@ -8,14 +9,13 @@ GameState& GameState::get() {
 }
 
 void GameState::run() {
-    window.create(
-        sf::VideoMode(GameConfigClient::WINDOW_WIDTH, GameConfigClient::WINDOW_HEIGHT),
-        GameConfigClient::WINDOW_NAME);
-
+    window.create(sf::VideoMode(GameConfigClient::WINDOW_WIDTH,
+                                GameConfigClient::WINDOW_HEIGHT),
+                  GameConfigClient::WINDOW_NAME);
+    GameEngine::System system;
     while (window.isOpen()) {
         processEvents();
-        update();
-        render();
+        render(system);
     }
 }
 
@@ -36,10 +36,13 @@ void GameState::processEvents() {
     }
 }
 
-void GameState::update() {}
-
-void GameState::render() {
-    window.clear(GameConfigClient::WINDOW_BACKGROUND_COLOR);
-    WorldClient::get().render(window);
+void GameState::render(GameEngine::System& system) {
+    window.clear();
+    std::map<int, GameEngine::Entity> entitiesList =
+        EntityManager::get().getEntities();
+    if (!entitiesList.empty()) {
+        std::cout << "Entities: " << entitiesList.size() << std::endl;
+        system.render(window, entitiesList);
+    }
     window.display();
 }

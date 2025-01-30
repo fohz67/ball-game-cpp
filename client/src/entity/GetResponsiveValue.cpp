@@ -1,4 +1,4 @@
-#include "util/GetResponsiveValue.hpp"
+#include "entity/GetResponsiveValue.hpp"
 
 float GetResponsiveValue::getResponsivePosX(int baseWidth, int currentWidth,
                                             int originalPosX) {

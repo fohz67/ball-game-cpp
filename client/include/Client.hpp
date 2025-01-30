@@ -1,10 +1,9 @@
 #pragma once
 
 #include <thread>
-#include "comps/world/WorldClient.hpp"
 #include "network/NetworkClient.hpp"
 #include "network/ProtocolClient.hpp"
-#include "util/GameState.hpp"
+#include "game/GameState.hpp"
 
 class Client {
   public:

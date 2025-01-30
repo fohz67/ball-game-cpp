@@ -1,7 +1,7 @@
 #include "network/Network.hpp"
 #include "network/Protocol.hpp"
 #include "player/PlayerManager.hpp"
-#include "util/GameConfig.hpp"
+#include "game/GameConfig.hpp"
 
 Network& Network::get() {
     static Network instance;

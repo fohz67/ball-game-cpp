@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include "System.hpp"
 
 class GameState {
   public:
@@ -14,8 +15,7 @@ class GameState {
     GameState() = default;
     ~GameState() = default;
     void processEvents();
-    void update();
-    void render();
+    void render(GameEngine::System& system);
     sf::RenderWindow window;
     sf::Color backgroundColor;
 };

@@ -1,6 +1,6 @@
 #include "comps/cell/CellManager.hpp"
 #include <random>
-#include "util/GameConfig.hpp"
+#include "game/GameConfig.hpp"
 
 CellManager& CellManager::get() {
     static CellManager instance;

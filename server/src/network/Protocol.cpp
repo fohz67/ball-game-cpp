@@ -3,7 +3,7 @@
 #include "network/Network.hpp"
 #include "network/OpCodes.hpp"
 #include "player/PlayerManager.hpp"
-#include "util/GameConfig.hpp"
+#include "game/GameConfig.hpp"
 
 Protocol& Protocol::get() {
     static Protocol instance;

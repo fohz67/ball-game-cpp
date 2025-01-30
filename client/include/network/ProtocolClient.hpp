@@ -2,7 +2,6 @@
 
 #include <SmartBuffer.hpp>
 #include <iostream>
-#include "comps/world/WorldClient.hpp"
 
 class ProtocolClient {
   public:
