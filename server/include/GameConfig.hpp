@@ -1,6 +1,8 @@
 #pragma once
 
 namespace GameConfig {
+constexpr int PORT = 12345;
+
 constexpr int WORLD_WIDTH = 5000;
 constexpr int WORLD_HEIGHT = 5000;
 

@@ -5,10 +5,14 @@
 
 class GameState {
   public:
-    GameState();
+    GameState(const GameState&) = delete;
+    GameState& operator=(const GameState&) = delete;
+    static GameState& get();
     void run();
 
   private:
+    GameState() = default;
+    ~GameState() = default;
     void processEvents();
     void update();
     void render();

@@ -1,5 +1,10 @@
-#include "CProtocol.hpp"
-#include "OpCodes.hpp"
+#include "network/CProtocol.hpp"
+#include "network/OpCodes.hpp"
+
+CProtocol& CProtocol::get() {
+    static CProtocol instance;
+    return instance;
+}
 
 void CProtocol::injector(char* buffer, size_t length,
                          SmartBuffer& smartBuffer) {
@@ -15,7 +20,7 @@ void CProtocol::handle_message(SmartBuffer& smartBuffer) {
     case OpCodes::WORLD: {
         int width, height;
         smartBuffer >> width >> height;
-        std::cout << "World size: " << width << "x" << height << std::endl;
+        CWorld::get().init(width, height);
         break;
     }
     default:

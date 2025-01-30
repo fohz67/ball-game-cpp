@@ -1,17 +1,21 @@
 #pragma once
 
 #include <thread>
-#include "CNetwork.hpp"
-#include "GameState.hpp"
+#include "game_components/CWorld.hpp"
+#include "game_components/GameState.hpp"
+#include "network/CNetwork.hpp"
+#include "network/CProtocol.hpp"
 
 class Client {
   public:
-    Client(const std::string& host, unsigned short port);
+    Client(const Client&) = delete;
+    Client& operator=(const Client&) = delete;
+    static Client& get();
     void run();
 
   private:
+    Client() = default;
+    ~Client() = default;
     void join();
-    CNetwork network;
-    GameState game_state;
     std::thread render_thread;
 };

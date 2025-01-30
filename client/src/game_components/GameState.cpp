@@ -1,10 +1,14 @@
-#include "GameState.hpp"
+#include "game_components/GameState.hpp"
+#include "GameConfig.hpp"
 
-GameState::GameState()
-    : window(sf::VideoMode({1920, 1080}), "Ball Game"),
-      backgroundColor(sf::Color(30, 30, 30)) {}
+GameState& GameState::get() {
+    static GameState instance;
+    return instance;
+}
 
 void GameState::run() {
+    window = sf::VideoMode({1920, 1080}), "Ball Game";
+
     while (window.isOpen()) {
         processEvents();
         update();
@@ -25,6 +29,6 @@ void GameState::processEvents() {
 void GameState::update() {}
 
 void GameState::render() {
-    window.clear(backgroundColor);
+    window.clear(GameConfig::BACKGROUND_COLOR);
     window.display();
 }

@@ -1,8 +1,17 @@
-#include "CNetwork.hpp"
-#include "CProtocol.hpp"
+#include "network/CNetwork.hpp"
+#include "GameConfig.hpp"
+#include "network/CProtocol.hpp"
 
-CNetwork::CNetwork(const std::string& host, unsigned short port)
-    : socket(io_context), host(host), port(port) {}
+CNetwork& CNetwork::get() {
+    static CNetwork instance;
+    return instance;
+}
+
+void CNetwork::init() {
+    socket = asio::ip::tcp::socket(io_context);
+    this->host = GameConfig::HOST;
+    this->port = GameConfig::PORT;
+}
 
 void CNetwork::run() {
     try {
@@ -44,8 +53,8 @@ void CNetwork::receive() {
                 throw asio::system_error(error);
             }
 
-            CProtocol::injector(buffer, length, smartBuffer);
-            CProtocol::handle_message(smartBuffer);
+            CProtocol::get().injector(buffer, length, smartBuffer);
+            CProtocol::get().handle_message(smartBuffer);
         }
     } catch (const std::exception& e) {
         std::cerr << "Receive error: " << e.what() << std::endl;

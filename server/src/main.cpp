@@ -3,8 +3,7 @@
 
 int main() {
     try {
-        Server server(12345);
-        server.run();
+        Server::get().run();
     } catch (const std::exception& e) {
         std::cerr << "Server error: " << e.what() << std::endl;
     }

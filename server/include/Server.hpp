@@ -1,14 +1,16 @@
 #pragma once
 
-#include "Network.hpp"
-#include "World.hpp"
+#include "game_components/World.hpp"
+#include "network/Network.hpp"
 
 class Server {
   public:
-    Server(unsigned short port);
+    Server(const Server&) = delete;
+    Server& operator=(const Server&) = delete;
+    static Server& get();
     void run();
 
   private:
-    Network network;
-    World world;
+    Server() = default;
+    ~Server() = default;
 };

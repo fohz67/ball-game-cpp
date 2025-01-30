@@ -1,15 +1,19 @@
-#include "Protocol.hpp"
+#include "network/Protocol.hpp"
 #include "GameConfig.hpp"
-#include "Network.hpp"
-#include "OpCodes.hpp"
+#include "network/Network.hpp"
+#include "network/OpCodes.hpp"
+
+Protocol& Protocol::get() {
+    static Protocol instance;
+    return instance;
+}
 
 void Protocol::injector(char* buffer, size_t length, SmartBuffer& smartBuffer) {
     smartBuffer.reset();
     smartBuffer.inject(reinterpret_cast<uint8_t*>(buffer), length);
 }
 
-void Protocol::handle_message(Network& network,
-                              std::shared_ptr<asio::ip::tcp::socket> client,
+void Protocol::handle_message(std::shared_ptr<asio::ip::tcp::socket> client,
                               SmartBuffer& smartBuffer) {
     uint8_t opcode;
     smartBuffer >> opcode;
@@ -19,7 +23,7 @@ void Protocol::handle_message(Network& network,
         smartBuffer.reset();
         smartBuffer << static_cast<uint8_t>(OpCodes::WORLD)
                     << GameConfig::WORLD_WIDTH << GameConfig::WORLD_HEIGHT;
-        network.send_to_client(client, smartBuffer);
+        Network::get().send_to_client(client, smartBuffer);
         break;
     }
     default:

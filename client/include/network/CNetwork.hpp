@@ -10,13 +10,17 @@
 
 class CNetwork {
   public:
-    CNetwork(const std::string& host, unsigned short port);
+    CNetwork(const CNetwork&) = delete;
+    CNetwork& operator=(const CNetwork&) = delete;
+    static CNetwork& get();
+    void init();
     void run();
     void send(SmartBuffer& smartBuffer);
 
   private:
+    CNetwork();
+    ~CNetwork() = default;
     void receive();
-
     asio::io_context io_context;
     asio::ip::tcp::socket socket;
     std::string host;

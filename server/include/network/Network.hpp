@@ -12,8 +12,10 @@
 
 class Network {
   public:
-    Network(unsigned short port);
-    void start();
+    Network(const Network&) = delete;
+    Network& operator=(const Network&) = delete;
+    static Network& get();
+    void run();
     short get_port() const {
         return port;
     }
@@ -22,9 +24,10 @@ class Network {
     void send_to_all(SmartBuffer& smartBuffer);
 
   private:
+    Network();
+    ~Network() = default;
     void do_accept();
     void handle_client(std::shared_ptr<asio::ip::tcp::socket> socket);
-
     asio::io_context io_context;
     asio::ip::tcp::acceptor acceptor;
     unsigned short port;

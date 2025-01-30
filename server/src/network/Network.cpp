@@ -1,11 +1,18 @@
-#include "Network.hpp"
-#include "Protocol.hpp"
+#include "network/Network.hpp"
+#include "GameConfig.hpp"
+#include "network/Protocol.hpp"
 
-Network::Network(unsigned short port)
-    : acceptor(io_context, asio::ip::tcp::endpoint(asio::ip::tcp::v4(), port)),
+Network& Network::get() {
+    static Network instance;
+    return instance;
+}
+
+Network::Network()
+    : acceptor(io_context,
+               asio::ip::tcp::endpoint(asio::ip::tcp::v4(), GameConfig::PORT)),
       port(port) {}
 
-void Network::start() {
+void Network::run() {
     do_accept();
     io_context.run();
 }
@@ -33,8 +40,8 @@ void Network::handle_client(std::shared_ptr<asio::ip::tcp::socket> socket) {
         [this, socket, buffer](std::error_code ec, std::size_t length) {
             if (!ec) {
                 SmartBuffer smartBuffer;
-                Protocol::injector(buffer->data(), length, smartBuffer);
-                Protocol::handle_message(*this, socket, smartBuffer);
+                Protocol::get().injector(buffer->data(), length, smartBuffer);
+                Protocol::get().handle_message(socket, smartBuffer);
                 this->handle_client(socket);
             } else {
                 clients.erase(socket);
