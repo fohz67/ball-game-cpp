@@ -9,6 +9,7 @@ class CellsManager {
     CellsManager(const CellsManager&) = delete;
     CellsManager& operator=(const CellsManager&) = delete;
     static CellsManager& get();
+    void createRandomCell(uint32_t playerId);
     void addCell(uint32_t ownerId, float x, float y, float radius, float speed);
     void removeCellsByPlayer(uint32_t ownerId);
     const std::vector<Cell>& getAllCells() const;

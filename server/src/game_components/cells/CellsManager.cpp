@@ -1,8 +1,20 @@
 #include "game_components/cells/CellsManager.hpp"
+#include <random>
+#include "GameConfig.hpp"
 
 CellsManager& CellsManager::get() {
     static CellsManager instance;
     return instance;
+}
+
+void CellsManager::createRandomCell(uint32_t playerId) {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<float> disX(0, GameConfig::WORLD_WIDTH);
+    std::uniform_real_distribution<float> disY(0, GameConfig::WORLD_HEIGHT);
+    float spawnX = disX(gen);
+    float spawnY = disY(gen);
+    CellsManager::get().addCell(playerId, spawnX, spawnY, GameConfig::DEFAULT_CELL_RADIUS, GameConfig::DEFAULT_CELL_SPEED);
 }
 
 void CellsManager::addCell(uint32_t ownerId, float x, float y, float radius,

@@ -1,4 +1,5 @@
 #include "players/PlayersManager.hpp"
+#include "game_components/cells/CellsManager.hpp"
 
 PlayersManager& PlayersManager::get() {
     static PlayersManager instance;
@@ -7,7 +8,9 @@ PlayersManager& PlayersManager::get() {
 
 Player&
 PlayersManager::addPlayer(std::shared_ptr<asio::ip::tcp::socket> client) {
-    players.emplace_back(nextPlayerId++, client);
+    uint32_t playerId = nextPlayerId++;
+    players.emplace_back(playerId, client);
+    CellsManager::get().createRandomCell(playerId);
     return players.back();
 }
 
@@ -17,6 +20,7 @@ void PlayersManager::removePlayer(uint32_t playerId) {
                                      return p.getId() == playerId;
                                  }),
                   players.end());
+    CellsManager::get().removeCellsByPlayer(playerId);
 }
 
 Player* PlayersManager::getPlayer(uint32_t playerId) {
