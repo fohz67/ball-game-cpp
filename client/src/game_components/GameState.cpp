@@ -25,10 +25,12 @@ void GameState::processEvents() {
             return;
         }
         if (event.type == sf::Event::MouseWheelScrolled) {
-            if (event.mouseWheelScroll.delta > 0)
+            if (event.mouseWheelScroll.delta > 0) {
                 CWorld::get().zoom(1.1f);
-            else if (event.mouseWheelScroll.delta < 0)
+            }
+            else if (event.mouseWheelScroll.delta < 0) {
                 CWorld::get().zoom(0.9f);
+            }
         }
     }
 }
