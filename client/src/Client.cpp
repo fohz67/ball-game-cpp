@@ -9,7 +9,7 @@ Client& Client::get() {
     return instance;
 }
 
-void Client::run(const char **av) {
+void Client::run(const char** av) {
     std::string ip = av[1];
     unsigned short port = static_cast<unsigned short>(std::stoi(av[2]));
 

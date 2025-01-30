@@ -20,6 +20,7 @@ void CProtocol::handle_message(SmartBuffer& smartBuffer) {
     case OpCodes::WORLD: {
         int width, height;
         smartBuffer >> width >> height;
+        std::cout << "World size: " << width << "x" << height << std::endl;
         CWorld::get().init(width, height);
         break;
     }

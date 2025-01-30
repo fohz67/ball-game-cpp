@@ -14,7 +14,8 @@ void CWorld::init(int worldWidth, int worldHeight) {
     worldRect.setFillColor(GameConfig::WORLD_COLOR);
     worldRect.setOutlineThickness(GameConfig::BORDER_SIZE);
     worldRect.setOutlineColor(GameConfig::BORDER_COLOR);
-    worldRect.setSize(sf::Vector2f(static_cast<float>(width), static_cast<float>(height)));
+    worldRect.setSize(
+        sf::Vector2f(static_cast<float>(width), static_cast<float>(height)));
     worldRect.setOrigin(width / 2.0f, height / 2.0f);
     worldRect.setPosition(1920 / 2.0f, 1080 / 2.0f);
 }

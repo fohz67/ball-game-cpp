@@ -1,10 +1,11 @@
 #include <iostream>
 #include "Client.hpp"
 
-int main(const int ac, const char **av) {
+int main(const int ac, const char** av) {
     try {
         if (ac < 3) {
-            std::cerr << "Usage: " << av[0] << " <server_ip> <server_port>" << std::endl;
+            std::cerr << "Usage: " << av[0] << " <server_ip> <server_port>"
+                      << std::endl;
             return 84;
         }
         Client::get().run(av);

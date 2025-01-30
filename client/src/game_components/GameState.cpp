@@ -37,5 +37,6 @@ void GameState::update() {}
 
 void GameState::render() {
     window.clear(GameConfig::BACKGROUND_COLOR);
+    CWorld::get().render(window);
     window.display();
 }

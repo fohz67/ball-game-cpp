@@ -6,7 +6,7 @@ CNetwork& CNetwork::get() {
     return instance;
 }
 
-CNetwork::CNetwork() : socket(io_context) {} 
+CNetwork::CNetwork() : socket(io_context) {}
 
 void CNetwork::init(std::string ip, unsigned short port) {
     this->host = ip;
