@@ -7,7 +7,7 @@
 class Client {
   public:
     Client(const std::string& host, unsigned short port);
-    void start();
+    void run();
 
   private:
     void join();

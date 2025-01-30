@@ -1,4 +1,5 @@
 #include "Network.hpp"
+#include "Protocol.hpp"
 
 Network::Network(unsigned short port)
     : acceptor(io_context, asio::ip::tcp::endpoint(asio::ip::tcp::v4(), port)),
@@ -17,6 +18,7 @@ void Network::do_accept() {
                           << std::endl;
                 auto client_socket =
                     std::make_shared<asio::ip::tcp::socket>(std::move(socket));
+                clients.insert(client_socket);
                 handle_client(client_socket);
             }
             do_accept();
@@ -24,7 +26,8 @@ void Network::do_accept() {
 }
 
 void Network::handle_client(std::shared_ptr<asio::ip::tcp::socket> socket) {
-    auto buffer = std::make_shared<std::vector<char>>(1024);
+    auto buffer = std::make_shared<std::vector<char>>(MAX_BUFFER_SIZE);
+
     socket->async_read_some(
         asio::buffer(*buffer),
         [this, socket, buffer](std::error_code ec, std::size_t length) {
@@ -32,6 +35,7 @@ void Network::handle_client(std::shared_ptr<asio::ip::tcp::socket> socket) {
                 SmartBuffer smartBuffer;
                 Protocol::injector(buffer->data(), length, smartBuffer);
                 Protocol::handle_message(*this, socket, smartBuffer);
+                this->handle_client(socket);
             } else {
                 clients.erase(socket);
                 std::cerr << "Client disconnected: "

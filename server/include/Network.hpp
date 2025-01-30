@@ -1,15 +1,14 @@
-// Network.hpp
 #pragma once
 
+#include <SmartBuffer.hpp>
 #include <asio.hpp>
 #include <iostream>
 #include <memory>
 #include <string>
 #include <thread>
 #include <unordered_set>
-#include "OpCodes.hpp"
-#include "Protocol.hpp"
-#include "SmartBuffer.hpp"
+
+#define MAX_BUFFER_SIZE 1024
 
 class Network {
   public:

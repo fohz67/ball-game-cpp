@@ -11,7 +11,7 @@
 class CNetwork {
   public:
     CNetwork(const std::string& host, unsigned short port);
-    void start();
+    void run();
     void send(SmartBuffer& smartBuffer);
 
   private:

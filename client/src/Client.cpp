@@ -7,8 +7,8 @@
 Client::Client(const std::string& host, unsigned short port)
     : network(host, port), game_state() {}
 
-void Client::start() {
-    network.start();
+void Client::run() {
+    network.run();
     join();
     game_state.run();
 }

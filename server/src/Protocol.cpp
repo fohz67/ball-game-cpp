@@ -1,5 +1,7 @@
 #include "Protocol.hpp"
 #include "GameConfig.hpp"
+#include "Network.hpp"
+#include "OpCodes.hpp"
 
 void Protocol::injector(char* buffer, size_t length, SmartBuffer& smartBuffer) {
     smartBuffer.reset();

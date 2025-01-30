@@ -4,7 +4,7 @@
 CNetwork::CNetwork(const std::string& host, unsigned short port)
     : socket(io_context), host(host), port(port) {}
 
-void CNetwork::start() {
+void CNetwork::run() {
     try {
         asio::ip::tcp::resolver resolver(io_context);
         asio::ip::tcp::resolver::results_type endpoints =

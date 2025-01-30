@@ -4,7 +4,7 @@
 int main() {
     try {
         Client client("127.0.0.1", 12345);
-        client.start();
+        client.run();
     } catch (const std::exception& e) {
         std::cerr << "Client error: " << e.what() << std::endl;
     }

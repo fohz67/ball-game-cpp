@@ -1,9 +1,10 @@
 #pragma once
 
+#include <SmartBuffer.hpp>
+#include <asio.hpp>
 #include <iostream>
-#include "Network.hpp"
-#include "OpCodes.hpp"
-#include "SmartBuffer.hpp"
+
+class Network;
 
 class Protocol {
   public:
