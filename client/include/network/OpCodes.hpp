@@ -7,4 +7,5 @@ enum class OpCodes : uint8_t {
     JOIN = 2,
     GAME_STATE = 3,
     VIEWPORT = 4,
+    MOUSE_POSITION = 5
 };

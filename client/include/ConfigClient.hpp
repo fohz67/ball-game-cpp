@@ -7,6 +7,7 @@ namespace ConfigClient {
 namespace Network {
 constexpr const char* HOST = "127.0.0.1";
 constexpr int PORT = 12345;
+constexpr int FREQUENCY = 50;
 } // namespace Network
 
 namespace Window {

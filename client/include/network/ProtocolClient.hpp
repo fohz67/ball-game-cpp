@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SmartBuffer.hpp>
+#include <SFML/Graphics.hpp>
 #include <iostream>
 
 class ProtocolClient {
@@ -9,7 +10,8 @@ class ProtocolClient {
     ProtocolClient& operator=(const ProtocolClient&) = delete;
     static ProtocolClient& get();
     static void injector(char* buffer, size_t length, SmartBuffer& smartBuffer);
-    static void handle_message(SmartBuffer& smartBuffer);
+    static void handleMessage(SmartBuffer& smartBuffer);
+    static void sendMousePosition(sf::RenderWindow& window, sf::Vector2i& lastMousePos);
 
   private:
     ProtocolClient() = default;

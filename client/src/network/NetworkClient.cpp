@@ -51,7 +51,7 @@ void NetworkClient::receive() {
                 throw asio::system_error(error);
             }
             ProtocolClient::get().injector(buffer, length, smartBuffer);
-            ProtocolClient::get().handle_message(smartBuffer);
+            ProtocolClient::get().handleMessage(smartBuffer);
         }
     } catch (const std::exception& e) {
         std::cerr << "Receive error: " << e.what() << std::endl;

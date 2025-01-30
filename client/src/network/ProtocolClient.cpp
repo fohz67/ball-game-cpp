@@ -3,6 +3,7 @@
 #include "comps/cell/CellManagerClient.hpp"
 #include "entity/EntityManager.hpp"
 #include "network/OpCodes.hpp"
+#include "network/NetworkClient.hpp"
 
 ProtocolClient& ProtocolClient::get() {
     static ProtocolClient instance;
@@ -15,7 +16,7 @@ void ProtocolClient::injector(char* buffer, size_t length,
     smartBuffer.inject(reinterpret_cast<uint8_t*>(buffer), length);
 }
 
-void ProtocolClient::handle_message(SmartBuffer& smartBuffer) {
+void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
     uint8_t opcode;
     smartBuffer >> opcode;
 
@@ -56,5 +57,19 @@ void ProtocolClient::handleGameState(SmartBuffer& smartBuffer) {
                                         cell.radius,
                                         ConfigClient::Cell::DEFAULT_COLOR);
         safer++;
+    }
+}
+
+void ProtocolClient::sendMousePosition(sf::RenderWindow& window, sf::Vector2i& lastMousePos) {
+    sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+    if (mousePos != lastMousePos) {
+        lastMousePos = mousePos;
+        float normX = static_cast<float>(mousePos.x) / window.getSize().x;
+        float normY = static_cast<float>(mousePos.y) / window.getSize().y;
+        normX = std::round(normX * 100.0f) / 100.0f > 1.0f ? 1.0f : normX < 0.0f ? 0.0f : normX;
+        normY = std::round(normY * 100.0f) / 100.0f > 1.0f ? 1.0f : normY < 0.0f ? 0.0f : normY;
+        SmartBuffer smartBuffer;
+        smartBuffer << static_cast<uint8_t>(OpCodes::MOUSE_POSITION) << normX << normY;
+        NetworkClient::get().send(smartBuffer);
     }
 }

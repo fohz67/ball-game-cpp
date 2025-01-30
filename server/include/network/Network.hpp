@@ -16,16 +16,16 @@ class Network {
     Network& operator=(const Network&) = delete;
     static Network& get();
     void run();
-    void send_to_client(std::shared_ptr<asio::ip::tcp::socket> client,
+    void sendToClient(std::shared_ptr<asio::ip::tcp::socket> client,
                         SmartBuffer& smartBuffer);
-    void send_to_all(SmartBuffer& smartBuffer);
+    void sendToAll(SmartBuffer& smartBuffer);
 
   private:
     Network();
     ~Network() = default;
-    void do_accept();
-    void handle_client(std::shared_ptr<asio::ip::tcp::socket> socket);
-    void send_loop();
+    void doAccept();
+    void handleClient(std::shared_ptr<asio::ip::tcp::socket> socket);
+    void sendLoop();
     asio::io_context io_context;
     asio::ip::tcp::acceptor acceptor;
     std::unordered_map<std::shared_ptr<asio::ip::tcp::socket>, uint32_t>

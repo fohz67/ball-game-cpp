@@ -1,5 +1,6 @@
 #include "game/GameState.hpp"
 #include "ConfigClient.hpp"
+#include "network/ProtocolClient.hpp"
 #include "entity/EntityManager.hpp"
 
 GameState& GameState::get() {
@@ -12,8 +13,14 @@ void GameState::run() {
                                 ConfigClient::Window::HEIGHT),
                   ConfigClient::Window::NAME);
     GameEngine::System system;
+    sf::Clock clock;
+    sf::Vector2i lastMousePos = sf::Mouse::getPosition(window);
     while (window.isOpen()) {
         processEvents();
+        if (clock.getElapsedTime().asMilliseconds() >= ConfigClient::Network::FREQUENCY) {
+            ProtocolClient::sendMousePosition(window, lastMousePos);
+            clock.restart();
+        }
         render(system);
     }
 }
@@ -24,13 +31,6 @@ void GameState::processEvents() {
         if (event.type == sf::Event::Closed) {
             window.close();
             return;
-        }
-        if (event.type == sf::Event::MouseWheelScrolled) {
-            if (event.mouseWheelScroll.delta > 0) {
-                //
-            } else if (event.mouseWheelScroll.delta < 0) {
-                //
-            }
         }
     }
 }

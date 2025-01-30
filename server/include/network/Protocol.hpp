@@ -10,8 +10,10 @@ class Protocol {
     Protocol& operator=(const Protocol&) = delete;
     static Protocol& get();
     static void injector(char* buffer, size_t length, SmartBuffer& smartBuffer);
-    static void handle_message(std::shared_ptr<asio::ip::tcp::socket> client,
+    static void handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
                                SmartBuffer& smartBuffer);
+    static void handleMouseMove(std::shared_ptr<asio::ip::tcp::socket> client,
+                                SmartBuffer& smartBuffer);
     static void sendWorld();
     static void sendGameState();
     static void sendViewport();

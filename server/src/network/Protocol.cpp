@@ -15,7 +15,7 @@ void Protocol::injector(char* buffer, size_t length, SmartBuffer& smartBuffer) {
     smartBuffer.inject(reinterpret_cast<uint8_t*>(buffer), length);
 }
 
-void Protocol::handle_message(std::shared_ptr<asio::ip::tcp::socket> client,
+void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
                               SmartBuffer& smartBuffer) {
     uint8_t opcode;
     smartBuffer >> opcode;
@@ -25,6 +25,10 @@ void Protocol::handle_message(std::shared_ptr<asio::ip::tcp::socket> client,
         sendWorld();
         break;
     }
+    case OpCodes::MOUSE_POSITION: {
+        handleMouseMove(client, smartBuffer);
+        break;
+    }
     default:
         std::cout << "Unknown opcode received: " << static_cast<int>(opcode)
                   << std::endl;
@@ -32,11 +36,18 @@ void Protocol::handle_message(std::shared_ptr<asio::ip::tcp::socket> client,
     }
 }
 
+void Protocol::handleMouseMove(std::shared_ptr<asio::ip::tcp::socket> client,
+                               SmartBuffer& smartBuffer) {
+    float x, y;
+    smartBuffer >> x >> y;
+    std::cout << "Mouse position: " << x << ", " << y << "PlayerID: " << PlayerManager::get().getPlayerByClient(client)->getId() << std::endl;
+}
+
 void Protocol::sendWorld() {
     SmartBuffer smartBuffer;
     smartBuffer << static_cast<uint8_t>(OpCodes::WORLD) << Config::World::WIDTH
                 << Config::World::HEIGHT;
-    Network::get().send_to_all(smartBuffer);
+    Network::get().sendToAll(smartBuffer);
 }
 
 void Protocol::sendGameState() {
@@ -50,7 +61,7 @@ void Protocol::sendGameState() {
         smartBuffer << static_cast<float>(cell.getY());
         smartBuffer << static_cast<float>(cell.getRadius());
     }
-    Network::get().send_to_all(smartBuffer);
+    Network::get().sendToAll(smartBuffer);
 }
 
 void Protocol::sendViewport() {
@@ -62,6 +73,6 @@ void Protocol::sendViewport() {
         smartBuffer << static_cast<uint32_t>(player.getId());
         smartBuffer << player.getViewport().first;
         smartBuffer << player.getViewport().second;
-        Network::get().send_to_client(player.getClient(), smartBuffer);
+        Network::get().sendToClient(player.getClient(), smartBuffer);
     }
 }
