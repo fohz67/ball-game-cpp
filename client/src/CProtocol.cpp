@@ -1,4 +1,5 @@
 #include "CProtocol.hpp"
+#include "OpCodes.hpp"
 
 void CProtocol::injector(char *buffer, size_t length, SmartBuffer &smartBuffer)
 {

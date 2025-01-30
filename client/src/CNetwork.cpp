@@ -55,8 +55,8 @@ void CNetwork::receive()
                 throw asio::system_error(error);
             }
 
-            Protocol::injector(buffer, length, smartBuffer);
-            Protocol::handle_message(smartBuffer);
+            CProtocol::injector(buffer, length, smartBuffer);
+            CProtocol::handle_message(smartBuffer);
         }
     }
     catch (const std::exception &e)
