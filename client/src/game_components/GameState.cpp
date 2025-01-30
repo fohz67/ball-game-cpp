@@ -8,7 +8,9 @@ GameState& GameState::get() {
 }
 
 void GameState::run() {
-    window.create(sf::VideoMode(GameConfig::WINDOW_WIDTH, GameConfig::WINDOW_HEIGHT), GameConfig::WINDOW_NAME);
+    window.create(
+        sf::VideoMode(GameConfig::WINDOW_WIDTH, GameConfig::WINDOW_HEIGHT),
+        GameConfig::WINDOW_NAME);
 
     while (window.isOpen()) {
         processEvents();

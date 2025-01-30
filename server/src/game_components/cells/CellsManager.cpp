@@ -14,7 +14,9 @@ void CellsManager::createRandomCell(uint32_t playerId) {
     std::uniform_real_distribution<float> disY(0, GameConfig::WORLD_HEIGHT);
     float spawnX = disX(gen);
     float spawnY = disY(gen);
-    CellsManager::get().addCell(playerId, spawnX, spawnY, GameConfig::DEFAULT_CELL_RADIUS, GameConfig::DEFAULT_CELL_SPEED);
+    CellsManager::get().addCell(playerId, spawnX, spawnY,
+                                GameConfig::DEFAULT_CELL_RADIUS,
+                                GameConfig::DEFAULT_CELL_SPEED);
 }
 
 void CellsManager::addCell(uint32_t ownerId, float x, float y, float radius,

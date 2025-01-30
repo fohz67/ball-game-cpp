@@ -8,6 +8,7 @@ Server& Server::get() {
 }
 
 void Server::run() {
-    std::cout << "Server is running on port " << Network::get().get_port() << std::endl;
+    std::cout << "Server is running on port " << Network::get().get_port()
+              << std::endl;
     Network::get().run();
 }
