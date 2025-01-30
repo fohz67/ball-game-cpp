@@ -1,7 +1,7 @@
 #include "network/Network.hpp"
+#include "Config.hpp"
 #include "network/Protocol.hpp"
 #include "player/PlayerManager.hpp"
-#include "game/GameConfig.hpp"
 
 Network& Network::get() {
     static Network instance;
@@ -9,9 +9,8 @@ Network& Network::get() {
 }
 
 Network::Network()
-    : acceptor(io_context,
-               asio::ip::tcp::endpoint(asio::ip::tcp::v4(), GameConfig::PORT)),
-      port(GameConfig::PORT) {}
+    : acceptor(io_context, asio::ip::tcp::endpoint(asio::ip::tcp::v4(),
+                                                   Config::Network::PORT)) {}
 
 void Network::run() {
     do_accept();

@@ -1,6 +1,6 @@
 #include "Server.hpp"
 #include <iostream>
-#include "game/GameConfig.hpp"
+#include "Config.hpp"
 
 Server& Server::get() {
     static Server instance;
@@ -8,7 +8,7 @@ Server& Server::get() {
 }
 
 void Server::run() {
-    std::cout << "Server is running on port " << Network::get().get_port()
+    std::cout << "Server is running on port " << Config::Network::PORT
               << std::endl;
     Network::get().run();
 }

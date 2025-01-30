@@ -1,9 +1,9 @@
 #include "network/Protocol.hpp"
+#include "Config.hpp"
 #include "comps/cell/CellManager.hpp"
 #include "network/Network.hpp"
 #include "network/OpCodes.hpp"
 #include "player/PlayerManager.hpp"
-#include "game/GameConfig.hpp"
 
 Protocol& Protocol::get() {
     static Protocol instance;
@@ -34,8 +34,8 @@ void Protocol::handle_message(std::shared_ptr<asio::ip::tcp::socket> client,
 
 void Protocol::sendWorld() {
     SmartBuffer smartBuffer;
-    smartBuffer << static_cast<uint8_t>(OpCodes::WORLD)
-                << GameConfig::WORLD_WIDTH << GameConfig::WORLD_HEIGHT;
+    smartBuffer << static_cast<uint8_t>(OpCodes::WORLD) << Config::World::WIDTH
+                << Config::World::HEIGHT;
     Network::get().send_to_all(smartBuffer);
 }
 

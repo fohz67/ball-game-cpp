@@ -16,9 +16,6 @@ class Network {
     Network& operator=(const Network&) = delete;
     static Network& get();
     void run();
-    short get_port() const {
-        return port;
-    }
     void send_to_client(std::shared_ptr<asio::ip::tcp::socket> client,
                         SmartBuffer& smartBuffer);
     void send_to_all(SmartBuffer& smartBuffer);
@@ -31,7 +28,6 @@ class Network {
     void send_loop();
     asio::io_context io_context;
     asio::ip::tcp::acceptor acceptor;
-    unsigned short port;
     std::unordered_map<std::shared_ptr<asio::ip::tcp::socket>, uint32_t>
         clients;
     std::thread sendThread;

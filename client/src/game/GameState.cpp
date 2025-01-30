@@ -1,7 +1,6 @@
 #include "game/GameState.hpp"
-#include "comps/world/WorldClient.hpp"
+#include "ConfigClient.hpp"
 #include "entity/EntityManager.hpp"
-#include "game/GameConfigClient.hpp"
 
 GameState& GameState::get() {
     static GameState instance;
@@ -9,9 +8,9 @@ GameState& GameState::get() {
 }
 
 void GameState::run() {
-    window.create(sf::VideoMode(GameConfigClient::WINDOW_WIDTH,
-                                GameConfigClient::WINDOW_HEIGHT),
-                  GameConfigClient::WINDOW_NAME);
+    window.create(sf::VideoMode(ConfigClient::Window::WIDTH,
+                                ConfigClient::Window::HEIGHT),
+                  ConfigClient::Window::NAME);
     GameEngine::System system;
     while (window.isOpen()) {
         processEvents();
@@ -28,9 +27,9 @@ void GameState::processEvents() {
         }
         if (event.type == sf::Event::MouseWheelScrolled) {
             if (event.mouseWheelScroll.delta > 0) {
-                WorldClient::get().zoom(1.1f);
+                //
             } else if (event.mouseWheelScroll.delta < 0) {
-                WorldClient::get().zoom(0.9f);
+                //
             }
         }
     }
@@ -41,7 +40,6 @@ void GameState::render(GameEngine::System& system) {
     std::map<int, GameEngine::Entity> entitiesList =
         EntityManager::get().getEntities();
     if (!entitiesList.empty()) {
-        std::cout << "Entities: " << entitiesList.size() << std::endl;
         system.render(window, entitiesList);
     }
     window.display();

@@ -1,13 +1,12 @@
 #include "comps/world/World.hpp"
-#include "game/GameConfig.hpp"
+#include "Config.hpp"
 
 World& World::get() {
     static World instance;
     return instance;
 }
 
-World::World()
-    : width(GameConfig::WORLD_WIDTH), height(GameConfig::WORLD_WIDTH) {}
+World::World() : width(Config::World::WIDTH), height(Config::World::HEIGHT) {}
 
 int World::get_width() const {
     return width;

@@ -1,8 +1,8 @@
 #include "network/ProtocolClient.hpp"
+#include "ConfigClient.hpp"
 #include "comps/cell/CellManagerClient.hpp"
-#include "network/OpCodes.hpp"
 #include "entity/EntityManager.hpp"
-#include "game/GameConfigClient.hpp"
+#include "network/OpCodes.hpp"
 
 ProtocolClient& ProtocolClient::get() {
     static ProtocolClient instance;
@@ -45,7 +45,7 @@ void ProtocolClient::handleWorld(SmartBuffer& smartBuffer) {
 }
 
 void ProtocolClient::handleGameState(SmartBuffer& smartBuffer) {
-    unsigned long safer = GameConfigClient::Cell::SAFER;
+    unsigned long safer = ConfigClient::Cell::SAFER;
     size_t bufferSize = smartBuffer.getSize() - sizeof(uint8_t);
     size_t cellSize = sizeof(uint32_t) + 3 * sizeof(float);
     size_t cellCount = bufferSize / cellSize;
@@ -53,7 +53,9 @@ void ProtocolClient::handleGameState(SmartBuffer& smartBuffer) {
     for (size_t i = 0; i < cellCount; i++) {
         CellData cell;
         smartBuffer >> cell.ownerId >> cell.x >> cell.y >> cell.radius;
-        EntityManager::get().createCell(cell.ownerId + safer, cell.x, cell.y, cell.radius, GameConfigClient::Cell::DEFAULT_COLOR);
+        EntityManager::get().createCell(cell.ownerId + safer, cell.x, cell.y,
+                                        cell.radius,
+                                        ConfigClient::Cell::DEFAULT_COLOR);
         safer++;
     }
 }
