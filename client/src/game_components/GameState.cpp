@@ -1,5 +1,6 @@
 #include "game_components/GameState.hpp"
 #include "GameConfig.hpp"
+#include "game_components/CWorld.hpp"
 
 GameState& GameState::get() {
     static GameState instance;
@@ -7,7 +8,7 @@ GameState& GameState::get() {
 }
 
 void GameState::run() {
-    window = sf::VideoMode({1920, 1080}), "Ball Game";
+    window.create(sf::VideoMode(1920, 1080), "Ball Game");
 
     while (window.isOpen()) {
         processEvents();
@@ -22,6 +23,12 @@ void GameState::processEvents() {
         if (event.type == sf::Event::Closed) {
             window.close();
             return;
+        }
+        if (event.type == sf::Event::MouseWheelScrolled) {
+            if (event.mouseWheelScroll.delta > 0)
+                CWorld::get().zoom(1.1f);
+            else if (event.mouseWheelScroll.delta < 0)
+                CWorld::get().zoom(0.9f);
         }
     }
 }

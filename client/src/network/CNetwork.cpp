@@ -1,5 +1,4 @@
 #include "network/CNetwork.hpp"
-#include "GameConfig.hpp"
 #include "network/CProtocol.hpp"
 
 CNetwork& CNetwork::get() {
@@ -7,10 +6,11 @@ CNetwork& CNetwork::get() {
     return instance;
 }
 
-void CNetwork::init() {
-    socket = asio::ip::tcp::socket(io_context);
-    this->host = GameConfig::HOST;
-    this->port = GameConfig::PORT;
+CNetwork::CNetwork() : socket(io_context) {} 
+
+void CNetwork::init(std::string ip, unsigned short port) {
+    this->host = ip;
+    this->port = port;
 }
 
 void CNetwork::run() {

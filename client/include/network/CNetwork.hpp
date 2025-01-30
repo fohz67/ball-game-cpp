@@ -13,7 +13,7 @@ class CNetwork {
     CNetwork(const CNetwork&) = delete;
     CNetwork& operator=(const CNetwork&) = delete;
     static CNetwork& get();
-    void init();
+    void init(std::string ip, unsigned short port);
     void run();
     void send(SmartBuffer& smartBuffer);
 

@@ -9,8 +9,11 @@ Client& Client::get() {
     return instance;
 }
 
-void Client::run() {
-    CNetwork::get().init();
+void Client::run(const char **av) {
+    std::string ip = av[1];
+    unsigned short port = static_cast<unsigned short>(std::stoi(av[2]));
+
+    CNetwork::get().init(ip, port);
     CNetwork::get().run();
     join();
     GameState::get().run();
