@@ -1,6 +1,6 @@
 #pragma once
 
-#include "game_components/World.hpp"
+#include "comps/world/World.hpp"
 #include "network/Network.hpp"
 
 class Server {

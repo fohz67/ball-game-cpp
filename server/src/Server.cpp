@@ -1,6 +1,6 @@
 #include "Server.hpp"
 #include <iostream>
-#include "GameConfig.hpp"
+#include "util/GameConfig.hpp"
 
 Server& Server::get() {
     static Server instance;

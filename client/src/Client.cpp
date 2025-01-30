@@ -10,11 +10,8 @@ Client& Client::get() {
 }
 
 void Client::run(const char** av) {
-    std::string ip = av[1];
-    unsigned short port = static_cast<unsigned short>(std::stoi(av[2]));
-
-    CNetwork::get().init(ip, port);
-    CNetwork::get().run();
+    NetworkClient::get().init(av[1], static_cast<unsigned short>(std::stoi(av[2])));
+    NetworkClient::get().run();
     join();
     GameState::get().run();
 }
@@ -22,5 +19,5 @@ void Client::run(const char** av) {
 void Client::join() {
     SmartBuffer smartBuffer;
     smartBuffer << static_cast<uint8_t>(OpCodes::JOIN);
-    CNetwork::get().send(smartBuffer);
+    NetworkClient::get().send(smartBuffer);
 }

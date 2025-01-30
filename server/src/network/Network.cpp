@@ -1,7 +1,7 @@
 #include "network/Network.hpp"
-#include "GameConfig.hpp"
 #include "network/Protocol.hpp"
-#include "players/PlayersManager.hpp"
+#include "player/PlayerManager.hpp"
+#include "util/GameConfig.hpp"
 
 Network& Network::get() {
     static Network instance;
@@ -25,7 +25,7 @@ void Network::do_accept() {
         if (!ec) {
             auto client_socket =
                 std::make_shared<asio::ip::tcp::socket>(std::move(socket));
-            Player player = PlayersManager::get().addPlayer(client_socket);
+            Player player = PlayerManager::get().addPlayer(client_socket);
             std::cout << "New player connected: " << player.getId() << " from "
                       << client_socket->remote_endpoint() << std::endl;
             handle_client(client_socket);
@@ -47,8 +47,8 @@ void Network::handle_client(std::shared_ptr<asio::ip::tcp::socket> socket) {
                 this->handle_client(socket);
             } else {
                 uint32_t playerId =
-                    PlayersManager::get().getPlayerByClient(socket)->getId();
-                PlayersManager::get().removePlayer(playerId);
+                    PlayerManager::get().getPlayerByClient(socket)->getId();
+                PlayerManager::get().removePlayer(playerId);
                 std::cerr << "Player " << playerId << " disconnected."
                           << std::endl;
             }
@@ -64,7 +64,7 @@ void Network::send_to_client(std::shared_ptr<asio::ip::tcp::socket> client,
 }
 
 void Network::send_to_all(SmartBuffer& smartBuffer) {
-    const auto& allPlayers = PlayersManager::get().getAllPlayers();
+    const auto& allPlayers = PlayerManager::get().getAllPlayers();
     for (const auto& player : allPlayers) {
         send_to_client(player.getClient(), smartBuffer);
     }
@@ -72,8 +72,8 @@ void Network::send_to_all(SmartBuffer& smartBuffer) {
 
 void Network::send_loop() {
     while (true) {
-        // Protocol::get().sendGameState();
-        // Protocol::get().sendViewport();
+        Protocol::get().sendGameState();
+        Protocol::get().sendViewport();
         std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
 }

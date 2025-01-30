@@ -1,9 +1,9 @@
 #include "network/Protocol.hpp"
-#include "GameConfig.hpp"
-#include "game_components/cells/CellsManager.hpp"
+#include "comps/cell/CellManager.hpp"
 #include "network/Network.hpp"
 #include "network/OpCodes.hpp"
-#include "players/PlayersManager.hpp"
+#include "player/PlayerManager.hpp"
+#include "util/GameConfig.hpp"
 
 Protocol& Protocol::get() {
     static Protocol instance;
@@ -42,7 +42,8 @@ void Protocol::sendWorld() {
 void Protocol::sendGameState() {
     SmartBuffer smartBuffer;
     smartBuffer << static_cast<uint8_t>(OpCodes::GAME_STATE);
-    const auto& allCells = CellsManager::get().getAllCells();
+    const auto& allCells = CellManager::get().getAllCells();
+    std::cout << "Sending " << allCells.size() << " cells" << std::endl;
     for (const auto& cell : allCells) {
         smartBuffer << static_cast<uint32_t>(cell.getOwnerId());
         smartBuffer << static_cast<float>(cell.getX());
@@ -54,7 +55,7 @@ void Protocol::sendGameState() {
 
 void Protocol::sendViewport() {
     SmartBuffer smartBuffer;
-    const auto& allPlayers = PlayersManager::get().getAllPlayers();
+    const auto& allPlayers = PlayerManager::get().getAllPlayers();
     for (const auto& player : allPlayers) {
         smartBuffer.reset();
         smartBuffer << static_cast<uint8_t>(OpCodes::VIEWPORT);
