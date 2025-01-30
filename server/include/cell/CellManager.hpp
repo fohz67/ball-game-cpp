@@ -9,12 +9,13 @@ class CellManager {
     CellManager(const CellManager&) = delete;
     CellManager& operator=(const CellManager&) = delete;
     static CellManager& get();
-    void createRandomCell(uint32_t playerId);
+    void createCell(uint32_t playerId);
     void addCell(uint32_t ownerId, float x, float y, float radius, float speed);
-    void removeCellsByPlayer(uint32_t ownerId);
-    const std::vector<Cell>& getAllCells() const;
-    std::vector<Cell> getCellsByViewport(float viewportX, float viewportY,
-                                         float viewSize) const;
+    void removePlayerCells(uint32_t ownerId);
+    const std::vector<Cell>& getCells() const;
+    std::vector<Cell*> getPlayerCells(uint32_t playerId);
+    void calculateViewport();
+    void updateCellMovement(uint32_t playerId, float mouseX, float mouseY);
 
   private:
     CellManager() = default;

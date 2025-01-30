@@ -1,6 +1,6 @@
 #pragma once
 
-#include "comps/world/World.hpp"
+#include "world/World.hpp"
 #include "network/Network.hpp"
 
 class Server {
@@ -13,4 +13,6 @@ class Server {
   private:
     Server() = default;
     ~Server() = default;
+    void updateLoop();
+    std::thread updateThread;
 };

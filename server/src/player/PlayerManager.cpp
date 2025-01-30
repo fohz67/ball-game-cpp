@@ -1,5 +1,5 @@
 #include "player/PlayerManager.hpp"
-#include "comps/cell/CellManager.hpp"
+#include "cell/CellManager.hpp"
 
 PlayerManager& PlayerManager::get() {
     static PlayerManager instance;
@@ -10,7 +10,7 @@ Player&
 PlayerManager::addPlayer(std::shared_ptr<asio::ip::tcp::socket> client) {
     uint32_t playerId = nextPlayerId++;
     players.emplace_back(playerId, client);
-    CellManager::get().createRandomCell(playerId);
+    CellManager::get().createCell(playerId);
     return players.back();
 }
 
@@ -20,7 +20,7 @@ void PlayerManager::removePlayer(uint32_t playerId) {
                                      return p.getId() == playerId;
                                  }),
                   players.end());
-    CellManager::get().removeCellsByPlayer(playerId);
+    CellManager::get().removePlayerCells(playerId);
 }
 
 Player* PlayerManager::getPlayer(uint32_t playerId) {

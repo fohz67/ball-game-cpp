@@ -1,6 +1,6 @@
 #include "network/Protocol.hpp"
-#include "Config.hpp"
-#include "comps/cell/CellManager.hpp"
+#include "config/Config.hpp"
+#include "cell/CellManager.hpp"
 #include "network/Network.hpp"
 #include "network/OpCodes.hpp"
 #include "player/PlayerManager.hpp"
@@ -40,7 +40,7 @@ void Protocol::handleMouseMove(std::shared_ptr<asio::ip::tcp::socket> client,
                                SmartBuffer& smartBuffer) {
     float x, y;
     smartBuffer >> x >> y;
-    std::cout << "Mouse position: " << x << ", " << y << "PlayerID: " << PlayerManager::get().getPlayerByClient(client)->getId() << std::endl;
+    PlayerManager::get().getPlayerByClient(client)->setMousePosition(x, y);
 }
 
 void Protocol::sendWorld() {
@@ -53,8 +53,7 @@ void Protocol::sendWorld() {
 void Protocol::sendGameState() {
     SmartBuffer smartBuffer;
     smartBuffer << static_cast<uint8_t>(OpCodes::GAME_STATE);
-    const auto& allCells = CellManager::get().getAllCells();
-    std::cout << "Sending " << allCells.size() << " cells" << std::endl;
+    const auto& allCells = CellManager::get().getCells();
     for (const auto& cell : allCells) {
         smartBuffer << static_cast<uint32_t>(cell.getOwnerId());
         smartBuffer << static_cast<float>(cell.getX());

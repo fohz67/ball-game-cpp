@@ -1,6 +1,6 @@
 #include "network/ProtocolClient.hpp"
 #include "ConfigClient.hpp"
-#include "comps/cell/CellManagerClient.hpp"
+#include "cell/CellManagerClient.hpp"
 #include "entity/EntityManager.hpp"
 #include "network/OpCodes.hpp"
 #include "network/NetworkClient.hpp"
@@ -62,14 +62,15 @@ void ProtocolClient::handleGameState(SmartBuffer& smartBuffer) {
 
 void ProtocolClient::sendMousePosition(sf::RenderWindow& window, sf::Vector2i& lastMousePos) {
     sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+    sf::Vector2u windowSize = window.getSize();
+    float normX = ((float)mousePos.x / windowSize.x) * 2.0f - 1.0f;
+    float normY = ((float)mousePos.y / windowSize.y) * 2.0f - 1.0f;
     if (mousePos != lastMousePos) {
         lastMousePos = mousePos;
-        float normX = static_cast<float>(mousePos.x) / window.getSize().x;
-        float normY = static_cast<float>(mousePos.y) / window.getSize().y;
-        normX = std::round(normX * 100.0f) / 100.0f > 1.0f ? 1.0f : normX < 0.0f ? 0.0f : normX;
-        normY = std::round(normY * 100.0f) / 100.0f > 1.0f ? 1.0f : normY < 0.0f ? 0.0f : normY;
         SmartBuffer smartBuffer;
-        smartBuffer << static_cast<uint8_t>(OpCodes::MOUSE_POSITION) << normX << normY;
+        smartBuffer << static_cast<uint8_t>(OpCodes::MOUSE_POSITION);
+        smartBuffer << static_cast<float>(normX);
+        smartBuffer << static_cast<float>(normY);
         NetworkClient::get().send(smartBuffer);
     }
 }

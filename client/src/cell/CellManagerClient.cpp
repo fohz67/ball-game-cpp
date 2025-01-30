@@ -1,4 +1,4 @@
-#include "comps/cell/CellManagerClient.hpp"
+#include "cell/CellManagerClient.hpp"
 
 CellManagerClient& CellManagerClient::get() {
     static CellManagerClient instance;

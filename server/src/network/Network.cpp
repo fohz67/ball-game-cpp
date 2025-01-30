@@ -1,7 +1,8 @@
 #include "network/Network.hpp"
-#include "Config.hpp"
+#include "config/Config.hpp"
 #include "network/Protocol.hpp"
 #include "player/PlayerManager.hpp"
+#include "cell/CellManager.hpp"
 
 Network& Network::get() {
     static Network instance;
@@ -14,7 +15,7 @@ Network::Network()
 
 void Network::run() {
     doAccept();
-    sendThread = std::thread(&Network::sendLoop, this);
+    std::thread sendThread(&Network::sendLoop, this);
     io_context.run();
 }
 

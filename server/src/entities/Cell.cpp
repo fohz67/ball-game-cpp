@@ -1,4 +1,4 @@
-#include "comps/cell/Cell.hpp"
+#include "cell/Cell.hpp"
 
 Cell::Cell(uint32_t ownerId, float x, float y, float radius, float speed)
     : ownerId(ownerId), x(x), y(y), radius(radius), speed(speed) {}

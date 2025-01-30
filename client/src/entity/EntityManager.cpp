@@ -20,12 +20,18 @@ void EntityManager::createCell(int id, float x, float y, float radius,
     if (color.size() != 4) {
         color = {255, 255, 255, 255};
     }
-    auto newEntity = GameEngine::Entity(id);
-    newEntity.addComponent(
-        Shape(ShapeType::Circle, {radius * 2, radius * 2}, radius));
-    newEntity.addComponent(Position({{x, y}}));
-    newEntity.addComponent(Color(color));
-    entities.emplace(id, std::move(newEntity));
+    GameEngine::System system;
+    if (auto search = entities.find(id); search != entities.end()) {
+        std::pair<float, float> position = {x, y};
+        system.update(id, entities, GameEngine::UpdateType::Position, position);
+    } else {
+        auto newEntity = GameEngine::Entity(id);
+        newEntity.addComponent(
+            Shape(ShapeType::Circle, {radius * 2, radius * 2}, radius));
+        newEntity.addComponent(Position({{x, y}}));
+        newEntity.addComponent(Color(color));
+        entities.emplace(id, std::move(newEntity));
+    }
 }
 
 void EntityManager::createWorld(int width, int height) {
