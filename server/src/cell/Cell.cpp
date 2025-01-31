@@ -1,54 +1,37 @@
 #include "cell/Cell.hpp"
-#include <cmath>
 
-Cell::Cell(uint32_t ownerId, float x, float y, float radius)
-    : ownerId(ownerId), position(x, y), velocity(0, 0), radius(radius),
-      markedForDeletion(false), age(0) {}
+Cell::Cell(uint32_t ownerId, float x, float y, float radius, float speed)
+    : ownerId(ownerId), x(x), y(y), radius(radius), speed(speed) {}
 
 uint32_t Cell::getOwnerId() const {
     return ownerId;
 }
 
-Vector2 Cell::getPosition() const {
-    return position;
+float Cell::getX() const {
+    return x;
 }
 
-void Cell::setPosition(const Vector2& pos) {
-    position = pos;
-}
-
-Vector2 Cell::getVelocity() const {
-    return velocity;
-}
-
-void Cell::setVelocity(const Vector2& vel) {
-    velocity = vel;
+float Cell::getY() const {
+    return y;
 }
 
 float Cell::getRadius() const {
     return radius;
 }
 
-void Cell::setRadius(float r) {
-    radius = r;
+float Cell::getSpeed() const {
+    return speed;
 }
 
-float Cell::getMass() const {
-    return radius * radius * M_PI;
+void Cell::setPosition(float x, float y) {
+    this->x = x;
+    this->y = y;
 }
 
-bool Cell::isMarkedForDeletion() const {
-    return markedForDeletion;
+void Cell::setRadius(float radius) {
+    this->radius = radius;
 }
 
-void Cell::markForDeletion() {
-    markedForDeletion = true;
-}
-
-float Cell::getAge() const {
-    return age;
-}
-
-void Cell::update(float deltaTime) {
-    position += velocity * deltaTime;
+void Cell::setSpeed(float speed) {
+    this->speed = speed;
 }

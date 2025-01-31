@@ -9,10 +9,6 @@ CellManager& CellManager::get() {
     return instance;
 }
 
-CellManager::CellManager()
-    : quadtree(0, 0, Config::GameMode::WORLD_SIZE,
-               Config::GameMode::WORLD_SIZE) {}
-
 void CellManager::createCell(uint32_t playerId) {
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -46,39 +42,57 @@ std::vector<Cell*> CellManager::getPlayerCells(uint32_t playerId) {
 }
 
 std::pair<float, float> CellManager::calculateViewport(uint32_t playerId) {
-    std::vector<Cell*> playerCells = getPlayerCells(playerId);
+    std::vector<Cell*> playerCells;
+    float centerX = 0.0f, centerY = 0.0f;
+    for (auto& cell : cells) {
+        if (cell.getOwnerId() == playerId) {
+            playerCells.push_back(&cell);
+        }
+    }
     if (playerCells.empty()) {
         return {0, 0};
     }
-    float totalMass = 0.0f;
-    float centerX = 0.0f, centerY = 0.0f;
     for (const auto* cell : playerCells) {
-        float mass = cell->getMass();
-        Vector2 position = cell->getPosition();
-        float offsetX = position.x + cell->getRadius();
-        float offsetY = position.y + cell->getRadius();
-        centerX += offsetX * mass;
-        centerY += offsetY * mass;
-        totalMass += mass;
+        centerX += cell->getX();
+        centerY += cell->getY();
     }
-    if (totalMass > 0) {
-        centerX /= totalMass;
-        centerY /= totalMass;
-    }
+    centerX /= playerCells.size();
+    centerY /= playerCells.size();
     return {centerX, centerY};
 }
 
-void CellManager::addCell(uint32_t ownerId, float x, float y, float radius) {
-    cells.emplace_back(ownerId, x, y, radius);
-}
+void CellManager::updateCellMovement(uint32_t playerId, float normMouseX, float normMouseY) {
+    std::vector<Cell*> playerCells = getPlayerCells(playerId);
+    if (playerCells.empty()) return;
+    float centerX = 0.0f, centerY = 0.0f;
+    for (const auto* cell : playerCells) {
+        centerX += cell->getX();
+        centerY += cell->getY();
+    }
+    centerX /= playerCells.size();
+    centerY /= playerCells.size();
+    float dirX = normMouseX;
+    float dirY = normMouseY;
+    if (std::fabs(dirX) < 0.05f) dirX = 0;
+    if (std::fabs(dirY) < 0.05f) dirY = 0;
+    for (auto* cell : playerCells) {
+        float radius = cell->getRadius();
+        float speed = 100.0f / std::log(radius + 1.5f);
+        float newX = cell->getX() + dirX * speed;
+        float newY = cell->getY() + dirY * speed;
+        for (auto* otherCell : playerCells) {
+            if (cell == otherCell) continue;
+            float dx = newX - otherCell->getX();
+            float dy = newY - otherCell->getY();
+            float distance = std::sqrt(dx * dx + dy * dy);
+            float minDist = radius + otherCell->getRadius();
 
-std::vector<Cell*> CellManager::getNearbyCells(Cell* cell) {
-    return quadtree.retrieve(cell);
-}
-
-void CellManager::update() {
-    quadtree.clear();
-    for (auto& cell : cells) {
-        quadtree.insert(&cell);
+            if (distance < minDist) {
+                float overlap = minDist - distance;
+                newX += dx / distance * overlap * 0.5f;
+                newY += dy / distance * overlap * 0.5f;
+            }
+        }
+        cell->setPosition(newX, newY);
     }
 }

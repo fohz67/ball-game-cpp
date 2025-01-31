@@ -1,34 +1,22 @@
 #pragma once
 
 #include <cstdint>
-#include "geometry/Vector2.hpp"
 
 class Cell {
-  protected:
-    uint32_t ownerId;
-    Vector2 position;
-    Vector2 velocity;
-    float radius;
-    bool markedForDeletion;
-    float age;
-
   public:
-    Cell(uint32_t ownerId, float x, float y, float radius);
-
+    Cell(uint32_t ownerId, float x, float y, float radius, float speed);
     uint32_t getOwnerId() const;
-    Vector2 getPosition() const;
-    void setPosition(const Vector2& pos);
-
-    Vector2 getVelocity() const;
-    void setVelocity(const Vector2& vel);
-
+    float getX() const;
+    float getY() const;
     float getRadius() const;
-    void setRadius(float r);
+    float getSpeed() const;
+    void setPosition(float x, float y);
+    void setRadius(float radius);
+    void setSpeed(float speed);
 
-    float getMass() const;
-    bool isMarkedForDeletion() const;
-    void markForDeletion();
-
-    void update(float deltaTime);
-    float getAge() const;
+  private:
+    uint32_t ownerId;
+    float x, y;
+    float radius;
+    float speed;
 };

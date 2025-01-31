@@ -52,12 +52,6 @@ void Protocol::handleKeyPressed(std::shared_ptr<asio::ip::tcp::socket> client,
                                 SmartBuffer& smartBuffer) {
     std::string keyName;
     smartBuffer >> keyName;
-    auto player = PlayerManager::get().getPlayerByClient(client);
-    auto cells = CellManager::get().getPlayerCells(player->getId());
-    if (keyName == "SPACE") {
-        Physics::splitCell(cells, player->getId(), player->getMouseX(),
-                           player->getMouseY());
-    }
 }
 
 void Protocol::sendWorld(std::shared_ptr<asio::ip::tcp::socket> client) {
@@ -72,10 +66,7 @@ void Protocol::sendGameState() {
     smartBuffer << static_cast<uint8_t>(OpCodes::GAME_STATE);
     const auto& allCells = CellManager::get().getCells();
     for (const auto& cell : allCells) {
-        smartBuffer << static_cast<uint32_t>(cell.getOwnerId())
-                    << static_cast<float>(cell.getPosition().x)
-                    << static_cast<float>(cell.getPosition().y)
-                    << static_cast<float>(cell.getRadius());
+        smartBuffer << static_cast<uint32_t>(cell.getOwnerId()) << static_cast<float>(cell.getX()) << static_cast<float>(cell.getY()) << static_cast<float>(cell.getRadius());
     }
     Network::get().sendToAll(smartBuffer);
 }
@@ -84,9 +75,11 @@ void Protocol::sendViewport() {
     SmartBuffer smartBuffer;
     const auto& allPlayers = PlayerManager::get().getAllPlayers();
     for (const auto& player : allPlayers) {
+        smartBuffer.reset();
         smartBuffer << static_cast<uint8_t>(OpCodes::VIEWPORT)
-                    << player.getViewport().first
-                    << player.getViewport().second;
+         << static_cast<uint32_t>(player.getId())
+         << player.getViewport().first
+         << player.getViewport().second;
         Network::get().sendToClient(player.getClient(), smartBuffer);
     }
 }
