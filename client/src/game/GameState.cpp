@@ -40,6 +40,14 @@ void GameState::processEvents() {
             window.close();
             return;
         }
+        if (event.type == sf::Event::MouseWheelScrolled) {
+            float zoomFactor = (event.mouseWheelScroll.delta > 0) ? 0.9f : 1.1f; 
+            float newZoom = currentZoom * zoomFactor;
+            if (newZoom >= 0.5f && newZoom <= 2.0f) {
+                currentZoom = newZoom;
+                view.zoom(zoomFactor);
+            }
+        }
     }
 }
 

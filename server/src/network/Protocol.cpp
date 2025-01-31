@@ -22,7 +22,7 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
 
     switch (static_cast<OpCodes>(opcode)) {
     case OpCodes::JOIN: {
-        sendWorld();
+        sendWorld(client);
         break;
     }
     case OpCodes::MOUSE_POSITION: {
@@ -43,11 +43,10 @@ void Protocol::handleMouseMove(std::shared_ptr<asio::ip::tcp::socket> client,
     PlayerManager::get().getPlayerByClient(client)->setMousePosition(x, y);
 }
 
-void Protocol::sendWorld() {
+void Protocol::sendWorld(std::shared_ptr<asio::ip::tcp::socket> client) {
     SmartBuffer smartBuffer;
-    smartBuffer << static_cast<uint8_t>(OpCodes::WORLD) << Config::World::WIDTH
-                << Config::World::HEIGHT;
-    Network::get().sendToAll(smartBuffer);
+    smartBuffer << static_cast<uint8_t>(OpCodes::WORLD) << static_cast<int>(Config::GameMode::WORLD_SIZE);
+    Network::get().sendToClient(client, smartBuffer);
 }
 
 void Protocol::sendGameState() {

@@ -10,23 +10,16 @@ CellManager& CellManager::get() {
 }
 
 CellManager::CellManager()
-    : quadtree(0, 0, Config::World::WIDTH, Config::World::HEIGHT) {}
+    : quadtree(0, 0, Config::GameMode::WORLD_SIZE, Config::GameMode::WORLD_SIZE) {}
 
 void CellManager::createCell(uint32_t playerId) {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_real_distribution<float> disX(0, Config::World::WIDTH);
-    std::uniform_real_distribution<float> disY(0, Config::World::HEIGHT);
+    std::uniform_real_distribution<float> disX(0, Config::GameMode::WORLD_SIZE);
+    std::uniform_real_distribution<float> disY(0, Config::GameMode::WORLD_SIZE);
     float spawnX = disX(gen);
     float spawnY = disY(gen);
-    CellManager::get().addCell(playerId, spawnX, spawnY,
-                               Config::Cell::DEFAULT_RADIUS,
-                               Config::Cell::DEFAULT_SPEED);
-}
-
-void CellManager::addCell(uint32_t ownerId, float x, float y, float radius,
-                          float speed) {
-    cells.emplace_back(ownerId, x, y, radius);
+    cells.emplace_back(playerId, spawnX, spawnY, Config::GameMode::SPAWN_MASS);
 }
 
 void CellManager::removePlayerCells(uint32_t ownerId) {

@@ -42,9 +42,9 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
 }
 
 void ProtocolClient::handleWorld(SmartBuffer& smartBuffer) {
-    int width, height;
-    smartBuffer >> width >> height;
-    EntityManager::get().createWorld(width, height);
+    int size;
+    smartBuffer >> size;
+    EntityManager::get().createWorld(size);
 }
 
 void ProtocolClient::handleGameState(SmartBuffer& smartBuffer) {

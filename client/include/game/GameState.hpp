@@ -22,4 +22,5 @@ class GameState {
     sf::View view;
     float viewportX;
     float viewportY;
+    float currentZoom = 1.0f;
 };

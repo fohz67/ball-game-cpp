@@ -6,28 +6,18 @@ constexpr const int PORT = 12345;
 constexpr int FREQUENCY = 50;
 } // namespace Network
 
-namespace World {
-constexpr const int WIDTH = 300;
-constexpr const int HEIGHT = 300;
-} // namespace World
-
-namespace Cell {
-constexpr const float DEFAULT_RADIUS = 200;
-constexpr const float DEFAULT_SPEED = 100;
-} // namespace Cell
-
 namespace GameMode {
 constexpr float WORLD_EAT_OVERLAP_REQ = 0.35f;
 constexpr float WORLD_EAT_SIZE_REQ = 1.2f;
 constexpr float WORLD_FRICTION = 0.95f;
-constexpr float WORLD_SIZE = 700.0f;
+constexpr float WORLD_SIZE = 2000.0f;
 
 constexpr int MAX_CELLS = 400;
 constexpr float MERGE_TIME = 2000.0f;
 constexpr float MERGE_TIME_SCALE = 0.25f;
 constexpr float MIN_MASS_TO_EJECT = 40.0f;
 constexpr float MIN_MASS_TO_SPLIT = 126.0f;
-constexpr float SPAWN_MASS = 20000.0f;
+constexpr float SPAWN_MASS = 200.0f;
 constexpr float BASE_SPEED = 10.0f;
 constexpr float SPEED_EXPONENT = -0.4396754f;
 

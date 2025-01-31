@@ -14,7 +14,7 @@ class Protocol {
                               SmartBuffer& smartBuffer);
     static void handleMouseMove(std::shared_ptr<asio::ip::tcp::socket> client,
                                 SmartBuffer& smartBuffer);
-    static void sendWorld();
+    static void sendWorld(std::shared_ptr<asio::ip::tcp::socket> client);
     static void sendGameState();
     static void sendViewport();
 
