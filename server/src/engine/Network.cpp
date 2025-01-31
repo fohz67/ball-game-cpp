@@ -1,8 +1,8 @@
-#include "network/Network.hpp"
-#include "cell/CellManager.hpp"
+#include "engine/Network.hpp"
+#include <iostream>
 #include "config/Config.hpp"
-#include "network/Protocol.hpp"
-#include "player/PlayerManager.hpp"
+#include "managers/PlayerManager.hpp"
+#include "protocol/Protocol.hpp"
 
 Network& Network::get() {
     static Network instance;
@@ -20,21 +20,26 @@ void Network::run() {
 }
 
 void Network::doAccept() {
-    acceptor.async_accept([this](std::error_code ec,
-                                 asio::ip::tcp::socket socket) {
-        if (!ec) {
-            auto client_socket =
-                std::make_shared<asio::ip::tcp::socket>(std::move(socket));
-            Player player = PlayerManager::get().addPlayer(client_socket);
-            std::cout << "New player connected: " << player.getId() << " from "
-                      << client_socket->remote_endpoint() << std::endl;
-            handleClient(client_socket);
-        }
-        doAccept();
-    });
+    acceptor.async_accept(
+        [this](std::error_code ec, asio::ip::tcp::socket socket) {
+            if (!ec) {
+                auto clientSocket =
+                    std::make_shared<asio::ip::tcp::socket>(std::move(socket));
+
+                Player newPlayer = PlayerManager::get().addPlayer(clientSocket);
+
+                std::cout << "New player connected: " << newPlayer.getId()
+                          << " from " << clientSocket->remote_endpoint()
+                          << std::endl;
+
+                newClient(clientSocket);
+            }
+
+            doAccept();
+        });
 }
 
-void Network::handleClient(std::shared_ptr<asio::ip::tcp::socket> socket) {
+void Network::newClient(std::shared_ptr<asio::ip::tcp::socket> socket) {
     auto buffer = std::make_shared<std::vector<char>>(MAX_BUFFER_SIZE);
 
     socket->async_read_some(
@@ -42,14 +47,18 @@ void Network::handleClient(std::shared_ptr<asio::ip::tcp::socket> socket) {
         [this, socket, buffer](std::error_code ec, std::size_t length) {
             if (!ec) {
                 SmartBuffer smartBuffer;
+
                 Protocol::get().injector(buffer->data(), length, smartBuffer);
                 Protocol::get().handleMessage(socket, smartBuffer);
-                this->handleClient(socket);
+
+                this->newClient(socket);
             } else {
                 uint32_t playerId =
                     PlayerManager::get().getPlayerByClient(socket)->getId();
+
                 PlayerManager::get().removePlayer(playerId);
-                std::cerr << "Player " << playerId << " disconnected."
+
+                std::cout << "Player " << playerId << " disconnected."
                           << std::endl;
             }
         });
@@ -64,8 +73,7 @@ void Network::sendToClient(std::shared_ptr<asio::ip::tcp::socket> client,
 }
 
 void Network::sendToAll(SmartBuffer& smartBuffer) {
-    const auto& allPlayers = PlayerManager::get().getAllPlayers();
-    for (const auto& player : allPlayers) {
+    for (const auto& player : PlayerManager::get().getAllPlayers()) {
         sendToClient(player.getClient(), smartBuffer);
     }
 }
@@ -74,6 +82,7 @@ void Network::sendLoop() {
     while (true) {
         Protocol::get().sendGameState();
         Protocol::get().sendViewport();
+
         std::this_thread::sleep_for(
             std::chrono::milliseconds(Config::Network::FREQUENCY));
     }

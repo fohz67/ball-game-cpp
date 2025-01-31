@@ -1,8 +1,8 @@
 #include "Server.hpp"
 #include <iostream>
-#include "cell/CellManager.hpp"
 #include "config/Config.hpp"
-#include "player/PlayerManager.hpp"
+#include "engine/Game.hpp"
+#include "engine/Network.hpp"
 
 Server& Server::get() {
     static Server instance;
@@ -12,14 +12,6 @@ Server& Server::get() {
 void Server::run() {
     std::cout << "Server is running on port " << Config::Network::PORT
               << std::endl;
-    std::thread updateThread(&Server::updateLoop, this);
+    Game::get().run();
     Network::get().run();
-}
-
-void Server::updateLoop() {
-    while (true) {
-        PlayerManager::get().updatePlayers();
-        std::this_thread::sleep_for(
-            std::chrono::milliseconds(Config::Network::FREQUENCY));
-    }
 }
