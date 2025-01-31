@@ -61,7 +61,8 @@ void Vector2::normalize() {
 }
 
 float Vector2::distanceTo(const Vector2& other) const {
-    return std::sqrt((x - other.x) * (x - other.x) + (y - other.y) * (y - other.y));
+    return std::sqrt((x - other.x) * (x - other.x) +
+                     (y - other.y) * (y - other.y));
 }
 
 float Vector2::dot(const Vector2& other) const {

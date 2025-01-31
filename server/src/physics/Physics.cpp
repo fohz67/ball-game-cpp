@@ -1,11 +1,13 @@
 #include "physics/Physics.hpp"
+#include <algorithm>
+#include <cmath>
 #include "cell/CellManager.hpp"
 #include "config/Config.hpp"
-#include <cmath>
-#include <algorithm>
 
-void Physics::updateCellMovement(std::vector<Cell*>& cells, float normMouseX, float normMouseY) {
-    if (cells.empty()) return;
+void Physics::updateCellMovement(std::vector<Cell*>& cells, float normMouseX,
+                                 float normMouseY) {
+    if (cells.empty())
+        return;
 
     float centerX = 0.0f, centerY = 0.0f;
     for (const auto* cell : cells) {
@@ -21,7 +23,8 @@ void Physics::updateCellMovement(std::vector<Cell*>& cells, float normMouseX, fl
 
     float minThreshold = 0.05f;
     float maxThreshold = 0.5f;
-    float slowFactor = std::clamp((distance - minThreshold) / (maxThreshold - minThreshold), 0.0f, 1.0f);
+    float slowFactor = std::clamp(
+        (distance - minThreshold) / (maxThreshold - minThreshold), 0.0f, 1.0f);
 
     if (distance < minThreshold) {
         dirX = 0;
@@ -31,14 +34,16 @@ void Physics::updateCellMovement(std::vector<Cell*>& cells, float normMouseX, fl
 
     for (auto* cell : cells) {
         float radius = cell->getRadius();
-        float baseSpeed = Config::GameMode::BASE_SPEED * std::pow(radius, Config::GameMode::SPEED_EXPONENT);
+        float baseSpeed = Config::GameMode::BASE_SPEED *
+                          std::pow(radius, Config::GameMode::SPEED_EXPONENT);
         float adjustedSpeed = baseSpeed * slowFactor;
 
         float newX = cell->getPosition().x + dirX * adjustedSpeed;
         float newY = cell->getPosition().y + dirY * adjustedSpeed;
 
         for (auto* otherCell : cells) {
-            if (cell == otherCell) continue;
+            if (cell == otherCell)
+                continue;
             float dx = newX - otherCell->getPosition().x;
             float dy = newY - otherCell->getPosition().y;
             float distance = std::sqrt(dx * dx + dy * dy);
@@ -70,9 +75,13 @@ void Physics::handleMerging(std::vector<Cell*>& cells) {
     for (size_t i = 0; i < cells.size(); ++i) {
         for (size_t j = i + 1; j < cells.size(); ++j) {
             if (cells[i]->getOwnerId() == cells[j]->getOwnerId()) {
-                float mergeTime = Config::GameMode::MERGE_TIME + cells[i]->getMass() * Config::GameMode::MERGE_TIME_SCALE;
-                if (cells[i]->getAge() > mergeTime && cells[j]->getAge() > mergeTime) {
-                    cells[i]->setRadius(std::sqrt((cells[i]->getMass() + cells[j]->getMass()) / M_PI));
+                float mergeTime =
+                    Config::GameMode::MERGE_TIME +
+                    cells[i]->getMass() * Config::GameMode::MERGE_TIME_SCALE;
+                if (cells[i]->getAge() > mergeTime &&
+                    cells[j]->getAge() > mergeTime) {
+                    cells[i]->setRadius(std::sqrt(
+                        (cells[i]->getMass() + cells[j]->getMass()) / M_PI));
                     cells[j]->markForDeletion();
                 }
             }
@@ -80,14 +89,17 @@ void Physics::handleMerging(std::vector<Cell*>& cells) {
     }
 }
 
-void Physics::splitCell(std::vector<Cell*>& cells, uint32_t playerId, float normMouseX, float normMouseY) {
+void Physics::splitCell(std::vector<Cell*>& cells, uint32_t playerId,
+                        float normMouseX, float normMouseY) {
     std::vector<Cell*> newCells;
 
     for (auto* cell : cells) {
-        if (cell->getOwnerId() != playerId) continue;
+        if (cell->getOwnerId() != playerId)
+            continue;
 
         float mass = cell->getRadius() * cell->getRadius();
-        if (mass < Config::GameMode::MIN_MASS_TO_SPLIT) continue;
+        if (mass < Config::GameMode::MIN_MASS_TO_SPLIT)
+            continue;
 
         float newMass = mass / 2.0f;
         float newRadius = std::sqrt(newMass / M_PI);
@@ -124,29 +136,37 @@ void Physics::resolveRigidCollision(Cell* a, Cell* b) {
     float distance = std::sqrt(dx * dx + dy * dy);
     float minDist = a->getRadius() + b->getRadius();
 
-    if (distance >= minDist) return;
+    if (distance >= minDist)
+        return;
 
     float overlap = minDist - distance;
     float aFactor = b->getMass() / (a->getMass() + b->getMass());
     float bFactor = a->getMass() / (a->getMass() + b->getMass());
 
-    a->setPosition(Vector2(a->getPosition().x - dx / distance * overlap * aFactor,
-                   a->getPosition().y - dy / distance * overlap * aFactor));
-    b->setPosition(Vector2(b->getPosition().x + dx / distance * overlap * bFactor,
-                   b->getPosition().y + dy / distance * overlap * bFactor));
+    a->setPosition(
+        Vector2(a->getPosition().x - dx / distance * overlap * aFactor,
+                a->getPosition().y - dy / distance * overlap * aFactor));
+    b->setPosition(
+        Vector2(b->getPosition().x + dx / distance * overlap * bFactor,
+                b->getPosition().y + dy / distance * overlap * bFactor));
 }
 
 bool Physics::resolveEat(Cell* predator, Cell* prey) {
-    if (prey->getMass() * Config::GameMode::WORLD_EAT_SIZE_REQ > predator->getMass()) return false;
-    
+    if (prey->getMass() * Config::GameMode::WORLD_EAT_SIZE_REQ >
+        predator->getMass())
+        return false;
+
     float dx = prey->getPosition().x - predator->getPosition().x;
     float dy = prey->getPosition().y - predator->getPosition().y;
     float distance = std::sqrt(dx * dx + dy * dy);
 
-    if (distance > predator->getRadius() - prey->getRadius() * Config::GameMode::WORLD_EAT_OVERLAP_REQ)
+    if (distance >
+        predator->getRadius() -
+            prey->getRadius() * Config::GameMode::WORLD_EAT_OVERLAP_REQ)
         return false;
 
-    predator->setRadius(std::sqrt((predator->getMass() + prey->getMass()) / M_PI));
+    predator->setRadius(
+        std::sqrt((predator->getMass() + prey->getMass()) / M_PI));
     prey->markForDeletion();
     return true;
 }

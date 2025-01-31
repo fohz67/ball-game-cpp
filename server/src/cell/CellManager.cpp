@@ -56,26 +56,21 @@ std::pair<float, float> CellManager::calculateViewport(uint32_t playerId) {
     if (playerCells.empty()) {
         return {0, 0};
     }
-
     float totalMass = 0.0f;
     float centerX = 0.0f, centerY = 0.0f;
-
     for (const auto* cell : playerCells) {
         float mass = cell->getMass();
         Vector2 position = cell->getPosition();
         float offsetX = position.x + cell->getRadius();
         float offsetY = position.y + cell->getRadius();
-        
         centerX += offsetX * mass;
         centerY += offsetY * mass;
         totalMass += mass;
     }
-
     if (totalMass > 0) {
         centerX /= totalMass;
         centerY /= totalMass;
     }
-
     return {centerX, centerY};
 }
 

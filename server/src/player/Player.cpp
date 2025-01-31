@@ -1,8 +1,8 @@
 #include "player/Player.hpp"
 
 Player::Player(uint32_t id, std::shared_ptr<asio::ip::tcp::socket> client)
-    : id(id), client(client), viewportX(0), viewportY(0), mouseX(0),
-      mouseY(0) {}
+    : id(id), client(client), viewportX(0), viewportY(0), mouseX(0), mouseY(0) {
+}
 
 uint32_t Player::getId() const {
     return id;

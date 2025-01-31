@@ -1,10 +1,10 @@
 #pragma once
 
-#include "geometry/Vector2.hpp"
 #include <cstdint>
+#include "geometry/Vector2.hpp"
 
 class Cell {
-protected:
+  protected:
     uint32_t ownerId;
     Vector2 position;
     Vector2 velocity;
@@ -12,9 +12,9 @@ protected:
     bool markedForDeletion;
     float age;
 
-public:
+  public:
     Cell(uint32_t ownerId, float x, float y, float radius);
-    
+
     uint32_t getOwnerId() const;
     Vector2 getPosition() const;
     void setPosition(const Vector2& pos);

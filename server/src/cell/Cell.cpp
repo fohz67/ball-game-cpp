@@ -2,7 +2,8 @@
 #include <cmath>
 
 Cell::Cell(uint32_t ownerId, float x, float y, float radius)
-    : ownerId(ownerId), position(x, y), velocity(0, 0), radius(radius), markedForDeletion(false), age(0) {}
+    : ownerId(ownerId), position(x, y), velocity(0, 0), radius(radius),
+      markedForDeletion(false), age(0) {}
 
 uint32_t Cell::getOwnerId() const {
     return ownerId;

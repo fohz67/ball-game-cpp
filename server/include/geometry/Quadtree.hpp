@@ -4,13 +4,14 @@
 #include "cell/Cell.hpp"
 
 class Quadtree {
-public:
-    Quadtree(float x, float y, float width, float height, int level = 0, int maxObjects = 10);
+  public:
+    Quadtree(float x, float y, float width, float height, int level = 0,
+             int maxObjects = 10);
     void insert(Cell* cell);
     std::vector<Cell*> retrieve(Cell* cell);
     void clear();
 
-private:
+  private:
     float x, y, width, height;
     int level;
     int maxObjects;

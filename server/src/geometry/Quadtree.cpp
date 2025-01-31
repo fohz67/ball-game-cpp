@@ -1,9 +1,11 @@
 #include "geometry/Quadtree.hpp"
 #include <iostream>
 
-Quadtree::Quadtree(float x, float y, float width, float height, int level, int maxObjects)
-    : x(x), y(y), width(width), height(height), level(level), maxObjects(maxObjects), divided(false),
-      topLeft(nullptr), topRight(nullptr), bottomLeft(nullptr), bottomRight(nullptr) {}
+Quadtree::Quadtree(float x, float y, float width, float height, int level,
+                   int maxObjects)
+    : x(x), y(y), width(width), height(height), level(level),
+      maxObjects(maxObjects), divided(false), topLeft(nullptr),
+      topRight(nullptr), bottomLeft(nullptr), bottomRight(nullptr) {}
 
 void Quadtree::insert(Cell* cell) {
     if (!contains(cell)) {
@@ -31,7 +33,8 @@ std::vector<Cell*> Quadtree::retrieve(Cell* cell) {
     if (divided) {
         auto addObjects = [&](Quadtree* qt) {
             std::vector<Cell*> subObjects = qt->retrieve(cell);
-            foundObjects.insert(foundObjects.end(), subObjects.begin(), subObjects.end());
+            foundObjects.insert(foundObjects.end(), subObjects.begin(),
+                                subObjects.end());
         };
         addObjects(topLeft);
         addObjects(topRight);
@@ -62,8 +65,10 @@ void Quadtree::subdivide() {
     float halfH = height / 2;
     topLeft = new Quadtree(x, y, halfW, halfH, level + 1, maxObjects);
     topRight = new Quadtree(x + halfW, y, halfW, halfH, level + 1, maxObjects);
-    bottomLeft = new Quadtree(x, y + halfH, halfW, halfH, level + 1, maxObjects);
-    bottomRight = new Quadtree(x + halfW, y + halfH, halfW, halfH, level + 1, maxObjects);
+    bottomLeft =
+        new Quadtree(x, y + halfH, halfW, halfH, level + 1, maxObjects);
+    bottomRight =
+        new Quadtree(x + halfW, y + halfH, halfW, halfH, level + 1, maxObjects);
     divided = true;
 }
 

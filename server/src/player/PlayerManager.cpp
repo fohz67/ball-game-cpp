@@ -54,17 +54,21 @@ void PlayerManager::updatePlayers() {
         std::pair<float, float> positions = player.getMousePosition();
         Physics::updateCellMovement(cells, positions.first, positions.second);
 
-        std::pair<float, float> newViewport = CellManager::get().calculateViewport(player.getId());
+        std::pair<float, float> newViewport =
+            CellManager::get().calculateViewport(player.getId());
         player.setViewport(newViewport.first, newViewport.second);
 
         Physics::applyDecay(cells);
         Physics::handleMerging(cells);
 
-        std::vector<Cell*> playerCells = CellManager::get().getPlayerCells(player.getId());
+        std::vector<Cell*> playerCells =
+            CellManager::get().getPlayerCells(player.getId());
         for (auto* cell : playerCells) {
-            std::vector<Cell*> nearbyCells = CellManager::get().getNearbyCells(cell);
+            std::vector<Cell*> nearbyCells =
+                CellManager::get().getNearbyCells(cell);
             for (auto* other : nearbyCells) {
-                if (cell == other) continue;
+                if (cell == other)
+                    continue;
                 Physics::resolveRigidCollision(cell, other);
                 Physics::resolveEat(cell, other);
             }
