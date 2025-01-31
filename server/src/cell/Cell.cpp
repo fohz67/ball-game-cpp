@@ -1,7 +1,7 @@
 #include "cell/Cell.hpp"
 
-Cell::Cell(uint32_t ownerId, float x, float y, float radius, float speed)
-    : ownerId(ownerId), x(x), y(y), radius(radius), speed(speed) {}
+Cell::Cell(uint32_t ownerId, float x, float y, float radius)
+    : ownerId(ownerId), x(x), y(y), radius(radius) {}
 
 uint32_t Cell::getOwnerId() const {
     return ownerId;
@@ -19,10 +19,6 @@ float Cell::getRadius() const {
     return radius;
 }
 
-float Cell::getSpeed() const {
-    return speed;
-}
-
 void Cell::setPosition(float x, float y) {
     this->x = x;
     this->y = y;
@@ -30,8 +26,4 @@ void Cell::setPosition(float x, float y) {
 
 void Cell::setRadius(float radius) {
     this->radius = radius;
-}
-
-void Cell::setSpeed(float speed) {
-    this->speed = speed;
 }

@@ -3,7 +3,6 @@
 #include "config/Config.hpp"
 #include "network/Network.hpp"
 #include "network/OpCodes.hpp"
-#include "physics/Physics.hpp"
 #include "player/PlayerManager.hpp"
 
 Protocol& Protocol::get() {
@@ -77,7 +76,6 @@ void Protocol::sendViewport() {
     for (const auto& player : allPlayers) {
         smartBuffer.reset();
         smartBuffer << static_cast<uint8_t>(OpCodes::VIEWPORT)
-         << static_cast<uint32_t>(player.getId())
          << player.getViewport().first
          << player.getViewport().second;
         Network::get().sendToClient(player.getClient(), smartBuffer);

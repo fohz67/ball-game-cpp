@@ -1,6 +1,5 @@
 #include "player/PlayerManager.hpp"
 #include "cell/CellManager.hpp"
-#include "physics/Physics.hpp"
 
 PlayerManager& PlayerManager::get() {
     static PlayerManager instance;
@@ -52,7 +51,7 @@ void PlayerManager::updatePlayers() {
         auto cells = CellManager::get().getPlayerCells(player.getId());
 
         std::pair<float, float> positions = player.getMousePosition();
-        Physics::updateCellMovement(cells, positions.first, positions.second);
+        CellManager::get().updateCellMovement(player.getId(), positions.first, positions.second);
 
         std::pair<float, float> newViewport =
             CellManager::get().calculateViewport(player.getId());
