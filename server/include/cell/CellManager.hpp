@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <vector>
 #include "Cell.hpp"
+#include "geometry/Quadtree.hpp"
 
 class CellManager {
   public:
@@ -15,10 +16,12 @@ class CellManager {
     const std::vector<Cell>& getCells() const;
     std::vector<Cell*> getPlayerCells(uint32_t playerId);
     std::pair<float, float> calculateViewport(uint32_t playerId);
-    void updateCellMovement(uint32_t playerId, float mouseX, float mouseY);
+    void update();
+    std::vector<Cell*> getNearbyCells(Cell* cell);
 
   private:
-    CellManager() = default;
+    CellManager();
     ~CellManager() = default;
     std::vector<Cell> cells;
+    Quadtree quadtree;
 };

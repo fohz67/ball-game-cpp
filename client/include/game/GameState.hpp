@@ -10,6 +10,7 @@ class GameState {
     GameState& operator=(const GameState&) = delete;
     static GameState& get();
     void run();
+    std::pair<float, float> getViewport() const;
     void setViewport(float x, float y);
 
   private:
