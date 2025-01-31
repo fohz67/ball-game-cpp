@@ -17,6 +17,7 @@ void GameState::run() {
     sf::Vector2i lastMousePos = sf::Mouse::getPosition(window);
     view.setSize(ConfigClient::Window::WIDTH, ConfigClient::Window::HEIGHT);
     view.setCenter(viewportX, viewportY);
+    originalViewSize = view.getSize();
     while (window.isOpen()) {
         processEvents();
         if (clock.getElapsedTime().asMilliseconds() >=
@@ -43,9 +44,9 @@ void GameState::processEvents() {
         if (event.type == sf::Event::MouseWheelScrolled) {
             float zoomFactor = (event.mouseWheelScroll.delta > 0) ? 0.9f : 1.1f; 
             float newZoom = currentZoom * zoomFactor;
-            if (newZoom >= 0.5f && newZoom <= 2.0f) {
+                        if (newZoom >= 0.5f && newZoom <= 2.0f) {
                 currentZoom = newZoom;
-                view.zoom(zoomFactor);
+                view.setSize(originalViewSize * currentZoom);
             }
         }
     }
