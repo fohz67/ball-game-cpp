@@ -10,7 +10,8 @@ CellManager& CellManager::get() {
 }
 
 CellManager::CellManager()
-    : quadtree(0, 0, Config::GameMode::WORLD_SIZE, Config::GameMode::WORLD_SIZE) {}
+    : quadtree(0, 0, Config::GameMode::WORLD_SIZE,
+               Config::GameMode::WORLD_SIZE) {}
 
 void CellManager::createCell(uint32_t playerId) {
     std::random_device rd;

@@ -1,6 +1,7 @@
 #include "game/GameState.hpp"
 #include "ConfigClient.hpp"
 #include "entity/EntityManager.hpp"
+#include "game/Hotkeys.hpp"
 #include "network/ProtocolClient.hpp"
 
 GameState& GameState::get() {
@@ -41,10 +42,14 @@ void GameState::processEvents() {
             window.close();
             return;
         }
+        if (event.type == sf::Event::KeyPressed) {
+            std::string keyName = Hotkeys::keyToString(event.key.code);
+            ProtocolClient::sendKeyPressed(keyName);
+        }
         if (event.type == sf::Event::MouseWheelScrolled) {
-            float zoomFactor = (event.mouseWheelScroll.delta > 0) ? 0.9f : 1.1f; 
+            float zoomFactor = (event.mouseWheelScroll.delta > 0) ? 0.9f : 1.1f;
             float newZoom = currentZoom * zoomFactor;
-                        if (newZoom >= 0.5f && newZoom <= 2.0f) {
+            if (newZoom >= 0.5f && newZoom <= 2.0f) {
                 currentZoom = newZoom;
                 view.setSize(originalViewSize * currentZoom);
             }

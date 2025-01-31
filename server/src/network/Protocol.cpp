@@ -3,6 +3,7 @@
 #include "config/Config.hpp"
 #include "network/Network.hpp"
 #include "network/OpCodes.hpp"
+#include "physics/Physics.hpp"
 #include "player/PlayerManager.hpp"
 
 Protocol& Protocol::get() {
@@ -29,6 +30,10 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
         handleMouseMove(client, smartBuffer);
         break;
     }
+    case OpCodes::KEY_PRESSED: {
+        handleKeyPressed(client, smartBuffer);
+        break;
+    }
     default:
         std::cout << "Unknown opcode received: " << static_cast<int>(opcode)
                   << std::endl;
@@ -43,9 +48,22 @@ void Protocol::handleMouseMove(std::shared_ptr<asio::ip::tcp::socket> client,
     PlayerManager::get().getPlayerByClient(client)->setMousePosition(x, y);
 }
 
+void Protocol::handleKeyPressed(std::shared_ptr<asio::ip::tcp::socket> client,
+                                SmartBuffer& smartBuffer) {
+    std::string keyName;
+    smartBuffer >> keyName;
+    auto player = PlayerManager::get().getPlayerByClient(client);
+    auto cells = CellManager::get().getPlayerCells(player->getId());
+    if (keyName == "SPACE") {
+        Physics::splitCell(cells, player->getId(), player->getMouseX(),
+                           player->getMouseY());
+    }
+}
+
 void Protocol::sendWorld(std::shared_ptr<asio::ip::tcp::socket> client) {
     SmartBuffer smartBuffer;
-    smartBuffer << static_cast<uint8_t>(OpCodes::WORLD) << static_cast<int>(Config::GameMode::WORLD_SIZE);
+    smartBuffer << static_cast<uint8_t>(OpCodes::WORLD)
+                << static_cast<int>(Config::GameMode::WORLD_SIZE);
     Network::get().sendToClient(client, smartBuffer);
 }
 

@@ -49,6 +49,8 @@ const std::vector<Player>& PlayerManager::getAllPlayers() const {
 
 void PlayerManager::updatePlayers() {
     for (auto& player : players) {
+        CellManager::get().update();
+
         auto cells = CellManager::get().getPlayerCells(player.getId());
 
         std::pair<float, float> positions = player.getMousePosition();

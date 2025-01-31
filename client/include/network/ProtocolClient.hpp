@@ -13,6 +13,7 @@ class ProtocolClient {
     static void handleMessage(SmartBuffer& smartBuffer);
     static void sendMousePosition(sf::RenderWindow& window,
                                   sf::Vector2i& lastMousePos);
+    static void sendKeyPressed(std::string keyName);
 
   private:
     ProtocolClient() = default;

@@ -18,7 +18,7 @@ constexpr float MERGE_TIME_SCALE = 0.25f;
 constexpr float MIN_MASS_TO_EJECT = 40.0f;
 constexpr float MIN_MASS_TO_SPLIT = 126.0f;
 constexpr float SPAWN_MASS = 200.0f;
-constexpr float BASE_SPEED = 10.0f;
+constexpr float BASE_SPEED = 50.0f;
 constexpr float SPEED_EXPONENT = -0.4396754f;
 
 constexpr float SPLIT_BOOST = 2.0f;
