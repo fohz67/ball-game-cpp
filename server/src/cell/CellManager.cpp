@@ -68,6 +68,10 @@ std::pair<float, float> CellManager::calculateViewport(uint32_t playerId) {
     return {centerX, centerY};
 }
 
+void CellManager::addCell(uint32_t ownerId, float x, float y, float radius) {
+    cells.emplace_back(ownerId, x, y, radius);
+}
+
 std::vector<Cell*> CellManager::getNearbyCells(Cell* cell) {
     return quadtree.retrieve(cell);
 }

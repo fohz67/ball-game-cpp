@@ -1,6 +1,7 @@
 #include "physics/Physics.hpp"
 #include <algorithm>
 #include <cmath>
+#include <iostream>
 #include "cell/CellManager.hpp"
 #include "config/Config.hpp"
 
@@ -97,7 +98,7 @@ void Physics::splitCell(std::vector<Cell*>& cells, uint32_t playerId,
         if (cell->getOwnerId() != playerId)
             continue;
 
-        float mass = cell->getRadius() * cell->getRadius();
+        float mass = cell->getMass();
         if (mass < Config::GameMode::MIN_MASS_TO_SPLIT)
             continue;
 
@@ -110,24 +111,21 @@ void Physics::splitCell(std::vector<Cell*>& cells, uint32_t playerId,
         if (magnitude > 0) {
             dirX /= magnitude;
             dirY /= magnitude;
+        } else {
+            dirX = 1.0f;
+            dirY = 0.0f;
         }
 
-        float offsetX = dirX * (cell->getRadius() + newRadius);
-        float offsetY = dirY * (cell->getRadius() + newRadius);
+        float offsetX = dirX * (cell->getRadius() * 1.5f);
+        float offsetY = dirY * (cell->getRadius() * 1.5f);
         float newX = cell->getPosition().x + offsetX;
         float newY = cell->getPosition().y + offsetY;
 
-        Cell* newCell = new Cell(playerId, newX, newY, newRadius);
-        float boostSpeed = Config::GameMode::SPLIT_BOOST;
-        newCell->setVelocity(Vector2(dirX * boostSpeed, dirY * boostSpeed));
-
+        CellManager::get().addCell(playerId, newX, newY, newRadius);
         cell->setRadius(newRadius);
-        newCells.push_back(newCell);
     }
 
-    for (auto* newCell : newCells) {
-        cells.push_back(newCell);
-    }
+    CellManager::get().update();
 }
 
 void Physics::resolveRigidCollision(Cell* a, Cell* b) {

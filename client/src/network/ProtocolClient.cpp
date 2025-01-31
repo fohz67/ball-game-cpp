@@ -52,7 +52,6 @@ void ProtocolClient::handleGameState(SmartBuffer& smartBuffer) {
     size_t bufferSize = smartBuffer.getSize() - sizeof(uint8_t);
     size_t cellSize = sizeof(uint32_t) + 3 * sizeof(float);
     size_t cellCount = bufferSize / cellSize;
-    std::cout << "Cell count: " << cellCount << std::endl;
     for (size_t i = 0; i < cellCount; i++) {
         CellData cell;
         smartBuffer >> cell.ownerId >> cell.x >> cell.y >> cell.radius;
