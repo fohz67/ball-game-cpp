@@ -16,17 +16,8 @@ EntityManager& EntityManager::get() {
 void EntityManager::createCell(uint32_t id, uint32_t ownerId, double x,
                                double y, double radius,
                                std::vector<double> color) {
-    GameEngine::System system;
-
     if (color.size() != 4) {
         color = {255, 255, 255, 255};
-    }
-
-    if (auto search = entities.find(id); search != entities.end()) {
-        std::pair<float, float> position = {x, y};
-
-        system.update(id, entities, GameEngine::UpdateType::Position, position);
-        return;
     }
 
     auto newEntity = GameEngine::Entity(id);
@@ -39,6 +30,13 @@ void EntityManager::createCell(uint32_t id, uint32_t ownerId, double x,
     entities.emplace(id, std::move(newEntity));
 }
 
+void EntityManager::updateCellPosition(uint32_t id, double x, double y) {
+    GameEngine::System system;
+    std::pair<float, float> position = {x, y};
+
+    system.update(id, entities, GameEngine::UpdateType::Position, position);
+}
+
 void EntityManager::createWorld(uint16_t size) {
     auto newEntity = GameEngine::Entity(ConfigClient::World::ID);
 
@@ -47,20 +45,4 @@ void EntityManager::createWorld(uint16_t size) {
     newEntity.addComponent(Color(ConfigClient::World::BACKGROUND_COLOR));
 
     entities.emplace(ConfigClient::World::ID, std::move(newEntity));
-}
-
-std::map<int, GameEngine::Entity>& EntityManager::getEntities() {
-    return entities;
-}
-
-void EntityManager::setEntities(std::map<int, GameEngine::Entity> entities) {
-    entities = entities;
-}
-
-void EntityManager::clearEntities() {
-    entities.clear();
-}
-
-void EntityManager::removeEntity(int id) {
-    entities.erase(id);
 }

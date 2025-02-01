@@ -52,17 +52,20 @@ void Game::viewportUpdate(Player& player) {
 }
 
 void Game::cellMoveUpdate(Player& player) {
-    std::vector<Cell*> playerCells = CellManager::get().getCellsFromId(player.getId());
-    if (playerCells.empty()) return;
+    std::vector<Cell*> playerCells =
+        CellManager::get().getCellsFromId(player.getId());
+    if (playerCells.empty())
+        return;
 
     std::pair<double, double> mousePosition = player.getMousePosition();
     double dirX = mousePosition.first;
     double dirY = mousePosition.second;
 
     double magnitude = std::sqrt(dirX * dirX + dirY * dirY);
-    double slowdownFactor = (magnitude < Config::GameMode::MIN_INPUT_THRESHOLD)
-                                ? magnitude / Config::GameMode::MIN_INPUT_THRESHOLD
-                                : 1.0;
+    double slowdownFactor =
+        (magnitude < Config::GameMode::MIN_INPUT_THRESHOLD)
+            ? magnitude / Config::GameMode::MIN_INPUT_THRESHOLD
+            : 1.0;
 
     if (magnitude > 0) {
         dirX /= magnitude;
@@ -81,6 +84,7 @@ void Game::cellMoveUpdate(Player& player) {
     }
 
     if (Config::Server::DEV_MODE) {
-        std::cout << "Cell movement updated for player " << player.getId() << std::endl;
+        std::cout << "Cell movement updated for player " << player.getId()
+                  << std::endl;
     }
 }

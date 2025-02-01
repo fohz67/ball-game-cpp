@@ -2,6 +2,7 @@
 #include <iostream>
 #include "components/Cell.hpp"
 #include "components/ColorClient.hpp"
+#include "components/Viewport.hpp"
 #include "config/ConfigClient.hpp"
 #include "engine/GameClient.hpp"
 #include "engine/NetworkClient.hpp"
@@ -49,9 +50,15 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
                           << " " << cell.x << " " << cell.y << " "
                           << cell.radius << " " << cell.color << std::endl;
 
-            EntityManager::get().createCell(cell.ownerId, cell.id, cell.x,
-                                            cell.y, cell.radius,
-                                            ColorClient::intToVec(cell.color));
+            if (EntityManager::get().entities.find(cell.id) ==
+                EntityManager::get().entities.end()) {
+                EntityManager::get().createCell(
+                    cell.id, cell.ownerId, cell.x, cell.y, cell.radius,
+                    ColorClient::intToVec(cell.color));
+            } else {
+                EntityManager::get().updateCellPosition(cell.id, cell.x,
+                                                        cell.y);
+            }
         }
 
         break;
@@ -64,7 +71,7 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
         if (ConfigClient::Client::DEV_MODE)
             std::cout << "Viewport updated: " << x << " " << y << std::endl;
 
-        GameClient::get().setViewport({x, y});
+        Viewport::get().setViewport(x, y);
         break;
     }
     default:

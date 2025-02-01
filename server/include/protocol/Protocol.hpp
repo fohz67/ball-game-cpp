@@ -11,13 +11,13 @@ class Protocol {
 
     static Protocol& get();
 
-    static void injector(char* buffer, size_t length, SmartBuffer& smartBuffer);
+    void injector(char* buffer, size_t length, SmartBuffer& smartBuffer);
 
-    static void handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
-                              SmartBuffer& smartBuffer);
+    void handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
+                       SmartBuffer& smartBuffer);
 
-    static void sendGameState();
-    static void sendViewport();
+    void sendGameState();
+    void sendViewport();
 
   private:
     Protocol() = default;

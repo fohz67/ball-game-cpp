@@ -10,19 +10,18 @@ class ProtocolClient {
 
     static ProtocolClient& get();
 
-    static void injector(char* buffer, size_t length, SmartBuffer& smartBuffer);
-    static void handleMessage(SmartBuffer& smartBuffer);
+    void injector(char* buffer, size_t length, SmartBuffer& smartBuffer);
+    void handleMessage(SmartBuffer& smartBuffer);
 
-    static void sendJoin();
-    static void sendMousePosition(sf::RenderWindow& window,
-                                  sf::Vector2i& lastMousePos);
-    static void sendKeyPressed(std::string keyName);
+    void sendJoin();
+    void sendMousePosition(sf::RenderWindow& window,
+                           sf::Vector2i& lastMousePos);
+    void sendKeyPressed(std::string keyName);
 
   private:
     ProtocolClient() = default;
     ~ProtocolClient() = default;
 
-    static void handleWorld(SmartBuffer& smartBuffer);
-    static void handleGameState(SmartBuffer& smartBuffer);
-    static void handleViewport(SmartBuffer& smartBuffer);
+    void handleGameState(SmartBuffer& smartBuffer);
+    void handleViewport(SmartBuffer& smartBuffer);
 };

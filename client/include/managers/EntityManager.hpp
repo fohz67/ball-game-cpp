@@ -1,6 +1,7 @@
 #pragma once
 
 #include <map>
+#include <set>
 #include "Entity.hpp"
 
 class EntityManager {
@@ -10,18 +11,16 @@ class EntityManager {
 
     static EntityManager& get();
 
-    void createCell(uint32_t id, uint32_t ownedId, double x, double y,
+    void createCell(uint32_t id, uint32_t ownerId, double x, double y,
                     double radius, std::vector<double> color);
+    void updateCellPosition(uint32_t id, double x, double y);
+
     void createWorld(uint16_t size);
 
-    std::map<int, GameEngine::Entity>& getEntities();
-    void setEntities(std::map<int, GameEngine::Entity> entities);
-    void clearEntities();
-    void removeEntity(int id);
+    std::map<int, GameEngine::Entity> entities;
+    ;
 
   private:
     EntityManager() = default;
     ~EntityManager() = default;
-
-    std::map<int, GameEngine::Entity> entities;
 };

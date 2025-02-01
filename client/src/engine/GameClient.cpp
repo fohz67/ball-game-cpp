@@ -1,5 +1,7 @@
 #include "engine/GameClient.hpp"
+#include <components/Position.hpp>
 #include "components/Hotkeys.hpp"
+#include "components/Viewport.hpp"
 #include "config/ConfigClient.hpp"
 #include "managers/EntityManager.hpp"
 #include "protocol/ProtocolClient.hpp"
@@ -11,27 +13,16 @@ GameClient& GameClient::get() {
 
 void GameClient::run() {
     GameEngine::System system;
-    sf::Clock clock;
-    sf::Clock renderClock;
     sf::Vector2i lastMousePos = sf::Mouse::getPosition(window);
-
-    double lastUpdateTime = clock.getElapsedTime().asSeconds();
 
     initWindow();
     initView();
 
     while (window.isOpen()) {
-        double currentTime = clock.getElapsedTime().asSeconds();
-        double deltaTime = currentTime - lastUpdateTime;
-        lastUpdateTime = currentTime;
-
         processEvents();
-        ProtocolClient::sendMousePosition(window, lastMousePos);
-
-        double alpha = deltaTime / ConfigClient::Game::TICK_RATE;
-        alpha = std::min(1.0, std::max(0.0, alpha));
-
-        render(system, alpha);
+        ProtocolClient::get().sendMousePosition(window, lastMousePos);
+        Viewport::get().applyInterpolation();
+        render(system);
     }
 }
 
@@ -45,7 +36,8 @@ void GameClient::initWindow() {
 
 void GameClient::initView() {
     view.setSize(ConfigClient::Window::WIDTH, ConfigClient::Window::HEIGHT);
-    view.setCenter(ConfigClient::Window::WIDTH / 2, ConfigClient::Window::HEIGHT / 2);
+    view.setCenter(ConfigClient::Window::WIDTH / 2,
+                   ConfigClient::Window::HEIGHT / 2);
     window.setView(view);
 }
 
@@ -58,27 +50,20 @@ void GameClient::processEvents() {
             return;
         }
         if (event.type == sf::Event::KeyPressed) {
-            ProtocolClient::sendKeyPressed(
+            ProtocolClient::get().sendKeyPressed(
                 Hotkeys::keyToString(event.key.code));
         }
     }
 }
 
-void GameClient::render(GameEngine::System& system, double alpha) {
-    prevViewport.first += (viewport.first - prevViewport.first) * ConfigClient::Game::CAMERA_PANNING_DELAY;
-    prevViewport.second += (viewport.second - prevViewport.second) * ConfigClient::Game::CAMERA_PANNING_DELAY;
+void GameClient::render(GameEngine::System& system) {
+    view.setCenter(Viewport::get().getPreviousViewport().first,
+                   Viewport::get().getPreviousViewport().second);
 
-    view.setCenter(prevViewport.first, prevViewport.second);
     window.setView(view);
     window.clear();
-    system.render(window, EntityManager::get().getEntities());
+
+    system.render(window, EntityManager::get().entities);
+
     window.display();
-}
-
-std::pair<double, double> GameClient::getViewport() const {
-    return viewport;
-}
-
-void GameClient::setViewport(std::pair<double, double> viewport) {
-    this->viewport = viewport;
 }
