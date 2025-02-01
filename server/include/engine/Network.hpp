@@ -2,6 +2,7 @@
 
 #include <SmartBuffer.hpp>
 #include <asio.hpp>
+#include <memory>
 #include <thread>
 
 #define MAX_BUFFER_SIZE 1024
