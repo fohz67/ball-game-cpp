@@ -14,6 +14,4 @@ class Game {
   private:
     Game() = default;
     ~Game() = default;
-
-    std::thread updateThread;
 };

@@ -36,9 +36,11 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
 - **Description**: Sends the current game state.
 - **Payload**:
   - `ownerId` (uint32_t): ID of the owner.
+  - `id` (uint32_t): ID of the cell.
   - `x` (double): X position.
   - `y` (double): Y position.
   - `radius` (double): Radius of the entity.
+  - `color` (uint32_t): Color of the cell.
 - **Sent To**: All clients.
 
 ### 4. **VIEWPORT**

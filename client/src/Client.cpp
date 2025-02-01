@@ -1,8 +1,8 @@
 #include "Client.hpp"
-#include <chrono>
-#include <iostream>
-#include <thread>
-#include "network/OpCodes.hpp"
+#include "config/ConfigClient.hpp"
+#include "engine/GameClient.hpp"
+#include "engine/NetworkClient.hpp"
+#include "protocol/ProtocolClient.hpp"
 
 Client& Client::get() {
     static Client instance;
@@ -10,15 +10,14 @@ Client& Client::get() {
 }
 
 void Client::run(const char** av) {
-    NetworkClient::get().init(av[1],
-                              static_cast<unsigned short>(std::stoi(av[2])));
-    NetworkClient::get().run();
-    join();
-    GameState::get().run();
-}
+    std::string host = av[1] ? av[1] : ConfigClient::Network::HOST;
+    unsigned short port = av[2] ? static_cast<unsigned short>(std::stoi(av[2]))
+                                : ConfigClient::Network::PORT;
 
-void Client::join() {
-    SmartBuffer smartBuffer;
-    smartBuffer << static_cast<uint8_t>(OpCodes::JOIN);
-    NetworkClient::get().send(smartBuffer);
+    NetworkClient::get().init(host, port);
+    NetworkClient::get().run();
+
+    ProtocolClient::get().sendJoin();
+
+    GameClient::get().run();
 }

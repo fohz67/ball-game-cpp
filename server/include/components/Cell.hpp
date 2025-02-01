@@ -7,9 +7,10 @@ enum CellType { PLAYER, DEAD, EJECTED, PELLET };
 
 class Cell {
   public:
-    Cell(uint32_t ownerId, CellType type, double x, double y, double radius,
-         std::vector<double> color);
+    Cell(uint32_t id, uint32_t ownerId, CellType type, double x, double y,
+         double radius, std::vector<double> color);
 
+    uint32_t getId() const;
     uint32_t getOwnerId() const;
     CellType getType() const;
     double getX() const;
@@ -21,6 +22,7 @@ class Cell {
     void setRadius(double radius);
 
   private:
+    uint32_t id;
     uint32_t ownerId;
     CellType type;
     double x;

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdint>
+
 struct Config {
     struct Network {
         static constexpr int PORT = 12345;
@@ -7,7 +9,7 @@ struct Config {
     };
 
     struct GameMode {
-        static constexpr float WORLD_SIZE = 2000.0f;
-        static constexpr float SPAWN_MASS = 200.0f;
+        static constexpr uint16_t WORLD_SIZE = 2000.0f;
+        static constexpr double SPAWN_MASS = 200.0f;
     };
 };

@@ -1,7 +1,5 @@
 #pragma one
 
-#include <SFML/Window.hpp>
-
 class Hotkeys {
   public:
     static std::string keyToString(sf::Keyboard::Key key) {

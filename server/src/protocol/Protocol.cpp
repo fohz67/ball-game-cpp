@@ -1,5 +1,6 @@
 #include "protocol/Protocol.hpp"
 #include <iostream>
+#include "components/ColorServer.hpp"
 #include "config/Config.hpp"
 #include "engine/Network.hpp"
 #include "managers/CellManager.hpp"
@@ -24,8 +25,7 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
     switch (static_cast<OpCodes>(opcode)) {
     case OpCodes::JOIN: {
         smartBuffer.reset();
-        smartBuffer << static_cast<uint8_t>(OpCodes::WORLD)
-                    << static_cast<uint8_t>(Config::GameMode::WORLD_SIZE);
+        smartBuffer << OpCodes::WORLD << Config::GameMode::WORLD_SIZE;
 
         Network::get().sendToClient(client, smartBuffer);
         break;
@@ -57,13 +57,12 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
 
 void Protocol::sendGameState() {
     SmartBuffer smartBuffer;
-    smartBuffer << static_cast<uint8_t>(OpCodes::GAME_STATE);
+    smartBuffer << OpCodes::GAME_STATE;
 
     for (const auto& cell : CellManager::get().getAllCells()) {
-        smartBuffer << static_cast<uint32_t>(cell.getOwnerId())
-                    << static_cast<double>(cell.getX())
-                    << static_cast<double>(cell.getY())
-                    << static_cast<double>(cell.getRadius());
+        smartBuffer << cell.getOwnerId() << cell.getId() << cell.getX()
+                    << cell.getY() << cell.getRadius()
+                    << ColorServer::vecToInt(cell.getColor());
     }
 
     Network::get().sendToAll(smartBuffer);
@@ -74,9 +73,9 @@ void Protocol::sendViewport() {
 
     for (const auto& player : PlayerManager::get().getAllPlayers()) {
         Viewport viewport = player.getViewport();
-        smartBuffer << static_cast<uint8_t>(OpCodes::VIEWPORT)
-                    << static_cast<double>(viewport.x)
-                    << static_cast<double>(viewport.y);
+
+        smartBuffer.reset();
+        smartBuffer << OpCodes::VIEWPORT << viewport.x << viewport.y;
 
         Network::get().sendToClient(player.getClient(), smartBuffer);
     }

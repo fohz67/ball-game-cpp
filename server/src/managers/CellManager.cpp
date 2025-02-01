@@ -1,6 +1,7 @@
 #include "managers/CellManager.hpp"
 #include <random>
 #include "config/Config.hpp"
+#include "managers/AtomicIdsManager.hpp"
 
 CellManager& CellManager::get() {
     static CellManager instance;
@@ -26,8 +27,9 @@ std::vector<double> CellManager::getRandomColor() {
 
 void CellManager::createCell(uint32_t ownerId, CellType type) {
     auto [spawnX, spawnY] = getRandomLocation();
+    uint32_t cellId = AtomicIdsManager::get().getNextId();
 
-    cells.emplace_back(ownerId, type, spawnX, spawnY,
+    cells.emplace_back(cellId, ownerId, type, spawnX, spawnY,
                        Config::GameMode::SPAWN_MASS, getRandomColor());
 }
 

@@ -32,5 +32,4 @@ class Network {
 
     asio::io_context io_context;
     asio::ip::tcp::acceptor acceptor;
-    std::thread sendThread;
 };
