@@ -45,3 +45,7 @@ void EntityManager::createWorld(uint16_t size) {
 
     entities.emplace(ConfigClient::World::ID, std::move(newEntity));
 }
+
+void EntityManager::removeEntity(uint32_t id) {
+    entities.erase(id);
+}

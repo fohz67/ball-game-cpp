@@ -18,6 +18,7 @@ class Protocol {
 
     void sendGameState();
     void sendViewport();
+    void sendEntityRemoved(const std::vector<uint32_t>& deletedCellsIds);
 
   private:
     Protocol() = default;

@@ -3,6 +3,7 @@
 #include <random>
 #include "components/Cell.hpp"
 #include "config/Config.hpp"
+#include "protocol/Protocol.hpp"
 #include "managers/AtomicIdsManager.hpp"
 
 CellManager& CellManager::get() {
@@ -26,6 +27,14 @@ std::vector<double> CellManager::getRandomColor() {
     return {dis(gen), dis(gen), dis(gen), 255};
 }
 
+void CellManager::generatePellets() {
+    for (int i = 0; i < Config::GameMode::PELLET_COUNT; i++) {
+        uint32_t pelletId = AtomicIdsManager::get().getNextId();
+    
+        CellManager::get().createCell(pelletId, CellType::PELLET);
+    }
+}
+
 void CellManager::createCell(uint32_t ownerId, CellType type) {
     auto [spawnX, spawnY] = getRandomLocation();
     uint32_t cellId = AtomicIdsManager::get().getNextId();
@@ -42,15 +51,28 @@ void CellManager::createCell(uint32_t ownerId, CellType type) {
 }
 
 void CellManager::removeCellsFromId(uint32_t ownerId) {
+    std::vector<uint32_t> deletedCellsIds;
+
     cells.erase(std::remove_if(cells.begin(), cells.end(),
-                               [ownerId](const Cell& cell) {
-                                   return cell.getOwnerId() == ownerId;
+                               [&deletedCellsIds, ownerId](const Cell& cell) {
+                                   if (cell.getOwnerId() == ownerId) {
+                                       deletedCellsIds.push_back(cell.getId());
+                                       return true;
+                                   }
+                                   return false;
                                }),
                 cells.end());
+
+    AtomicIdsManager::get().removeId(ownerId);
+
+    if (!deletedCellsIds.empty()) {
+        Protocol::get().sendEntityRemoved(deletedCellsIds);
+    }
 }
 
 std::vector<Cell*> CellManager::getCellsFromId(uint32_t ownerId) {
     std::vector<Cell*> playerCells;
+
     for (auto& cell : cells) {
         if (cell.getType() == CellType::PLAYER &&
             cell.getOwnerId() == ownerId) {
@@ -63,10 +85,4 @@ std::vector<Cell*> CellManager::getCellsFromId(uint32_t ownerId) {
 
 const std::vector<Cell>& CellManager::getAllCells() const {
     return cells;
-}
-
-void CellManager::generatePellets() {
-    for (int i = 0; i < Config::GameMode::PELLET_COUNT; i++) {
-        CellManager::get().createCell(0, CellType::PELLET);
-    }
 }

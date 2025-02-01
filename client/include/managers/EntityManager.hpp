@@ -16,6 +16,8 @@ class EntityManager {
 
     void createWorld(uint16_t size);
 
+    void removeEntity(uint32_t id);
+
     std::map<int, GameEngine::Entity> entities;
     ;
 

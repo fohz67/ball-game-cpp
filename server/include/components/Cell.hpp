@@ -23,7 +23,8 @@ class Cell {
     void setMass(double mass);
 
     void move(double dirX, double dirY, double speed, double worldSize);
-    void resolveCollision(Cell& other);
+    bool canEat(const Cell& other) const;
+    void absorb(Cell& other);
 
   private:
     uint32_t id;
@@ -34,4 +35,5 @@ class Cell {
     double mass;
     std::vector<double> color;
     double speed;
+    bool markedForDeletion = false;
 };

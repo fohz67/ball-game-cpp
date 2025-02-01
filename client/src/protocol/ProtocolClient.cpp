@@ -66,6 +66,22 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
         Viewport::get().setViewport(x, y);
         break;
     }
+    case OpCodes::REMOVE_ENTITY: {
+        uint32_t entityId;
+        size_t size = smartBuffer.getSize() - sizeof(uint8_t);
+        size_t entitiesNb = size / sizeof(uint32_t);
+        
+        for (size_t i = 0; i < entitiesNb; i++) {
+            smartBuffer >> entityId;
+
+            if (ConfigClient::Client::DEV_MODE)
+                std::cout << "Entity removed: " << entityId << std::endl;
+
+            EntityManager::get().removeEntity(entityId);
+        }
+
+        break;
+    }
     default:
         std::cout << "Unknown opcode received: " << static_cast<int>(opcode)
                   << std::endl;

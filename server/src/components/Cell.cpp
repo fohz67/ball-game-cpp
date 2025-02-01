@@ -1,5 +1,6 @@
 #include "components/Cell.hpp"
 #include <algorithm>
+#include "geometry/FastInvSqrt.hpp"
 
 Cell::Cell(uint32_t id, uint32_t ownerId, CellType type, double x, double y,
            double mass, std::vector<double> color)
@@ -31,7 +32,7 @@ double Cell::getMass() const {
 }
 
 double Cell::getRadius() const {
-    return std::sqrt(mass / M_PI);
+    return mass * fastInvSqrt(M_PI * mass);
 }
 
 std::vector<double> Cell::getColor() const {
@@ -62,18 +63,18 @@ void Cell::move(double dirX, double dirY, double speed, double worldSize) {
     setPosition(newX, newY);
 }
 
-void Cell::resolveCollision(Cell& other) {
-    double dx = getX() - other.getX();
-    double dy = getY() - other.getY();
-    double distance = std::sqrt(dx * dx + dy * dy);
-    double minDist = getRadius() + other.getRadius();
-
-    if (distance < minDist && distance > 0) {
-        double overlap = minDist - distance;
-        double adjustX = (dx / distance) * overlap * 0.5;
-        double adjustY = (dy / distance) * overlap * 0.5;
-
-        setPosition(getX() + adjustX, getY() + adjustY);
-        other.setPosition(other.getX() - adjustX, other.getY() - adjustY);
+bool Cell::canEat(const Cell& other) const {
+    if (mass < other.mass * 1.1) {
+        return false;
     }
+
+    double dx = x - other.x;
+    double dy = y - other.y;
+    double distanceSquared = dx * dx + dy * dy;
+
+    return distanceSquared < (mass - other.mass) * (mass - other.mass);
+}
+
+void Cell::absorb(Cell& other) {
+    mass += other.getMass();
 }

@@ -1,0 +1,4215 @@
+Server is running on port 12345
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+New player connected: 102 from 127.0.0.1:51350
+World size sent: 1000
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Mouse position received: 0.402116 0.526807
+Game state sent to everyone.
+Viewport sent: 972.343 402.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.525 402.436 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.707 402.674 to player: 102.
+Mouse position received: 0.375661 0.515152
+Game state sent to everyone.
+Viewport sent: 972.889 402.913 to player: 102.
+Mouse position received: 0.366402 0.508159
+Game state sent to everyone.
+Viewport sent: 973.066 403.155 to player: 102.
+Game state sent to everyone.
+Viewport sent: 973.243 403.398 to player: 102.
+Game state sent to everyone.
+Viewport sent: 973.594 403.884 to player: 102.
+Mouse position received: 0.35582 0.496503
+Game state sent to everyone.
+Viewport sent: 973.769 404.128 to player: 102.
+Game state sent to everyone.
+Viewport sent: 973.944 404.371 to player: 102.
+Mouse position received: 0.34127 0.487179
+Game state sent to everyone.
+Viewport sent: 974.119 404.615 to player: 102.
+Game state sent to everyone.
+Viewport sent: 974.291 404.861 to player: 102.
+Mouse position received: 0.314815 0.461538
+Game state sent to everyone.
+Viewport sent: 974.463 405.107 to player: 102.
+Game state sent to everyone.
+Viewport sent: 974.632 405.354 to player: 102.
+Mouse position received: 0.293651 0.435897
+Game state sent to everyone.
+Viewport sent: 974.801 405.602 to player: 102.
+Game state sent to everyone.
+Viewport sent: 974.969 405.851 to player: 102.
+Game state sent to everyone.
+Viewport sent: 975.136 406.1 to player: 102.
+Mouse position received: 0.269841 0.410256
+Game state sent to everyone.
+Viewport sent: 975.304 406.349 to player: 102.
+Mouse position received: 0.240741 0.379953
+Game state sent to everyone.
+Viewport sent: 975.469 406.599 to player: 102.
+Game state sent to everyone.
+Viewport sent: 975.634 406.85 to player: 102.
+Game state sent to everyone.
+Viewport sent: 975.794 407.103 to player: 102.
+Mouse position received: 0.208995 0.342657
+Game state sent to everyone.
+Viewport sent: 975.955 407.357 to player: 102.
+Game state sent to everyone.
+Viewport sent: 976.267 407.869 to player: 102.
+Mouse position received: 0.177249 0.305361
+Game state sent to everyone.
+Viewport sent: 976.423 408.125 to player: 102.
+Game state sent to everyone.
+Viewport sent: 976.574 408.385 to player: 102.
+Mouse position received: 0.14418 0.270396
+Game state sent to everyone.
+Viewport sent: 976.725 408.644 to player: 102.
+Game state sent to everyone.
+Viewport sent: 976.866 408.909 to player: 102.
+Mouse position received: 0.12963 0.254079
+Game state sent to everyone.
+Viewport sent: 977.007 409.174 to player: 102.
+Game state sent to everyone.
+Viewport sent: 977.143 409.441 to player: 102.
+Mouse position received: 0.104497 0.221445
+Game state sent to everyone.
+Viewport sent: 977.143 409.441 to player: 102.
+Game state sent to everyone.
+Viewport sent: 977.28 409.708 to player: 102.
+Game state sent to everyone.
+Viewport sent: 977.536 410.251 to player: 102.
+Mouse position received: 0.0806878 0.191142
+Game state sent to everyone.
+Viewport sent: 977.664 410.522 to player: 102.
+Game state sent to everyone.
+Viewport sent: 977.78 410.798 to player: 102.
+Mouse position received: 0.0727513 0.179487
+Game state sent to everyone.
+Viewport sent: 977.897 411.075 to player: 102.
+Game state sent to everyone.
+Viewport sent: 978.01 411.353 to player: 102.
+Mouse position received: 0.0568783 0.160839
+Game state sent to everyone.
+Viewport sent: 978.235 411.909 to player: 102.
+Game state sent to everyone.
+Viewport sent: 978.335 412.192 to player: 102.
+Mouse position received: 0.0449735 0.144522
+Game state sent to everyone.
+Viewport sent: 978.435 412.474 to player: 102.
+Game state sent to everyone.
+Viewport sent: 978.524 412.761 to player: 102.
+Mouse position received: 0.0357143 0.128205
+Game state sent to everyone.
+Viewport sent: 978.613 413.047 to player: 102.
+Game state sent to everyone.
+Viewport sent: 978.694 413.336 to player: 102.
+Game state sent to everyone.
+Viewport sent: 978.774 413.625 to player: 102.
+Game state sent to everyone.
+Viewport sent: 978.855 413.914 to player: 102.
+Mouse position received: 0.0277778 0.114219
+Game state sent to everyone.
+Viewport sent: 978.935 414.203 to player: 102.
+Game state sent to everyone.
+Viewport sent: 979.016 414.492 to player: 102.
+Game state sent to everyone.
+Viewport sent: 979.087 414.784 to player: 102.
+Mouse position received: 0.026455 0.111888
+Game state sent to everyone.
+Viewport sent: 979.227 415.367 to player: 102.
+Game state sent to everyone.
+Viewport sent: 979.296 415.659 to player: 102.
+Mouse position received: 0.026455 0.107226
+Game state sent to everyone.
+Viewport sent: 979.365 415.951 to player: 102.
+Game state sent to everyone.
+Viewport sent: 979.437 416.243 to player: 102.
+Game state sent to everyone.
+Viewport sent: 979.509 416.534 to player: 102.
+Game state sent to everyone.
+Viewport sent: 979.58 416.825 to player: 102.
+Game state sent to everyone.
+Viewport sent: 979.652 417.116 to player: 102.
+Game state sent to everyone.
+Viewport sent: 979.796 417.699 to player: 102.
+Game state sent to everyone.
+Viewport sent: 979.868 417.99 to player: 102.
+Game state sent to everyone.
+Viewport sent: 979.94 418.281 to player: 102.
+Game state sent to everyone.
+Viewport sent: 980.012 418.573 to player: 102.
+Game state sent to everyone.
+Viewport sent: 980.083 418.864 to player: 102.
+Game state sent to everyone.
+Viewport sent: 980.155 419.155 to player: 102.
+Game state sent to everyone.
+Viewport sent: 980.227 419.446 to player: 102.
+Game state sent to everyone.
+Viewport sent: 980.299 419.738 to player: 102.
+Game state sent to everyone.
+Viewport sent: 980.371 420.029 to player: 102.
+Game state sent to everyone.
+Viewport sent: 980.443 420.32 to player: 102.
+Game state sent to everyone.
+Viewport sent: 980.586 420.903 to player: 102.
+Game state sent to everyone.
+Viewport sent: 980.658 421.194 to player: 102.
+Game state sent to everyone.
+Viewport sent: 980.73 421.485 to player: 102.
+Game state sent to everyone.
+Viewport sent: 980.802 421.777 to player: 102.
+Game state sent to everyone.
+Viewport sent: 980.874 422.068 to player: 102.
+Game state sent to everyone.
+Viewport sent: 980.946 422.359 to player: 102.
+Game state sent to everyone.
+Viewport sent: 981.018 422.65 to player: 102.
+Game state sent to everyone.
+Viewport sent: 981.09 422.942 to player: 102.
+Game state sent to everyone.
+Viewport sent: 981.161 423.233 to player: 102.
+Game state sent to everyone.
+Viewport sent: 981.305 423.815 to player: 102.
+Game state sent to everyone.
+Viewport sent: 981.377 424.107 to player: 102.
+Game state sent to everyone.
+Viewport sent: 981.449 424.398 to player: 102.
+Game state sent to everyone.
+Viewport sent: 981.521 424.689 to player: 102.
+Game state sent to everyone.
+Viewport sent: 981.593 424.98 to player: 102.
+Game state sent to everyone.
+Viewport sent: 981.664 425.272 to player: 102.
+Game state sent to everyone.
+Viewport sent: 981.736 425.563 to player: 102.
+Game state sent to everyone.
+Viewport sent: 981.808 425.854 to player: 102.
+Game state sent to everyone.
+Viewport sent: 981.88 426.146 to player: 102.
+Game state sent to everyone.
+Viewport sent: 981.952 426.437 to player: 102.
+Game state sent to everyone.
+Viewport sent: 982.024 426.728 to player: 102.
+Game state sent to everyone.
+Viewport sent: 982.096 427.019 to player: 102.
+Game state sent to everyone.
+Viewport sent: 982.239 427.602 to player: 102.
+Game state sent to everyone.
+Viewport sent: 982.311 427.893 to player: 102.
+Game state sent to everyone.
+Viewport sent: 982.383 428.184 to player: 102.
+Game state sent to everyone.
+Viewport sent: 982.455 428.476 to player: 102.
+Game state sent to everyone.
+Viewport sent: 982.527 428.767 to player: 102.
+Game state sent to everyone.
+Viewport sent: 982.599 429.058 to player: 102.
+Game state sent to everyone.
+Viewport sent: 982.67 429.349 to player: 102.
+Game state sent to everyone.
+Viewport sent: 982.742 429.641 to player: 102.
+Game state sent to everyone.
+Viewport sent: 982.814 429.932 to player: 102.
+Game state sent to everyone.
+Viewport sent: 982.958 430.515 to player: 102.
+Game state sent to everyone.
+Viewport sent: 983.03 430.806 to player: 102.
+Game state sent to everyone.
+Viewport sent: 983.102 431.097 to player: 102.
+Game state sent to everyone.
+Viewport sent: 983.173 431.388 to player: 102.
+Game state sent to everyone.
+Viewport sent: 983.245 431.68 to player: 102.
+Game state sent to everyone.
+Viewport sent: 983.317 431.971 to player: 102.
+Game state sent to everyone.
+Viewport sent: 983.389 432.262 to player: 102.
+Game state sent to everyone.
+Viewport sent: 983.533 432.845 to player: 102.
+Game state sent to everyone.
+Viewport sent: 983.605 433.136 to player: 102.
+Game state sent to everyone.
+Viewport sent: 983.677 433.427 to player: 102.
+Game state sent to everyone.
+Viewport sent: 983.748 433.718 to player: 102.
+Game state sent to everyone.
+Viewport sent: 983.82 434.01 to player: 102.
+Game state sent to everyone.
+Viewport sent: 983.892 434.301 to player: 102.
+Game state sent to everyone.
+Viewport sent: 983.964 434.592 to player: 102.
+Game state sent to everyone.
+Viewport sent: 984.036 434.884 to player: 102.
+Mouse position received: 0.015873 0.107226
+Game state sent to everyone.
+Viewport sent: 984.108 435.175 to player: 102.
+Game state sent to everyone.
+Viewport sent: 984.223 435.763 to player: 102.
+Game state sent to everyone.
+Viewport sent: 984.267 436.06 to player: 102.
+Game state sent to everyone.
+Viewport sent: 984.311 436.356 to player: 102.
+Mouse position received: -0.0251323 0.0839161
+Game state sent to everyone.
+Viewport sent: 984.355 436.653 to player: 102.
+Game state sent to everyone.
+Viewport sent: 984.269 436.941 to player: 102.
+Game state sent to everyone.
+Viewport sent: 984.183 437.228 to player: 102.
+Game state sent to everyone.
+Viewport sent: 984.097 437.515 to player: 102.
+Mouse position received: -0.0939153 0.04662
+Game state sent to everyone.
+Viewport sent: 983.925 438.09 to player: 102.
+Game state sent to everyone.
+Viewport sent: 983.656 438.223 to player: 102.
+Mouse position received: -0.130952 0.030303
+Game state sent to everyone.
+Viewport sent: 983.388 438.357 to player: 102.
+Game state sent to everyone.
+Viewport sent: 983.095 438.424 to player: 102.
+Mouse position received: -0.169312 0.011655
+Game state sent to everyone.
+Viewport sent: 982.803 438.492 to player: 102.
+Game state sent to everyone.
+Viewport sent: 982.504 438.513 to player: 102.
+Mouse position received: -0.205026 -0.002331
+Game state sent to everyone.
+Viewport sent: 982.204 438.533 to player: 102.
+Game state sent to everyone.
+Viewport sent: 981.904 438.53 to player: 102.
+Mouse position received: -0.239418 -0.016317
+Game state sent to everyone.
+Viewport sent: 981.604 438.527 to player: 102.
+Game state sent to everyone.
+Viewport sent: 981.304 438.523 to player: 102.
+Mouse position received: -0.255291 -0.020979
+Game state sent to everyone.
+Viewport sent: 980.706 438.482 to player: 102.
+Game state sent to everyone.
+Viewport sent: 980.407 438.458 to player: 102.
+Mouse position received: -0.283069 -0.030303
+Game state sent to everyone.
+Viewport sent: 980.108 438.433 to player: 102.
+Game state sent to everyone.
+Viewport sent: 979.809 438.409 to player: 102.
+Game state sent to everyone.
+Viewport sent: 979.511 438.377 to player: 102.
+Mouse position received: -0.293651 -0.032634
+Game state sent to everyone.
+Viewport sent: 979.212 438.345 to player: 102.
+Game state sent to everyone.
+Viewport sent: 978.914 438.312 to player: 102.
+Mouse position received: -0.313492 -0.037296
+Game state sent to everyone.
+Viewport sent: 978.616 438.278 to player: 102.
+Game state sent to everyone.
+Viewport sent: 978.318 438.243 to player: 102.
+Mouse position received: -0.329365 -0.039627
+Game state sent to everyone.
+Viewport sent: 978.02 438.208 to player: 102.
+Game state sent to everyone.
+Viewport sent: 977.722 438.172 to player: 102.
+Mouse position received: -0.333333 -0.039627
+Game state sent to everyone.
+Viewport sent: 977.424 438.136 to player: 102.
+Game state sent to everyone.
+Viewport sent: 976.829 438.065 to player: 102.
+Mouse position received: -0.342593 -0.041958
+Game state sent to everyone.
+Viewport sent: 976.531 438.029 to player: 102.
+Game state sent to everyone.
+Viewport sent: 976.233 437.993 to player: 102.
+Mouse position received: -0.349206 -0.041958
+Game state sent to everyone.
+Viewport sent: 975.935 437.956 to player: 102.
+Game state sent to everyone.
+Viewport sent: 975.637 437.921 to player: 102.
+Mouse position received: -0.354497 -0.041958
+Game state sent to everyone.
+Viewport sent: 975.339 437.885 to player: 102.
+Game state sent to everyone.
+Viewport sent: 975.042 437.849 to player: 102.
+Mouse position received: -0.357143 -0.041958
+Game state sent to everyone.
+Viewport sent: 974.744 437.814 to player: 102.
+Game state sent to everyone.
+Viewport sent: 974.446 437.778 to player: 102.
+Mouse position received: -0.358466 -0.041958
+Game state sent to everyone.
+Viewport sent: 974.148 437.743 to player: 102.
+Game state sent to everyone.
+Viewport sent: 973.552 437.674 to player: 102.
+Mouse position received: -0.359788 -0.044289
+Game state sent to everyone.
+Viewport sent: 973.254 437.639 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.956 437.602 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.658 437.565 to player: 102.
+Game state sent to everyone.
+Viewport sent: 972.361 437.529 to player: 102.
+Mouse position received: -0.361111 -0.044289
+Game state sent to everyone.
+Viewport sent: 972.063 437.492 to player: 102.
+Game state sent to everyone.
+Viewport sent: 971.765 437.455 to player: 102.
+Game state sent to everyone.
+Viewport sent: 971.467 437.419 to player: 102.
+Game state sent to everyone.
+Viewport sent: 971.17 437.382 to player: 102.
+Game state sent to everyone.
+Viewport sent: 970.574 437.309 to player: 102.
+Game state sent to everyone.
+Viewport sent: 970.276 437.273 to player: 102.
+Game state sent to everyone.
+Viewport sent: 969.979 437.236 to player: 102.
+Game state sent to everyone.
+Viewport sent: 969.681 437.2 to player: 102.
+Game state sent to everyone.
+Viewport sent: 969.383 437.163 to player: 102.
+Game state sent to everyone.
+Viewport sent: 969.085 437.127 to player: 102.
+Game state sent to everyone.
+Viewport sent: 968.788 437.09 to player: 102.
+Game state sent to everyone.
+Viewport sent: 968.49 437.054 to player: 102.
+Game state sent to everyone.
+Viewport sent: 968.192 437.017 to player: 102.
+Game state sent to everyone.
+Viewport sent: 967.596 436.944 to player: 102.
+Game state sent to everyone.
+Viewport sent: 967.299 436.908 to player: 102.
+Game state sent to everyone.
+Viewport sent: 967.001 436.871 to player: 102.
+Game state sent to everyone.
+Viewport sent: 966.703 436.835 to player: 102.
+Game state sent to everyone.
+Viewport sent: 966.405 436.798 to player: 102.
+Game state sent to everyone.
+Viewport sent: 966.108 436.761 to player: 102.
+Game state sent to everyone.
+Viewport sent: 965.81 436.725 to player: 102.
+Game state sent to everyone.
+Viewport sent: 965.512 436.688 to player: 102.
+Game state sent to everyone.
+Viewport sent: 964.917 436.615 to player: 102.
+Game state sent to everyone.
+Viewport sent: 964.619 436.579 to player: 102.
+Game state sent to everyone.
+Viewport sent: 964.321 436.542 to player: 102.
+Game state sent to everyone.
+Viewport sent: 964.023 436.506 to player: 102.
+Game state sent to everyone.
+Viewport sent: 963.725 436.469 to player: 102.
+Game state sent to everyone.
+Viewport sent: 963.428 436.433 to player: 102.
+Game state sent to everyone.
+Viewport sent: 962.832 436.36 to player: 102.
+Game state sent to everyone.
+Viewport sent: 962.534 436.323 to player: 102.
+Game state sent to everyone.
+Viewport sent: 962.237 436.287 to player: 102.
+Game state sent to everyone.
+Viewport sent: 961.939 436.25 to player: 102.
+Game state sent to everyone.
+Viewport sent: 961.641 436.214 to player: 102.
+Game state sent to everyone.
+Viewport sent: 961.343 436.177 to player: 102.
+Game state sent to everyone.
+Viewport sent: 961.046 436.141 to player: 102.
+Game state sent to everyone.
+Viewport sent: 960.748 436.104 to player: 102.
+Game state sent to everyone.
+Viewport sent: 960.152 436.031 to player: 102.
+Game state sent to everyone.
+Viewport sent: 959.854 435.995 to player: 102.
+Game state sent to everyone.
+Viewport sent: 959.557 435.958 to player: 102.
+Game state sent to everyone.
+Viewport sent: 959.259 435.922 to player: 102.
+Game state sent to everyone.
+Viewport sent: 958.961 435.885 to player: 102.
+Game state sent to everyone.
+Viewport sent: 958.663 435.848 to player: 102.
+Game state sent to everyone.
+Viewport sent: 958.366 435.812 to player: 102.
+Game state sent to everyone.
+Viewport sent: 958.068 435.775 to player: 102.
+Game state sent to everyone.
+Viewport sent: 957.77 435.739 to player: 102.
+Game state sent to everyone.
+Viewport sent: 957.472 435.702 to player: 102.
+Game state sent to everyone.
+Viewport sent: 957.175 435.666 to player: 102.
+Game state sent to everyone.
+Viewport sent: 956.579 435.593 to player: 102.
+Game state sent to everyone.
+Viewport sent: 956.281 435.556 to player: 102.
+Game state sent to everyone.
+Viewport sent: 955.983 435.52 to player: 102.
+Game state sent to everyone.
+Viewport sent: 955.686 435.483 to player: 102.
+Game state sent to everyone.
+Viewport sent: 955.388 435.447 to player: 102.
+Game state sent to everyone.
+Viewport sent: 955.09 435.41 to player: 102.
+Game state sent to everyone.
+Viewport sent: 954.792 435.374 to player: 102.
+Game state sent to everyone.
+Viewport sent: 954.495 435.337 to player: 102.
+Game state sent to everyone.
+Viewport sent: 954.197 435.301 to player: 102.
+Game state sent to everyone.
+Viewport sent: 953.601 435.228 to player: 102.
+Game state sent to everyone.
+Viewport sent: 953.304 435.191 to player: 102.
+Game state sent to everyone.
+Viewport sent: 953.006 435.155 to player: 102.
+Game state sent to everyone.
+Viewport sent: 952.708 435.118 to player: 102.
+Game state sent to everyone.
+Viewport sent: 952.41 435.082 to player: 102.
+Game state sent to everyone.
+Viewport sent: 952.112 435.045 to player: 102.
+Game state sent to everyone.
+Viewport sent: 951.815 435.009 to player: 102.
+Game state sent to everyone.
+Viewport sent: 951.517 434.972 to player: 102.
+Game state sent to everyone.
+Viewport sent: 951.219 434.935 to player: 102.
+Game state sent to everyone.
+Viewport sent: 950.921 434.899 to player: 102.
+Game state sent to everyone.
+Viewport sent: 950.624 434.862 to player: 102.
+Game state sent to everyone.
+Viewport sent: 950.326 434.826 to player: 102.
+Game state sent to everyone.
+Viewport sent: 950.028 434.789 to player: 102.
+Game state sent to everyone.
+Viewport sent: 949.73 434.753 to player: 102.
+Game state sent to everyone.
+Viewport sent: 949.433 434.716 to player: 102.
+Game state sent to everyone.
+Viewport sent: 949.135 434.68 to player: 102.
+Game state sent to everyone.
+Viewport sent: 948.539 434.607 to player: 102.
+Game state sent to everyone.
+Viewport sent: 948.241 434.57 to player: 102.
+Game state sent to everyone.
+Viewport sent: 947.944 434.534 to player: 102.
+Game state sent to everyone.
+Viewport sent: 947.646 434.497 to player: 102.
+Game state sent to everyone.
+Viewport sent: 947.348 434.461 to player: 102.
+Mouse position received: -0.362434 -0.041958
+Game state sent to everyone.
+Viewport sent: 947.05 434.424 to player: 102.
+Game state sent to everyone.
+Viewport sent: 946.752 434.39 to player: 102.
+Mouse position received: -0.363757 -0.039627
+Game state sent to everyone.
+Viewport sent: 946.454 434.355 to player: 102.
+Game state sent to everyone.
+Viewport sent: 946.156 434.321 to player: 102.
+Mouse position received: -0.365079 -0.037296
+Game state sent to everyone.
+Viewport sent: 945.858 434.288 to player: 102.
+Game state sent to everyone.
+Viewport sent: 945.56 434.256 to player: 102.
+Mouse position received: -0.367725 -0.032634
+Game state sent to everyone.
+Viewport sent: 945.261 434.225 to player: 102.
+Game state sent to everyone.
+Viewport sent: 944.664 434.168 to player: 102.
+Mouse position received: -0.371693 -0.027972
+Game state sent to everyone.
+Viewport sent: 944.365 434.142 to player: 102.
+Game state sent to everyone.
+Viewport sent: 944.067 434.115 to player: 102.
+Game state sent to everyone.
+Viewport sent: 943.767 434.093 to player: 102.
+Mouse position received: -0.374339 -0.020979
+Game state sent to everyone.
+Viewport sent: 943.468 434.07 to player: 102.
+Game state sent to everyone.
+Viewport sent: 943.169 434.053 to player: 102.
+Mouse position received: -0.378307 -0.013986
+Game state sent to everyone.
+Viewport sent: 942.869 434.037 to player: 102.
+Game state sent to everyone.
+Viewport sent: 942.569 434.025 to player: 102.
+Mouse position received: -0.382275 -0.00699301
+Game state sent to everyone.
+Viewport sent: 942.27 434.014 to player: 102.
+Game state sent to everyone.
+Viewport sent: 941.97 434.009 to player: 102.
+Mouse position received: -0.386243 0.002331
+Game state sent to everyone.
+Viewport sent: 941.67 434.003 to player: 102.
+Game state sent to everyone.
+Viewport sent: 941.37 433.998 to player: 102.
+Mouse position received: -0.39418 0.02331
+Game state sent to everyone.
+Viewport sent: 941.07 434 to player: 102.
+Game state sent to everyone.
+Viewport sent: 940.47 434.019 to player: 102.
+Mouse position received: -0.396825 0.032634
+Game state sent to everyone.
+Viewport sent: 940.171 434.037 to player: 102.
+Game state sent to everyone.
+Viewport sent: 939.872 434.062 to player: 102.
+Game state sent to everyone.
+Viewport sent: 939.573 434.086 to player: 102.
+Game state sent to everyone.
+Viewport sent: 939.274 434.111 to player: 102.
+Mouse position received: -0.400794 0.048951
+Game state sent to everyone.
+Viewport sent: 938.975 434.135 to player: 102.
+Game state sent to everyone.
+Viewport sent: 938.676 434.16 to player: 102.
+Game state sent to everyone.
+Viewport sent: 938.378 434.196 to player: 102.
+Mouse position received: -0.402116 0.0582751
+Game state sent to everyone.
+Viewport sent: 938.08 434.233 to player: 102.
+Game state sent to everyone.
+Viewport sent: 937.783 434.276 to player: 102.
+Game state sent to everyone.
+Viewport sent: 937.486 434.319 to player: 102.
+Game state sent to everyone.
+Viewport sent: 937.19 434.362 to player: 102.
+Mouse position received: -0.403439 0.0699301
+Game state sent to everyone.
+Viewport sent: 936.893 434.405 to player: 102.
+Game state sent to everyone.
+Viewport sent: 936.597 434.456 to player: 102.
+Mouse position received: -0.403439 0.0745921
+Game state sent to everyone.
+Viewport sent: 936.301 434.507 to player: 102.
+Game state sent to everyone.
+Viewport sent: 936.006 434.558 to player: 102.
+Mouse position received: -0.403439 0.0792541
+Game state sent to everyone.
+Viewport sent: 935.711 434.613 to player: 102.
+Game state sent to everyone.
+Viewport sent: 935.416 434.668 to player: 102.
+Mouse position received: -0.402116 0.0792541
+Game state sent to everyone.
+Viewport sent: 934.827 434.783 to player: 102.
+Game state sent to everyone.
+Viewport sent: 934.533 434.841 to player: 102.
+Mouse position received: -0.399471 0.0815851
+Game state sent to everyone.
+Viewport sent: 934.238 434.899 to player: 102.
+Game state sent to everyone.
+Viewport sent: 933.945 434.959 to player: 102.
+Game state sent to everyone.
+Viewport sent: 933.651 435.019 to player: 102.
+Game state sent to everyone.
+Viewport sent: 933.357 435.079 to player: 102.
+Game state sent to everyone.
+Viewport sent: 933.063 435.139 to player: 102.
+Game state sent to everyone.
+Viewport sent: 932.769 435.199 to player: 102.
+Game state sent to everyone.
+Viewport sent: 932.181 435.319 to player: 102.
+Game state sent to everyone.
+Viewport sent: 931.887 435.379 to player: 102.
+Game state sent to everyone.
+Viewport sent: 931.593 435.44 to player: 102.
+Game state sent to everyone.
+Viewport sent: 931.299 435.5 to player: 102.
+Game state sent to everyone.
+Viewport sent: 931.005 435.56 to player: 102.
+Game state sent to everyone.
+Viewport sent: 930.711 435.62 to player: 102.
+Game state sent to everyone.
+Viewport sent: 930.417 435.68 to player: 102.
+Game state sent to everyone.
+Viewport sent: 930.123 435.74 to player: 102.
+Game state sent to everyone.
+Viewport sent: 929.829 435.8 to player: 102.
+Game state sent to everyone.
+Viewport sent: 929.536 435.86 to player: 102.
+Game state sent to everyone.
+Viewport sent: 929.242 435.92 to player: 102.
+Game state sent to everyone.
+Viewport sent: 928.654 436.04 to player: 102.
+Game state sent to everyone.
+Viewport sent: 928.36 436.1 to player: 102.
+Game state sent to everyone.
+Viewport sent: 928.066 436.16 to player: 102.
+Game state sent to everyone.
+Viewport sent: 927.772 436.22 to player: 102.
+Game state sent to everyone.
+Viewport sent: 927.478 436.28 to player: 102.
+Game state sent to everyone.
+Viewport sent: 927.184 436.34 to player: 102.
+Game state sent to everyone.
+Viewport sent: 926.89 436.4 to player: 102.
+Game state sent to everyone.
+Viewport sent: 926.596 436.46 to player: 102.
+Game state sent to everyone.
+Viewport sent: 926.302 436.52 to player: 102.
+Game state sent to everyone.
+Viewport sent: 925.714 436.64 to player: 102.
+Game state sent to everyone.
+Viewport sent: 925.42 436.7 to player: 102.
+Game state sent to everyone.
+Viewport sent: 925.127 436.76 to player: 102.
+Game state sent to everyone.
+Viewport sent: 924.833 436.82 to player: 102.
+Game state sent to everyone.
+Viewport sent: 924.539 436.88 to player: 102.
+Game state sent to everyone.
+Viewport sent: 924.245 436.94 to player: 102.
+Game state sent to everyone.
+Viewport sent: 923.951 437 to player: 102.
+Game state sent to everyone.
+Viewport sent: 923.657 437.06 to player: 102.
+Game state sent to everyone.
+Viewport sent: 923.363 437.12 to player: 102.
+Game state sent to everyone.
+Viewport sent: 922.775 437.24 to player: 102.
+Game state sent to everyone.
+Viewport sent: 922.481 437.3 to player: 102.
+Game state sent to everyone.
+Viewport sent: 922.187 437.361 to player: 102.
+Game state sent to everyone.
+Viewport sent: 921.893 437.421 to player: 102.
+Game state sent to everyone.
+Viewport sent: 921.599 437.481 to player: 102.
+Game state sent to everyone.
+Viewport sent: 921.305 437.541 to player: 102.
+Game state sent to everyone.
+Viewport sent: 921.011 437.601 to player: 102.
+Game state sent to everyone.
+Viewport sent: 920.718 437.661 to player: 102.
+Game state sent to everyone.
+Viewport sent: 920.424 437.721 to player: 102.
+Game state sent to everyone.
+Viewport sent: 920.13 437.781 to player: 102.
+Game state sent to everyone.
+Viewport sent: 919.542 437.901 to player: 102.
+Game state sent to everyone.
+Viewport sent: 919.248 437.961 to player: 102.
+Game state sent to everyone.
+Viewport sent: 918.954 438.021 to player: 102.
+Game state sent to everyone.
+Viewport sent: 918.66 438.081 to player: 102.
+Game state sent to everyone.
+Viewport sent: 918.366 438.141 to player: 102.
+Game state sent to everyone.
+Viewport sent: 918.072 438.201 to player: 102.
+Game state sent to everyone.
+Viewport sent: 917.778 438.261 to player: 102.
+Game state sent to everyone.
+Viewport sent: 917.484 438.321 to player: 102.
+Game state sent to everyone.
+Viewport sent: 917.19 438.381 to player: 102.
+Game state sent to everyone.
+Viewport sent: 916.896 438.441 to player: 102.
+Game state sent to everyone.
+Viewport sent: 916.602 438.501 to player: 102.
+Game state sent to everyone.
+Viewport sent: 916.015 438.621 to player: 102.
+Game state sent to everyone.
+Viewport sent: 915.721 438.681 to player: 102.
+Game state sent to everyone.
+Viewport sent: 915.427 438.741 to player: 102.
+Game state sent to everyone.
+Viewport sent: 915.133 438.801 to player: 102.
+Game state sent to everyone.
+Viewport sent: 914.839 438.861 to player: 102.
+Game state sent to everyone.
+Viewport sent: 914.545 438.921 to player: 102.
+Game state sent to everyone.
+Viewport sent: 914.251 438.981 to player: 102.
+Game state sent to everyone.
+Viewport sent: 913.957 439.041 to player: 102.
+Game state sent to everyone.
+Viewport sent: 913.663 439.101 to player: 102.
+Game state sent to everyone.
+Viewport sent: 913.075 439.221 to player: 102.
+Game state sent to everyone.
+Viewport sent: 912.781 439.281 to player: 102.
+Game state sent to everyone.
+Viewport sent: 912.487 439.342 to player: 102.
+Game state sent to everyone.
+Viewport sent: 912.194 439.402 to player: 102.
+Game state sent to everyone.
+Viewport sent: 911.9 439.462 to player: 102.
+Game state sent to everyone.
+Viewport sent: 911.606 439.522 to player: 102.
+Game state sent to everyone.
+Viewport sent: 911.312 439.582 to player: 102.
+Game state sent to everyone.
+Viewport sent: 910.724 439.702 to player: 102.
+Game state sent to everyone.
+Viewport sent: 910.43 439.762 to player: 102.
+Game state sent to everyone.
+Viewport sent: 910.136 439.822 to player: 102.
+Game state sent to everyone.
+Viewport sent: 909.842 439.882 to player: 102.
+Game state sent to everyone.
+Viewport sent: 909.548 439.942 to player: 102.
+Game state sent to everyone.
+Viewport sent: 909.254 440.002 to player: 102.
+Game state sent to everyone.
+Viewport sent: 908.96 440.062 to player: 102.
+Game state sent to everyone.
+Viewport sent: 908.666 440.122 to player: 102.
+Game state sent to everyone.
+Viewport sent: 908.372 440.182 to player: 102.
+Game state sent to everyone.
+Viewport sent: 908.078 440.242 to player: 102.
+Game state sent to everyone.
+Viewport sent: 907.491 440.362 to player: 102.
+Game state sent to everyone.
+Viewport sent: 907.197 440.422 to player: 102.
+Game state sent to everyone.
+Viewport sent: 906.903 440.482 to player: 102.
+Game state sent to everyone.
+Viewport sent: 906.609 440.542 to player: 102.
+Game state sent to everyone.
+Viewport sent: 906.315 440.602 to player: 102.
+Game state sent to everyone.
+Viewport sent: 906.021 440.662 to player: 102.
+Game state sent to everyone.
+Viewport sent: 905.727 440.722 to player: 102.
+Game state sent to everyone.
+Viewport sent: 905.433 440.782 to player: 102.
+Game state sent to everyone.
+Viewport sent: 905.139 440.842 to player: 102.
+Game state sent to everyone.
+Viewport sent: 904.551 440.962 to player: 102.
+Game state sent to everyone.
+Viewport sent: 904.257 441.022 to player: 102.
+Game state sent to everyone.
+Viewport sent: 903.963 441.082 to player: 102.
+Game state sent to everyone.
+Viewport sent: 903.669 441.142 to player: 102.
+Game state sent to everyone.
+Viewport sent: 903.376 441.202 to player: 102.
+Game state sent to everyone.
+Viewport sent: 903.082 441.263 to player: 102.
+Game state sent to everyone.
+Viewport sent: 902.788 441.323 to player: 102.
+Game state sent to everyone.
+Viewport sent: 902.2 441.443 to player: 102.
+Game state sent to everyone.
+Viewport sent: 901.906 441.503 to player: 102.
+Game state sent to everyone.
+Viewport sent: 901.612 441.563 to player: 102.
+Game state sent to everyone.
+Viewport sent: 901.318 441.623 to player: 102.
+Game state sent to everyone.
+Viewport sent: 901.024 441.683 to player: 102.
+Game state sent to everyone.
+Viewport sent: 900.73 441.743 to player: 102.
+Game state sent to everyone.
+Viewport sent: 900.436 441.803 to player: 102.
+Game state sent to everyone.
+Viewport sent: 900.142 441.863 to player: 102.
+Game state sent to everyone.
+Viewport sent: 899.848 441.923 to player: 102.
+Game state sent to everyone.
+Viewport sent: 899.26 442.043 to player: 102.
+Game state sent to everyone.
+Viewport sent: 898.967 442.103 to player: 102.
+Game state sent to everyone.
+Viewport sent: 898.673 442.163 to player: 102.
+Game state sent to everyone.
+Viewport sent: 898.379 442.223 to player: 102.
+Game state sent to everyone.
+Viewport sent: 898.085 442.283 to player: 102.
+Game state sent to everyone.
+Viewport sent: 897.791 442.343 to player: 102.
+Game state sent to everyone.
+Viewport sent: 897.497 442.403 to player: 102.
+Mouse position received: -0.399471 0.0792541
+Game state sent to everyone.
+Viewport sent: 896.909 442.523 to player: 102.
+Game state sent to everyone.
+Viewport sent: 896.615 442.582 to player: 102.
+Mouse position received: -0.400794 0.0769231
+Game state sent to everyone.
+Viewport sent: 896.32 442.64 to player: 102.
+Game state sent to everyone.
+Viewport sent: 896.026 442.696 to player: 102.
+Game state sent to everyone.
+Viewport sent: 895.731 442.753 to player: 102.
+Game state sent to everyone.
+Viewport sent: 895.437 442.81 to player: 102.
+Mouse position received: -0.403439 0.0722611
+Game state sent to everyone.
+Viewport sent: 895.142 442.866 to player: 102.
+Game state sent to everyone.
+Viewport sent: 894.552 442.976 to player: 102.
+Mouse position received: -0.403439 0.0699301
+Game state sent to everyone.
+Viewport sent: 894.257 443.028 to player: 102.
+Game state sent to everyone.
+Viewport sent: 893.961 443.08 to player: 102.
+Mouse position received: -0.404762 0.0699301
+Game state sent to everyone.
+Viewport sent: 893.666 443.131 to player: 102.
+Game state sent to everyone.
+Viewport sent: 893.37 443.182 to player: 102.
+Mouse position received: -0.406085 0.0675991
+Game state sent to everyone.
+Viewport sent: 892.779 443.284 to player: 102.
+Game state sent to everyone.
+Viewport sent: 892.483 443.334 to player: 102.
+Game state sent to everyone.
+Viewport sent: 892.187 443.383 to player: 102.
+Game state sent to everyone.
+Viewport sent: 891.891 443.432 to player: 102.
+Mouse position received: -0.406085 0.0652681
+Game state sent to everyone.
+Viewport sent: 891.595 443.481 to player: 102.
+Game state sent to everyone.
+Viewport sent: 891.299 443.529 to player: 102.
+Game state sent to everyone.
+Viewport sent: 891.003 443.577 to player: 102.
+Game state sent to everyone.
+Viewport sent: 890.706 443.624 to player: 102.
+Mouse position received: -0.407407 0.0652681
+Game state sent to everyone.
+Viewport sent: 890.41 443.672 to player: 102.
+Game state sent to everyone.
+Viewport sent: 890.114 443.719 to player: 102.
+Game state sent to everyone.
+Viewport sent: 889.818 443.767 to player: 102.
+Game state sent to everyone.
+Viewport sent: 889.522 443.814 to player: 102.
+Mouse position received: -0.407407 0.0629371
+Game state sent to everyone.
+Viewport sent: 889.225 443.862 to player: 102.
+Game state sent to everyone.
+Viewport sent: 888.929 443.909 to player: 102.
+Game state sent to everyone.
+Viewport sent: 888.633 443.955 to player: 102.
+Game state sent to everyone.
+Viewport sent: 888.04 444.047 to player: 102.
+Game state sent to everyone.
+Viewport sent: 887.743 444.092 to player: 102.
+Game state sent to everyone.
+Viewport sent: 887.447 444.138 to player: 102.
+Game state sent to everyone.
+Viewport sent: 887.15 444.184 to player: 102.
+Game state sent to everyone.
+Viewport sent: 886.854 444.23 to player: 102.
+Game state sent to everyone.
+Viewport sent: 886.557 444.276 to player: 102.
+Mouse position received: -0.40873 0.0629371
+Game state sent to everyone.
+Viewport sent: 886.261 444.321 to player: 102.
+Game state sent to everyone.
+Viewport sent: 885.964 444.367 to player: 102.
+Mouse position received: -0.40873 0.0606061
+Game state sent to everyone.
+Viewport sent: 885.668 444.413 to player: 102.
+Game state sent to everyone.
+Viewport sent: 885.371 444.458 to player: 102.
+Game state sent to everyone.
+Viewport sent: 884.778 444.546 to player: 102.
+Game state sent to everyone.
+Viewport sent: 884.481 444.59 to player: 102.
+Game state sent to everyone.
+Viewport sent: 884.184 444.634 to player: 102.
+Game state sent to everyone.
+Viewport sent: 883.888 444.678 to player: 102.
+Game state sent to everyone.
+Viewport sent: 883.591 444.722 to player: 102.
+Game state sent to everyone.
+Viewport sent: 883.294 444.766 to player: 102.
+Game state sent to everyone.
+Viewport sent: 882.997 444.81 to player: 102.
+Game state sent to everyone.
+Viewport sent: 882.404 444.898 to player: 102.
+Game state sent to everyone.
+Viewport sent: 882.107 444.942 to player: 102.
+Game state sent to everyone.
+Viewport sent: 881.81 444.986 to player: 102.
+Game state sent to everyone.
+Viewport sent: 881.513 445.03 to player: 102.
+Game state sent to everyone.
+Viewport sent: 881.217 445.074 to player: 102.
+Game state sent to everyone.
+Viewport sent: 880.92 445.118 to player: 102.
+Game state sent to everyone.
+Viewport sent: 880.623 445.162 to player: 102.
+Game state sent to everyone.
+Viewport sent: 880.326 445.206 to player: 102.
+Game state sent to everyone.
+Viewport sent: 880.03 445.25 to player: 102.
+Game state sent to everyone.
+Viewport sent: 879.733 445.294 to player: 102.
+Game state sent to everyone.
+Viewport sent: 879.139 445.382 to player: 102.
+Game state sent to everyone.
+Viewport sent: 879.139 445.382 to player: 102.
+Mouse position received: -0.410053 0.0606061
+Game state sent to everyone.
+Viewport sent: 878.843 445.426 to player: 102.
+Game state sent to everyone.
+Viewport sent: 878.249 445.514 to player: 102.
+Game state sent to everyone.
+Viewport sent: 877.952 445.558 to player: 102.
+Game state sent to everyone.
+Viewport sent: 877.656 445.602 to player: 102.
+Mouse position received: -0.411376 0.0606061
+Game state sent to everyone.
+Viewport sent: 877.359 445.646 to player: 102.
+Game state sent to everyone.
+Viewport sent: 877.062 445.69 to player: 102.
+Game state sent to everyone.
+Viewport sent: 876.765 445.733 to player: 102.
+Game state sent to everyone.
+Viewport sent: 876.468 445.777 to player: 102.
+Game state sent to everyone.
+Viewport sent: 876.172 445.821 to player: 102.
+Game state sent to everyone.
+Viewport sent: 875.875 445.865 to player: 102.
+Mouse position received: -0.412698 0.0606061
+Game state sent to everyone.
+Viewport sent: 875.578 445.908 to player: 102.
+Game state sent to everyone.
+Viewport sent: 874.984 445.996 to player: 102.
+Game state sent to everyone.
+Viewport sent: 874.688 446.039 to player: 102.
+Game state sent to everyone.
+Viewport sent: 874.391 446.083 to player: 102.
+Mouse position received: -0.414021 0.0606061
+Game state sent to everyone.
+Viewport sent: 874.094 446.126 to player: 102.
+Game state sent to everyone.
+Viewport sent: 873.797 446.17 to player: 102.
+Game state sent to everyone.
+Viewport sent: 873.5 446.213 to player: 102.
+Game state sent to everyone.
+Viewport sent: 873.203 446.257 to player: 102.
+Game state sent to everyone.
+Viewport sent: 872.907 446.3 to player: 102.
+Game state sent to everyone.
+Viewport sent: 872.61 446.344 to player: 102.
+Game state sent to everyone.
+Viewport sent: 872.313 446.387 to player: 102.
+Mouse position received: -0.415344 0.0606061
+Game state sent to everyone.
+Viewport sent: 872.016 446.431 to player: 102.
+Game state sent to everyone.
+Viewport sent: 871.719 446.474 to player: 102.
+Game state sent to everyone.
+Viewport sent: 871.126 446.561 to player: 102.
+Game state sent to everyone.
+Viewport sent: 870.829 446.604 to player: 102.
+Game state sent to everyone.
+Viewport sent: 870.532 446.647 to player: 102.
+Game state sent to everyone.
+Viewport sent: 870.235 446.691 to player: 102.
+Game state sent to everyone.
+Viewport sent: 869.938 446.734 to player: 102.
+Game state sent to everyone.
+Viewport sent: 869.641 446.777 to player: 102.
+Game state sent to everyone.
+Viewport sent: 869.344 446.82 to player: 102.
+Game state sent to everyone.
+Viewport sent: 869.048 446.864 to player: 102.
+Game state sent to everyone.
+Viewport sent: 868.751 446.907 to player: 102.
+Game state sent to everyone.
+Viewport sent: 868.454 446.95 to player: 102.
+Game state sent to everyone.
+Viewport sent: 867.86 447.037 to player: 102.
+Game state sent to everyone.
+Viewport sent: 867.563 447.08 to player: 102.
+Game state sent to everyone.
+Viewport sent: 867.266 447.124 to player: 102.
+Game state sent to everyone.
+Viewport sent: 866.97 447.167 to player: 102.
+Game state sent to everyone.
+Viewport sent: 866.673 447.21 to player: 102.
+Game state sent to everyone.
+Viewport sent: 866.376 447.254 to player: 102.
+Game state sent to everyone.
+Viewport sent: 866.079 447.297 to player: 102.
+Game state sent to everyone.
+Viewport sent: 865.782 447.34 to player: 102.
+Game state sent to everyone.
+Viewport sent: 865.485 447.384 to player: 102.
+Game state sent to everyone.
+Viewport sent: 865.188 447.427 to player: 102.
+Game state sent to everyone.
+Viewport sent: 864.892 447.47 to player: 102.
+Game state sent to everyone.
+Viewport sent: 864.298 447.557 to player: 102.
+Game state sent to everyone.
+Viewport sent: 864.001 447.6 to player: 102.
+Game state sent to everyone.
+Viewport sent: 863.704 447.643 to player: 102.
+Game state sent to everyone.
+Viewport sent: 863.407 447.687 to player: 102.
+Game state sent to everyone.
+Viewport sent: 863.11 447.73 to player: 102.
+Game state sent to everyone.
+Viewport sent: 862.814 447.773 to player: 102.
+Game state sent to everyone.
+Viewport sent: 862.517 447.817 to player: 102.
+Game state sent to everyone.
+Viewport sent: 862.22 447.86 to player: 102.
+Game state sent to everyone.
+Viewport sent: 861.923 447.903 to player: 102.
+Game state sent to everyone.
+Viewport sent: 861.626 447.947 to player: 102.
+Game state sent to everyone.
+Viewport sent: 861.329 447.99 to player: 102.
+Game state sent to everyone.
+Viewport sent: 860.736 448.077 to player: 102.
+Game state sent to everyone.
+Viewport sent: 860.439 448.12 to player: 102.
+Game state sent to everyone.
+Viewport sent: 860.142 448.163 to player: 102.
+Game state sent to everyone.
+Viewport sent: 859.845 448.207 to player: 102.
+Mouse position received: -0.415344 0.0582751
+Game state sent to everyone.
+Viewport sent: 859.548 448.25 to player: 102.
+Game state sent to everyone.
+Viewport sent: 859.251 448.292 to player: 102.
+Game state sent to everyone.
+Viewport sent: 858.954 448.333 to player: 102.
+Game state sent to everyone.
+Viewport sent: 858.36 448.417 to player: 102.
+Game state sent to everyone.
+Viewport sent: 858.063 448.458 to player: 102.
+Game state sent to everyone.
+Viewport sent: 857.766 448.5 to player: 102.
+Mouse position received: -0.415344 0.0559441
+Game state sent to everyone.
+Viewport sent: 857.469 448.542 to player: 102.
+Game state sent to everyone.
+Viewport sent: 857.171 448.582 to player: 102.
+Game state sent to everyone.
+Viewport sent: 856.577 448.662 to player: 102.
+Game state sent to everyone.
+Viewport sent: 856.577 448.662 to player: 102.
+Game state sent to everyone.
+Viewport sent: 855.982 448.742 to player: 102.
+Game state sent to everyone.
+Viewport sent: 855.685 448.782 to player: 102.
+Game state sent to everyone.
+Viewport sent: 855.387 448.822 to player: 102.
+Mouse position received: -0.415344 0.0536131
+Game state sent to everyone.
+Viewport sent: 854.792 448.9 to player: 102.
+Game state sent to everyone.
+Viewport sent: 854.495 448.939 to player: 102.
+Game state sent to everyone.
+Viewport sent: 854.197 448.977 to player: 102.
+Game state sent to everyone.
+Viewport sent: 853.9 449.016 to player: 102.
+Game state sent to everyone.
+Viewport sent: 853.305 449.093 to player: 102.
+Game state sent to everyone.
+Viewport sent: 853.007 449.131 to player: 102.
+Game state sent to everyone.
+Viewport sent: 852.71 449.169 to player: 102.
+Game state sent to everyone.
+Viewport sent: 852.412 449.208 to player: 102.
+Game state sent to everyone.
+Viewport sent: 852.115 449.246 to player: 102.
+Game state sent to everyone.
+Viewport sent: 851.817 449.285 to player: 102.
+Game state sent to everyone.
+Viewport sent: 851.222 449.361 to player: 102.
+Game state sent to everyone.
+Viewport sent: 850.925 449.4 to player: 102.
+Game state sent to everyone.
+Viewport sent: 850.627 449.438 to player: 102.
+Game state sent to everyone.
+Viewport sent: 850.33 449.477 to player: 102.
+Game state sent to everyone.
+Viewport sent: 850.032 449.515 to player: 102.
+Game state sent to everyone.
+Viewport sent: 849.734 449.553 to player: 102.
+Game state sent to everyone.
+Viewport sent: 849.437 449.592 to player: 102.
+Game state sent to everyone.
+Viewport sent: 849.139 449.63 to player: 102.
+Mouse position received: -0.415344 0.0512821
+Game state sent to everyone.
+Viewport sent: 848.842 449.669 to player: 102.
+Game state sent to everyone.
+Viewport sent: 848.544 449.705 to player: 102.
+Game state sent to everyone.
+Viewport sent: 848.246 449.742 to player: 102.
+Game state sent to everyone.
+Viewport sent: 847.651 449.816 to player: 102.
+Game state sent to everyone.
+Viewport sent: 847.353 449.852 to player: 102.
+Game state sent to everyone.
+Viewport sent: 847.055 449.889 to player: 102.
+Mouse position received: -0.415344 0.048951
+Game state sent to everyone.
+Viewport sent: 846.758 449.926 to player: 102.
+Game state sent to everyone.
+Viewport sent: 846.46 449.961 to player: 102.
+Game state sent to everyone.
+Viewport sent: 846.162 449.996 to player: 102.
+Game state sent to everyone.
+Viewport sent: 845.864 450.031 to player: 102.
+Mouse position received: -0.415344 0.04662
+Game state sent to everyone.
+Viewport sent: 845.566 450.066 to player: 102.
+Game state sent to everyone.
+Viewport sent: 845.268 450.1 to player: 102.
+Game state sent to everyone.
+Viewport sent: 844.97 450.133 to player: 102.
+Game state sent to everyone.
+Viewport sent: 844.672 450.167 to player: 102.
+Game state sent to everyone.
+Viewport sent: 844.373 450.2 to player: 102.
+Mouse position received: -0.415344 0.044289
+Game state sent to everyone.
+Viewport sent: 844.075 450.234 to player: 102.
+Game state sent to everyone.
+Viewport sent: 843.777 450.265 to player: 102.
+Game state sent to everyone.
+Viewport sent: 843.479 450.297 to player: 102.
+Game state sent to everyone.
+Viewport sent: 843.18 450.329 to player: 102.
+Mouse position received: -0.415344 0.041958
+Game state sent to everyone.
+Viewport sent: 842.882 450.361 to player: 102.
+Game state sent to everyone.
+Viewport sent: 842.584 450.391 to player: 102.
+Mouse position received: -0.415344 0.039627
+Game state sent to everyone.
+Viewport sent: 842.285 450.421 to player: 102.
+Game state sent to everyone.
+Viewport sent: 841.986 450.45 to player: 102.
+Game state sent to everyone.
+Viewport sent: 841.688 450.478 to player: 102.
+Game state sent to everyone.
+Viewport sent: 841.389 450.507 to player: 102.
+Mouse position received: -0.415344 0.037296
+Game state sent to everyone.
+Viewport sent: 841.091 450.535 to player: 102.
+Game state sent to everyone.
+Viewport sent: 840.792 450.564 to player: 102.
+Game state sent to everyone.
+Viewport sent: 840.194 450.617 to player: 102.
+Game state sent to everyone.
+Viewport sent: 839.895 450.644 to player: 102.
+Game state sent to everyone.
+Viewport sent: 839.597 450.671 to player: 102.
+Mouse position received: -0.415344 0.034965
+Game state sent to everyone.
+Viewport sent: 839.298 450.698 to player: 102.
+Game state sent to everyone.
+Viewport sent: 838.999 450.723 to player: 102.
+Mouse position received: -0.415344 0.032634
+Game state sent to everyone.
+Viewport sent: 838.7 450.748 to player: 102.
+Game state sent to everyone.
+Viewport sent: 838.401 450.772 to player: 102.
+Game state sent to everyone.
+Viewport sent: 838.102 450.795 to player: 102.
+Game state sent to everyone.
+Viewport sent: 837.803 450.819 to player: 102.
+Game state sent to everyone.
+Viewport sent: 837.205 450.866 to player: 102.
+Game state sent to everyone.
+Viewport sent: 836.906 450.889 to player: 102.
+Mouse position received: -0.415344 0.030303
+Game state sent to everyone.
+Viewport sent: 836.606 450.913 to player: 102.
+Game state sent to everyone.
+Viewport sent: 836.307 450.935 to player: 102.
+Game state sent to everyone.
+Viewport sent: 836.008 450.956 to player: 102.
+Game state sent to everyone.
+Viewport sent: 835.709 450.978 to player: 102.
+Game state sent to everyone.
+Viewport sent: 835.41 451 to player: 102.
+Game state sent to everyone.
+Viewport sent: 835.11 451.022 to player: 102.
+Game state sent to everyone.
+Viewport sent: 834.811 451.044 to player: 102.
+Game state sent to everyone.
+Viewport sent: 834.512 451.065 to player: 102.
+Game state sent to everyone.
+Viewport sent: 834.213 451.087 to player: 102.
+Mouse position received: -0.415344 0.027972
+Game state sent to everyone.
+Viewport sent: 833.914 451.109 to player: 102.
+Game state sent to everyone.
+Viewport sent: 833.614 451.129 to player: 102.
+Game state sent to everyone.
+Viewport sent: 833.315 451.149 to player: 102.
+Game state sent to everyone.
+Viewport sent: 833.016 451.17 to player: 102.
+Game state sent to everyone.
+Viewport sent: 832.716 451.19 to player: 102.
+Game state sent to everyone.
+Viewport sent: 832.118 451.23 to player: 102.
+Mouse position received: -0.415344 0.025641
+Game state sent to everyone.
+Viewport sent: 831.818 451.25 to player: 102.
+Game state sent to everyone.
+Viewport sent: 831.519 451.269 to player: 102.
+Mouse position received: -0.415344 0.02331
+Game state sent to everyone.
+Viewport sent: 831.219 451.287 to player: 102.
+Game state sent to everyone.
+Viewport sent: 830.92 451.304 to player: 102.
+Game state sent to everyone.
+Viewport sent: 830.62 451.321 to player: 102.
+Game state sent to everyone.
+Viewport sent: 830.321 451.338 to player: 102.
+Mouse position received: -0.415344 0.020979
+Game state sent to everyone.
+Viewport sent: 830.021 451.354 to player: 102.
+Game state sent to everyone.
+Viewport sent: 829.722 451.371 to player: 102.
+Mouse position received: -0.415344 0.018648
+Game state sent to everyone.
+Viewport sent: 829.123 451.402 to player: 102.
+Game state sent to everyone.
+Viewport sent: 829.123 451.402 to player: 102.
+Game state sent to everyone.
+Viewport sent: 828.523 451.428 to player: 102.
+Mouse position received: -0.415344 0.016317
+Game state sent to everyone.
+Viewport sent: 828.224 451.442 to player: 102.
+Game state sent to everyone.
+Viewport sent: 827.924 451.454 to player: 102.
+Game state sent to everyone.
+Viewport sent: 827.624 451.465 to player: 102.
+Game state sent to everyone.
+Viewport sent: 827.324 451.477 to player: 102.
+Mouse position received: -0.415344 0.013986
+Game state sent to everyone.
+Viewport sent: 827.024 451.489 to player: 102.
+Game state sent to everyone.
+Viewport sent: 826.725 451.499 to player: 102.
+Mouse position received: -0.415344 0.011655
+Game state sent to everyone.
+Viewport sent: 826.425 451.509 to player: 102.
+Game state sent to everyone.
+Viewport sent: 826.125 451.518 to player: 102.
+Game state sent to everyone.
+Viewport sent: 825.525 451.534 to player: 102.
+Game state sent to everyone.
+Viewport sent: 825.225 451.543 to player: 102.
+Game state sent to everyone.
+Viewport sent: 824.925 451.551 to player: 102.
+Game state sent to everyone.
+Viewport sent: 824.625 451.56 to player: 102.
+Mouse position received: -0.415344 0.00932401
+Game state sent to everyone.
+Viewport sent: 824.326 451.568 to player: 102.
+Game state sent to everyone.
+Viewport sent: 823.726 451.583 to player: 102.
+Game state sent to everyone.
+Viewport sent: 823.426 451.59 to player: 102.
+Game state sent to everyone.
+Viewport sent: 823.126 451.597 to player: 102.
+Game state sent to everyone.
+Viewport sent: 822.826 451.603 to player: 102.
+Game state sent to everyone.
+Viewport sent: 822.526 451.61 to player: 102.
+Game state sent to everyone.
+Viewport sent: 822.226 451.617 to player: 102.
+Game state sent to everyone.
+Viewport sent: 821.926 451.624 to player: 102.
+Game state sent to everyone.
+Viewport sent: 821.626 451.63 to player: 102.
+Game state sent to everyone.
+Viewport sent: 821.326 451.637 to player: 102.
+Game state sent to everyone.
+Viewport sent: 821.026 451.644 to player: 102.
+Game state sent to everyone.
+Viewport sent: 820.727 451.651 to player: 102.
+Game state sent to everyone.
+Viewport sent: 820.427 451.657 to player: 102.
+Game state sent to everyone.
+Viewport sent: 820.127 451.664 to player: 102.
+Game state sent to everyone.
+Viewport sent: 819.827 451.671 to player: 102.
+Game state sent to everyone.
+Viewport sent: 819.227 451.684 to player: 102.
+Game state sent to everyone.
+Viewport sent: 818.927 451.691 to player: 102.
+Game state sent to everyone.
+Viewport sent: 818.627 451.698 to player: 102.
+Game state sent to everyone.
+Viewport sent: 818.327 451.704 to player: 102.
+Game state sent to everyone.
+Viewport sent: 818.027 451.711 to player: 102.
+Game state sent to everyone.
+Viewport sent: 817.727 451.718 to player: 102.
+Game state sent to everyone.
+Viewport sent: 817.427 451.725 to player: 102.
+Game state sent to everyone.
+Viewport sent: 817.127 451.731 to player: 102.
+Game state sent to everyone.
+Viewport sent: 816.828 451.738 to player: 102.
+Game state sent to everyone.
+Viewport sent: 816.528 451.745 to player: 102.
+Game state sent to everyone.
+Viewport sent: 816.228 451.752 to player: 102.
+Game state sent to everyone.
+Viewport sent: 815.928 451.758 to player: 102.
+Game state sent to everyone.
+Viewport sent: 815.328 451.772 to player: 102.
+Game state sent to everyone.
+Viewport sent: 815.028 451.779 to player: 102.
+Game state sent to everyone.
+Viewport sent: 814.728 451.785 to player: 102.
+Mouse position received: -0.416667 0.00932401
+Game state sent to everyone.
+Viewport sent: 814.428 451.792 to player: 102.
+Game state sent to everyone.
+Viewport sent: 814.128 451.799 to player: 102.
+Game state sent to everyone.
+Viewport sent: 813.828 451.805 to player: 102.
+Game state sent to everyone.
+Viewport sent: 813.528 451.812 to player: 102.
+Mouse position received: -0.417989 0.011655
+Game state sent to everyone.
+Viewport sent: 813.228 451.819 to player: 102.
+Game state sent to everyone.
+Viewport sent: 812.929 451.826 to player: 102.
+Mouse position received: -0.420635 0.013986
+Game state sent to everyone.
+Viewport sent: 812.629 451.834 to player: 102.
+Game state sent to everyone.
+Viewport sent: 812.329 451.842 to player: 102.
+Mouse position received: -0.421958 0.018648
+Game state sent to everyone.
+Viewport sent: 811.729 451.862 to player: 102.
+Game state sent to everyone.
+Viewport sent: 811.429 451.875 to player: 102.
+Mouse position received: -0.424603 0.02331
+Game state sent to everyone.
+Viewport sent: 811.13 451.889 to player: 102.
+Game state sent to everyone.
+Viewport sent: 810.83 451.902 to player: 102.
+Game state sent to everyone.
+Viewport sent: 810.53 451.918 to player: 102.
+Mouse position received: -0.427249 0.027972
+Game state sent to everyone.
+Viewport sent: 810.231 451.935 to player: 102.
+Mouse position received: -0.429894 0.032634
+Game state sent to everyone.
+Viewport sent: 809.932 451.954 to player: 102.
+Game state sent to everyone.
+Viewport sent: 809.632 451.974 to player: 102.
+Game state sent to everyone.
+Viewport sent: 809.333 451.997 to player: 102.
+Mouse position received: -0.43254 0.041958
+Game state sent to everyone.
+Viewport sent: 808.735 452.042 to player: 102.
+Game state sent to everyone.
+Viewport sent: 808.436 452.071 to player: 102.
+Mouse position received: -0.433862 0.048951
+Game state sent to everyone.
+Viewport sent: 808.138 452.1 to player: 102.
+Game state sent to everyone.
+Viewport sent: 807.839 452.134 to player: 102.
+Mouse position received: -0.435185 0.0582751
+Game state sent to everyone.
+Viewport sent: 807.541 452.167 to player: 102.
+Game state sent to everyone.
+Viewport sent: 807.244 452.207 to player: 102.
+Mouse position received: -0.436508 0.0699301
+Game state sent to everyone.
+Viewport sent: 806.947 452.247 to player: 102.
+Game state sent to everyone.
+Viewport sent: 806.65 452.294 to player: 102.
+Mouse position received: -0.437831 0.0815851
+Game state sent to everyone.
+Viewport sent: 806.354 452.342 to player: 102.
+Game state sent to everyone.
+Viewport sent: 806.058 452.389 to player: 102.
+Mouse position received: -0.440476 0.107226
+Game state sent to everyone.
+Viewport sent: 805.468 452.499 to player: 102.
+Game state sent to everyone.
+Viewport sent: 805.177 452.57 to player: 102.
+Game state sent to everyone.
+Viewport sent: 804.885 452.641 to player: 102.
+Game state sent to everyone.
+Viewport sent: 804.594 452.712 to player: 102.
+Mouse position received: -0.441799 0.132867
+Game state sent to everyone.
+Viewport sent: 804.302 452.783 to player: 102.
+Game state sent to everyone.
+Viewport sent: 804.011 452.854 to player: 102.
+Mouse position received: -0.443122 0.144522
+Game state sent to everyone.
+Viewport sent: 803.723 452.94 to player: 102.
+Game state sent to everyone.
+Viewport sent: 803.436 453.027 to player: 102.
+Game state sent to everyone.
+Viewport sent: 803.151 453.12 to player: 102.
+Mouse position received: -0.444444 0.156177
+Game state sent to everyone.
+Viewport sent: 802.866 453.213 to player: 102.
+Mouse position received: -0.444444 0.167832
+Game state sent to everyone.
+Viewport sent: 802.583 453.312 to player: 102.
+Game state sent to everyone.
+Viewport sent: 802.3 453.412 to player: 102.
+Game state sent to everyone.
+Viewport sent: 802.019 453.518 to player: 102.
+Mouse position received: -0.445767 0.177156
+Game state sent to everyone.
+Viewport sent: 801.458 453.73 to player: 102.
+Game state sent to everyone.
+Viewport sent: 801.179 453.841 to player: 102.
+Mouse position received: -0.445767 0.184149
+Game state sent to everyone.
+Viewport sent: 800.9 453.951 to player: 102.
+Game state sent to everyone.
+Viewport sent: 800.623 454.066 to player: 102.
+Mouse position received: -0.445767 0.191142
+Game state sent to everyone.
+Viewport sent: 800.346 454.18 to player: 102.
+Game state sent to everyone.
+Viewport sent: 800.07 454.299 to player: 102.
+Mouse position received: -0.445767 0.198135
+Game state sent to everyone.
+Viewport sent: 799.794 454.417 to player: 102.
+Game state sent to everyone.
+Viewport sent: 799.52 454.539 to player: 102.
+Mouse position received: -0.44709 0.205128
+Game state sent to everyone.
+Viewport sent: 799.246 454.661 to player: 102.
+Game state sent to everyone.
+Viewport sent: 798.972 454.782 to player: 102.
+Mouse position received: -0.44709 0.212121
+Game state sent to everyone.
+Viewport sent: 798.426 455.033 to player: 102.
+Game state sent to everyone.
+Viewport sent: 798.155 455.161 to player: 102.
+Mouse position received: -0.44709 0.219114
+Game state sent to everyone.
+Viewport sent: 798.155 455.161 to player: 102.
+Game state sent to everyone.
+Viewport sent: 797.615 455.422 to player: 102.
+Mouse position received: -0.44709 0.223776
+Game state sent to everyone.
+Viewport sent: 797.345 455.554 to player: 102.
+Game state sent to everyone.
+Viewport sent: 797.076 455.686 to player: 102.
+Game state sent to everyone.
+Viewport sent: 796.808 455.82 to player: 102.
+Mouse position received: -0.44709 0.228438
+Game state sent to everyone.
+Viewport sent: 796.54 455.954 to player: 102.
+Mouse position received: -0.44709 0.2331
+Game state sent to everyone.
+Viewport sent: 796.272 456.091 to player: 102.
+Game state sent to everyone.
+Viewport sent: 796.005 456.227 to player: 102.
+Game state sent to everyone.
+Viewport sent: 795.473 456.505 to player: 102.
+Mouse position received: -0.44709 0.237762
+Game state sent to everyone.
+Viewport sent: 795.207 456.644 to player: 102.
+Game state sent to everyone.
+Viewport sent: 794.942 456.784 to player: 102.
+Mouse position received: -0.44709 0.242424
+Game state sent to everyone.
+Viewport sent: 794.677 456.925 to player: 102.
+Game state sent to everyone.
+Viewport sent: 794.414 457.068 to player: 102.
+Mouse position received: -0.44709 0.247086
+Game state sent to everyone.
+Viewport sent: 794.15 457.211 to player: 102.
+Game state sent to everyone.
+Viewport sent: 793.625 457.501 to player: 102.
+Mouse position received: -0.44709 0.251748
+Game state sent to everyone.
+Viewport sent: 793.362 457.647 to player: 102.
+Game state sent to everyone.
+Viewport sent: 793.101 457.794 to player: 102.
+Mouse position received: -0.44709 0.254079
+Game state sent to everyone.
+Viewport sent: 792.839 457.941 to player: 102.
+Game state sent to everyone.
+Viewport sent: 792.579 458.089 to player: 102.
+Mouse position received: -0.448413 0.25641
+Game state sent to everyone.
+Viewport sent: 792.318 458.237 to player: 102.
+Game state sent to everyone.
+Viewport sent: 791.797 458.535 to player: 102.
+Mouse position received: -0.448413 0.261072
+Game state sent to everyone.
+Viewport sent: 791.536 458.683 to player: 102.
+Game state sent to everyone.
+Viewport sent: 791.277 458.834 to player: 102.
+Mouse position received: -0.448413 0.263403
+Game state sent to everyone.
+Viewport sent: 791.018 458.985 to player: 102.
+Game state sent to everyone.
+Viewport sent: 790.758 459.136 to player: 102.
+Mouse position received: -0.448413 0.265734
+Game state sent to everyone.
+Viewport sent: 790.5 459.288 to player: 102.
+Game state sent to everyone.
+Viewport sent: 790.241 459.44 to player: 102.
+Mouse position received: -0.449735 0.265734
+Game state sent to everyone.
+Viewport sent: 789.725 459.746 to player: 102.
+Game state sent to everyone.
+Viewport sent: 789.467 459.899 to player: 102.
+Mouse position received: -0.449735 0.268065
+Game state sent to everyone.
+Viewport sent: 789.208 460.051 to player: 102.
+Game state sent to everyone.
+Viewport sent: 788.951 460.205 to player: 102.
+Game state sent to everyone.
+Viewport sent: 788.435 460.512 to player: 102.
+Game state sent to everyone.
+Viewport sent: 788.177 460.666 to player: 102.
+Mouse position received: -0.449735 0.270396
+Game state sent to everyone.
+Viewport sent: 787.92 460.819 to player: 102.
+Game state sent to everyone.
+Viewport sent: 787.663 460.974 to player: 102.
+Mouse position received: -0.451058 0.270396
+Game state sent to everyone.
+Viewport sent: 787.406 461.128 to player: 102.
+Game state sent to everyone.
+Viewport sent: 787.148 461.283 to player: 102.
+Mouse position received: -0.451058 0.272727
+Game state sent to everyone.
+Viewport sent: 786.891 461.437 to player: 102.
+Game state sent to everyone.
+Viewport sent: 786.377 461.746 to player: 102.
+Game state sent to everyone.
+Viewport sent: 786.12 461.902 to player: 102.
+Game state sent to everyone.
+Viewport sent: 785.863 462.057 to player: 102.
+Mouse position received: -0.451058 0.275058
+Game state sent to everyone.
+Viewport sent: 785.607 462.212 to player: 102.
+Game state sent to everyone.
+Viewport sent: 785.35 462.367 to player: 102.
+Game state sent to everyone.
+Viewport sent: 785.094 462.524 to player: 102.
+Game state sent to everyone.
+Viewport sent: 784.838 462.68 to player: 102.
+Mouse position received: -0.451058 0.277389
+Game state sent to everyone.
+Viewport sent: 784.582 462.836 to player: 102.
+Game state sent to everyone.
+Viewport sent: 784.07 463.149 to player: 102.
+Game state sent to everyone.
+Viewport sent: 784.07 463.149 to player: 102.
+Game state sent to everyone.
+Viewport sent: 783.559 463.464 to player: 102.
+Game state sent to everyone.
+Viewport sent: 783.303 463.621 to player: 102.
+Mouse position received: -0.451058 0.27972
+Game state sent to everyone.
+Viewport sent: 783.048 463.778 to player: 102.
+Game state sent to everyone.
+Viewport sent: 782.793 463.936 to player: 102.
+Mouse position received: -0.451058 0.282051
+Game state sent to everyone.
+Viewport sent: 782.538 464.094 to player: 102.
+Game state sent to everyone.
+Viewport sent: 782.284 464.253 to player: 102.
+Mouse position received: -0.451058 0.284382
+Game state sent to everyone.
+Viewport sent: 782.029 464.412 to player: 102.
+Game state sent to everyone.
+Viewport sent: 781.775 464.572 to player: 102.
+Mouse position received: -0.451058 0.286713
+Game state sent to everyone.
+Viewport sent: 781.522 464.732 to player: 102.
+Game state sent to everyone.
+Viewport sent: 781.268 464.892 to player: 102.
+Mouse position received: -0.451058 0.289044
+Game state sent to everyone.
+Viewport sent: 781.015 465.053 to player: 102.
+Game state sent to everyone.
+Viewport sent: 780.761 465.214 to player: 102.
+Game state sent to everyone.
+Viewport sent: 780.509 465.376 to player: 102.
+Mouse position received: -0.451058 0.291375
+Game state sent to everyone.
+Viewport sent: 780.256 465.538 to player: 102.
+Game state sent to everyone.
+Viewport sent: 780.004 465.701 to player: 102.
+Mouse position received: -0.451058 0.293706
+Game state sent to everyone.
+Viewport sent: 779.501 466.027 to player: 102.
+Game state sent to everyone.
+Viewport sent: 779.249 466.191 to player: 102.
+Mouse position received: -0.451058 0.296037
+Game state sent to everyone.
+Viewport sent: 778.998 466.354 to player: 102.
+Game state sent to everyone.
+Viewport sent: 778.747 466.519 to player: 102.
+Mouse position received: -0.452381 0.300699
+Game state sent to everyone.
+Viewport sent: 778.496 466.684 to player: 102.
+Game state sent to everyone.
+Viewport sent: 778.247 466.85 to player: 102.
+Mouse position received: -0.452381 0.30303
+Game state sent to everyone.
+Viewport sent: 777.997 467.016 to player: 102.
+Game state sent to everyone.
+Viewport sent: 777.748 467.183 to player: 102.
+Mouse position received: -0.452381 0.307692
+Game state sent to everyone.
+Viewport sent: 777.498 467.35 to player: 102.
+Game state sent to everyone.
+Viewport sent: 777.249 467.517 to player: 102.
+Mouse position received: -0.452381 0.310023
+Game state sent to everyone.
+Viewport sent: 776.753 467.854 to player: 102.
+Game state sent to everyone.
+Viewport sent: 776.505 468.024 to player: 102.
+Mouse position received: -0.452381 0.312354
+Game state sent to everyone.
+Viewport sent: 776.258 468.193 to player: 102.
+Game state sent to everyone.
+Viewport sent: 776.011 468.364 to player: 102.
+Mouse position received: -0.452381 0.314685
+Game state sent to everyone.
+Viewport sent: 775.764 468.534 to player: 102.
+Game state sent to everyone.
+Viewport sent: 775.518 468.706 to player: 102.
+Mouse position received: -0.452381 0.317016
+Game state sent to everyone.
+Viewport sent: 775.272 468.877 to player: 102.
+Game state sent to everyone.
+Viewport sent: 775.025 469.048 to player: 102.
+Mouse position received: -0.452381 0.319347
+Game state sent to everyone.
+Viewport sent: 774.78 469.22 to player: 102.
+Game state sent to everyone.
+Viewport sent: 774.534 469.393 to player: 102.
+Mouse position received: -0.452381 0.321678
+Game state sent to everyone.
+Viewport sent: 774.044 469.739 to player: 102.
+Game state sent to everyone.
+Viewport sent: 773.799 469.912 to player: 102.
+Game state sent to everyone.
+Viewport sent: 773.555 470.086 to player: 102.
+Game state sent to everyone.
+Viewport sent: 773.31 470.26 to player: 102.
+Mouse position received: -0.452381 0.324009
+Game state sent to everyone.
+Viewport sent: 773.066 470.434 to player: 102.
+Game state sent to everyone.
+Viewport sent: 772.821 470.608 to player: 102.
+Mouse position received: -0.452381 0.32634
+Game state sent to everyone.
+Viewport sent: 772.578 470.782 to player: 102.
+Game state sent to everyone.
+Viewport sent: 772.334 470.957 to player: 102.
+Mouse position received: -0.452381 0.328671
+Game state sent to everyone.
+Viewport sent: 772.09 471.133 to player: 102.
+Game state sent to everyone.
+Viewport sent: 771.604 471.485 to player: 102.
+Mouse position received: -0.452381 0.331002
+Game state sent to everyone.
+Viewport sent: 771.362 471.661 to player: 102.
+Game state sent to everyone.
+Viewport sent: 771.12 471.838 to player: 102.
+Mouse position received: -0.452381 0.333333
+Game state sent to everyone.
+Viewport sent: 770.877 472.015 to player: 102.
+Game state sent to everyone.
+Viewport sent: 770.635 472.192 to player: 102.
+Mouse position received: -0.452381 0.335664
+Game state sent to everyone.
+Viewport sent: 770.394 472.37 to player: 102.
+Game state sent to everyone.
+Viewport sent: 770.152 472.548 to player: 102.
+Mouse position received: -0.452381 0.337995
+Game state sent to everyone.
+Viewport sent: 769.911 472.727 to player: 102.
+Game state sent to everyone.
+Viewport sent: 769.67 472.906 to player: 102.
+Mouse position received: -0.452381 0.340326
+Game state sent to everyone.
+Viewport sent: 769.43 473.085 to player: 102.
+Game state sent to everyone.
+Viewport sent: 768.95 473.445 to player: 102.
+Game state sent to everyone.
+Viewport sent: 768.71 473.626 to player: 102.
+Mouse position received: -0.452381 0.342657
+Game state sent to everyone.
+Viewport sent: 768.471 473.806 to player: 102.
+Game state sent to everyone.
+Viewport sent: 768.231 473.987 to player: 102.
+Game state sent to everyone.
+Viewport sent: 767.992 474.168 to player: 102.
+Game state sent to everyone.
+Viewport sent: 767.753 474.349 to player: 102.
+Game state sent to everyone.
+Viewport sent: 767.514 474.53 to player: 102.
+Mouse position received: -0.452381 0.344988
+Game state sent to everyone.
+Viewport sent: 767.275 474.712 to player: 102.
+Game state sent to everyone.
+Viewport sent: 767.036 474.893 to player: 102.
+Game state sent to everyone.
+Viewport sent: 766.797 475.075 to player: 102.
+Mouse position received: -0.452381 0.347319
+Game state sent to everyone.
+Viewport sent: 766.559 475.257 to player: 102.
+Game state sent to everyone.
+Viewport sent: 766.32 475.439 to player: 102.
+Game state sent to everyone.
+Viewport sent: 765.844 475.804 to player: 102.
+Game state sent to everyone.
+Viewport sent: 765.606 475.987 to player: 102.
+Game state sent to everyone.
+Viewport sent: 765.368 476.169 to player: 102.
+Game state sent to everyone.
+Viewport sent: 765.13 476.352 to player: 102.
+Game state sent to everyone.
+Viewport sent: 764.892 476.535 to player: 102.
+Game state sent to everyone.
+Viewport sent: 764.654 476.717 to player: 102.
+Game state sent to everyone.
+Viewport sent: 764.416 476.9 to player: 102.
+Game state sent to everyone.
+Viewport sent: 764.178 477.083 to player: 102.
+Game state sent to everyone.
+Viewport sent: 763.941 477.265 to player: 102.
+Game state sent to everyone.
+Viewport sent: 763.703 477.448 to player: 102.
+Game state sent to everyone.
+Viewport sent: 763.465 477.631 to player: 102.
+Game state sent to everyone.
+Viewport sent: 763.227 477.814 to player: 102.
+Game state sent to everyone.
+Viewport sent: 762.989 477.996 to player: 102.
+Game state sent to everyone.
+Viewport sent: 762.513 478.362 to player: 102.
+Game state sent to everyone.
+Viewport sent: 762.275 478.544 to player: 102.
+Game state sent to everyone.
+Viewport sent: 762.037 478.727 to player: 102.
+Game state sent to everyone.
+Viewport sent: 761.799 478.91 to player: 102.
+Game state sent to everyone.
+Viewport sent: 761.561 479.092 to player: 102.
+Game state sent to everyone.
+Viewport sent: 761.323 479.275 to player: 102.
+Game state sent to everyone.
+Viewport sent: 761.085 479.458 to player: 102.
+Game state sent to everyone.
+Viewport sent: 760.847 479.64 to player: 102.
+Game state sent to everyone.
+Viewport sent: 760.609 479.823 to player: 102.
+Game state sent to everyone.
+Viewport sent: 760.371 480.006 to player: 102.
+Game state sent to everyone.
+Viewport sent: 760.133 480.189 to player: 102.
+Game state sent to everyone.
+Viewport sent: 759.657 480.554 to player: 102.
+Game state sent to everyone.
+Viewport sent: 759.419 480.737 to player: 102.
+Game state sent to everyone.
+Viewport sent: 759.181 480.919 to player: 102.
+Game state sent to everyone.
+Viewport sent: 758.943 481.102 to player: 102.
+Game state sent to everyone.
+Viewport sent: 758.705 481.285 to player: 102.
+Game state sent to everyone.
+Viewport sent: 758.468 481.467 to player: 102.
+Game state sent to everyone.
+Viewport sent: 758.23 481.65 to player: 102.
+Game state sent to everyone.
+Viewport sent: 757.992 481.833 to player: 102.
+Game state sent to everyone.
+Viewport sent: 757.754 482.015 to player: 102.
+Game state sent to everyone.
+Viewport sent: 757.516 482.198 to player: 102.
+Game state sent to everyone.
+Viewport sent: 757.278 482.381 to player: 102.
+Game state sent to everyone.
+Viewport sent: 756.802 482.746 to player: 102.
+Game state sent to everyone.
+Viewport sent: 756.564 482.929 to player: 102.
+Game state sent to everyone.
+Viewport sent: 756.326 483.112 to player: 102.
+Game state sent to everyone.
+Viewport sent: 756.088 483.294 to player: 102.
+Game state sent to everyone.
+Viewport sent: 755.85 483.477 to player: 102.
+Game state sent to everyone.
+Viewport sent: 755.612 483.66 to player: 102.
+Game state sent to everyone.
+Viewport sent: 755.374 483.842 to player: 102.
+Game state sent to everyone.
+Viewport sent: 755.136 484.025 to player: 102.
+Game state sent to everyone.
+Viewport sent: 754.66 484.39 to player: 102.
+Game state sent to everyone.
+Viewport sent: 754.422 484.573 to player: 102.
+Game state sent to everyone.
+Viewport sent: 754.184 484.756 to player: 102.
+Game state sent to everyone.
+Viewport sent: 753.946 484.939 to player: 102.
+Mouse position received: -0.452381 0.34965
+Game state sent to everyone.
+Viewport sent: 753.708 485.121 to player: 102.
+Game state sent to everyone.
+Viewport sent: 753.47 485.304 to player: 102.
+Mouse position received: -0.453704 0.34965
+Game state sent to everyone.
+Viewport sent: 753.233 485.487 to player: 102.
+Game state sent to everyone.
+Viewport sent: 752.758 485.854 to player: 102.
+Game state sent to everyone.
+Viewport sent: 752.52 486.037 to player: 102.
+Game state sent to everyone.
+Viewport sent: 752.283 486.22 to player: 102.
+Game state sent to everyone.
+Viewport sent: 752.045 486.403 to player: 102.
+Mouse position received: -0.453704 0.351981
+Game state sent to everyone.
+Viewport sent: 751.808 486.587 to player: 102.
+Mouse position received: -0.453704 0.354312
+Game state sent to everyone.
+Viewport sent: 751.571 486.77 to player: 102.
+Game state sent to everyone.
+Viewport sent: 751.334 486.954 to player: 102.
+Game state sent to everyone.
+Viewport sent: 751.097 487.139 to player: 102.
+Game state sent to everyone.
+Viewport sent: 750.861 487.324 to player: 102.
+Game state sent to everyone.
+Viewport sent: 750.388 487.693 to player: 102.
+Mouse position received: -0.455026 0.356643
+Game state sent to everyone.
+Viewport sent: 750.151 487.878 to player: 102.
+Game state sent to everyone.
+Viewport sent: 749.915 488.063 to player: 102.
+Mouse position received: -0.455026 0.358974
+Game state sent to everyone.
+Viewport sent: 749.679 488.248 to player: 102.
+Game state sent to everyone.
+Viewport sent: 749.444 488.433 to player: 102.
+Mouse position received: -0.455026 0.361305
+Game state sent to everyone.
+Viewport sent: 749.208 488.619 to player: 102.
+Game state sent to everyone.
+Viewport sent: 748.973 488.806 to player: 102.
+Mouse position received: -0.456349 0.363636
+Game state sent to everyone.
+Viewport sent: 748.738 488.992 to player: 102.
+Game state sent to everyone.
+Viewport sent: 748.503 489.179 to player: 102.
+Game state sent to everyone.
+Viewport sent: 748.269 489.366 to player: 102.
+Game state sent to everyone.
+Viewport sent: 748.034 489.553 to player: 102.
+Mouse position received: -0.456349 0.368298
+Game state sent to everyone.
+Viewport sent: 747.565 489.927 to player: 102.
+Game state sent to everyone.
+Viewport sent: 747.331 490.115 to player: 102.
+Game state sent to everyone.
+Viewport sent: 747.098 490.304 to player: 102.
+Game state sent to everyone.
+Viewport sent: 746.864 490.492 to player: 102.
+Mouse position received: -0.457672 0.370629
+Game state sent to everyone.
+Viewport sent: 746.631 490.68 to player: 102.
+Game state sent to everyone.
+Viewport sent: 746.397 490.869 to player: 102.
+Mouse position received: -0.457672 0.37296
+Game state sent to everyone.
+Viewport sent: 746.164 491.058 to player: 102.
+Game state sent to everyone.
+Viewport sent: 745.931 491.246 to player: 102.
+Mouse position received: -0.457672 0.375291
+Game state sent to everyone.
+Viewport sent: 745.699 491.436 to player: 102.
+Game state sent to everyone.
+Viewport sent: 745.466 491.625 to player: 102.
+Game state sent to everyone.
+Viewport sent: 745.002 492.006 to player: 102.
+Game state sent to everyone.
+Viewport sent: 744.77 492.196 to player: 102.
+Mouse position received: -0.458995 0.377622
+Game state sent to everyone.
+Viewport sent: 744.538 492.386 to player: 102.
+Game state sent to everyone.
+Viewport sent: 744.306 492.577 to player: 102.
+Game state sent to everyone.
+Viewport sent: 744.075 492.768 to player: 102.
+Game state sent to everyone.
+Viewport sent: 743.843 492.958 to player: 102.
+Game state sent to everyone.
+Viewport sent: 743.611 493.149 to player: 102.
+Mouse position received: -0.458995 0.379953
+Game state sent to everyone.
+Viewport sent: 743.38 493.339 to player: 102.
+Game state sent to everyone.
+Viewport sent: 743.149 493.531 to player: 102.
+Game state sent to everyone.
+Viewport sent: 742.918 493.722 to player: 102.
+Game state sent to everyone.
+Viewport sent: 742.686 493.913 to player: 102.
+Game state sent to everyone.
+Viewport sent: 742.224 494.296 to player: 102.
+Game state sent to everyone.
+Viewport sent: 741.993 494.487 to player: 102.
+Game state sent to everyone.
+Viewport sent: 741.762 494.678 to player: 102.
+Game state sent to everyone.
+Viewport sent: 741.531 494.87 to player: 102.
+Game state sent to everyone.
+Viewport sent: 741.3 495.061 to player: 102.
+Game state sent to everyone.
+Viewport sent: 741.069 495.252 to player: 102.
+Mouse position received: -0.457672 0.379953
+Game state sent to everyone.
+Viewport sent: 740.838 495.444 to player: 102.
+Game state sent to everyone.
+Viewport sent: 740.607 495.635 to player: 102.
+Game state sent to everyone.
+Viewport sent: 740.376 495.827 to player: 102.
+Game state sent to everyone.
+Viewport sent: 740.145 496.018 to player: 102.
+Game state sent to everyone.
+Viewport sent: 739.914 496.21 to player: 102.
+Game state sent to everyone.
+Viewport sent: 739.453 496.593 to player: 102.
+Game state sent to everyone.
+Viewport sent: 739.222 496.785 to player: 102.
+Game state sent to everyone.
+Viewport sent: 738.991 496.977 to player: 102.
+Game state sent to everyone.
+Viewport sent: 738.76 497.168 to player: 102.
+Game state sent to everyone.
+Viewport sent: 738.529 497.36 to player: 102.
+Game state sent to everyone.
+Viewport sent: 738.299 497.552 to player: 102.
+Game state sent to everyone.
+Viewport sent: 738.068 497.743 to player: 102.
+Game state sent to everyone.
+Viewport sent: 737.837 497.935 to player: 102.
+Game state sent to everyone.
+Viewport sent: 737.606 498.126 to player: 102.
+Game state sent to everyone.
+Viewport sent: 737.145 498.51 to player: 102.
+Game state sent to everyone.
+Viewport sent: 736.914 498.701 to player: 102.
+Game state sent to everyone.
+Viewport sent: 736.683 498.893 to player: 102.
+Game state sent to everyone.
+Viewport sent: 736.452 499.085 to player: 102.
+Game state sent to everyone.
+Viewport sent: 736.221 499.276 to player: 102.
+Game state sent to everyone.
+Viewport sent: 735.99 499.468 to player: 102.
+Game state sent to everyone.
+Viewport sent: 735.529 499.851 to player: 102.
+Game state sent to everyone.
+Viewport sent: 735.298 500.043 to player: 102.
+Game state sent to everyone.
+Viewport sent: 735.067 500.234 to player: 102.
+Game state sent to everyone.
+Viewport sent: 734.836 500.426 to player: 102.
+Game state sent to everyone.
+Viewport sent: 734.605 500.618 to player: 102.
+Game state sent to everyone.
+Viewport sent: 734.375 500.809 to player: 102.
+Game state sent to everyone.
+Viewport sent: 734.144 501.001 to player: 102.
+Game state sent to everyone.
+Viewport sent: 733.913 501.192 to player: 102.
+Game state sent to everyone.
+Viewport sent: 733.682 501.384 to player: 102.
+Game state sent to everyone.
+Viewport sent: 733.221 501.767 to player: 102.
+Game state sent to everyone.
+Viewport sent: 732.99 501.959 to player: 102.
+Game state sent to everyone.
+Viewport sent: 732.759 502.151 to player: 102.
+Game state sent to everyone.
+Viewport sent: 732.528 502.342 to player: 102.
+Game state sent to everyone.
+Viewport sent: 732.297 502.534 to player: 102.
+Game state sent to everyone.
+Viewport sent: 732.066 502.725 to player: 102.
+Game state sent to everyone.
+Viewport sent: 731.836 502.917 to player: 102.
+Game state sent to everyone.
+Viewport sent: 731.605 503.109 to player: 102.
+Game state sent to everyone.
+Viewport sent: 731.374 503.3 to player: 102.
+Game state sent to everyone.
+Viewport sent: 731.143 503.492 to player: 102.
+Game state sent to everyone.
+Viewport sent: 730.681 503.875 to player: 102.
+Game state sent to everyone.
+Viewport sent: 730.451 504.067 to player: 102.
+Game state sent to everyone.
+Viewport sent: 730.22 504.258 to player: 102.
+Game state sent to everyone.
+Viewport sent: 729.989 504.45 to player: 102.
+Game state sent to everyone.
+Viewport sent: 729.758 504.642 to player: 102.
+Game state sent to everyone.
+Viewport sent: 729.527 504.833 to player: 102.
+Game state sent to everyone.
+Viewport sent: 729.297 505.025 to player: 102.
+Game state sent to everyone.
+Viewport sent: 728.835 505.408 to player: 102.
+Game state sent to everyone.
+Viewport sent: 728.604 505.6 to player: 102.
+Game state sent to everyone.
+Viewport sent: 728.373 505.791 to player: 102.
+Game state sent to everyone.
+Viewport sent: 728.142 505.983 to player: 102.
+Game state sent to everyone.
+Viewport sent: 727.912 506.175 to player: 102.
+Game state sent to everyone.
+Viewport sent: 727.681 506.366 to player: 102.
+Game state sent to everyone.
+Viewport sent: 727.45 506.558 to player: 102.
+Game state sent to everyone.
+Viewport sent: 727.219 506.75 to player: 102.
+Game state sent to everyone.
+Viewport sent: 726.757 507.133 to player: 102.
+Game state sent to everyone.
+Viewport sent: 726.527 507.324 to player: 102.
+Game state sent to everyone.
+Viewport sent: 726.296 507.516 to player: 102.
+Game state sent to everyone.
+Viewport sent: 726.065 507.708 to player: 102.
+Game state sent to everyone.
+Viewport sent: 725.834 507.899 to player: 102.
+Game state sent to everyone.
+Viewport sent: 725.603 508.091 to player: 102.
+Game state sent to everyone.
+Viewport sent: 725.373 508.283 to player: 102.
+Game state sent to everyone.
+Viewport sent: 725.142 508.474 to player: 102.
+Game state sent to everyone.
+Viewport sent: 724.911 508.666 to player: 102.
+Game state sent to everyone.
+Viewport sent: 724.68 508.857 to player: 102.
+Game state sent to everyone.
+Viewport sent: 724.218 509.241 to player: 102.
+Game state sent to everyone.
+Viewport sent: 723.988 509.432 to player: 102.
+Game state sent to everyone.
+Viewport sent: 723.757 509.624 to player: 102.
+Game state sent to everyone.
+Viewport sent: 723.526 509.816 to player: 102.
+Game state sent to everyone.
+Viewport sent: 723.295 510.007 to player: 102.
+Game state sent to everyone.
+Viewport sent: 723.064 510.199 to player: 102.
+Game state sent to everyone.
+Viewport sent: 722.833 510.39 to player: 102.
+Game state sent to everyone.
+Viewport sent: 722.372 510.774 to player: 102.
+Game state sent to everyone.
+Viewport sent: 722.141 510.965 to player: 102.
+Game state sent to everyone.
+Viewport sent: 721.91 511.157 to player: 102.
+Game state sent to everyone.
+Viewport sent: 721.679 511.349 to player: 102.
+Game state sent to everyone.
+Viewport sent: 721.449 511.54 to player: 102.
+Game state sent to everyone.
+Viewport sent: 721.218 511.732 to player: 102.
+Game state sent to everyone.
+Viewport sent: 720.987 511.923 to player: 102.
+Game state sent to everyone.
+Viewport sent: 720.756 512.115 to player: 102.
+Game state sent to everyone.
+Viewport sent: 720.294 512.498 to player: 102.
+Game state sent to everyone.
+Viewport sent: 720.064 512.69 to player: 102.
+Game state sent to everyone.
+Viewport sent: 719.833 512.882 to player: 102.
+Game state sent to everyone.
+Viewport sent: 719.602 513.073 to player: 102.
+Game state sent to everyone.
+Viewport sent: 719.371 513.265 to player: 102.
+Game state sent to everyone.
+Viewport sent: 719.14 513.456 to player: 102.
+Game state sent to everyone.
+Viewport sent: 718.909 513.648 to player: 102.
+Game state sent to everyone.
+Viewport sent: 718.679 513.84 to player: 102.
+Mouse position received: -0.458995 0.379953
+Game state sent to everyone.
+Viewport sent: 718.448 514.031 to player: 102.
+Mouse position received: -0.46164 0.375291
+Game state sent to everyone.
+Viewport sent: 718.217 514.223 to player: 102.
+Game state sent to everyone.
+Viewport sent: 717.753 514.603 to player: 102.
+Game state sent to everyone.
+Viewport sent: 717.52 514.792 to player: 102.
+Mouse position received: -0.464286 0.37296
+Game state sent to everyone.
+Viewport sent: 717.287 514.982 to player: 102.
+Game state sent to everyone.
+Viewport sent: 717.053 515.17 to player: 102.
+Mouse position received: -0.465608 0.370629
+Game state sent to everyone.
+Viewport sent: 716.82 515.357 to player: 102.
+Game state sent to everyone.
+Viewport sent: 716.585 515.544 to player: 102.
+Mouse position received: -0.469577 0.363636
+Game state sent to everyone.
+Viewport sent: 716.35 515.731 to player: 102.
+Game state sent to everyone.
+Viewport sent: 716.115 515.918 to player: 102.
+Mouse position received: -0.472222 0.358974
+Game state sent to everyone.
+Viewport sent: 715.878 516.102 to player: 102.
+Game state sent to everyone.
+Viewport sent: 715.402 516.467 to player: 102.
+Mouse position received: -0.474868 0.354312
+Game state sent to everyone.
+Viewport sent: 715.163 516.648 to player: 102.
+Game state sent to everyone.
+Viewport sent: 714.923 516.828 to player: 102.
+Mouse position received: -0.478836 0.347319
+Game state sent to everyone.
+Viewport sent: 714.682 517.007 to player: 102.
+Game state sent to everyone.
+Viewport sent: 714.44 517.183 to player: 102.
+Mouse position received: -0.481481 0.340326
+Game state sent to everyone.
+Viewport sent: 714.197 517.36 to player: 102.
+Game state sent to everyone.
+Viewport sent: 713.954 517.536 to player: 102.
+Mouse position received: -0.489418 0.32634
+Game state sent to everyone.
+Viewport sent: 713.709 517.709 to player: 102.
+Game state sent to everyone.
+Viewport sent: 713.464 517.882 to player: 102.
+Game state sent to everyone.
+Viewport sent: 713.214 518.048 to player: 102.
+Game state sent to everyone.
+Viewport sent: 712.965 518.215 to player: 102.
+Game state sent to everyone.
+Viewport sent: 712.715 518.381 to player: 102.
+Mouse position received: -0.497354 0.307692
+Game state sent to everyone.
+Viewport sent: 712.466 518.548 to player: 102.
+Game state sent to everyone.
+Viewport sent: 712.21 518.706 to player: 102.
+Mouse position received: -0.5 0.298368
+Game state sent to everyone.
+Viewport sent: 711.955 518.863 to player: 102.
+Game state sent to everyone.
+Viewport sent: 711.443 519.175 to player: 102.
+Mouse position received: -0.502646 0.291375
+Game state sent to everyone.
+Viewport sent: 711.185 519.329 to player: 102.
+Game state sent to everyone.
+Viewport sent: 710.925 519.479 to player: 102.
+Mouse position received: -0.503968 0.286713
+Game state sent to everyone.
+Viewport sent: 710.666 519.63 to player: 102.
+Game state sent to everyone.
+Viewport sent: 710.405 519.778 to player: 102.
+Mouse position received: -0.506614 0.27972
+Game state sent to everyone.
+Viewport sent: 710.144 519.926 to player: 102.
+Game state sent to everyone.
+Viewport sent: 709.882 520.071 to player: 102.
+Mouse position received: -0.509259 0.272727
+Game state sent to everyone.
+Viewport sent: 709.619 520.216 to player: 102.
+Game state sent to everyone.
+Viewport sent: 709.356 520.361 to player: 102.
+Mouse position received: -0.510582 0.268065
+Game state sent to everyone.
+Viewport sent: 709.092 520.503 to player: 102.
+Game state sent to everyone.
+Viewport sent: 708.828 520.645 to player: 102.
+Mouse position received: -0.513228 0.263403
+Game state sent to everyone.
+Viewport sent: 708.296 520.923 to player: 102.
+Game state sent to everyone.
+Viewport sent: 708.029 521.06 to player: 102.
+Mouse position received: -0.51455 0.258741
+Game state sent to everyone.
+Viewport sent: 707.763 521.197 to player: 102.
+Game state sent to everyone.
+Viewport sent: 707.494 521.332 to player: 102.
+Mouse position received: -0.515873 0.254079
+Game state sent to everyone.
+Viewport sent: 707.226 521.467 to player: 102.
+Game state sent to everyone.
+Viewport sent: 706.958 521.602 to player: 102.
+Mouse position received: -0.517196 0.251748
+Game state sent to everyone.
+Viewport sent: 706.689 521.734 to player: 102.
+Game state sent to everyone.
+Viewport sent: 706.15 521.998 to player: 102.
+Mouse position received: -0.518519 0.249417
+Game state sent to everyone.
+Viewport sent: 705.881 522.129 to player: 102.
+Game state sent to everyone.
+Viewport sent: 705.611 522.261 to player: 102.
+Mouse position received: -0.519841 0.249417
+Game state sent to everyone.
+Viewport sent: 705.341 522.391 to player: 102.
+Game state sent to everyone.
+Viewport sent: 705.07 522.521 to player: 102.
+Mouse position received: -0.521164 0.247086
+Game state sent to everyone.
+Viewport sent: 704.8 522.65 to player: 102.
+Game state sent to everyone.
+Viewport sent: 704.258 522.909 to player: 102.
+Game state sent to everyone.
+Viewport sent: 703.987 523.037 to player: 102.
+Game state sent to everyone.
+Viewport sent: 703.716 523.166 to player: 102.
+Mouse position received: -0.522487 0.244755
+Game state sent to everyone.
+Viewport sent: 703.445 523.294 to player: 102.
+Game state sent to everyone.
+Viewport sent: 703.174 523.423 to player: 102.
+Game state sent to everyone.
+Viewport sent: 702.63 523.677 to player: 102.
+Mouse position received: -0.52381 0.244755
+Game state sent to everyone.
+Viewport sent: 702.359 523.805 to player: 102.
+Game state sent to everyone.
+Viewport sent: 701.815 524.059 to player: 102.
+Mouse position received: -0.525132 0.244755
+Game state sent to everyone.
+Viewport sent: 701.544 524.186 to player: 102.
+Game state sent to everyone.
+Viewport sent: 701 524.439 to player: 102.
+Game state sent to everyone.
+Viewport sent: 700.728 524.566 to player: 102.
+Game state sent to everyone.
+Viewport sent: 700.456 524.693 to player: 102.
+Game state sent to everyone.
+Viewport sent: 700.184 524.819 to player: 102.
+Game state sent to everyone.
+Viewport sent: 699.912 524.946 to player: 102.
+Game state sent to everyone.
+Viewport sent: 699.368 525.2 to player: 102.
+Mouse position received: -0.526455 0.244755
+Game state sent to everyone.
+Viewport sent: 699.096 525.326 to player: 102.
+Game state sent to everyone.
+Viewport sent: 698.824 525.453 to player: 102.
+Game state sent to everyone.
+Viewport sent: 698.552 525.579 to player: 102.
+Game state sent to everyone.
+Viewport sent: 698.28 525.706 to player: 102.
+Game state sent to everyone.
+Viewport sent: 698.008 525.832 to player: 102.
+Game state sent to everyone.
+Viewport sent: 697.736 525.959 to player: 102.
+Game state sent to everyone.
+Viewport sent: 697.464 526.085 to player: 102.
+Game state sent to everyone.
+Viewport sent: 696.92 526.338 to player: 102.
+Game state sent to everyone.
+Viewport sent: 696.648 526.465 to player: 102.
+Game state sent to everyone.
+Viewport sent: 696.376 526.591 to player: 102.
+Game state sent to everyone.
+Viewport sent: 696.104 526.718 to player: 102.
+Game state sent to everyone.
+Viewport sent: 695.832 526.844 to player: 102.
+Game state sent to everyone.
+Viewport sent: 695.56 526.971 to player: 102.
+Game state sent to everyone.
+Viewport sent: 695.288 527.097 to player: 102.
+Game state sent to everyone.
+Viewport sent: 695.016 527.223 to player: 102.
+Game state sent to everyone.
+Viewport sent: 694.744 527.35 to player: 102.
+Game state sent to everyone.
+Viewport sent: 694.472 527.476 to player: 102.
+Game state sent to everyone.
+Viewport sent: 694.2 527.603 to player: 102.
+Game state sent to everyone.
+Viewport sent: 693.928 527.729 to player: 102.
+Game state sent to everyone.
+Viewport sent: 693.656 527.856 to player: 102.
+Game state sent to everyone.
+Viewport sent: 693.383 527.982 to player: 102.
+Game state sent to everyone.
+Viewport sent: 693.111 528.109 to player: 102.
+Game state sent to everyone.
+Viewport sent: 692.567 528.362 to player: 102.
+Game state sent to everyone.
+Viewport sent: 692.295 528.488 to player: 102.
+Game state sent to everyone.
+Viewport sent: 692.023 528.615 to player: 102.
+Game state sent to everyone.
+Viewport sent: 691.751 528.741 to player: 102.
+Game state sent to everyone.
+Viewport sent: 691.479 528.868 to player: 102.
+Game state sent to everyone.
+Viewport sent: 691.207 528.994 to player: 102.
+Game state sent to everyone.
+Viewport sent: 690.935 529.121 to player: 102.
+Game state sent to everyone.
+Viewport sent: 690.663 529.247 to player: 102.
+Game state sent to everyone.
+Viewport sent: 690.391 529.374 to player: 102.
+Game state sent to everyone.
+Viewport sent: 690.119 529.5 to player: 102.
+Game state sent to everyone.
+Viewport sent: 689.847 529.626 to player: 102.
+Game state sent to everyone.
+Viewport sent: 689.575 529.753 to player: 102.
+Game state sent to everyone.
+Viewport sent: 689.303 529.879 to player: 102.
+Game state sent to everyone.
+Viewport sent: 689.031 530.006 to player: 102.
+Mouse position received: -0.526455 0.242424
+Game state sent to everyone.
+Viewport sent: 688.759 530.132 to player: 102.
+Game state sent to everyone.
+Viewport sent: 688.487 530.259 to player: 102.
+Game state sent to everyone.
+Viewport sent: 688.214 530.384 to player: 102.
+Game state sent to everyone.
+Viewport sent: 687.669 530.635 to player: 102.
+Game state sent to everyone.
+Viewport sent: 687.397 530.761 to player: 102.
+Game state sent to everyone.
+Viewport sent: 687.124 530.886 to player: 102.
+Game state sent to everyone.
+Viewport sent: 686.852 531.012 to player: 102.
+Game state sent to everyone.
+Viewport sent: 686.579 531.137 to player: 102.
+Game state sent to everyone.
+Viewport sent: 686.307 531.263 to player: 102.
+Mouse position received: -0.526455 0.240093
+Game state sent to everyone.
+Viewport sent: 686.034 531.388 to player: 102.
+Game state sent to everyone.
+Viewport sent: 685.761 531.513 to player: 102.
+Game state sent to everyone.
+Viewport sent: 685.488 531.637 to player: 102.
+Game state sent to everyone.
+Viewport sent: 685.215 531.762 to player: 102.
+Mouse position received: -0.527778 0.237762
+Game state sent to everyone.
+Viewport sent: 684.943 531.886 to player: 102.
+Game state sent to everyone.
+Viewport sent: 684.67 532.011 to player: 102.
+Game state sent to everyone.
+Viewport sent: 684.396 532.134 to player: 102.
+Game state sent to everyone.
+Viewport sent: 683.849 532.38 to player: 102.
+Mouse position received: -0.527778 0.235431
+Game state sent to everyone.
+Viewport sent: 683.575 532.503 to player: 102.
+Game state sent to everyone.
+Viewport sent: 683.302 532.627 to player: 102.
+Game state sent to everyone.
+Viewport sent: 683.028 532.749 to player: 102.
+Game state sent to everyone.
+Viewport sent: 682.48 532.993 to player: 102.
+Mouse position received: -0.529101 0.2331
+Game state sent to everyone.
+Viewport sent: 682.206 533.116 to player: 102.
+Game state sent to everyone.
+Viewport sent: 681.931 533.237 to player: 102.
+Mouse position received: -0.529101 0.230769
+Game state sent to everyone.
+Viewport sent: 681.657 533.357 to player: 102.
+Game state sent to everyone.
+Viewport sent: 681.382 533.477 to player: 102.
+Mouse position received: -0.530423 0.228438
+Game state sent to everyone.
+Viewport sent: 681.107 533.597 to player: 102.
+Game state sent to everyone.
+Viewport sent: 680.556 533.836 to player: 102.
+Mouse position received: -0.530423 0.223776
+Game state sent to everyone.
+Viewport sent: 680.281 533.955 to player: 102.
+Game state sent to everyone.
+Viewport sent: 680.005 534.071 to player: 102.
+Mouse position received: -0.530423 0.221445
+Game state sent to everyone.
+Viewport sent: 679.728 534.188 to player: 102.
+Game state sent to everyone.
+Viewport sent: 679.452 534.304 to player: 102.
+Mouse position received: -0.530423 0.219114
+Game state sent to everyone.
+Viewport sent: 679.175 534.42 to player: 102.
+Game state sent to everyone.
+Viewport sent: 678.898 534.536 to player: 102.
+Game state sent to everyone.
+Viewport sent: 678.621 534.65 to player: 102.
+Mouse position received: -0.530423 0.214452
+Game state sent to everyone.
+Viewport sent: 678.343 534.765 to player: 102.
+Mouse position received: -0.531746 0.20979
+Game state sent to everyone.
+Viewport sent: 678.065 534.877 to player: 102.
+Game state sent to everyone.
+Viewport sent: 677.508 535.1 to player: 102.
+Game state sent to everyone.
+Viewport sent: 677.229 535.21 to player: 102.
+Mouse position received: -0.531746 0.202797
+Game state sent to everyone.
+Viewport sent: 676.95 535.32 to player: 102.
+Game state sent to everyone.
+Viewport sent: 676.67 535.427 to player: 102.
+Mouse position received: -0.531746 0.195804
+Game state sent to everyone.
+Viewport sent: 676.389 535.534 to player: 102.
+Game state sent to everyone.
+Viewport sent: 676.108 535.637 to player: 102.
+Mouse position received: -0.531746 0.191142
+Game state sent to everyone.
+Viewport sent: 675.826 535.741 to player: 102.
+Game state sent to everyone.
+Viewport sent: 675.263 535.946 to player: 102.
+Mouse position received: -0.531746 0.184149
+Game state sent to everyone.
+Viewport sent: 674.98 536.048 to player: 102.
+Game state sent to everyone.
+Mouse position received: Viewport sent: -0.531746 0.177156
+674.697 536.146 to player: 102.
+Game state sent to everyone.
+Viewport sent: 674.129 536.339 to player: 102.
+Mouse position received: -0.531746 0.170163
+Game state sent to everyone.
+Viewport sent: 673.844 536.434 to player: 102.
+Game state sent to everyone.
+Viewport sent: 673.558 536.525 to player: 102.
+Game state sent to everyone.
+Viewport sent: 673.273 536.616 to player: 102.
+Mouse position received: -0.533069 0.158508
+Game state sent to everyone.
+Viewport sent: 672.987 536.708 to player: 102.
+Game state sent to everyone.
+Viewport sent: 672.699 536.793 to player: 102.
+Game state sent to everyone.
+Viewport sent: 672.412 536.879 to player: 102.
+Game state sent to everyone.
+Viewport sent: 672.124 536.964 to player: 102.
+Mouse position received: -0.533069 0.146853
+Game state sent to everyone.
+Viewport sent: 671.547 537.13 to player: 102.
+Game state sent to everyone.
+Viewport sent: 671.258 537.209 to player: 102.
+Game state sent to everyone.
+Viewport sent: 670.969 537.289 to player: 102.
+Game state sent to everyone.
+Viewport sent: 670.68 537.369 to player: 102.
+Mouse position received: -0.534392 0.137529
+Game state sent to everyone.
+Viewport sent: 670.39 537.448 to player: 102.
+Game state sent to everyone.
+Viewport sent: 670.1 537.523 to player: 102.
+Mouse position received: -0.534392 0.132867
+Game state sent to everyone.
+Viewport sent: 669.809 537.598 to player: 102.
+Game state sent to everyone.
+Viewport sent: 669.518 537.67 to player: 102.
+Mouse position received: -0.534392 0.130536
+Game state sent to everyone.
+Viewport sent: 669.227 537.743 to player: 102.
+Game state sent to everyone.
+Viewport sent: 668.645 537.886 to player: 102.
+Mouse position received: -0.534392 0.128205
+Game state sent to everyone.
+Viewport sent: 668.353 537.957 to player: 102.
+Game state sent to everyone.
+Viewport sent: 668.061 538.027 to player: 102.
+Mouse position received: -0.535714 0.125874
+Game state sent to everyone.
+Viewport sent: 667.77 538.097 to player: 102.
+Game state sent to everyone.
+Viewport sent: 667.478 538.166 to player: 102.
+Mouse position received: -0.535714 0.123543
+Game state sent to everyone.
+Viewport sent: 667.186 538.235 to player: 102.
+Game state sent to everyone.
+Viewport sent: 666.601 538.371 to player: 102.
+Game state sent to everyone.
+Viewport sent: 666.309 538.438 to player: 102.
+Game state sent to everyone.
+Viewport sent: 666.017 538.505 to player: 102.
+Mouse position received: -0.535714 0.121212
+Game state sent to everyone.
+Viewport sent: 665.724 538.573 to player: 102.
+Game state sent to everyone.
+Viewport sent: 665.432 538.639 to player: 102.
+Game state sent to everyone.
+Viewport sent: 665.139 538.705 to player: 102.
+Game state sent to everyone.
+Viewport sent: 664.846 538.772 to player: 102.
+Game state sent to everyone.
+Viewport sent: 664.554 538.838 to player: 102.
+Game state sent to everyone.
+Viewport sent: 664.261 538.904 to player: 102.
+Game state sent to everyone.
+Viewport sent: 663.969 538.97 to player: 102.
+Mouse position received: -0.535714 0.118881
+Game state sent to everyone.
+Viewport sent: 663.676 539.036 to player: 102.
+Game state sent to everyone.
+Viewport sent: 663.383 539.101 to player: 102.
+Game state sent to everyone.
+Viewport sent: 662.797 539.231 to player: 102.
+Game state sent to everyone.
+Viewport sent: 662.505 539.296 to player: 102.
+Game state sent to everyone.
+Viewport sent: 662.212 539.361 to player: 102.
+Game state sent to everyone.
+Viewport sent: 661.919 539.426 to player: 102.
+Game state sent to everyone.
+Viewport sent: 661.626 539.491 to player: 102.
+Game state sent to everyone.
+Viewport sent: 661.333 539.556 to player: 102.
+Game state sent to everyone.
+Viewport sent: 660.747 539.686 to player: 102.
+Game state sent to everyone.
+Viewport sent: 660.454 539.751 to player: 102.
+Game state sent to everyone.
+Viewport sent: 660.162 539.816 to player: 102.
+Game state sent to everyone.
+Viewport sent: 659.869 539.881 to player: 102.
+Game state sent to everyone.
+Viewport sent: 659.576 539.946 to player: 102.
+Game state sent to everyone.
+Viewport sent: 659.283 540.011 to player: 102.
+Game state sent to everyone.
+Viewport sent: 658.697 540.141 to player: 102.
+Game state sent to everyone.
+Viewport sent: 658.697 540.141 to player: 102.
+Game state sent to everyone.
+Viewport sent: 658.111 540.271 to player: 102.
+Game state sent to everyone.
+Viewport sent: 657.819 540.336 to player: 102.
+Game state sent to everyone.
+Viewport sent: 657.526 540.401 to player: 102.
+Game state sent to everyone.
+Viewport sent: 657.233 540.466 to player: 102.
+Game state sent to everyone.
+Viewport sent: 656.94 540.531 to player: 102.
+Game state sent to everyone.
+Viewport sent: 656.647 540.596 to player: 102.
+Game state sent to everyone.
+Viewport sent: 656.354 540.661 to player: 102.
+Game state sent to everyone.
+Viewport sent: 656.061 540.726 to player: 102.
+Game state sent to everyone.
+Viewport sent: 655.768 540.791 to player: 102.
+Game state sent to everyone.
+Viewport sent: 655.476 540.856 to player: 102.
+Game state sent to everyone.
+Viewport sent: 655.183 540.921 to player: 102.
+Game state sent to everyone.
+Viewport sent: 654.89 540.986 to player: 102.
+Game state sent to everyone.
+Viewport sent: 654.597 541.051 to player: 102.
+Game state sent to everyone.
+Viewport sent: 654.011 541.181 to player: 102.
+Game state sent to everyone.
+Viewport sent: 653.718 541.246 to player: 102.
+Mouse position received: -0.537037 0.118881
+Game state sent to everyone.
+Viewport sent: 653.425 541.311 to player: 102.
+Game state sent to everyone.
+Viewport sent: 653.132 541.376 to player: 102.
+Game state sent to everyone.
+Viewport sent: 652.84 541.441 to player: 102.
+Game state sent to everyone.
+Viewport sent: 652.547 541.506 to player: 102.
+Game state sent to everyone.
+Viewport sent: 652.254 541.57 to player: 102.
+Game state sent to everyone.
+Viewport sent: 651.961 541.635 to player: 102.
+Game state sent to everyone.
+Viewport sent: 651.668 541.7 to player: 102.
+Game state sent to everyone.
+Viewport sent: 651.375 541.765 to player: 102.
+Game state sent to everyone.
+Viewport sent: 651.082 541.83 to player: 102.
+Game state sent to everyone.
+Viewport sent: 650.789 541.895 to player: 102.
+Game state sent to everyone.
+Viewport sent: 650.496 541.959 to player: 102.
+Game state sent to everyone.
+Viewport sent: 650.203 542.024 to player: 102.
+Game state sent to everyone.
+Viewport sent: 649.618 542.154 to player: 102.
+Game state sent to everyone.
+Viewport sent: 649.325 542.219 to player: 102.
+Game state sent to everyone.
+Viewport sent: 649.032 542.284 to player: 102.
+Game state sent to everyone.
+Viewport sent: 648.739 542.349 to player: 102.
+Game state sent to everyone.
+Viewport sent: 648.446 542.413 to player: 102.
+Game state sent to everyone.
+Viewport sent: 648.153 542.478 to player: 102.
+Game state sent to everyone.
+Viewport sent: 647.86 542.543 to player: 102.
+Game state sent to everyone.
+Viewport sent: 647.567 542.608 to player: 102.
+Game state sent to everyone.
+Viewport sent: 647.274 542.673 to player: 102.
+Game state sent to everyone.
+Viewport sent: 646.981 542.738 to player: 102.
+Game state sent to everyone.
+Viewport sent: 646.688 542.802 to player: 102.
+Game state sent to everyone.
+Viewport sent: 646.396 542.867 to player: 102.
+Game state sent to everyone.
+Viewport sent: 646.103 542.932 to player: 102.
+Game state sent to everyone.
+Viewport sent: 645.81 542.997 to player: 102.
+Game state sent to everyone.
+Viewport sent: 645.517 543.062 to player: 102.
+Game state sent to everyone.
+Viewport sent: 645.224 543.127 to player: 102.
+Game state sent to everyone.
+Viewport sent: 644.638 543.256 to player: 102.
+Game state sent to everyone.
+Viewport sent: 644.345 543.321 to player: 102.
+Game state sent to everyone.
+Viewport sent: 644.052 543.386 to player: 102.
+Game state sent to everyone.
+Viewport sent: 643.759 543.451 to player: 102.
+Game state sent to everyone.
+Viewport sent: 643.466 543.516 to player: 102.
+Game state sent to everyone.
+Viewport sent: 642.881 543.645 to player: 102.
+Game state sent to everyone.
+Viewport sent: 642.588 543.71 to player: 102.
+Game state sent to everyone.
+Viewport sent: 642.295 543.775 to player: 102.
+Game state sent to everyone.
+Viewport sent: 642.002 543.84 to player: 102.
+Game state sent to everyone.
+Viewport sent: 641.709 543.905 to player: 102.
+Game state sent to everyone.
+Viewport sent: 641.416 543.97 to player: 102.
+Game state sent to everyone.
+Viewport sent: 641.123 544.034 to player: 102.
+Game state sent to everyone.
+Viewport sent: 640.83 544.099 to player: 102.
+Game state sent to everyone.
+Viewport sent: 640.537 544.164 to player: 102.
+Game state sent to everyone.
+Viewport sent: 640.244 544.229 to player: 102.
+Game state sent to everyone.
+Viewport sent: 639.952 544.294 to player: 102.
+Game state sent to everyone.
+Viewport sent: 639.659 544.359 to player: 102.
+Game state sent to everyone.
+Viewport sent: 639.073 544.488 to player: 102.
+Game state sent to everyone.
+Viewport sent: 638.78 544.553 to player: 102.
+Game state sent to everyone.
+Viewport sent: 638.487 544.618 to player: 102.
+Game state sent to everyone.
+Viewport sent: 638.194 544.683 to player: 102.
+Game state sent to everyone.
+Viewport sent: 637.901 544.748 to player: 102.
+Game state sent to everyone.
+Viewport sent: 637.608 544.812 to player: 102.
+Game state sent to everyone.
+Viewport sent: 637.315 544.877 to player: 102.
+Game state sent to everyone.
+Viewport sent: 637.022 544.942 to player: 102.
+Game state sent to everyone.
+Viewport sent: 636.73 545.007 to player: 102.
+Game state sent to everyone.
+Viewport sent: 636.437 545.072 to player: 102.
+Game state sent to everyone.
+Viewport sent: 636.144 545.137 to player: 102.
+Game state sent to everyone.
+Viewport sent: 635.558 545.266 to player: 102.
+Game state sent to everyone.
+Viewport sent: 635.265 545.331 to player: 102.
+Game state sent to everyone.
+Viewport sent: 634.972 545.396 to player: 102.
+Game state sent to everyone.
+Viewport sent: 634.679 545.461 to player: 102.
+Game state sent to everyone.
+Viewport sent: 634.386 545.526 to player: 102.
+Game state sent to everyone.
+Viewport sent: 634.093 545.591 to player: 102.
+Game state sent to everyone.
+Viewport sent: 633.8 545.655 to player: 102.
+Game state sent to everyone.
+Viewport sent: 633.508 545.72 to player: 102.
+Game state sent to everyone.
+Viewport sent: 633.215 545.785 to player: 102.
+Game state sent to everyone.
+Viewport sent: 632.922 545.85 to player: 102.
+Game state sent to everyone.
+Viewport sent: 632.336 545.98 to player: 102.
+Game state sent to everyone.
+Viewport sent: 632.043 546.044 to player: 102.
+Game state sent to everyone.
+Viewport sent: 631.75 546.109 to player: 102.
+Game state sent to everyone.
+Viewport sent: 631.457 546.174 to player: 102.
+Game state sent to everyone.
+Viewport sent: 630.871 546.304 to player: 102.
+Game state sent to everyone.
+Viewport sent: 630.871 546.304 to player: 102.
+Game state sent to everyone.
+Viewport sent: 630.578 546.369 to player: 102.
+Game state sent to everyone.
+Viewport sent: 629.993 546.498 to player: 102.
+Game state sent to everyone.
+Viewport sent: 629.7 546.563 to player: 102.
+Game state sent to everyone.
+Viewport sent: 629.407 546.628 to player: 102.
+Mouse position received: -0.537037 0.121212
+Game state sent to everyone.
+Viewport sent: 629.114 546.693 to player: 102.
+Game state sent to everyone.
+Viewport sent: 628.821 546.758 to player: 102.
+Game state sent to everyone.
+Viewport sent: 628.528 546.824 to player: 102.
+Game state sent to everyone.
+Viewport sent: 628.236 546.89 to player: 102.
+Game state sent to everyone.
+Viewport sent: 627.943 546.956 to player: 102.
+Game state sent to everyone.
+Viewport sent: 627.65 547.022 to player: 102.
+Game state sent to everyone.
+Viewport sent: 627.358 547.088 to player: 102.
+Mouse position received: -0.537037 0.123543
+Game state sent to everyone.
+Viewport sent: 627.065 547.154 to player: 102.
+Game state sent to everyone.
+Viewport sent: 626.48 547.287 to player: 102.
+Mouse position received: -0.537037 0.125874
+Game state sent to everyone.
+Viewport sent: 626.188 547.354 to player: 102.
+Game state sent to everyone.
+Viewport sent: 625.896 547.423 to player: 102.
+Game state sent to everyone.
+Viewport sent: 625.604 547.491 to player: 102.
+Game state sent to everyone.
+Viewport sent: 625.312 547.56 to player: 102.
+Mouse position received: -0.537037 0.128205
+Game state sent to everyone.
+Viewport sent: 625.019 547.628 to player: 102.
+Game state sent to everyone.
+Viewport sent: 624.728 547.698 to player: 102.
+Game state sent to everyone.
+Viewport sent: 624.436 547.768 to player: 102.
+Game state sent to everyone.
+Viewport sent: 624.144 547.837 to player: 102.
+Mouse position received: -0.537037 0.130536
+Game state sent to everyone.
+Viewport sent: 623.56 547.977 to player: 102.
+Game state sent to everyone.
+Viewport sent: 623.269 548.047 to player: 102.
+Mouse position received: -0.537037 0.132867
+Game state sent to everyone.
+Viewport sent: 622.977 548.118 to player: 102.
+Game state sent to everyone.
+Viewport sent: 622.686 548.189 to player: 102.
+Game state sent to everyone.
+Viewport sent: 622.395 548.261 to player: 102.
+Game state sent to everyone.
+Viewport sent: 622.104 548.333 to player: 102.
+Mouse position received: -0.537037 0.135198
+Game state sent to everyone.
+Viewport sent: 621.812 548.405 to player: 102.
+Game state sent to everyone.
+Viewport sent: 621.521 548.477 to player: 102.
+Mouse position received: -0.537037 0.137529
+Game state sent to everyone.
+Viewport sent: 621.23 548.551 to player: 102.
+Game state sent to everyone.
+Viewport sent: 620.939 548.624 to player: 102.
+Game state sent to everyone.
+Viewport sent: 620.358 548.773 to player: 102.
+Game state sent to everyone.
+Viewport sent: 620.067 548.847 to player: 102.
+Game state sent to everyone.
+Viewport sent: 619.777 548.922 to player: 102.
+Game state sent to everyone.
+Viewport sent: 619.486 548.996 to player: 102.
+Game state sent to everyone.
+Viewport sent: 619.195 549.07 to player: 102.
+Mouse position received: -0.537037 0.13986
+Game state sent to everyone.
+Viewport sent: 618.905 549.145 to player: 102.
+Game state sent to everyone.
+Viewport sent: 618.615 549.22 to player: 102.
+Mouse position received: -0.537037 0.142191
+Game state sent to everyone.
+Viewport sent: 618.324 549.296 to player: 102.
+Game state sent to everyone.
+Viewport sent: 618.034 549.373 to player: 102.
+Game state sent to everyone.
+Viewport sent: 617.744 549.45 to player: 102.
+Game state sent to everyone.
+Viewport sent: 617.454 549.526 to player: 102.
+Mouse position received: -0.537037 0.144522
+Game state sent to everyone.
+Viewport sent: 617.164 549.603 to player: 102.
+Game state sent to everyone.
+Viewport sent: 616.585 549.758 to player: 102.
+Game state sent to everyone.
+Viewport sent: 616.295 549.836 to player: 102.
+Game state sent to everyone.
+Viewport sent: 616.005 549.914 to player: 102.
+Mouse position received: -0.537037 0.146853
+Game state sent to everyone.
+Viewport sent: 615.715 549.992 to player: 102.
+Game state sent to everyone.
+Viewport sent: 615.426 550.071 to player: 102.
+Game state sent to everyone.
+Viewport sent: 615.137 550.15 to player: 102.
+Game state sent to everyone.
+Viewport sent: 614.847 550.229 to player: 102.
+Mouse position received: -0.537037 0.149184
+Game state sent to everyone.
+Viewport sent: 614.558 550.308 to player: 102.
+Game state sent to everyone.
+Viewport sent: 613.979 550.468 to player: 102.
+Game state sent to everyone.
+Viewport sent: 613.69 550.548 to player: 102.
+Game state sent to everyone.
+Viewport sent: 613.401 550.628 to player: 102.
+Mouse position received: -0.537037 0.151515
+Game state sent to everyone.
+Viewport sent: 613.112 550.709 to player: 102.
+Game state sent to everyone.
+Viewport sent: 612.824 550.79 to player: 102.
+Mouse position received: -0.535714 0.153846
+Game state sent to everyone.
+Viewport sent: 612.535 550.872 to player: 102.
+Game state sent to everyone.
+Viewport sent: 612.246 550.953 to player: 102.
+Game state sent to everyone.
+Viewport sent: 611.958 551.036 to player: 102.
+Game state sent to everyone.
+Viewport sent: 611.669 551.119 to player: 102.
+Game state sent to everyone.
+Viewport sent: 611.381 551.201 to player: 102.
+Game state sent to everyone.
+Viewport sent: 610.804 551.367 to player: 102.
+Mouse position received: -0.535714 0.156177
+Game state sent to everyone.
+Viewport sent: 610.516 551.45 to player: 102.
+Game state sent to everyone.
+Viewport sent: 610.228 551.533 to player: 102.
+Mouse position received: -0.534392 0.156177
+Game state sent to everyone.
+Viewport sent: 609.94 551.617 to player: 102.
+Game state sent to everyone.
+Viewport sent: 609.652 551.701 to player: 102.
+Mouse position received: -0.531746 0.158508
+Game state sent to everyone.
+Viewport sent: 609.364 551.785 to player: 102.
+Game state sent to everyone.
+Viewport sent: 609.076 551.869 to player: 102.
+Mouse position received: -0.529101 0.160839
+Game state sent to everyone.
+Viewport sent: 608.788 551.955 to player: 102.
+Game state sent to everyone.
+Viewport sent: 608.501 552.04 to player: 102.
+Game state sent to everyone.
+Viewport sent: 608.214 552.128 to player: 102.
+Game state sent to everyone.
+Viewport sent: 607.64 552.302 to player: 102.
+Game state sent to everyone.
+Viewport sent: 607.353 552.389 to player: 102.
+Game state sent to everyone.
+Viewport sent: 607.066 552.477 to player: 102.
+Game state sent to everyone.
+Viewport sent: 606.779 552.564 to player: 102.
+Game state sent to everyone.
+Viewport sent: 606.492 552.651 to player: 102.
+Game state sent to everyone.
+Viewport sent: 606.205 552.738 to player: 102.
+Game state sent to everyone.
+Viewport sent: 605.918 552.826 to player: 102.
+Game state sent to everyone.
+Viewport sent: 605.63 552.913 to player: 102.
+Game state sent to everyone.
+Viewport sent: 605.056 553.087 to player: 102.
+Game state sent to everyone.
+Viewport sent: 604.769 553.175 to player: 102.
+Game state sent to everyone.
+Viewport sent: 604.482 553.262 to player: 102.
+Game state sent to everyone.
+Viewport sent: 604.195 553.349 to player: 102.
+Game state sent to everyone.
+Viewport sent: 603.908 553.436 to player: 102.
+Game state sent to everyone.
+Viewport sent: 603.621 553.524 to player: 102.
+Game state sent to everyone.
+Viewport sent: 603.334 553.611 to player: 102.
+Game state sent to everyone.
+Viewport sent: 603.047 553.698 to player: 102.
+Game state sent to everyone.
+Viewport sent: 602.473 553.873 to player: 102.
+Game state sent to everyone.
+Viewport sent: 602.186 553.96 to player: 102.
+Game state sent to everyone.
+Viewport sent: 601.899 554.047 to player: 102.
+Game state sent to everyone.
+Viewport sent: 601.612 554.134 to player: 102.
+Game state sent to everyone.
+Viewport sent: 601.325 554.222 to player: 102.
+Game state sent to everyone.
+Viewport sent: 601.038 554.309 to player: 102.
+Game state sent to everyone.
+Viewport sent: 600.751 554.396 to player: 102.
+Game state sent to everyone.
+Viewport sent: 600.464 554.483 to player: 102.
+Game state sent to everyone.
+Viewport sent: 600.177 554.571 to player: 102.
+Game state sent to everyone.
+Viewport sent: 599.89 554.658 to player: 102.
+Game state sent to everyone.
+Viewport sent: 599.316 554.832 to player: 102.
+Game state sent to everyone.
+Viewport sent: 599.029 554.92 to player: 102.
+Game state sent to everyone.
+Viewport sent: 598.742 555.007 to player: 102.
+Game state sent to everyone.
+Viewport sent: 598.455 555.094 to player: 102.
+Game state sent to everyone.
+Viewport sent: 597.881 555.269 to player: 102.
+Game state sent to everyone.
+Viewport sent: 597.594 555.356 to player: 102.
+Game state sent to everyone.
+Viewport sent: 597.307 555.443 to player: 102.
+Game state sent to everyone.
+Viewport sent: 597.02 555.53 to player: 102.
+Game state sent to everyone.
+Viewport sent: 596.733 555.618 to player: 102.
+Game state sent to everyone.
+Viewport sent: 596.445 555.705 to player: 102.
+Game state sent to everyone.
+Viewport sent: 596.158 555.792 to player: 102.
+Game state sent to everyone.
+Viewport sent: 595.584 555.967 to player: 102.
+Game state sent to everyone.
+Viewport sent: 595.297 556.054 to player: 102.
+Game state sent to everyone.
+Viewport sent: 595.01 556.141 to player: 102.
+Game state sent to everyone.
+Viewport sent: 594.723 556.228 to player: 102.
+Game state sent to everyone.
+Viewport sent: 594.436 556.316 to player: 102.
+Game state sent to everyone.
+Viewport sent: 594.149 556.403 to player: 102.
+Game state sent to everyone.
+Viewport sent: 593.862 556.49 to player: 102.
+Game state sent to everyone.
+Viewport sent: 593.288 556.665 to player: 102.
+Game state sent to everyone.
+Viewport sent: 593.001 556.752 to player: 102.
+Game state sent to everyone.
+Viewport sent: 592.714 556.839 to player: 102.
+Game state sent to everyone.
+Viewport sent: 592.427 556.927 to player: 102.
+Game state sent to everyone.
+Viewport sent: 592.14 557.014 to player: 102.
+Game state sent to everyone.
+Viewport sent: 591.853 557.101 to player: 102.
+Game state sent to everyone.
+Viewport sent: 591.566 557.188 to player: 102.
+Game state sent to everyone.
+Viewport sent: 591.279 557.276 to player: 102.
+Game state sent to everyone.
+Viewport sent: 590.992 557.363 to player: 102.
+Game state sent to everyone.
+Viewport sent: 590.705 557.45 to player: 102.
+Game state sent to everyone.
+Viewport sent: 590.131 557.625 to player: 102.
+Game state sent to everyone.
+Viewport sent: 589.844 557.712 to player: 102.
+Mouse position received: -0.535714 0.151515
+Game state sent to everyone.
+Viewport sent: 589.557 557.799 to player: 102.
+Game state sent to everyone.
+Viewport sent: 589.268 557.881 to player: 102.
+Mouse position received: -0.544974 0.132867
+Game state sent to everyone.
+Viewport sent: 588.979 557.962 to player: 102.
+Game state sent to everyone.
+Viewport sent: 588.688 558.033 to player: 102.
+Mouse position received: -0.566138 0.0932401
+Game state sent to everyone.
+Viewport sent: 588.396 558.104 to player: 102.
+Game state sent to everyone.
+Viewport sent: 588.1 558.153 to player: 102.
+Mouse position received: -0.596561 0.032634
+Game state sent to everyone.
+Viewport sent: 587.804 558.202 to player: 102.
+Game state sent to everyone.
+Viewport sent: 587.508 558.251 to player: 102.
+Mouse position received: -0.638889 -0.0559441
+Game state sent to everyone.
+Viewport sent: 587.209 558.267 to player: 102.
+Game state sent to everyone.
+Viewport sent: 586.909 558.284 to player: 102.
+Mouse position received: -0.690476 -0.156177
+Game state sent to everyone.
+Viewport sent: 586.61 558.257 to player: 102.
+Game state sent to everyone.
+Viewport sent: 586.019 558.165 to player: 102.
+Mouse position received: -0.748677 -0.268065
+Game state sent to everyone.
+Viewport sent: 585.726 558.099 to player: 102.
+Game state sent to everyone.
+Viewport sent: 585.434 558.033 to player: 102.
+Game state sent to everyone.
+Viewport sent: 585.151 557.931 to player: 102.
+Mouse position received: -0.806878 -0.39627
+Game state sent to everyone.
+Viewport sent: 584.869 557.83 to player: 102.
+Game state sent to everyone.
+Viewport sent: 584.6 557.698 to player: 102.
+Mouse position received: -0.927249 -0.648019
+Game state sent to everyone.
+Viewport sent: 584.33 557.566 to player: 102.
+Game state sent to everyone.
+Viewport sent: 584.084 557.394 to player: 102.
+Mouse position received: -0.981481 -0.759907
+Game state sent to everyone.
+Viewport sent: 583.839 557.222 to player: 102.
+Game state sent to everyone.
+Viewport sent: 583.601 557.038 to player: 102.
+Mouse position received: -1 -0.804196
+Game state sent to everyone.
+Viewport sent: 583.127 556.671 to player: 102.
+Game state sent to everyone.
+Viewport sent: 582.893 556.483 to player: 102.
+Mouse position received: -1 -0.895105
+Game state sent to everyone.
+Viewport sent: 582.659 556.295 to player: 102.
+Game state sent to everyone.
+Viewport sent: 582.436 556.095 to player: 102.
+Mouse position received: -1 -0.920746
+Game state sent to everyone.
+Viewport sent: 582.212 555.895 to player: 102.
+Game state sent to everyone.
+Viewport sent: 581.992 555.692 to player: 102.
+Mouse position received: -1 -0.944056
+Game state sent to everyone.
+Viewport sent: 581.771 555.489 to player: 102.
+Game state sent to everyone.
+Viewport sent: 581.553 555.283 to player: 102.
+Mouse position received: -1 -0.983683
+Game state sent to everyone.
+Viewport sent: 581.116 554.871 to player: 102.
+Game state sent to everyone.
+Viewport sent: 580.903 554.66 to player: 102.
+Mouse position received: -1 -0.993007
+Game state sent to everyone.
+Viewport sent: 580.689 554.45 to player: 102.
+Game state sent to everyone.
+Viewport sent: 580.476 554.239 to player: 102.
+Game state sent to everyone.
+Viewport sent: 580.263 554.027 to player: 102.
+Game state sent to everyone.
+Viewport sent: 580.05 553.816 to player: 102.
+Game state sent to everyone.
+Viewport sent: 579.837 553.604 to player: 102.
+Game state sent to everyone.
+Viewport sent: 579.624 553.393 to player: 102.
+Game state sent to everyone.
+Viewport sent: 579.199 552.97 to player: 102.
+Game state sent to everyone.
+Viewport sent: 579.199 552.97 to player: 102.
+Game state sent to everyone.
+Viewport sent: 578.773 552.548 to player: 102.
+Game state sent to everyone.
+Viewport sent: 578.56 552.336 to player: 102.
+Game state sent to everyone.
+Viewport sent: 578.347 552.125 to player: 102.
+Game state sent to everyone.
+Viewport sent: 578.134 551.913 to player: 102.
+Game state sent to everyone.
+Viewport sent: 577.921 551.702 to player: 102.
+Game state sent to everyone.
+Viewport sent: 577.708 551.491 to player: 102.
+Game state sent to everyone.
+Viewport sent: 577.496 551.279 to player: 102.
+Game state sent to everyone.
+Viewport sent: 577.283 551.068 to player: 102.
+Game state sent to everyone.
+Viewport sent: 576.857 550.645 to player: 102.
+Game state sent to everyone.
+Viewport sent: 576.644 550.434 to player: 102.
+Game state sent to everyone.
+Viewport sent: 576.431 550.222 to player: 102.
+Game state sent to everyone.
+Viewport sent: 576.218 550.011 to player: 102.
+Game state sent to everyone.
+Viewport sent: 576.005 549.799 to player: 102.
+Game state sent to everyone.
+Viewport sent: 575.793 549.588 to player: 102.
+Game state sent to everyone.
+Viewport sent: 575.367 549.165 to player: 102.
+Game state sent to everyone.
+Viewport sent: 575.154 548.954 to player: 102.
+Game state sent to everyone.
+Viewport sent: 574.941 548.743 to player: 102.
+Game state sent to everyone.
+Viewport sent: 574.728 548.531 to player: 102.
+Game state sent to everyone.
+Viewport sent: 574.515 548.32 to player: 102.
+Game state sent to everyone.
+Viewport sent: 574.302 548.108 to player: 102.
+Game state sent to everyone.
+Viewport sent: 574.09 547.897 to player: 102.
+Game state sent to everyone.
+Viewport sent: 573.877 547.686 to player: 102.
+Game state sent to everyone.
+Viewport sent: 573.451 547.263 to player: 102.
+Game state sent to everyone.
+Viewport sent: 573.238 547.051 to player: 102.
+Game state sent to everyone.
+Viewport sent: 573.025 546.84 to player: 102.
+Game state sent to everyone.
+Viewport sent: 572.812 546.629 to player: 102.
+Game state sent to everyone.
+Viewport sent: 572.599 546.417 to player: 102.
+Game state sent to everyone.
+Viewport sent: 572.387 546.206 to player: 102.
+Game state sent to everyone.
+Viewport sent: 572.174 545.995 to player: 102.
+Game state sent to everyone.
+Viewport sent: 571.748 545.572 to player: 102.
+Game state sent to everyone.
+Viewport sent: 571.535 545.36 to player: 102.
+Game state sent to everyone.
+Viewport sent: 571.322 545.149 to player: 102.
+Game state sent to everyone.
+Viewport sent: 571.109 544.938 to player: 102.
+Mouse position received: -1 -0.995338
+Game state sent to everyone.
+Viewport sent: 570.896 544.726 to player: 102.
+Game state sent to everyone.
+Viewport sent: 570.684 544.515 to player: 102.
+Mouse position received: -1 -0.997669
+Game state sent to everyone.
+Viewport sent: 570.471 544.303 to player: 102.
+Game state sent to everyone.
+Viewport sent: 570.046 543.879 to player: 102.
+Mouse position received: -1 -1
+Game state sent to everyone.
+Viewport sent: 569.834 543.667 to player: 102.
+Game state sent to everyone.
+Viewport sent: 569.622 543.455 to player: 102.
+Mouse position received: -1 -1.00233
+Game state sent to everyone.
+Viewport sent: 569.41 543.243 to player: 102.
+Game state sent to everyone.
+Viewport sent: 569.198 543.031 to player: 102.
+Mouse position received: -1 -1.00466
+Game state sent to everyone.
+Viewport sent: 568.986 542.818 to player: 102.
+Game state sent to everyone.
+Viewport sent: 568.774 542.606 to player: 102.
+Mouse position received: -1 -1.00699
+Game state sent to everyone.
+Viewport sent: 568.563 542.393 to player: 102.
+Game state sent to everyone.
+Viewport sent: 568.139 541.968 to player: 102.
+Mouse position received: -1 -1.00932
+Game state sent to everyone.
+Viewport sent: 567.928 541.755 to player: 102.
+Game state sent to everyone.
+Viewport sent: 567.717 541.542 to player: 102.
+Game state sent to everyone.
+Viewport sent: 567.506 541.329 to player: 102.
+Game state sent to everyone.
+Viewport sent: 567.295 541.116 to player: 102.
+Game state sent to everyone.
+Viewport sent: 567.084 540.902 to player: 102.
+Mouse position received: -1 -1.01399
+Game state sent to everyone.
+Viewport sent: 566.872 540.689 to player: 102.
+Game state sent to everyone.
+Viewport sent: 566.662 540.476 to player: 102.
+Game state sent to everyone.
+Viewport sent: 566.24 540.049 to player: 102.
+Game state sent to everyone.
+Viewport sent: 566.03 539.835 to player: 102.
+Game state sent to everyone.
+Viewport sent: 565.819 539.621 to player: 102.
+Game state sent to everyone.
+Viewport sent: 565.608 539.408 to player: 102.
+Game state sent to everyone.
+Viewport sent: 565.398 539.194 to player: 102.
+Game state sent to everyone.
+Viewport sent: 565.187 538.981 to player: 102.
+Game state sent to everyone.
+Viewport sent: 564.976 538.767 to player: 102.
+Game state sent to everyone.
+Viewport sent: 564.766 538.553 to player: 102.
+Mouse position received: -0.998677 -1.01399
+Game state sent to everyone.
+Viewport sent: 564.555 538.34 to player: 102.
+Game state sent to everyone.
+Viewport sent: 564.345 538.126 to player: 102.
+Game state sent to everyone.
+Viewport sent: 563.924 537.699 to player: 102.
+Game state sent to everyone.
+Viewport sent: 563.713 537.485 to player: 102.
+Mouse position received: -0.997354 -1.01399
+Game state sent to everyone.
+Viewport sent: 563.503 537.271 to player: 102.
+Game state sent to everyone.
+Viewport sent: 563.292 537.057 to player: 102.
+Mouse position received: -0.996032 -1.01399
+Game state sent to everyone.
+Viewport sent: 563.082 536.843 to player: 102.
+Game state sent to everyone.
+Viewport sent: 562.872 536.629 to player: 102.
+Mouse position received: -0.994709 -1.01399
+Game state sent to everyone.
+Viewport sent: 562.661 536.415 to player: 102.
+Game state sent to everyone.
+Viewport sent: 562.451 536.201 to player: 102.
+Game state sent to everyone.
+Viewport sent: 562.241 535.987 to player: 102.
+Game state sent to everyone.
+Viewport sent: 561.821 535.559 to player: 102.
+Mouse position received: -0.993386 -1.01399
+Game state sent to everyone.
+Viewport sent: 561.611 535.344 to player: 102.
+Game state sent to everyone.
+Viewport sent: 561.401 535.13 to player: 102.
+Mouse position received: -0.992063 -1.01399
+Game state sent to everyone.
+Viewport sent: 561.191 534.916 to player: 102.
+Game state sent to everyone.
+Viewport sent: 560.981 534.701 to player: 102.
+Game state sent to everyone.
+Viewport sent: 560.771 534.487 to player: 102.
+Game state sent to everyone.
+Viewport sent: 560.562 534.273 to player: 102.
+Game state sent to everyone.
+Viewport sent: 560.352 534.058 to player: 102.
+Game state sent to everyone.
+Viewport sent: 560.142 533.844 to player: 102.
+Game state sent to everyone.
+Viewport sent: 559.722 533.415 to player: 102.
+Mouse position received: -0.990741 -1.01399
+Game state sent to everyone.
+Viewport sent: 559.513 533.2 to player: 102.
+Game state sent to everyone.
+Viewport sent: 559.303 532.986 to player: 102.
+Game state sent to everyone.
+Viewport sent: 559.093 532.771 to player: 102.
+Game state sent to everyone.
+Viewport sent: 558.884 532.557 to player: 102.
+Game state sent to everyone.
+Viewport sent: 558.674 532.342 to player: 102.
+Game state sent to everyone.
+Viewport sent: 558.464 532.127 to player: 102.
+Game state sent to everyone.
+Viewport sent: 558.255 531.913 to player: 102.
+Game state sent to everyone.
+Viewport sent: 558.045 531.698 to player: 102.
+Game state sent to everyone.
+Viewport sent: 557.835 531.484 to player: 102.
+Game state sent to everyone.
+Viewport sent: 557.626 531.269 to player: 102.
+Mouse position received: -0.989418 -1.01399
+Game state sent to everyone.
+Viewport sent: 557.416 531.055 to player: 102.
+Game state sent to everyone.
+Viewport sent: 556.997 530.625 to player: 102.
+Game state sent to everyone.
+Viewport sent: 556.787 530.411 to player: 102.
+Game state sent to everyone.
+Viewport sent: 556.578 530.196 to player: 102.
+Game state sent to everyone.
+Viewport sent: 556.368 529.981 to player: 102.
+Game state sent to everyone.
+Viewport sent: 556.159 529.766 to player: 102.
+Game state sent to everyone.
+Viewport sent: 555.74 529.337 to player: 102.
+Game state sent to everyone.
+Viewport sent: 555.53 529.122 to player: 102.
+Game state sent to everyone.
+Viewport sent: 555.321 528.908 to player: 102.
+Game state sent to everyone.
+Viewport sent: 555.111 528.693 to player: 102.
+Game state sent to everyone.
+Viewport sent: 554.902 528.478 to player: 102.
+Game state sent to everyone.
+Viewport sent: 554.692 528.263 to player: 102.
+Game state sent to everyone.
+Viewport sent: 554.483 528.049 to player: 102.
+Game state sent to everyone.
+Viewport sent: 554.273 527.834 to player: 102.
+Mouse position received: -0.988095 -1.01399
+Game state sent to everyone.
+Viewport sent: 554.064 527.619 to player: 102.
+Game state sent to everyone.
+Viewport sent: 553.645 527.19 to player: 102.
+Game state sent to everyone.
+Viewport sent: 553.435 526.975 to player: 102.
+Game state sent to everyone.
+Viewport sent: 553.226 526.76 to player: 102.
+Game state sent to everyone.
+Viewport sent: 553.017 526.545 to player: 102.
+Game state sent to everyone.
+Viewport sent: 552.807 526.33 to player: 102.
+Mouse position received: -0.986772 -1.01632
+Game state sent to everyone.
+Viewport sent: 552.598 526.115 to player: 102.
+Game state sent to everyone.
+Viewport sent: 552.389 525.901 to player: 102.
+Game state sent to everyone.
+Viewport sent: 552.18 525.685 to player: 102.
+Game state sent to everyone.
+Viewport sent: 551.971 525.47 to player: 102.
+Game state sent to everyone.
+Viewport sent: 551.762 525.255 to player: 102.
+Mouse position received: -0.98545 -1.01632
+Game state sent to everyone.
+Viewport sent: 551.553 525.04 to player: 102.
+Game state sent to everyone.
+Viewport sent: 551.344 524.824 to player: 102.
+Game state sent to everyone.
+Viewport sent: 550.926 524.393 to player: 102.
+Game state sent to everyone.
+Viewport sent: 550.717 524.178 to player: 102.
+Mouse position received: -0.98545 -1.01865
+Game state sent to everyone.
+Viewport sent: 550.509 523.963 to player: 102.
+Mouse position received: -0.984127 -1.01865
+Game state sent to everyone.
+Viewport sent: 550.3 523.747 to player: 102.
+Game state sent to everyone.
+Viewport sent: 550.091 523.531 to player: 102.
+Game state sent to everyone.
+Viewport sent: 549.883 523.316 to player: 102.
+Game state sent to everyone.
+Viewport sent: 549.674 523.1 to player: 102.
+Game state sent to everyone.
+Viewport sent: 549.466 522.884 to player: 102.
+Game state sent to everyone.
+Viewport sent: 549.258 522.668 to player: 102.
+Game state sent to everyone.
+Viewport sent: 549.049 522.453 to player: 102.
+Game state sent to everyone.
+Viewport sent: 548.841 522.237 to player: 102.
+Game state sent to everyone.
+Viewport sent: 548.632 522.021 to player: 102.
+Game state sent to everyone.
+Viewport sent: 548.215 521.59 to player: 102.
+Game state sent to everyone.
+Viewport sent: 548.007 521.374 to player: 102.
+Game state sent to everyone.
+Viewport sent: 547.798 521.158 to player: 102.
+Game state sent to everyone.
+Viewport sent: 547.59 520.942 to player: 102.
+Game state sent to everyone.
+Viewport sent: 547.382 520.727 to player: 102.
+Game state sent to everyone.
+Viewport sent: 547.173 520.511 to player: 102.
+Game state sent to everyone.
+Viewport sent: 546.756 520.079 to player: 102.
+Game state sent to everyone.
+Viewport sent: 546.548 519.864 to player: 102.
+Game state sent to everyone.
+Viewport sent: 546.131 519.432 to player: 102.
+Game state sent to everyone.
+Viewport sent: 545.714 519.001 to player: 102.
+Game state sent to everyone.
+Viewport sent: 545.506 518.785 to player: 102.
+Game state sent to everyone.
+Viewport sent: 545.297 518.569 to player: 102.
+Game state sent to everyone.
+Viewport sent: 545.089 518.353 to player: 102.
+Game state sent to everyone.
+Viewport sent: 544.88 518.138 to player: 102.
+Game state sent to everyone.
+Viewport sent: 544.463 517.706 to player: 102.
+Game state sent to everyone.
+Viewport sent: 544.255 517.49 to player: 102.
+Game state sent to everyone.
+Viewport sent: 544.046 517.275 to player: 102.
+Game state sent to everyone.
+Viewport sent: 543.838 517.059 to player: 102.
+Mouse position received: -1 -1
+Game state sent to everyone.
+Viewport sent: 543.63 516.843 to player: 102.
+Game state sent to everyone.
+Viewport sent: 543.421 516.627 to player: 102.
+Game state sent to everyone.
+Viewport sent: 542.997 516.203 to player: 102.
+Game state sent to everyone.
+Viewport sent: 542.785 515.991 to player: 102.
+Game state sent to everyone.
+Viewport sent: 542.573 515.779 to player: 102.
+Game state sent to everyone.
+Viewport sent: 542.36 515.567 to player: 102.
+Game state sent to everyone.
+Viewport sent: 542.148 515.354 to player: 102.
+Game state sent to everyone.
+Viewport sent: 541.936 515.142 to player: 102.
+Game state sent to everyone.
+Viewport sent: 541.724 514.93 to player: 102.
+Game state sent to everyone.
+Viewport sent: 541.512 514.718 to player: 102.
+Game state sent to everyone.
+Viewport sent: 541.3 514.506 to player: 102.
+Game state sent to everyone.
+Viewport sent: 540.876 514.082 to player: 102.
+Game state sent to everyone.
+Viewport sent: 540.663 513.87 to player: 102.
+Game state sent to everyone.
+Viewport sent: 540.451 513.657 to player: 102.
+Game state sent to everyone.
+Viewport sent: 540.239 513.445 to player: 102.
+Game state sent to everyone.
+Viewport sent: 540.027 513.233 to player: 102.
+Game state sent to everyone.
+Viewport sent: 539.815 513.021 to player: 102.
+Game state sent to everyone.
+Viewport sent: 539.603 512.809 to player: 102.
+Game state sent to everyone.
+Viewport sent: 539.391 512.597 to player: 102.
+Game state sent to everyone.
+Viewport sent: 539.178 512.385 to player: 102.
+Game state sent to everyone.
+Viewport sent: 538.966 512.172 to player: 102.
+Game state sent to everyone.
+Viewport sent: 538.754 511.96 to player: 102.
+Game state sent to everyone.
+Viewport sent: 538.542 511.748 to player: 102.
+Game state sent to everyone.
+Viewport sent: 538.33 511.536 to player: 102.
+Game state sent to everyone.
+Viewport sent: 537.906 511.112 to player: 102.
+Game state sent to everyone.
+Viewport sent: 537.481 510.688 to player: 102.
+Game state sent to everyone.
+Viewport sent: 537.269 510.475 to player: 102.
+Game state sent to everyone.
+Viewport sent: 537.057 510.263 to player: 102.
+Game state sent to everyone.
+Viewport sent: 536.845 510.051 to player: 102.
+Game state sent to everyone.
+Viewport sent: 536.633 509.839 to player: 102.
+Game state sent to everyone.
+Viewport sent: 536.421 509.627 to player: 102.
+Game state sent to everyone.
+Viewport sent: 536.209 509.415 to player: 102.
+Game state sent to everyone.
+Viewport sent: 535.996 509.203 to player: 102.
+Game state sent to everyone.
+Viewport sent: 535.784 508.991 to player: 102.
+Game state sent to everyone.
+Viewport sent: 535.572 508.778 to player: 102.
+Game state sent to everyone.
+Viewport sent: 535.36 508.566 to player: 102.
+Game state sent to everyone.
+Viewport sent: 535.148 508.354 to player: 102.
+Game state sent to everyone.
+Viewport sent: 534.936 508.142 to player: 102.
+Game state sent to everyone.
+Viewport sent: 534.512 507.718 to player: 102.
+Game state sent to everyone.
+Viewport sent: 534.299 507.506 to player: 102.
+Game state sent to everyone.
+Viewport sent: 534.087 507.293 to player: 102.
+Game state sent to everyone.
+Viewport sent: 533.875 507.081 to player: 102.
+Game state sent to everyone.
+Viewport sent: 533.663 506.869 to player: 102.
+Game state sent to everyone.
+Viewport sent: 533.451 506.657 to player: 102.
+Game state sent to everyone.
+Viewport sent: 533.239 506.445 to player: 102.
+Ids sent for 1 entities deleted.
+Player 102 disconnected.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.
+Game state sent to everyone.

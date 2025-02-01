@@ -19,7 +19,7 @@ void Game::updateLoop() {
     while (true) {
         for (auto& player : PlayerManager::get().getAllPlayers()) {
             viewportUpdate(player);
-            cellMoveUpdate(player);
+            moveUpdate(player);
         }
 
         std::this_thread::sleep_for(
@@ -48,7 +48,7 @@ void Game::viewportUpdate(Player& player) {
     player.setViewport({centerX, centerY});
 }
 
-void Game::cellMoveUpdate(Player& player) {
+void Game::moveUpdate(Player& player) {
     std::vector<Cell*> playerCells =
         CellManager::get().getCellsFromId(player.getId());
     if (playerCells.empty())
@@ -74,9 +74,5 @@ void Game::cellMoveUpdate(Player& player) {
 
     for (size_t i = 0; i < cellCount; ++i) {
         playerCells[i]->move(dirX, dirY, speed, Config::GameMode::WORLD_SIZE);
-
-        for (size_t j = i + 1; j < cellCount; ++j) {
-            playerCells[i]->resolveCollision(*playerCells[j]);
-        }
     }
 }

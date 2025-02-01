@@ -90,9 +90,24 @@ void Protocol::sendViewport() {
         if (Config::Server::DEV_MODE)
             std::cout << "Viewport sent: " << viewport.first << " "
                       << viewport.second
-                      << " to player with ID: " << player.getId() << "."
+                      << " to player: " << player.getId() << "."
                       << std::endl;
 
         Network::get().sendToClient(player.getClient(), smartBuffer);
+    }
+}
+
+void Protocol::sendEntityRemoved(const std::vector<uint32_t>& deletedIds) {
+    SmartBuffer smartBuffer;
+    smartBuffer << OpCodes::REMOVE_ENTITY;
+
+    for (uint32_t cellId : deletedIds) {
+        smartBuffer << cellId;
+    }
+
+    Network::get().sendToAll(smartBuffer);
+
+    if (Config::Server::DEV_MODE) {
+        std::cout << "Ids sent for " << deletedIds.size() << " entities deleted." << std::endl;
     }
 }

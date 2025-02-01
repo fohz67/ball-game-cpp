@@ -23,7 +23,9 @@ void PlayerManager::removePlayer(uint32_t playerId) {
                                      return p.getId() == playerId;
                                  }),
                   players.end());
+
     CellManager::get().removeCellsFromId(playerId);
+    AtomicIdsManager::get().removeId(playerId);
 }
 
 Player* PlayerManager::getPlayerByClient(

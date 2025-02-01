@@ -14,6 +14,8 @@ class CellManager {
     std::pair<double, double> getRandomLocation();
     std::vector<double> getRandomColor();
 
+    void generatePellets();
+
     void createCell(uint32_t ownerId, CellType type);
     void addCell(uint32_t ownerId, double x, double y, double radius,
                  double speed);
@@ -22,8 +24,6 @@ class CellManager {
     std::vector<Cell*> getCellsFromId(uint32_t ownerId);
 
     const std::vector<Cell>& getAllCells() const;
-
-    void generatePellets();
 
   private:
     CellManager() = default;
