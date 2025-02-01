@@ -7,8 +7,10 @@ struct ConfigClient {
         static constexpr bool DEV_MODE = false;
     };
 
-    struct Loop {
-        static constexpr int FREQUENCY = 50;
+    struct Game {
+        static constexpr int FRAME_RATE = 144;
+        static constexpr double CAMERA_PANNING_DELAY = 0.01f;
+        static constexpr double TICK_RATE = 1.0 / FRAME_RATE; // Don't touch
     };
 
     struct Window {
@@ -18,6 +20,7 @@ struct ConfigClient {
     };
 
     struct Network {
+        static constexpr int FREQUENCY = 50;
         static inline const char* HOST = "127.0.0.1";
         static constexpr int PORT = 12345;
     };

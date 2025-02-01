@@ -19,10 +19,13 @@ class GameClient {
     GameClient() = default;
     ~GameClient() = default;
 
+    void initWindow();
+    void initView();
     void processEvents();
-    void render(GameEngine::System& system);
+    void render(GameEngine::System& system, double alpha);
 
     sf::RenderWindow window;
     sf::View view;
+    std::pair<double, double> prevViewport = {0, 0};
     std::pair<double, double> viewport;
 };

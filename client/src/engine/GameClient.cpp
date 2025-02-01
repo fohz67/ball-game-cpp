@@ -10,37 +10,43 @@ GameClient& GameClient::get() {
 }
 
 void GameClient::run() {
-    window.create(sf::VideoMode(ConfigClient::Window::WIDTH,
-                                ConfigClient::Window::HEIGHT),
-                  ConfigClient::Window::NAME);
-
     GameEngine::System system;
     sf::Clock clock;
+    sf::Clock renderClock;
     sf::Vector2i lastMousePos = sf::Mouse::getPosition(window);
 
-    view.setSize(ConfigClient::Window::WIDTH, ConfigClient::Window::HEIGHT);
-    view.setCenter(viewport.first, viewport.second);
+    double lastUpdateTime = clock.getElapsedTime().asSeconds();
+
+    initWindow();
+    initView();
 
     while (window.isOpen()) {
+        double currentTime = clock.getElapsedTime().asSeconds();
+        double deltaTime = currentTime - lastUpdateTime;
+        lastUpdateTime = currentTime;
+
         processEvents();
+        ProtocolClient::sendMousePosition(window, lastMousePos);
 
-        if (clock.getElapsedTime().asMilliseconds() >=
-            ConfigClient::Loop::FREQUENCY) {
-            ProtocolClient::sendMousePosition(window, lastMousePos);
+        double alpha = deltaTime / ConfigClient::Game::TICK_RATE;
+        alpha = std::min(1.0, std::max(0.0, alpha));
 
-            clock.restart();
-        }
-
-        render(system);
+        render(system, alpha);
     }
 }
 
-std::pair<double, double> GameClient::getViewport() const {
-    return viewport;
+void GameClient::initWindow() {
+    window.create(sf::VideoMode(ConfigClient::Window::WIDTH,
+                                ConfigClient::Window::HEIGHT),
+                  ConfigClient::Window::NAME);
+    window.setVerticalSyncEnabled(true);
+    window.setFramerateLimit(ConfigClient::Game::FRAME_RATE);
 }
 
-void GameClient::setViewport(std::pair<double, double> viewport) {
-    this->viewport = viewport;
+void GameClient::initView() {
+    view.setSize(ConfigClient::Window::WIDTH, ConfigClient::Window::HEIGHT);
+    view.setCenter(ConfigClient::Window::WIDTH / 2, ConfigClient::Window::HEIGHT / 2);
+    window.setView(view);
 }
 
 void GameClient::processEvents() {
@@ -58,18 +64,21 @@ void GameClient::processEvents() {
     }
 }
 
-void GameClient::render(GameEngine::System& system) {
-    std::map<int, GameEngine::Entity> entitiesList =
-        EntityManager::get().getEntities();
+void GameClient::render(GameEngine::System& system, double alpha) {
+    prevViewport.first += (viewport.first - prevViewport.first) * ConfigClient::Game::CAMERA_PANNING_DELAY;
+    prevViewport.second += (viewport.second - prevViewport.second) * ConfigClient::Game::CAMERA_PANNING_DELAY;
 
-    view.setCenter(viewport.first, viewport.second);
-
+    view.setCenter(prevViewport.first, prevViewport.second);
     window.setView(view);
     window.clear();
-
-    if (!entitiesList.empty()) {
-        system.render(window, entitiesList);
-    }
-
+    system.render(window, EntityManager::get().getEntities());
     window.display();
+}
+
+std::pair<double, double> GameClient::getViewport() const {
+    return viewport;
+}
+
+void GameClient::setViewport(std::pair<double, double> viewport) {
+    this->viewport = viewport;
 }

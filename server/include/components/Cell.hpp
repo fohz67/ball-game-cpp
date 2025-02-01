@@ -21,6 +21,9 @@ class Cell {
     void setPosition(double x, double y);
     void setRadius(double radius);
 
+    void move(double dirX, double dirY, double speed, double worldSize);
+    void resolveCollision(Cell& other);
+
   private:
     uint32_t id;
     uint32_t ownerId;

@@ -37,8 +37,8 @@ void Game::viewportUpdate(Player& player) {
     double centerY = 0.0f;
 
     for (const auto* cell : playerCells) {
-        centerX += cell->getX();
-        centerY += cell->getY();
+        centerX += cell->getX() + cell->getRadius();
+        centerY += cell->getY() + cell->getRadius();
     }
 
     centerX /= playerCells.size();
@@ -52,54 +52,35 @@ void Game::viewportUpdate(Player& player) {
 }
 
 void Game::cellMoveUpdate(Player& player) {
-    std::vector<Cell*> playerCells =
-        CellManager::get().getCellsFromId(player.getId());
-    if (playerCells.empty()) {
-        return;
-    }
+    std::vector<Cell*> playerCells = CellManager::get().getCellsFromId(player.getId());
+    if (playerCells.empty()) return;
 
     std::pair<double, double> mousePosition = player.getMousePosition();
-
     double dirX = mousePosition.first;
     double dirY = mousePosition.second;
 
-    if (std::fabs(dirX) < 0.05f) {
-        dirX = 0;
+    double magnitude = std::sqrt(dirX * dirX + dirY * dirY);
+    double slowdownFactor = (magnitude < Config::GameMode::MIN_INPUT_THRESHOLD)
+                                ? magnitude / Config::GameMode::MIN_INPUT_THRESHOLD
+                                : 1.0;
+
+    if (magnitude > 0) {
+        dirX /= magnitude;
+        dirY /= magnitude;
     }
-    if (std::fabs(dirY) < 0.05f) {
-        dirY = 0;
-    }
 
-    for (auto* cell : playerCells) {
-        double radius = cell->getRadius();
-        double speed = 100.0f / std::log(radius + 1.5f);
+    double speed = Config::GameMode::BASE_SPEED * slowdownFactor;
+    size_t cellCount = playerCells.size();
 
-        double newX = cell->getX() + dirX * speed;
-        double newY = cell->getY() + dirY * speed;
+    for (size_t i = 0; i < cellCount; ++i) {
+        playerCells[i]->move(dirX, dirY, speed, Config::GameMode::WORLD_SIZE);
 
-        for (auto* otherCell : playerCells) {
-            if (cell == otherCell) {
-                continue;
-            }
-
-            double dx = newX - otherCell->getX();
-            double dy = newY - otherCell->getY();
-
-            double distance = std::sqrt(dx * dx + dy * dy);
-            double minDist = radius + otherCell->getRadius();
-
-            if (distance < minDist) {
-                double overlap = minDist - distance;
-
-                newX += dx / distance * overlap * 0.5f;
-                newY += dy / distance * overlap * 0.5f;
-            }
+        for (size_t j = i + 1; j < cellCount; ++j) {
+            playerCells[i]->resolveCollision(*playerCells[j]);
         }
-
-        cell->setPosition(newX, newY);
     }
 
-    if (Config::Server::DEV_MODE)
-        std::cout << "Cell movement updated for player " << player.getId()
-                  << std::endl;
+    if (Config::Server::DEV_MODE) {
+        std::cout << "Cell movement updated for player " << player.getId() << std::endl;
+    }
 }
