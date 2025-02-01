@@ -27,6 +27,10 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
         smartBuffer.reset();
         smartBuffer << OpCodes::WORLD << Config::GameMode::WORLD_SIZE;
 
+        if (Config::Server::DEV_MODE)
+            std::cout << "World size sent: " << Config::GameMode::WORLD_SIZE
+                      << std::endl;
+
         Network::get().sendToClient(client, smartBuffer);
         break;
     }
@@ -34,16 +38,21 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
         double mouseX, mouseY;
         smartBuffer >> mouseX >> mouseY;
 
-        PlayerManager::get()
-            .getPlayerByClient(client)
-            ->getMousePosition()
-            .updatePosition(mouseX, mouseY);
+        if (Config::Server::DEV_MODE)
+            std::cout << "Mouse position received: " << mouseX << " " << mouseY
+                      << std::endl;
+
+        PlayerManager::get().getPlayerByClient(client)->setMousePosition(
+            {mouseX, mouseY});
 
         break;
     }
     case OpCodes::KEY_PRESSED: {
         std::string keyName;
         smartBuffer >> keyName;
+
+        if (Config::Server::DEV_MODE)
+            std::cout << "Key pressed received: " << keyName << std::endl;
 
         // @TODO handle key pressed
         break;
@@ -65,6 +74,9 @@ void Protocol::sendGameState() {
                     << ColorServer::vecToInt(cell.getColor());
     }
 
+    if (Config::Server::DEV_MODE)
+        std::cout << "Game state sent." << std::endl;
+
     Network::get().sendToAll(smartBuffer);
 }
 
@@ -72,10 +84,15 @@ void Protocol::sendViewport() {
     SmartBuffer smartBuffer;
 
     for (const auto& player : PlayerManager::get().getAllPlayers()) {
-        Viewport viewport = player.getViewport();
+        std::pair<double, double> viewport = player.getViewport();
 
         smartBuffer.reset();
-        smartBuffer << OpCodes::VIEWPORT << viewport.x << viewport.y;
+        smartBuffer << OpCodes::VIEWPORT << viewport.first << viewport.second;
+
+        if (Config::Server::DEV_MODE)
+            std::cout << "Viewport sent: " << viewport.first << " "
+                      << viewport.second
+                      << "to player with ID: " << player.getId() << std::endl;
 
         Network::get().sendToClient(player.getClient(), smartBuffer);
     }

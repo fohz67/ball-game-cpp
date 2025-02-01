@@ -1,9 +1,9 @@
 #include "engine/Game.hpp"
+#include <iostream>
 #include "components/Cell.hpp"
 #include "config/Config.hpp"
 #include "managers/CellManager.hpp"
 #include "managers/PlayerManager.hpp"
-#include <iostream>
 
 Game& Game::get() {
     static Game instance;
@@ -16,7 +16,7 @@ void Game::run() {
 
 void Game::updateLoop() {
     while (true) {
-        for (const auto& player : PlayerManager::get().getAllPlayers()) {
+        for (auto& player : PlayerManager::get().getAllPlayers()) {
             viewportUpdate(player);
             cellMoveUpdate(player);
         }
@@ -26,7 +26,7 @@ void Game::updateLoop() {
     }
 }
 
-void Game::viewportUpdate(const Player player) {
+void Game::viewportUpdate(Player& player) {
     std::vector<Cell*> playerCells =
         CellManager::get().getCellsFromId(player.getId());
     if (playerCells.empty()) {
@@ -44,22 +44,24 @@ void Game::viewportUpdate(const Player player) {
     centerX /= playerCells.size();
     centerY /= playerCells.size();
 
-    player.getViewport().updatePosition(centerX, centerY);
+    player.setViewport({centerX, centerY});
 
-    if (Config::Server::DEV_MODE) std::cout << "Viewport updated for player " << player.getId() << std::endl;
+    if (Config::Server::DEV_MODE)
+        std::cout << "Viewport updated for player " << player.getId()
+                  << "X: " << centerX << " Y: " << centerY << std::endl;
 }
 
-void Game::cellMoveUpdate(const Player player) {
+void Game::cellMoveUpdate(Player& player) {
     std::vector<Cell*> playerCells =
         CellManager::get().getCellsFromId(player.getId());
     if (playerCells.empty()) {
         return;
     }
 
-    MousePosition mousePosition = player.getMousePosition();
+    std::pair<double, double> mousePosition = player.getMousePosition();
 
-    double dirX = mousePosition.x;
-    double dirY = mousePosition.y;
+    double dirX = mousePosition.first;
+    double dirY = mousePosition.second;
 
     if (std::fabs(dirX) < 0.05f) {
         dirX = 0;
@@ -97,6 +99,7 @@ void Game::cellMoveUpdate(const Player player) {
         cell->setPosition(newX, newY);
     }
 
-    if (Config::Server::DEV_MODE) std::cout << "Cell movement updated for player " << player.getId()
-              << std::endl;
+    if (Config::Server::DEV_MODE)
+        std::cout << "Cell movement updated for player " << player.getId()
+                  << std::endl;
 }

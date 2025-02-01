@@ -19,7 +19,7 @@ void GameClient::run() {
     sf::Vector2i lastMousePos = sf::Mouse::getPosition(window);
 
     view.setSize(ConfigClient::Window::WIDTH, ConfigClient::Window::HEIGHT);
-    view.setCenter(viewport.x, viewport.y);
+    view.setCenter(viewport.first, viewport.second);
 
     while (window.isOpen()) {
         processEvents();
@@ -35,8 +35,12 @@ void GameClient::run() {
     }
 }
 
-Viewport GameClient::getViewport() const {
+std::pair<double, double> GameClient::getViewport() const {
     return viewport;
+}
+
+void GameClient::setViewport(std::pair<double, double> viewport) {
+    this->viewport = viewport;
 }
 
 void GameClient::processEvents() {
@@ -58,7 +62,7 @@ void GameClient::render(GameEngine::System& system) {
     std::map<int, GameEngine::Entity> entitiesList =
         EntityManager::get().getEntities();
 
-    view.setCenter(viewport.x, viewport.y);
+    view.setCenter(viewport.first, viewport.second);
 
     window.setView(view);
     window.clear();

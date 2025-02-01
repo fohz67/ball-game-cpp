@@ -37,6 +37,6 @@ Player* PlayerManager::getPlayerByClient(
     return nullptr;
 }
 
-const std::vector<Player>& PlayerManager::getAllPlayers() const {
+std::vector<Player>& PlayerManager::getAllPlayers() {
     return players;
 }

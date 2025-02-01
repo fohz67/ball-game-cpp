@@ -16,7 +16,7 @@ class PlayerManager {
     void removePlayer(uint32_t playerId);
 
     Player* getPlayerByClient(std::shared_ptr<asio::ip::tcp::socket> client);
-    const std::vector<Player>& getAllPlayers() const;
+    std::vector<Player>& getAllPlayers();
 
   private:
     PlayerManager() = default;

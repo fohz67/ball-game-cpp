@@ -2,7 +2,6 @@
 
 #include <SFML/Graphics.hpp>
 #include "System.hpp"
-#include "components/Viewport.hpp"
 
 class GameClient {
   public:
@@ -12,7 +11,9 @@ class GameClient {
     static GameClient& get();
 
     void run();
-    Viewport getViewport() const;
+
+    std::pair<double, double> getViewport() const;
+    void setViewport(std::pair<double, double> viewport);
 
   private:
     GameClient() = default;
@@ -23,5 +24,5 @@ class GameClient {
 
     sf::RenderWindow window;
     sf::View view;
-    Viewport viewport;
+    std::pair<double, double> viewport;
 };

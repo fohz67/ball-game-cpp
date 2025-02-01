@@ -4,7 +4,7 @@
 
 struct ConfigClient {
     struct Client {
-        static constexpr bool DEV_MODE = true;
+        static constexpr bool DEV_MODE = false;
     };
 
     struct Loop {

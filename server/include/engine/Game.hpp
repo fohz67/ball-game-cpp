@@ -12,8 +12,8 @@ class Game {
 
     void run();
     void updateLoop();
-    void viewportUpdate(const Player player);
-    void cellMoveUpdate(const Player player);
+    void viewportUpdate(Player& player);
+    void cellMoveUpdate(Player& player);
 
   private:
     Game() = default;
