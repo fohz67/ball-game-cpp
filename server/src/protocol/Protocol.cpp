@@ -69,15 +69,24 @@ void Protocol::sendGameState() {
     smartBuffer << OpCodes::GAME_STATE;
 
     for (const auto& cell : CellManager::get().getAllCells()) {
-        smartBuffer << cell.getOwnerId() << cell.getId() << cell.getX()
+        if (smartBuffer.getSize() + (sizeof(uint32_t) * 2 + sizeof(double) * 3) > MAX_BUFFER_SIZE) {
+            Network::get().sendToAll(smartBuffer);
+            
+            smartBuffer.reset();
+            smartBuffer << OpCodes::GAME_STATE;
+        }
+
+        smartBuffer << cell.getId() << cell.getX()
                     << cell.getY() << cell.getRadius()
                     << ColorServer::vecToInt(cell.getColor());
     }
 
-    if (Config::Server::DEV_MODE)
-        std::cout << "Game state sent." << std::endl;
+    if (smartBuffer.getSize() > sizeof(uint8_t)) {
+        Network::get().sendToAll(smartBuffer);
+    }
 
-    Network::get().sendToAll(smartBuffer);
+    if (Config::Server::DEV_MODE)
+        std::cout << "Game state sent to everyone." << std::endl;
 }
 
 void Protocol::sendViewport() {
@@ -92,7 +101,7 @@ void Protocol::sendViewport() {
         if (Config::Server::DEV_MODE)
             std::cout << "Viewport sent: " << viewport.first << " "
                       << viewport.second
-                      << "to player with ID: " << player.getId() << std::endl;
+                      << " to player with ID: " << player.getId() << "." << std::endl;
 
         Network::get().sendToClient(player.getClient(), smartBuffer);
     }

@@ -37,23 +37,21 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
     }
     case OpCodes::GAME_STATE: {
         size_t bufferSize = smartBuffer.getSize() - sizeof(uint8_t);
-        size_t cellSize = sizeof(uint32_t) + (3 * sizeof(double));
-        size_t cellCount = bufferSize / cellSize;
+        size_t cellCount = bufferSize / (sizeof(uint32_t) * 2 + sizeof(double) * 3);
 
         for (size_t i = 0; i < cellCount; i++) {
             CellData cell;
-            smartBuffer >> cell.id >> cell.ownerId >> cell.x >> cell.y >>
+            smartBuffer >> cell.id >> cell.x >> cell.y >>
                 cell.radius >> cell.color;
 
             if (ConfigClient::Client::DEV_MODE)
-                std::cout << "Cell received: " << cell.id << " " << cell.ownerId
-                          << " " << cell.x << " " << cell.y << " "
+                std::cout << "Cell received: " << cell.id << " " << cell.x << " " << cell.y << " "
                           << cell.radius << " " << cell.color << std::endl;
 
             if (EntityManager::get().entities.find(cell.id) ==
                 EntityManager::get().entities.end()) {
                 EntityManager::get().createCell(
-                    cell.id, cell.ownerId, cell.x, cell.y, cell.radius,
+                    cell.id, cell.x, cell.y, cell.radius,
                     ColorClient::intToVec(cell.color));
             } else {
                 EntityManager::get().updateCellPosition(cell.id, cell.x,

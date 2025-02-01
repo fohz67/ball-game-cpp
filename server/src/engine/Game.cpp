@@ -11,6 +11,7 @@ Game& Game::get() {
 }
 
 void Game::run() {
+    CellManager::get().generatePellets();
     updateThread = std::thread(&Game::updateLoop, this);
 }
 
@@ -45,10 +46,6 @@ void Game::viewportUpdate(Player& player) {
     centerY /= playerCells.size();
 
     player.setViewport({centerX, centerY});
-
-    if (Config::Server::DEV_MODE)
-        std::cout << "Viewport updated for player " << player.getId()
-                  << "X: " << centerX << " Y: " << centerY << std::endl;
 }
 
 void Game::cellMoveUpdate(Player& player) {
@@ -81,10 +78,5 @@ void Game::cellMoveUpdate(Player& player) {
         for (size_t j = i + 1; j < cellCount; ++j) {
             playerCells[i]->resolveCollision(*playerCells[j]);
         }
-    }
-
-    if (Config::Server::DEV_MODE) {
-        std::cout << "Cell movement updated for player " << player.getId()
-                  << std::endl;
     }
 }

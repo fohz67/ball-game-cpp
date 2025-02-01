@@ -5,7 +5,7 @@
 #include <memory>
 #include <thread>
 
-#define MAX_BUFFER_SIZE 1024
+#define MAX_BUFFER_SIZE 2024
 
 class Network {
   public:

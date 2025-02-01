@@ -4,7 +4,7 @@
 
 struct ConfigClient {
     struct Client {
-        static constexpr bool DEV_MODE = false;
+        static constexpr bool DEV_MODE = true;
     };
 
     struct Game {
@@ -25,11 +25,8 @@ struct ConfigClient {
     };
 
     struct World {
-        static constexpr int ID = 0;
+        static constexpr int ID = 1;
         static inline const std::vector<double> BACKGROUND_COLOR = {20, 20, 20,
                                                                     255};
-        static constexpr int BORDER_WIDTH = 50;
-        static inline const std::vector<double> BORDER_COLOR = {255, 255, 255,
-                                                                255};
     };
 };

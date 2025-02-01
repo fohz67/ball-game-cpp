@@ -2,8 +2,8 @@
 #include <algorithm>
 
 Cell::Cell(uint32_t id, uint32_t ownerId, CellType type, double x, double y,
-           double radius, std::vector<double> color)
-    : id(id), ownerId(ownerId), type(type), x(x), y(y), radius(radius),
+           double mass, std::vector<double> color)
+    : id(id), ownerId(ownerId), type(type), x(x), y(y), mass(mass),
       color(color) {}
 
 uint32_t Cell::getId() const {
@@ -14,6 +14,10 @@ uint32_t Cell::getOwnerId() const {
     return ownerId;
 }
 
+CellType Cell::getType() const {
+    return type;
+}
+
 double Cell::getX() const {
     return x;
 }
@@ -22,8 +26,12 @@ double Cell::getY() const {
     return y;
 }
 
+double Cell::getMass() const {
+    return mass;
+}
+
 double Cell::getRadius() const {
-    return radius;
+    return std::sqrt(mass / M_PI);
 }
 
 std::vector<double> Cell::getColor() const {
@@ -35,8 +43,8 @@ void Cell::setPosition(double x, double y) {
     this->y = y;
 }
 
-void Cell::setRadius(double radius) {
-    this->radius = radius;
+void Cell::setMass(double mass) {
+    this->mass = mass;
 }
 
 void Cell::move(double dirX, double dirY, double speed, double worldSize) {

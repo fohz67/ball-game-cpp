@@ -13,7 +13,7 @@ EntityManager& EntityManager::get() {
     return instance;
 }
 
-void EntityManager::createCell(uint32_t id, uint32_t ownerId, double x,
+void EntityManager::createCell(uint32_t id, double x,
                                double y, double radius,
                                std::vector<double> color) {
     if (color.size() != 4) {

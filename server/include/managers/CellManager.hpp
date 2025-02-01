@@ -23,8 +23,7 @@ class CellManager {
 
     const std::vector<Cell>& getAllCells() const;
 
-    std::pair<double, double> calculateViewport(uint32_t ownerId);
-    void updateCellMovement(uint32_t ownerId, float mouseX, float mouseY);
+    void generatePellets();
 
   private:
     CellManager() = default;

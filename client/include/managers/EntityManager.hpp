@@ -10,7 +10,7 @@ class EntityManager {
 
     static EntityManager& get();
 
-    void createCell(uint32_t id, uint32_t ownerId, double x, double y,
+    void createCell(uint32_t id, double x, double y,
                     double radius, std::vector<double> color);
     void updateCellPosition(uint32_t id, double x, double y);
 
