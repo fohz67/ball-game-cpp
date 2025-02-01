@@ -1,7 +1,6 @@
 #pragma once
 
 #include <map>
-#include <set>
 #include "Entity.hpp"
 
 class EntityManager {

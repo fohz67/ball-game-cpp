@@ -63,8 +63,8 @@ void Game::cellMoveUpdate(Player& player) {
 
     double magnitude = std::sqrt(dirX * dirX + dirY * dirY);
     double slowdownFactor =
-        (magnitude < Config::GameMode::MIN_INPUT_THRESHOLD)
-            ? magnitude / Config::GameMode::MIN_INPUT_THRESHOLD
+        (magnitude < Config::GameMode::DECREASE_SPEED_THRESHOLD)
+            ? magnitude / Config::GameMode::DECREASE_SPEED_THRESHOLD
             : 1.0;
 
     if (magnitude > 0) {
@@ -72,7 +72,7 @@ void Game::cellMoveUpdate(Player& player) {
         dirY /= magnitude;
     }
 
-    double speed = Config::GameMode::BASE_SPEED * slowdownFactor;
+    double speed = Config::GameMode::CELL_SPEED * slowdownFactor;
     size_t cellCount = playerCells.size();
 
     for (size_t i = 0; i < cellCount; ++i) {

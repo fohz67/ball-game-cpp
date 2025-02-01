@@ -9,8 +9,7 @@ struct ConfigClient {
 
     struct Game {
         static constexpr int FRAME_RATE = 144;
-        static constexpr double CAMERA_INTERPOLATE_FACTOR = 0.01f;
-        static constexpr double DRAW_DELAY = 0.01f;
+        static constexpr double CAMERA_INTERPOLATE_FACTOR = 0.1f;
     };
 
     struct Window {

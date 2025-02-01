@@ -21,6 +21,6 @@ class Viewport {
     Viewport() = default;
     ~Viewport() = default;
 
-    std::pair<double, double> viewport;
-    std::pair<double, double> previousViewport;
+    std::pair<double, double> viewport{0, 0};
+    std::pair<double, double> previousViewport{0, 0};
 };
