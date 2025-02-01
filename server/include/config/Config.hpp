@@ -3,6 +3,10 @@
 #include <cstdint>
 
 struct Config {
+    struct Server {
+        static constexpr bool DEV_MODE = true;
+    };
+
     struct Network {
         static constexpr int PORT = 12345;
         static constexpr int FREQUENCY = 50;

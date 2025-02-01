@@ -3,6 +3,10 @@
 #include <vector>
 
 struct ConfigClient {
+    struct Client {
+        static constexpr bool DEV_MODE = true;
+    };
+
     struct Loop {
         static constexpr int FREQUENCY = 50;
     };

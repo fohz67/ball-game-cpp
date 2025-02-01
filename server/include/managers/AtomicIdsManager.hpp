@@ -18,7 +18,7 @@ class AtomicIdsManager {
     AtomicIdsManager() = default;
     ~AtomicIdsManager() = default;
 
-    uint32_t nextId = 0;
+    uint32_t nextId = 1;
     std::set<uint32_t> usedIds;
     std::priority_queue<uint32_t, std::vector<uint32_t>, std::greater<uint32_t>>
         recycledIds;

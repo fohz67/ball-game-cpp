@@ -28,6 +28,8 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
         uint16_t size;
         smartBuffer >> size;
 
+        if (ConfigClient::Client::DEV_MODE) std::cout << "World size received: " << size << std::endl;
+
         EntityManager::get().createWorld(size);
         break;
     }
@@ -41,6 +43,10 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
             smartBuffer >> cell.id >> cell.ownerId >> cell.x >> cell.y >>
                 cell.radius >> cell.color;
 
+            if (ConfigClient::Client::DEV_MODE) std::cout << "Cell received: " << cell.id << " " << cell.ownerId
+                      << " " << cell.x << " " << cell.y << " " << cell.radius
+                      << " " << cell.color << std::endl;
+
             EntityManager::get().createCell(cell.ownerId, cell.id, cell.x,
                                             cell.y, cell.radius,
                                             ColorClient::intToVec(cell.color));
@@ -52,6 +58,8 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
         double x;
         double y;
         smartBuffer >> x >> y;
+
+        if (ConfigClient::Client::DEV_MODE) std::cout << "Viewport updated: " << x << " " << y << std::endl;
 
         GameClient::get().getViewport().updatePosition(x, y);
         break;

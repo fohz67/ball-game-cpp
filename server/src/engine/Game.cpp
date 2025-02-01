@@ -1,9 +1,9 @@
 #include "engine/Game.hpp"
 #include "components/Cell.hpp"
-#include "components/MousePosition.hpp"
 #include "config/Config.hpp"
 #include "managers/CellManager.hpp"
 #include "managers/PlayerManager.hpp"
+#include <iostream>
 
 Game& Game::get() {
     static Game instance;
@@ -45,6 +45,8 @@ void Game::viewportUpdate(const Player player) {
     centerY /= playerCells.size();
 
     player.getViewport().updatePosition(centerX, centerY);
+
+    if (Config::Server::DEV_MODE) std::cout << "Viewport updated for player " << player.getId() << std::endl;
 }
 
 void Game::cellMoveUpdate(const Player player) {
@@ -94,4 +96,7 @@ void Game::cellMoveUpdate(const Player player) {
 
         cell->setPosition(newX, newY);
     }
+
+    if (Config::Server::DEV_MODE) std::cout << "Cell movement updated for player " << player.getId()
+              << std::endl;
 }
