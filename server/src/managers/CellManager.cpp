@@ -35,6 +35,32 @@ void CellManager::generatePellets() {
     }
 }
 
+void CellManager::resolveEat() {
+    std::lock_guard<std::mutex> lock(cellsMutex);
+    std::vector<uint32_t> deletedCellsIds;
+
+    for (auto& cell : cells) {
+        if (cell.getType() != CellType::PLAYER) continue;
+
+        for (auto& target : cells) {
+            if (cell.getId() == target.getId() || target.isMarkedForDeletion()) continue;
+
+            double dx = cell.getX() - target.getX();
+            double dy = cell.getY() - target.getY();
+            double distanceSquared = dx * dx + dy * dy;
+            double minEatDistance = cell.getRadius() - (target.getRadius() * 0.2);
+
+            if (cell.canEat(target) && distanceSquared < (minEatDistance * minEatDistance)) {
+                cell.absorb(target);
+                target.markForDeletion();
+                deletedCellsIds.push_back(target.getId());
+            }
+        }
+    }
+
+    deleteCells(deletedCellsIds);
+}
+
 void CellManager::createCell(uint32_t ownerId, CellType type) {
     auto [spawnX, spawnY] = getRandomLocation();
     uint32_t cellId = AtomicIdsManager::get().getNextId();
@@ -53,21 +79,13 @@ void CellManager::createCell(uint32_t ownerId, CellType type) {
 void CellManager::removeCellsFromId(uint32_t ownerId) {
     std::vector<uint32_t> deletedCellsIds;
 
-    cells.erase(std::remove_if(cells.begin(), cells.end(),
-                               [&deletedCellsIds, ownerId](const Cell& cell) {
-                                   if (cell.getOwnerId() == ownerId) {
-                                       deletedCellsIds.push_back(cell.getId());
-                                       return true;
-                                   }
-                                   return false;
-                               }),
-                cells.end());
-
-    AtomicIdsManager::get().removeId(ownerId);
-
-    if (!deletedCellsIds.empty()) {
-        Protocol::get().sendEntityRemoved(deletedCellsIds);
+    for (const auto& cell : cells) {
+        if (cell.getOwnerId() == ownerId) {
+            deletedCellsIds.push_back(cell.getId());
+        }
     }
+
+    deleteCells(deletedCellsIds);
 }
 
 std::vector<Cell*> CellManager::getCellsFromId(uint32_t ownerId) {
@@ -81,6 +99,18 @@ std::vector<Cell*> CellManager::getCellsFromId(uint32_t ownerId) {
     }
 
     return playerCells;
+}
+
+void CellManager::deleteCells(const std::vector<uint32_t>& deletedCellsIds) {
+    if (deletedCellsIds.empty()) return;
+
+    cells.erase(std::remove_if(cells.begin(), cells.end(),
+                               [&deletedCellsIds](const Cell& cell) {
+                                   return std::find(deletedCellsIds.begin(), deletedCellsIds.end(), cell.getId()) != deletedCellsIds.end();
+                               }),
+                cells.end());
+
+    Protocol::get().sendEntityRemoved(deletedCellsIds);
 }
 
 const std::vector<Cell>& CellManager::getAllCells() const {

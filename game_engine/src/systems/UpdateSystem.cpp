@@ -84,6 +84,16 @@ void GameEngine::System::updateText(Entity& entity, const std::string& text) {
     }
 }
 
+/**
+ * @brief Updates the text font of an entity within the game engine.
+ *
+ * This function updates the text font of an entity identified by its ID.
+ * It first checks if the entity has a Text component and then updates the text
+ * font of the entity.
+ *
+ * @param entity The entity to update.
+ * @param font The new font to set for the entity.
+ */
 void GameEngine::System::updateTextFont(Entity& entity,
                                         const std::string& font) {
     if (entity.hasComponent<Text>()) {
@@ -156,6 +166,17 @@ void GameEngine::System::updateTexture(Entity& entity, std::string& texture) {
     }
 }
 
+void GameEngine::System::updateShapeSize(Entity& entity, double radius) {
+    if (entity.hasComponent<Shape>()) {
+        auto& shapeComp = entity.getComponent<Shape>();
+        if (shapeComp.getShapeType() == Circle) {
+            shapeComp.getCircle().setRadius(static_cast<float>(radius));
+        } else if (shapeComp.getShapeType() == Rectangle) {
+            shapeComp.getRect().setSize({static_cast<float>(radius) * 2, static_cast<float>(radius) * 2});
+        }
+    }         
+}
+
 /**
  * @brief Global update of an entity's component.
  *
@@ -200,6 +221,11 @@ void GameEngine::System::update(const int id, std::map<int, Entity>& entities,
     case UpdateType::Texture: {
         auto texture = std::any_cast<std::string>(value);
         updateTexture(entity, texture);
+        break;
+    }
+    case UpdateType::ShapeSize: {
+        auto shapeSize = std::any_cast<double>(value);
+        updateShapeSize(entity, shapeSize);
         break;
     }
     default:

@@ -17,6 +17,8 @@ void Game::run() {
 
 void Game::updateLoop() {
     while (true) {
+        CellManager::get().resolveEat();
+        
         for (auto& player : PlayerManager::get().getAllPlayers()) {
             viewportUpdate(player);
             moveUpdate(player);

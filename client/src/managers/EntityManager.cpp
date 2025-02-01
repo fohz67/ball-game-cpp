@@ -29,11 +29,14 @@ void EntityManager::createCell(uint32_t id, double x, double y, double radius,
     entities.emplace(id, std::move(newEntity));
 }
 
-void EntityManager::updateCellPosition(uint32_t id, double x, double y) {
+void EntityManager::updateCell(uint32_t id, double x, double y, double radius,
+                               std::vector<double> color) {
     GameEngine::System system;
     std::pair<float, float> position = {x, y};
 
     system.update(id, entities, GameEngine::UpdateType::Position, position);
+    system.update(id, entities, GameEngine::UpdateType::ShapeSize, radius);
+    //system.update(id, entities, GameEngine::UpdateType::Color, color);
 }
 
 void EntityManager::createWorld(uint16_t size) {

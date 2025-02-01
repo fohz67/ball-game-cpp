@@ -50,7 +50,9 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
                                             cell.radius,
                                             ColorClient::intToVec(cell.color));
         } else {
-            EntityManager::get().updateCellPosition(cell.id, cell.x, cell.y);
+            EntityManager::get().updateCell(cell.id, cell.x, cell.y,
+                                            cell.radius,
+                                            ColorClient::intToVec(cell.color));
         }
 
         break;

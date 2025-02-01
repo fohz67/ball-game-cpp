@@ -2,6 +2,7 @@
 
 #include <cstdint>
 #include <vector>
+#include <mutex>
 #include "components/Cell.hpp"
 
 class CellManager {
@@ -15,6 +16,7 @@ class CellManager {
     std::vector<double> getRandomColor();
 
     void generatePellets();
+    void resolveEat();
 
     void createCell(uint32_t ownerId, CellType type);
     void addCell(uint32_t ownerId, double x, double y, double radius,
@@ -22,8 +24,10 @@ class CellManager {
 
     void removeCellsFromId(uint32_t ownerId);
     std::vector<Cell*> getCellsFromId(uint32_t ownerId);
-
+    void deleteCells(const std::vector<uint32_t>& deletedIds);
     const std::vector<Cell>& getAllCells() const;
+
+    std::mutex cellsMutex;
 
   private:
     CellManager() = default;

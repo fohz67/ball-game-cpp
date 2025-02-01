@@ -1,5 +1,5 @@
 #include "components/Cell.hpp"
-#include <algorithm>
+#include "config/Config.hpp"
 #include "geometry/FastInvSqrt.hpp"
 
 Cell::Cell(uint32_t id, uint32_t ownerId, CellType type, double x, double y,
@@ -76,5 +76,13 @@ bool Cell::canEat(const Cell& other) const {
 }
 
 void Cell::absorb(Cell& other) {
-    mass += other.getMass();
+    mass += other.getMass() * Config::GameMode::PELLET_EAT_FACTOR;
+}
+
+void Cell::markForDeletion() {
+    markedForDeletion = true;
+}
+
+bool Cell::isMarkedForDeletion() const {
+    return markedForDeletion;
 }

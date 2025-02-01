@@ -24,5 +24,6 @@ struct Config {
         // Pellet
         static constexpr int PELLET_COUNT = 50;
         static constexpr double PELLET_MASS = 20.0f;
+        static constexpr double PELLET_EAT_FACTOR = 100.0f;
     };
 };

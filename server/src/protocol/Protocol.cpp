@@ -6,6 +6,7 @@
 #include "managers/CellManager.hpp"
 #include "managers/PlayerManager.hpp"
 #include "protocol/OpCodes.hpp"
+#include <mutex>
 
 Protocol& Protocol::get() {
     static Protocol instance;
@@ -65,6 +66,8 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
 }
 
 void Protocol::sendGameState() {
+    std::lock_guard<std::mutex> lock(CellManager::get().cellsMutex);
+
     for (const auto& cell : CellManager::get().getAllCells()) {
         SmartBuffer smartBuffer;
         smartBuffer << OpCodes::GAME_STATE << cell.getId() << cell.getX()

@@ -26,6 +26,9 @@ class Cell {
     bool canEat(const Cell& other) const;
     void absorb(Cell& other);
 
+    void markForDeletion();
+    bool isMarkedForDeletion() const;
+
   private:
     uint32_t id;
     uint32_t ownerId;
