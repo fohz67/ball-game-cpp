@@ -1,8 +1,8 @@
 #include "managers/CellManager.hpp"
-#include <random>
-#include "config/Config.hpp"
-#include "components/Cell.hpp"
 #include <cmath>
+#include <random>
+#include "components/Cell.hpp"
+#include "config/Config.hpp"
 #include "managers/AtomicIdsManager.hpp"
 
 CellManager& CellManager::get() {
@@ -29,13 +29,16 @@ std::vector<double> CellManager::getRandomColor() {
 void CellManager::createCell(uint32_t ownerId, CellType type) {
     auto [spawnX, spawnY] = getRandomLocation();
     uint32_t cellId = AtomicIdsManager::get().getNextId();
-    
-    double mass = type == CellType::PLAYER ? Config::GameMode::SPAWN_MASS : type == CellType::PELLET ? Config::GameMode::PELLET_MASS : 0;
+
+    double mass = type == CellType::PLAYER   ? Config::GameMode::SPAWN_MASS
+                  : type == CellType::PELLET ? Config::GameMode::PELLET_MASS
+                                             : 0;
     if (!mass) {
         return;
     }
-    
-    cells.emplace_back(cellId, ownerId, type, spawnX, spawnY, mass, getRandomColor());
+
+    cells.emplace_back(cellId, ownerId, type, spawnX, spawnY, mass,
+                       getRandomColor());
 }
 
 void CellManager::removeCellsFromId(uint32_t ownerId) {
@@ -49,7 +52,8 @@ void CellManager::removeCellsFromId(uint32_t ownerId) {
 std::vector<Cell*> CellManager::getCellsFromId(uint32_t ownerId) {
     std::vector<Cell*> playerCells;
     for (auto& cell : cells) {
-        if (cell.getType() == CellType::PLAYER && cell.getOwnerId() == ownerId) {
+        if (cell.getType() == CellType::PLAYER &&
+            cell.getOwnerId() == ownerId) {
             playerCells.push_back(&cell);
         }
     }

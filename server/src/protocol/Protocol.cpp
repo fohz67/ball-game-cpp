@@ -65,23 +65,12 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
 }
 
 void Protocol::sendGameState() {
-    SmartBuffer smartBuffer;
-    smartBuffer << OpCodes::GAME_STATE;
-
     for (const auto& cell : CellManager::get().getAllCells()) {
-        if (smartBuffer.getSize() + (sizeof(uint32_t) * 2 + sizeof(double) * 3) > MAX_BUFFER_SIZE) {
-            Network::get().sendToAll(smartBuffer);
-            
-            smartBuffer.reset();
-            smartBuffer << OpCodes::GAME_STATE;
-        }
-
-        smartBuffer << cell.getId() << cell.getX()
+        SmartBuffer smartBuffer;
+        smartBuffer << OpCodes::GAME_STATE << cell.getId() << cell.getX()
                     << cell.getY() << cell.getRadius()
                     << ColorServer::vecToInt(cell.getColor());
-    }
 
-    if (smartBuffer.getSize() > sizeof(uint8_t)) {
         Network::get().sendToAll(smartBuffer);
     }
 
@@ -101,7 +90,8 @@ void Protocol::sendViewport() {
         if (Config::Server::DEV_MODE)
             std::cout << "Viewport sent: " << viewport.first << " "
                       << viewport.second
-                      << " to player with ID: " << player.getId() << "." << std::endl;
+                      << " to player with ID: " << player.getId() << "."
+                      << std::endl;
 
         Network::get().sendToClient(player.getClient(), smartBuffer);
     }

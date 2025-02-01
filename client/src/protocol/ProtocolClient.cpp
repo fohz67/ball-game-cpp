@@ -36,27 +36,21 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
         break;
     }
     case OpCodes::GAME_STATE: {
-        size_t bufferSize = smartBuffer.getSize() - sizeof(uint8_t);
-        size_t cellCount = bufferSize / (sizeof(uint32_t) * 2 + sizeof(double) * 3);
+        CellData cell;
+        smartBuffer >> cell.id >> cell.x >> cell.y >> cell.radius >> cell.color;
 
-        for (size_t i = 0; i < cellCount; i++) {
-            CellData cell;
-            smartBuffer >> cell.id >> cell.x >> cell.y >>
-                cell.radius >> cell.color;
+        if (ConfigClient::Client::DEV_MODE)
+            std::cout << "Cell received: " << cell.id << " " << cell.x << " "
+                      << cell.y << " " << cell.radius << " " << cell.color
+                      << std::endl;
 
-            if (ConfigClient::Client::DEV_MODE)
-                std::cout << "Cell received: " << cell.id << " " << cell.x << " " << cell.y << " "
-                          << cell.radius << " " << cell.color << std::endl;
-
-            if (EntityManager::get().entities.find(cell.id) ==
-                EntityManager::get().entities.end()) {
-                EntityManager::get().createCell(
-                    cell.id, cell.x, cell.y, cell.radius,
-                    ColorClient::intToVec(cell.color));
-            } else {
-                EntityManager::get().updateCellPosition(cell.id, cell.x,
-                                                        cell.y);
-            }
+        if (EntityManager::get().entities.find(cell.id) ==
+            EntityManager::get().entities.end()) {
+            EntityManager::get().createCell(cell.id, cell.x, cell.y,
+                                            cell.radius,
+                                            ColorClient::intToVec(cell.color));
+        } else {
+            EntityManager::get().updateCellPosition(cell.id, cell.x, cell.y);
         }
 
         break;

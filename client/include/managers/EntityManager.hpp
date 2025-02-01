@@ -10,8 +10,8 @@ class EntityManager {
 
     static EntityManager& get();
 
-    void createCell(uint32_t id, double x, double y,
-                    double radius, std::vector<double> color);
+    void createCell(uint32_t id, double x, double y, double radius,
+                    std::vector<double> color);
     void updateCellPosition(uint32_t id, double x, double y);
 
     void createWorld(uint16_t size);
