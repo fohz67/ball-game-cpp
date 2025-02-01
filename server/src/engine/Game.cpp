@@ -1,9 +1,9 @@
 #include "engine/Game.hpp"
 #include "components/Cell.hpp"
 #include "components/MousePosition.hpp"
+#include "config/Config.hpp"
 #include "managers/CellManager.hpp"
 #include "managers/PlayerManager.hpp"
-#include "config/Config.hpp"
 
 Game& Game::get() {
     static Game instance;
@@ -20,7 +20,7 @@ void Game::updateLoop() {
             viewportUpdate(player);
             cellMoveUpdate(player);
         }
-        
+
         std::this_thread::sleep_for(
             std::chrono::milliseconds(Config::Network::FREQUENCY));
     }
