@@ -17,8 +17,8 @@ class Texture : public Component {
     ~Texture();
     std::string getTexturePath() const;
     void setTexturePath(const std::string& texturePath);
-    bool getIsLoaded() const;
-    void setIsLoaded(bool isLoaded);
+    bool isLoaded() const;
+    void setLoaded(bool isLoaded);
     sf::Texture& getTexture();
     std::vector<int> getTextureRect() const;
     void setTexture(const sf::Texture& texture);

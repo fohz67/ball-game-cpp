@@ -86,7 +86,7 @@ void OptionButton::setShape(const sf::RectangleShape& shape) {
  *
  * @return True if the OptionButton is loaded, false otherwise.
  */
-bool OptionButton::getIsLoaded() const {
+bool OptionButton::isLoaded() const {
     return this->_isLoad;
 }
 
@@ -95,7 +95,7 @@ bool OptionButton::getIsLoaded() const {
  *
  * This function sets the loaded state of the OptionButton component.
  */
-void OptionButton::setIsLoaded() {
+void OptionButton::setLoaded() {
     this->_isLoad = !this->_isLoad;
 }
 

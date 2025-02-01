@@ -22,8 +22,8 @@ class Shape : public Component {
     void setShape(const sf::CircleShape& circle);
     sf::RectangleShape& getRect();
     sf::CircleShape& getCircle();
-    bool getIsLoaded() const;
-    void setIsLoaded(bool isLoad);
+    bool isLoaded() const;
+    void setLoaded(bool load);
     float getRadius() const;
     ShapeType getShapeType() const;
     std::pair<double, double> getSize() const;

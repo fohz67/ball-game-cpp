@@ -78,16 +78,16 @@ sf::CircleShape& Shape::getCircle() {
  * @brief Gets whether the shape is loaded.
  * @return True if the shape is loaded, false otherwise.
  */
-bool Shape::getIsLoaded() const {
+bool Shape::isLoaded() const {
     return _isLoad;
 }
 
 /**
  * @brief Sets whether the shape is loaded.
- * @param isLoad The new loaded state of the shape.
+ * @param load The new loaded state of the shape.
  */
-void Shape::setIsLoaded(const bool isLoad) {
-    _isLoad = isLoad;
+void Shape::setLoaded(const bool load) {
+    _isLoad = load;
 }
 
 /**

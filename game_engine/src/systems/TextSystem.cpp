@@ -26,7 +26,7 @@
  * @param textComp The text component to be loaded.
  */
 void GameEngine::System::loadText(GameEngine::Entity& entity, auto& textComp) {
-    if (!textComp.getIsLoaded()) {
+    if (!textComp.isLoaded()) {
         textComp.getFont().loadFromFile(textComp.getFontFile());
         textComp.getText().setFont(textComp.getFont());
         textComp.getText().setString(textComp.getString());
@@ -36,7 +36,7 @@ void GameEngine::System::loadText(GameEngine::Entity& entity, auto& textComp) {
         sf::FloatRect bounds = textComp.getText().getLocalBounds();
         textComp.getText().setOrigin(bounds.left + bounds.width / 2,
                                      bounds.top + bounds.height / 2);
-        textComp.setIsLoaded(true);
+        textComp.setLoaded(true);
     } else {
         updateText(entity, textComp.getString());
     }

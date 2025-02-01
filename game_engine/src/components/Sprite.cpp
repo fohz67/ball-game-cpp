@@ -82,7 +82,7 @@ void Sprite::setSize(const std::pair<float, float>& size) {
  *
  * @return True if the Sprite is loaded, false otherwise.
  */
-bool Sprite::getIsLoaded() const {
+bool Sprite::isLoaded() const {
     return this->_isLoad;
 }
 
@@ -93,7 +93,7 @@ bool Sprite::getIsLoaded() const {
  *
  * @param isLoaded A boolean indicating whether the sprite is loaded.
  */
-void Sprite::setIsLoaded(const bool isLoaded) {
+void Sprite::setLoaded(const bool isLoaded) {
     this->_isLoad = isLoaded;
 }
 

@@ -141,7 +141,7 @@ The `Entity` is the core structure of the game engine, serving as a container fo
   - `getForceY()`: Returns the vertical force.
   - `setForceY(float forceY)`: Sets the vertical force.
   - `getIsLoad()`: Returns whether the Rigidbody is active.
-  - `setIsLoad(bool isLoad)`: Activates or deactivates the Rigidbody.
+  - `setIsLoad(bool load)`: Activates or deactivates the Rigidbody.
   - `getRect()`:  Returns the sf::rect.
   - `setRect(sf::rect<int> rect)`: Sets the rect of the RigidBody
   - `getInfo()`: Returns RigidBody informations.
@@ -156,7 +156,7 @@ The `Entity` is the core structure of the game engine, serving as a container fo
   - `getCollider()`: Returns the collider's size and position.
   - `setCollider(std::vector<double> size)`: Sets the collider's size.
   - `getIsLoad()`: Returns whether the Collider is active.
-  - `setIsLoad(bool isLoad)`: Activates or deactivates the Collider.
+  - `setIsLoad(bool load)`: Activates or deactivates the Collider.
   - `getRect()`:  Returns the sf::rect.
   - `setRect(sf::rect<int> rect)`: Sets the rect of the Collider
   - `getInfo()`: Returns Collider informations.
@@ -189,7 +189,7 @@ The `Entity` is the core structure of the game engine, serving as a container fo
   - `getSprite()`: Returns the  sprite.
   - `setSprite(sf::Sprite sprite)`: Sets the new sprite.
   - `getIsLoad()`: Returns whether the Sprite is active.
-  - `setIsLoad(bool isLoad)`: Activates or deactivates the Sprite.
+  - `setIsLoad(bool load)`: Activates or deactivates the Sprite.
   - `getInfo()`: Returns Sprite informations.
 
 ### Animation
@@ -219,7 +219,7 @@ The `Entity` is the core structure of the game engine, serving as a container fo
   - `getText()`: Returns the current text content.
   - `setText(std::string text)`: Sets the text content.ù
   - `getIsLoad()`: Returns whether the Text is active.
-  - `setIsLoad(bool isLoad)`: Activates or deactivates the Text.
+  - `setIsLoad(bool load)`: Activates or deactivates the Text.
   - `getInfo()`: Returns Text informations.
 
 
@@ -251,7 +251,7 @@ The `Entity` is the core structure of the game engine, serving as a container fo
   - `getSize()`: Returns the button size.
   - `setSize(std::vector2f size)`: Sets the button size.
   - `getIsLoad()`: Returns whether the Button is active.
-  - `setIsLoad(bool isLoad)`: Activates or deactivates the Button.
+  - `setIsLoad(bool load)`: Activates or deactivates the Button.
   - `getInfo()`: Returns Button informations.
 
 ---
@@ -310,5 +310,5 @@ The `Entity` is the core structure of the game engine, serving as a container fo
   - `getVolume()`: Returns the volume level.
   - `setVolume(int volume)`: Sets the volume level.
   - `getIsLoad()`: Returns whether the Sound is active.
-  - `setIsLoad(bool isLoad)`: Activates or deactivates the Sound.
+  - `setIsLoad(bool load)`: Activates or deactivates the Sound.
   - `getInfo()`: Returns Sound informations.

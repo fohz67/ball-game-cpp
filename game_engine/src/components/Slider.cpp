@@ -109,7 +109,7 @@ void Slider::setCursorShape(const sf::CircleShape& cursorShape) {
  *
  * @return True if the Slider is loaded, false otherwise.
  */
-bool Slider::getIsLoaded() const {
+bool Slider::isLoaded() const {
     return this->_isLoad;
 }
 
@@ -118,7 +118,7 @@ bool Slider::getIsLoaded() const {
  *
  * This function sets the loaded state of the Slider component.
  */
-void Slider::setIsLoaded() {
+void Slider::setLoaded() {
     this->_isLoad = !this->_isLoad;
 }
 

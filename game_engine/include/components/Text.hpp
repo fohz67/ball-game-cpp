@@ -20,10 +20,10 @@ class Text : public Component {
     sf::Font& getFont();
     unsigned int getCharacterSize() const;
     unsigned int getInitCharacterSize() const;
-    bool getIsLoaded() const;
+    bool isLoaded() const;
     std::string getFontFile() const;
     sf::Text& getText();
-    void setIsLoaded(bool isLoaded);
+    void setLoaded(bool isLoaded);
     void setString(const std::string& text);
     void setCharacterSize(unsigned int characterSize);
     void setFontFile(std::string font);

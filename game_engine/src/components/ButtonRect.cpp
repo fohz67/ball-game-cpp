@@ -78,7 +78,7 @@ std::pair<int, int> ButtonRect::getSize() const {
  *
  * @param isLoaded A boolean indicating whether the ButtonRect is loaded.
  */
-void ButtonRect::setIsLoaded(bool isLoaded) {
+void ButtonRect::setLoaded(bool isLoaded) {
     this->_isLoad = isLoaded;
 }
 
@@ -89,7 +89,7 @@ void ButtonRect::setIsLoaded(bool isLoaded) {
  *
  * @return A boolean indicating if the ButtonRect is loaded.
  */
-bool ButtonRect::getIsLoaded() const {
+bool ButtonRect::isLoaded() const {
     return this->_isLoad;
 }
 

@@ -64,7 +64,7 @@ std::vector<int> Texture::getTextureRect() const {
  *
  * @return True if the Texture is loaded, false otherwise.
  */
-bool Texture::getIsLoaded() const {
+bool Texture::isLoaded() const {
     return this->_isLoad;
 }
 
@@ -73,7 +73,7 @@ bool Texture::getIsLoaded() const {
  *
  * This function sets the loaded state of the Texture component.
  */
-void Texture::setIsLoaded(const bool isLoaded) {
+void Texture::setLoaded(const bool isLoaded) {
     this->_isLoad = isLoaded;
 }
 

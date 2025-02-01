@@ -23,8 +23,8 @@ class ButtonRect : public Component {
     std::pair<int, int> getSize() const;
     sf::Color getColor();
 
-    void setIsLoaded(bool isLoaded);
-    bool getIsLoaded() const;
+    void setLoaded(bool isLoaded);
+    bool isLoaded() const;
 
     bool getShowOutline() const;
 

@@ -33,7 +33,7 @@ void GameEngine::System::buttonSystem(sf::RenderWindow& window,
         auto& buttonComp = entity.getComponent<Button>();
         auto& positionComp = entity.getComponent<Position>();
 
-        if (!buttonComp.getIsLoaded()) {
+        if (!buttonComp.isLoaded()) {
 
             buttonComp.getFont().loadFromFile(buttonComp.getFontFile());
 
@@ -62,7 +62,7 @@ void GameEngine::System::buttonSystem(sf::RenderWindow& window,
                 buttonComp.getButton().getPosition().y +
                     buttonComp.getButton().getSize().y / 2);
 
-            buttonComp.setIsLoaded(true);
+            buttonComp.setLoaded(true);
         }
 
         static std::map<GameEngine::Entity*, bool> wasPressedMap;
@@ -102,7 +102,7 @@ void GameEngine::System::optionButtonSystem(sf::RenderWindow& window,
         auto& buttonComp = entity.getComponent<OptionButton>();
         auto& positionComp = entity.getComponent<Position>();
 
-        if (!buttonComp.getIsLoaded()) {
+        if (!buttonComp.isLoaded()) {
             sf::RectangleShape buttonShape;
             buttonShape.setSize(
                 {static_cast<float>(buttonComp.getSize().first),
@@ -119,7 +119,7 @@ void GameEngine::System::optionButtonSystem(sf::RenderWindow& window,
                 buttonShape.setFillColor(sf::Color::Transparent);
             }
             buttonComp.setShape(buttonShape);
-            buttonComp.setIsLoaded();
+            buttonComp.setLoaded();
         }
 
         static std::map<GameEngine::Entity*, bool> wasPressedMap;
@@ -167,7 +167,7 @@ void GameEngine::System::sliderSystem(sf::RenderWindow& window,
         auto& sliderComp = entity.getComponent<Slider>();
         auto& positionComp = entity.getComponent<Position>();
 
-        if (!sliderComp.getIsLoaded()) {
+        if (!sliderComp.isLoaded()) {
             sf::RectangleShape barShape;
             barShape.setPosition(positionComp.getPositionX(0),
                                  positionComp.getPositionY(0));
@@ -199,7 +199,7 @@ void GameEngine::System::sliderSystem(sf::RenderWindow& window,
 
             sliderComp.setBarShape(barShape);
             sliderComp.setCursorShape(cursorShape);
-            sliderComp.setIsLoaded();
+            sliderComp.setLoaded();
         }
 
         static std::map<GameEngine::Entity*, bool> wasPressedMap;
@@ -259,7 +259,7 @@ void GameEngine::System::buttonRectSystem(sf::RenderWindow& window,
         auto& buttonRectComp = entity.getComponent<ButtonRect>();
         auto& positionComp = entity.getComponent<Position>();
 
-        if (!buttonRectComp.getIsLoaded()) {
+        if (!buttonRectComp.isLoaded()) {
             buttonRectComp.getButtonRect().setSize(
                 sf::Vector2f(buttonRectComp.getSize().first,
                              buttonRectComp.getSize().second));
@@ -275,7 +275,7 @@ void GameEngine::System::buttonRectSystem(sf::RenderWindow& window,
                 buttonRectComp.getButtonRect().setFillColor(
                     sf::Color::Transparent);
             }
-            buttonRectComp.setIsLoaded(true);
+            buttonRectComp.setLoaded(true);
         }
         static std::map<GameEngine::Entity*, bool> wasPressedMap;
         sf::Vector2i mousePos = sf::Mouse::getPosition(window);

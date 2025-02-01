@@ -1,53 +1,50 @@
-/*
-** EPITECH PROJECT, 2024
-** R-Type
-** File description:
-** Button.hpp
-*/
-
 #pragma once
 
-#include <functional>
-#include <iostream>
-#include <string>
+#include <SFML/Graphics.hpp>
 #include "Components.hpp"
 
 class Button : public Component {
   public:
-    Button(std::string text = "", std::string fontFile = "",
-           unsigned int characterSize = 30);
-    ~Button();
+    // Constants
+    static inline std::string DEFAULT_TEXT = "";
+    static inline std::string FONT_FILE = "";
+    static constexpr uint16_t DEFAULT_CHARACTER_SIZE = 30;
 
+    // Constructor / Destructor
+    Button(const std::string text = DEFAULT_TEXT,
+           const std::string fontFile = FONT_FILE,
+           const uint16_t characterSize = DEFAULT_CHARACTER_SIZE);
+    ~Button() = default;
+
+    // Getters
     sf::RectangleShape& getButton();
     sf::Text& getText();
-
     std::string getString() const;
-    void setString(std::string text);
-
     std::string getFontFile() const;
     sf::Font& getFont();
-
-    unsigned int getCharacterSize() const;
-
+    uint16_t getCharacterSize() const;
     std::pair<double, double> getSize() const;
+    bool isLoaded() const;
+    bool isHovered(const sf::Vector2i mousePos) const;
 
-    void setIsLoaded(bool isLoaded);
-    bool getIsLoaded() const;
+    // Setters
+    void setString(const std::string text);
+    void setLoaded(bool isLoaded);
+    void setCallback(const std::function<void()> callback);
 
+    // Methods
     void display() const override;
-    bool isHovered(sf::Vector2i mousePos);
-
-    void setCallback(std::function<void()>);
-    void executeCallback();
+    void executeCallback() const;
 
   private:
-    sf::RectangleShape _button;
-    sf::Text _text;
-    std::string _initText;
-    std::string _fontFile;
-    sf::Font _font;
-    unsigned int _charSize;
-    std::pair<double, double> _size;
-    std::function<void()> _callback;
-    bool _isLoad = false;
+    // Attributes
+    sf::RectangleShape button;
+    sf::Text text;
+    std::string baseText;
+    std::string fontFile;
+    uint16_t characterSize;
+    std::pair<double, double> size;
+    sf::Font font;
+    std::function<void()> callback;
+    bool load = false;
 };

@@ -19,8 +19,8 @@ class OptionButton : public Component {
     void setSize(std::pair<double, double> size);
     sf::RectangleShape& getShape();
     void setShape(const sf::RectangleShape&);
-    bool getIsLoaded() const;
-    void setIsLoaded();
+    bool isLoaded() const;
+    void setLoaded();
     bool getChecked() const;
     void setChecked();
     void setCallback(std::function<void()>);

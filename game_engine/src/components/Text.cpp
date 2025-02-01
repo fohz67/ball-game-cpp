@@ -108,7 +108,7 @@ unsigned int Text::getInitCharacterSize() const {
  *
  * @return True if the Text is loaded, false otherwise.
  */
-bool Text::getIsLoaded() const {
+bool Text::isLoaded() const {
     return this->_isLoad;
 }
 
@@ -141,7 +141,7 @@ void Text::setFontFile(std::string font) {
  *
  * @param isLoaded The new loaded state of the component.
  */
-void Text::setIsLoaded(const bool isLoaded) {
+void Text::setLoaded(const bool isLoaded) {
     this->_isLoad = isLoaded;
 }
 

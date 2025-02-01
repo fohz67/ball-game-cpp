@@ -29,7 +29,7 @@
  */
 void GameEngine::System::loadRectangle(GameEngine::Entity& entity,
                                        auto& shapeComp) {
-    if (!shapeComp.getIsLoaded()) {
+    if (!shapeComp.isLoaded()) {
         sf::RectangleShape rectangle;
         rectangle.setSize(sf::Vector2f(shapeComp.getSize().first,
                                        shapeComp.getSize().second));
@@ -37,7 +37,7 @@ void GameEngine::System::loadRectangle(GameEngine::Entity& entity,
         setColor(entity, rectangle);
         shapeComp.setShape(rectangle);
         if (entity.hasComponent<Texture>() &&
-            !entity.getComponent<Texture>().getIsLoaded()) {
+            !entity.getComponent<Texture>().isLoaded()) {
             auto& textureComp = entity.getComponent<Texture>();
             textureComp.getTexture().loadFromFile(textureComp.getTexturePath());
             if (textureComp.getTextureRect().size() == 4) {
@@ -47,9 +47,9 @@ void GameEngine::System::loadRectangle(GameEngine::Entity& entity,
                                 textureRect[3]));
             }
             shapeComp.getRect().setTexture(&textureComp.getTexture());
-            textureComp.setIsLoaded(true);
+            textureComp.setLoaded(true);
         }
-        shapeComp.setIsLoaded(true);
+        shapeComp.setLoaded(true);
     }
 }
 
@@ -66,14 +66,14 @@ void GameEngine::System::loadRectangle(GameEngine::Entity& entity,
  */
 void GameEngine::System::loadCircle(GameEngine::Entity& entity,
                                     auto& shapeComp) {
-    if (!shapeComp.getIsLoaded()) {
+    if (!shapeComp.isLoaded()) {
         sf::CircleShape circle;
         circle.setRadius(shapeComp.getRadius());
         setPosition(entity, circle);
         setColor(entity, circle);
         shapeComp.setShape(circle);
         if (entity.hasComponent<Texture>() &&
-            !entity.getComponent<Texture>().getIsLoaded()) {
+            !entity.getComponent<Texture>().isLoaded()) {
             auto& textureComp = entity.getComponent<Texture>();
             textureComp.getTexture().loadFromFile(textureComp.getTexturePath());
             if (textureComp.getTextureRect().size() == 4) {
@@ -83,9 +83,9 @@ void GameEngine::System::loadCircle(GameEngine::Entity& entity,
                                 textureRect[3]));
             }
             shapeComp.getCircle().setTexture(&textureComp.getTexture());
-            textureComp.setIsLoaded(true);
+            textureComp.setLoaded(true);
         }
-        shapeComp.setIsLoaded(true);
+        shapeComp.setLoaded(true);
     }
 }
 

@@ -27,7 +27,7 @@
  */
 void GameEngine::System::loadSprite(GameEngine::Entity& entity,
                                     auto& spriteComp, auto& textureComp) {
-    if (!spriteComp.getIsLoaded()) {
+    if (!spriteComp.isLoaded()) {
         if (textureComp.getTextureRect().size() == 4) {
             const auto& textureRect = textureComp.getTextureRect();
             spriteComp.getSprite().setTextureRect(
@@ -42,7 +42,7 @@ void GameEngine::System::loadSprite(GameEngine::Entity& entity,
                                             spriteComp.getSize().second);
         }
         setColor(entity, spriteComp.getSprite());
-        spriteComp.setIsLoaded(true);
+        spriteComp.setLoaded(true);
     }
 }
 
@@ -62,9 +62,9 @@ void GameEngine::System::spriteSystem(sf::RenderWindow& window,
     if (entity.hasComponent<Sprite>() && entity.hasComponent<Texture>()) {
         auto& spriteComp = entity.getComponent<Sprite>();
         auto& textureComp = entity.getComponent<Texture>();
-        if (!textureComp.getIsLoaded()) {
+        if (!textureComp.isLoaded()) {
             textureComp.getTexture().loadFromFile(textureComp.getTexturePath());
-            textureComp.setIsLoaded(true);
+            textureComp.setLoaded(true);
         }
         loadSprite(entity, spriteComp, textureComp);
         if (entity.getComponent<Position>().getPositions().size() > 1) {

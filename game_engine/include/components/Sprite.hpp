@@ -21,8 +21,8 @@ class Sprite : public Component {
     void setTexturePath(const std::string& texturePath);
     std::pair<float, float> getSize() const;
     void setSize(const std::pair<float, float>& size);
-    bool getIsLoaded() const;
-    void setIsLoaded(bool isLoaded);
+    bool isLoaded() const;
+    void setLoaded(bool isLoaded);
     sf::Sprite& getSprite();
     void setSprite(const sf::Sprite& sprite);
     void display() const override;

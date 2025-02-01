@@ -36,8 +36,8 @@ class Slider : public Component {
     void setMaxValue(float maxValue);
     float getMaxValue() const;
 
-    bool getIsLoaded() const;
-    void setIsLoaded();
+    bool isLoaded() const;
+    void setLoaded();
 
     void setCallback(std::function<void(float)>);
     void executeCallback(int arg);
