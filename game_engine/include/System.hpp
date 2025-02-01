@@ -15,7 +15,14 @@
 
 namespace GameEngine {
 
-enum class UpdateType { Position, Text, TextSize, TextFont, Texture, ShapeSize };
+enum class UpdateType {
+    Position,
+    Text,
+    TextSize,
+    TextFont,
+    Texture,
+    ShapeSize
+};
 
 class System {
   public:

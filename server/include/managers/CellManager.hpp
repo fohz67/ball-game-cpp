@@ -1,8 +1,8 @@
 #pragma once
 
 #include <cstdint>
-#include <vector>
 #include <mutex>
+#include <vector>
 #include "components/Cell.hpp"
 
 class CellManager {

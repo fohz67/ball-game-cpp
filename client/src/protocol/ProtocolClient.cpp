@@ -72,7 +72,7 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
         uint32_t entityId;
         size_t size = smartBuffer.getSize() - sizeof(uint8_t);
         size_t entitiesNb = size / sizeof(uint32_t);
-        
+
         for (size_t i = 0; i < entitiesNb; i++) {
             smartBuffer >> entityId;
 

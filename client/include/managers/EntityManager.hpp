@@ -14,7 +14,7 @@ class EntityManager {
                     std::vector<double> color);
     void updateCell(uint32_t id, double x, double y, double radius,
                     std::vector<double> color);
-    
+
     void createWorld(uint16_t size);
 
     void removeEntity(uint32_t id);

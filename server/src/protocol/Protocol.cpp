@@ -1,12 +1,12 @@
 #include "protocol/Protocol.hpp"
 #include <iostream>
+#include <mutex>
 #include "components/ColorServer.hpp"
 #include "config/Config.hpp"
 #include "engine/Network.hpp"
 #include "managers/CellManager.hpp"
 #include "managers/PlayerManager.hpp"
 #include "protocol/OpCodes.hpp"
-#include <mutex>
 
 Protocol& Protocol::get() {
     static Protocol instance;
@@ -92,9 +92,8 @@ void Protocol::sendViewport() {
 
         if (Config::Server::DEV_MODE)
             std::cout << "Viewport sent: " << viewport.first << " "
-                      << viewport.second
-                      << " to player: " << player.getId() << "."
-                      << std::endl;
+                      << viewport.second << " to player: " << player.getId()
+                      << "." << std::endl;
 
         Network::get().sendToClient(player.getClient(), smartBuffer);
     }
@@ -111,6 +110,7 @@ void Protocol::sendEntityRemoved(const std::vector<uint32_t>& deletedIds) {
     Network::get().sendToAll(smartBuffer);
 
     if (Config::Server::DEV_MODE) {
-        std::cout << "Ids sent for " << deletedIds.size() << " entities deleted." << std::endl;
+        std::cout << "Ids sent for " << deletedIds.size()
+                  << " entities deleted." << std::endl;
     }
 }

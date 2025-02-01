@@ -3,8 +3,8 @@
 #include <random>
 #include "components/Cell.hpp"
 #include "config/Config.hpp"
-#include "protocol/Protocol.hpp"
 #include "managers/AtomicIdsManager.hpp"
+#include "protocol/Protocol.hpp"
 
 CellManager& CellManager::get() {
     static CellManager instance;
@@ -30,7 +30,7 @@ std::vector<double> CellManager::getRandomColor() {
 void CellManager::generatePellets() {
     for (int i = 0; i < Config::GameMode::PELLET_COUNT; i++) {
         uint32_t pelletId = AtomicIdsManager::get().getNextId();
-    
+
         CellManager::get().createCell(pelletId, CellType::PELLET);
     }
 }
@@ -40,17 +40,21 @@ void CellManager::resolveEat() {
     std::vector<uint32_t> deletedCellsIds;
 
     for (auto& cell : cells) {
-        if (cell.getType() != CellType::PLAYER) continue;
+        if (cell.getType() != CellType::PLAYER)
+            continue;
 
         for (auto& target : cells) {
-            if (cell.getId() == target.getId() || target.isMarkedForDeletion()) continue;
+            if (cell.getId() == target.getId() || target.isMarkedForDeletion())
+                continue;
 
             double dx = cell.getX() - target.getX();
             double dy = cell.getY() - target.getY();
             double distanceSquared = dx * dx + dy * dy;
-            double minEatDistance = cell.getRadius() - (target.getRadius() * 0.2);
+            double minEatDistance =
+                cell.getRadius() - (target.getRadius() * 0.2);
 
-            if (cell.canEat(target) && distanceSquared < (minEatDistance * minEatDistance)) {
+            if (cell.canEat(target) &&
+                distanceSquared < (minEatDistance * minEatDistance)) {
                 cell.absorb(target);
                 target.markForDeletion();
                 deletedCellsIds.push_back(target.getId());
@@ -102,11 +106,15 @@ std::vector<Cell*> CellManager::getCellsFromId(uint32_t ownerId) {
 }
 
 void CellManager::deleteCells(const std::vector<uint32_t>& deletedCellsIds) {
-    if (deletedCellsIds.empty()) return;
+    if (deletedCellsIds.empty())
+        return;
 
     cells.erase(std::remove_if(cells.begin(), cells.end(),
                                [&deletedCellsIds](const Cell& cell) {
-                                   return std::find(deletedCellsIds.begin(), deletedCellsIds.end(), cell.getId()) != deletedCellsIds.end();
+                                   return std::find(deletedCellsIds.begin(),
+                                                    deletedCellsIds.end(),
+                                                    cell.getId()) !=
+                                          deletedCellsIds.end();
                                }),
                 cells.end());
 

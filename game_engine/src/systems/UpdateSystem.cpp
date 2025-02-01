@@ -172,9 +172,10 @@ void GameEngine::System::updateShapeSize(Entity& entity, double radius) {
         if (shapeComp.getShapeType() == Circle) {
             shapeComp.getCircle().setRadius(static_cast<float>(radius));
         } else if (shapeComp.getShapeType() == Rectangle) {
-            shapeComp.getRect().setSize({static_cast<float>(radius) * 2, static_cast<float>(radius) * 2});
+            shapeComp.getRect().setSize({static_cast<float>(radius) * 2,
+                                         static_cast<float>(radius) * 2});
         }
-    }         
+    }
 }
 
 /**

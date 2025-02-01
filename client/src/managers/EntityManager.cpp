@@ -36,7 +36,7 @@ void EntityManager::updateCell(uint32_t id, double x, double y, double radius,
 
     system.update(id, entities, GameEngine::UpdateType::Position, position);
     system.update(id, entities, GameEngine::UpdateType::ShapeSize, radius);
-    //system.update(id, entities, GameEngine::UpdateType::Color, color);
+    // system.update(id, entities, GameEngine::UpdateType::Color, color);
 }
 
 void EntityManager::createWorld(uint16_t size) {
