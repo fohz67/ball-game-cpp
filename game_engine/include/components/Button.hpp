@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "Components.hpp"
+#include <cstdint>
 
 class Button : public Component {
   public:
@@ -45,6 +46,6 @@ class Button : public Component {
     uint16_t characterSize;
     std::pair<double, double> size;
     sf::Font font;
-    std::function<void()> callback;
     bool load = false;
+    std::function<void()> callback;
 };

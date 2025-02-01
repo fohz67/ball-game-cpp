@@ -265,7 +265,7 @@ void GameEngine::System::buttonRectSystem(sf::RenderWindow& window,
                              buttonRectComp.getSize().second));
             buttonRectComp.getButtonRect().setPosition(
                 positionComp.getPositionX(0), positionComp.getPositionY(0));
-            if (!buttonRectComp.getShowOutline()) {
+            if (!buttonRectComp.isShowOutline()) {
                 buttonRectComp.getButtonRect().setFillColor(
                     buttonRectComp.getColor());
             } else {
