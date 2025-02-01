@@ -15,7 +15,7 @@ Network::Network()
 
 void Network::run() {
     doAccept();
-    std::thread sendThread(&Network::sendLoop, this);
+    sendThread = std::thread(&Network::sendLoop, this);
     io_context.run();
 }
 

@@ -25,7 +25,7 @@ void NetworkClient::run() {
         std::cout << "Connected to server: " << host << ":" << port
                   << std::endl;
 
-        std::thread networkThread(&NetworkClient::receive, this);
+        networkThread = std::thread(&NetworkClient::receive, this);
     } catch (const std::exception& e) {
         std::cerr << "Network connection error: " << e.what() << std::endl;
     }

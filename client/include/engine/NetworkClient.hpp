@@ -27,4 +27,5 @@ class NetworkClient {
     asio::ip::tcp::socket socket;
     std::string host;
     unsigned short port;
+    std::thread networkThread;
 };
