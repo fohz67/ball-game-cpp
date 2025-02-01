@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2024
-** R-Type
-** File description:
-** Color.hpp
-*/
-
 #pragma once
 
 #include <vector>
@@ -12,12 +5,23 @@
 
 class Color : public Component {
   public:
-    Color(const std::vector<double>& color = {});
-    ~Color();
+    // Constants
+    static inline std::vector<double> DEFAULT_COLOR = {0, 0, 0};
+
+    // Constructor / Destructor
+    Color(const std::vector<double>& color = DEFAULT_COLOR);
+    ~Color() = default;
+
+    // Getters
     std::vector<double> getColor() const;
+
+    // Setters
     void setColor(const std::vector<double>& color);
+
+    // Methods
     void display() const override;
 
   private:
+    // Attributes
     std::vector<double> _initColor;
 };

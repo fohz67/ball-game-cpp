@@ -3,7 +3,7 @@
 
 Button::Button(const std::string text, const std::string fontFile,
                const uint16_t characterSize)
-    : baseText(text), fontFile(fontFile), characterSize(characterSize) {}
+    : initText(text), fontFile(fontFile), characterSize(characterSize) {}
 
 sf::RectangleShape& Button::getButton() {
     return button;
@@ -14,7 +14,7 @@ sf::Text& Button::getText() {
 }
 
 std::string Button::getString() const {
-    return baseText;
+    return initText;
 }
 
 std::string Button::getFontFile() const {
@@ -43,7 +43,7 @@ bool Button::isHovered(const sf::Vector2i mousePos) const {
 }
 
 void Button::setString(const std::string textVal) {
-    baseText = textVal;
+    initText = textVal;
 }
 
 void Button::setLoaded(const bool loaded) {

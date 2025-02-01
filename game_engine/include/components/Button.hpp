@@ -41,7 +41,7 @@ class Button : public Component {
     // Attributes
     sf::RectangleShape button;
     sf::Text text;
-    std::string baseText;
+    std::string initText;
     std::string fontFile;
     uint16_t characterSize;
     std::pair<double, double> size;
