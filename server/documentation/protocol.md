@@ -1,4 +1,4 @@
-# R-Type Protocol Documentation
+# Ball Game Protocol Documentation
 
 This document provides an overview of the communication protocol for the Ball Game server. It defines the purpose, payload, and transmission method for each operation code (OpCode).
 
@@ -39,7 +39,7 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
   - `id` (uint32_t): ID of the cell.
   - `x` (double): X position.
   - `y` (double): Y position.
-  - `radius` (double): Radius of the entity.
+  - `radius` (double): Radius of the cell.
   - `color` (uint32_t): Color of the cell.
 - **Sent To**: All clients.
 
@@ -65,6 +65,13 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
 - **Payload**:
   - `keyName` (string): The key pressed.
 - **Sent To**: Server.
+
+### 7. **REMOVE_ENTITY**
+- **Value**: `7`
+- **Description**: Notifies all clients that an entity has been removed
+- **Payload**:
+  - `entityId` (uint32_t): ID of the entity.
+- **Sent To**: All clients.
 
 ---
 
