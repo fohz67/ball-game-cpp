@@ -19,7 +19,7 @@ void EntityManager::createCell(uint32_t id, double x, double y, double radius,
         color = {255, 255, 255, 255};
     }
 
-    auto newEntity = GameEngine::Entity(id);
+    auto newEntity = GEngine::Entity(id);
 
     newEntity.addComponent(
         Shape(ShapeType::Circle, {radius * 2, radius * 2}, radius));
@@ -31,15 +31,15 @@ void EntityManager::createCell(uint32_t id, double x, double y, double radius,
 
 void EntityManager::updateCell(uint32_t id, double x, double y, double radius,
                                std::vector<double> color) {
-    GameEngine::System system;
+    GEngine::System system;
     std::pair<float, float> position = {x, y};
 
-    system.update(id, entities, GameEngine::UpdateType::Position, position);
-    system.update(id, entities, GameEngine::UpdateType::ShapeSize, radius);
+    system.update(id, entities, GEngine::UpdateType::Position, position);
+    system.update(id, entities, GEngine::UpdateType::ShapeSize, radius);
 }
 
 void EntityManager::createWorld(uint16_t size) {
-    auto newEntity = GameEngine::Entity(ConfigClient::World::ID);
+    auto newEntity = GEngine::Entity(ConfigClient::World::ID);
 
     newEntity.addComponent(Shape(ShapeType::Rectangle, {size, size}));
     newEntity.addComponent(Position({{0.0f, 0.0f}}));

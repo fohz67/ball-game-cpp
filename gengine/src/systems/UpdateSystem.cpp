@@ -31,7 +31,7 @@
  * @param posId An identifier for the position update, used internally by the
  * system.
  */
-void GameEngine::System::updateEntityPosition(
+void GEngine::System::updateEntityPosition(
     const int id, std::map<int, Entity>& entities,
     const std::pair<float, float>& pos, const int posId) {
     linkSystem(id, entities, pos, posId);
@@ -75,7 +75,7 @@ void GameEngine::System::updateEntityPosition(
  * @param entity The entity to update.
  * @param text The new text to set for the entity.
  */
-void GameEngine::System::updateText(Entity& entity, const std::string& text) {
+void GEngine::System::updateText(Entity& entity, const std::string& text) {
     if (entity.hasComponent<Text>()) {
         auto& textComp = entity.getComponent<Text>();
         textComp.setString(text);
@@ -94,7 +94,7 @@ void GameEngine::System::updateText(Entity& entity, const std::string& text) {
  * @param entity The entity to update.
  * @param font The new font to set for the entity.
  */
-void GameEngine::System::updateTextFont(Entity& entity,
+void GEngine::System::updateTextFont(Entity& entity,
                                         const std::string& font) {
     if (entity.hasComponent<Text>()) {
         auto& textComp = entity.getComponent<Text>();
@@ -115,7 +115,7 @@ void GameEngine::System::updateTextFont(Entity& entity,
  * IDs.
  * @param textSize The new text size to set for the entity.
  */
-void GameEngine::System::updateTextSize(const int id,
+void GEngine::System::updateTextSize(const int id,
                                         std::map<int, Entity>& entities,
                                         const unsigned int textSize) {
     Entity& entity = entities.at(id);
@@ -145,7 +145,7 @@ void GameEngine::System::updateTextSize(const int id,
  * @param entity The entity to update.
  * @param texture The new texture to set for the entity.
  */
-void GameEngine::System::updateTexture(Entity& entity, std::string& texture) {
+void GEngine::System::updateTexture(Entity& entity, std::string& texture) {
     if (entity.hasComponent<Texture>()) {
         auto& textureComp = entity.getComponent<Texture>();
         textureComp.setTexturePath(texture);
@@ -166,7 +166,7 @@ void GameEngine::System::updateTexture(Entity& entity, std::string& texture) {
     }
 }
 
-void GameEngine::System::updateShapeSize(Entity& entity, double radius) {
+void GEngine::System::updateShapeSize(Entity& entity, double radius) {
     if (entity.hasComponent<Shape>()) {
         auto& shapeComp = entity.getComponent<Shape>();
         if (shapeComp.getShapeType() == Circle) {
@@ -191,7 +191,7 @@ void GameEngine::System::updateShapeSize(Entity& entity, double radius) {
  * @param posId An identifier for the position update, used internally by the
  * system.
  */
-void GameEngine::System::update(const int id, std::map<int, Entity>& entities,
+void GEngine::System::update(const int id, std::map<int, Entity>& entities,
                                 const UpdateType type, const std::any& value,
                                 const int posId) {
     if (!entities.contains(id)) {

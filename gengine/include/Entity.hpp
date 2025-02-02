@@ -12,7 +12,7 @@
 #include <unordered_map>
 #include "components/Components.hpp"
 
-namespace GameEngine {
+namespace GEngine {
 
 class Entity {
   public:
@@ -79,7 +79,7 @@ void Entity::addComponent(const ComponentType& component) {
         return;
     }
     throw std::runtime_error(
-        "GameEngine::Entity::addComponent: Component already exists");
+        "GEngine::Entity::addComponent: Component already exists");
 }
 
 /**
@@ -97,7 +97,7 @@ template <typename ComponentType> void Entity::removeComponent() {
         _components.find(std::type_index(typeid(ComponentType)));
     if (component_found == _components.end()) {
         throw std::runtime_error(
-            "GameEngine::Entity::removeComponent: Component not found");
+            "GEngine::Entity::removeComponent: Component not found");
     }
     _components.erase(component_found);
 }
@@ -119,7 +119,7 @@ template <typename ComponentType> ComponentType& Entity::getComponent() {
         _components.find(std::type_index(typeid(ComponentType)));
     if (component_found == _components.end()) {
         throw std::runtime_error(
-            "GameEngine::Entity::getComponent: Component not found");
+            "GEngine::Entity::getComponent: Component not found");
     }
     return static_cast<ComponentType&>(*component_found->second);
 }
@@ -133,4 +133,4 @@ template <typename ComponentType> bool Entity::hasComponent() const {
     return true;
 }
 
-}; // namespace GameEngine
+}; // namespace GEngine

@@ -27,8 +27,8 @@
  * @param window The render window where the button will be drawn.
  * @param entity The entity containing the button and position components.
  */
-void GameEngine::System::buttonSystem(sf::RenderWindow& window,
-                                      GameEngine::Entity& entity) {
+void GEngine::System::buttonSystem(sf::RenderWindow& window,
+                                      GEngine::Entity& entity) {
     if (entity.hasComponent<Button>() && entity.hasComponent<Position>()) {
         auto& buttonComp = entity.getComponent<Button>();
         auto& positionComp = entity.getComponent<Position>();
@@ -65,7 +65,7 @@ void GameEngine::System::buttonSystem(sf::RenderWindow& window,
             buttonComp.setLoaded(true);
         }
 
-        static std::map<GameEngine::Entity*, bool> wasPressedMap;
+        static std::map<GEngine::Entity*, bool> wasPressedMap;
         sf::Vector2i mousePos = sf::Mouse::getPosition(window);
         sf::FloatRect buttonBounds = buttonComp.getButton().getGlobalBounds();
 
@@ -95,8 +95,8 @@ void GameEngine::System::buttonSystem(sf::RenderWindow& window,
  * @param window The render window where the checkbox will be drawn.
  * @param entity The entity containing the checkbox and position components.
  */
-void GameEngine::System::optionButtonSystem(sf::RenderWindow& window,
-                                            GameEngine::Entity& entity) {
+void GEngine::System::optionButtonSystem(sf::RenderWindow& window,
+                                            GEngine::Entity& entity) {
     if (entity.hasComponent<OptionButton>() &&
         entity.hasComponent<Position>()) {
         auto& buttonComp = entity.getComponent<OptionButton>();
@@ -122,7 +122,7 @@ void GameEngine::System::optionButtonSystem(sf::RenderWindow& window,
             buttonComp.setLoaded();
         }
 
-        static std::map<GameEngine::Entity*, bool> wasPressedMap;
+        static std::map<GEngine::Entity*, bool> wasPressedMap;
         sf::Vector2i mousePos = sf::Mouse::getPosition(window);
         sf::FloatRect buttonBounds = buttonComp.getShape().getGlobalBounds();
 
@@ -159,10 +159,10 @@ void GameEngine::System::optionButtonSystem(sf::RenderWindow& window,
  * @param entity The entity containing the slider and position components.
  * @param entities The map of entities.
  */
-void GameEngine::System::sliderSystem(sf::RenderWindow& window,
-                                      GameEngine::Entity& entity,
+void GEngine::System::sliderSystem(sf::RenderWindow& window,
+                                      GEngine::Entity& entity,
                                       std::map<int, Entity>& entities) {
-    GameEngine::System system;
+    GEngine::System system;
     if (entity.hasComponent<Slider>() && entity.hasComponent<Position>()) {
         auto& sliderComp = entity.getComponent<Slider>();
         auto& positionComp = entity.getComponent<Position>();
@@ -202,7 +202,7 @@ void GameEngine::System::sliderSystem(sf::RenderWindow& window,
             sliderComp.setLoaded();
         }
 
-        static std::map<GameEngine::Entity*, bool> wasPressedMap;
+        static std::map<GEngine::Entity*, bool> wasPressedMap;
         sf::Vector2i mousePos = sf::Mouse::getPosition(window);
         sf::FloatRect barBounds = sliderComp.getBarShape().getGlobalBounds();
 
@@ -253,8 +253,8 @@ void GameEngine::System::sliderSystem(sf::RenderWindow& window,
  * @param window The render window where the buttonRect will be drawn.
  * @param entity The entity containing the buttonRect and position components.
  */
-void GameEngine::System::buttonRectSystem(sf::RenderWindow& window,
-                                          GameEngine::Entity& entity) {
+void GEngine::System::buttonRectSystem(sf::RenderWindow& window,
+                                          GEngine::Entity& entity) {
     if (entity.hasComponent<ButtonRect>() && entity.hasComponent<Position>()) {
         auto& buttonRectComp = entity.getComponent<ButtonRect>();
         auto& positionComp = entity.getComponent<Position>();
@@ -277,7 +277,7 @@ void GameEngine::System::buttonRectSystem(sf::RenderWindow& window,
             }
             buttonRectComp.setLoaded(true);
         }
-        static std::map<GameEngine::Entity*, bool> wasPressedMap;
+        static std::map<GEngine::Entity*, bool> wasPressedMap;
         sf::Vector2i mousePos = sf::Mouse::getPosition(window);
         sf::FloatRect buttonRectBounds =
             buttonRectComp.getButtonRect().getGlobalBounds();

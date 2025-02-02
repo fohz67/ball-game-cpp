@@ -28,14 +28,14 @@
  * @param newLinkedEntityPos The new position of the linked entity.
  * @param posId The position id.
  */
-void GameEngine::System::linkSystem(int id,
-                                    std::map<int, GameEngine::Entity>& entities,
+void GEngine::System::linkSystem(int id,
+                                    std::map<int, GEngine::Entity>& entities,
                                     std::pair<float, float> newLinkedEntityPos,
                                     const int posId) {
     for (auto& [_, entity] : entities) {
         if (entity.hasComponent<Link>() &&
             entity.getComponent<Link>().getId() == id) {
-            GameEngine::Entity entityLinked = entities[id];
+            GEngine::Entity entityLinked = entities[id];
             auto oldLinkedEntityPos = entityLinked.getComponent<Position>();
             const std::pair dist = {newLinkedEntityPos.first -
                                         oldLinkedEntityPos.getPositionX(posId),

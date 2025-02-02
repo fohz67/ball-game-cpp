@@ -25,7 +25,7 @@
  * @param entity The entity containing the text component.
  * @param textComp The text component to be loaded.
  */
-void GameEngine::System::loadText(GameEngine::Entity& entity, auto& textComp) {
+void GEngine::System::loadText(GEngine::Entity& entity, auto& textComp) {
     if (!textComp.isLoaded()) {
         textComp.getFont().loadFromFile(textComp.getFontFile());
         textComp.getText().setFont(textComp.getFont());
@@ -53,8 +53,8 @@ void GameEngine::System::loadText(GameEngine::Entity& entity, auto& textComp) {
  * @param window The render window where the text will be drawn.
  * @param entity The entity containing the text and position components.
  */
-void GameEngine::System::textSystem(sf::RenderWindow& window,
-                                    GameEngine::Entity& entity) {
+void GEngine::System::textSystem(sf::RenderWindow& window,
+                                    GEngine::Entity& entity) {
     if (entity.hasComponent<Text>() && entity.hasComponent<Position>()) {
         auto& textComp = entity.getComponent<Text>();
         loadText(entity, textComp);

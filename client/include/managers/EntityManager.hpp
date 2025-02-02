@@ -19,7 +19,7 @@ class EntityManager {
 
     void removeEntity(uint32_t id);
 
-    std::map<int, GameEngine::Entity> entities;
+    std::map<int, GEngine::Entity> entities;
 
   private:
     EntityManager() = default;

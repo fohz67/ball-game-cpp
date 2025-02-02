@@ -12,7 +12,7 @@ GameClient& GameClient::get() {
 }
 
 void GameClient::run() {
-    GameEngine::System system;
+    GEngine::System system;
     sf::Vector2i lastMousePos = sf::Mouse::getPosition(window);
 
     initWindow();
@@ -56,7 +56,7 @@ void GameClient::processEvents() {
     }
 }
 
-void GameClient::render(GameEngine::System& system) {
+void GameClient::render(GEngine::System& system) {
     view.setCenter(Viewport::get().getPreviousViewport().first,
                    Viewport::get().getPreviousViewport().second);
 

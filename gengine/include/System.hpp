@@ -13,7 +13,7 @@
 #include <memory>
 #include "Entity.hpp"
 
-namespace GameEngine {
+namespace GEngine {
 
 enum class UpdateType {
     Position,
@@ -103,4 +103,4 @@ void System::updatePos(Entity& entity, Drawable& drawable,
     }
 }
 
-} // namespace GameEngine
+} // namespace GEngine

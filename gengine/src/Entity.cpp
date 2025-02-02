@@ -19,14 +19,14 @@
  *
  * @param id The ID of the entity.
  */
-GameEngine::Entity::Entity(const int id) : id(id) {}
+GEngine::Entity::Entity(const int id) : id(id) {}
 
 /**
  * @brief Destructor for the Entity.
  *
  * This destructor cleans up any resources used by the entity.
  */
-GameEngine::Entity::~Entity() {}
+GEngine::Entity::~Entity() {}
 
 /**
  * @brief Get the ID of the Entity.
@@ -35,7 +35,7 @@ GameEngine::Entity::~Entity() {}
  *
  * @return The ID of the entity.
  */
-int GameEngine::Entity::getEntityId() const {
+int GEngine::Entity::getEntityId() const {
     return (id);
 }
 
@@ -45,7 +45,7 @@ int GameEngine::Entity::getEntityId() const {
  * This function iterates over all components attached to the entity
  * and displays each one using its `display()` method.
  */
-void GameEngine::Entity::displayComponents() const {
+void GEngine::Entity::displayComponents() const {
     for (auto& component : _components) {
         component.second->display();
     }

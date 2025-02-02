@@ -27,7 +27,7 @@
  * @param entity The entity containing the rectangle component.
  * @param shapeComp The rectangle component to be loaded.
  */
-void GameEngine::System::loadRectangle(GameEngine::Entity& entity,
+void GEngine::System::loadRectangle(GEngine::Entity& entity,
                                        auto& shapeComp) {
     if (!shapeComp.isLoaded()) {
         sf::RectangleShape rectangle;
@@ -64,7 +64,7 @@ void GameEngine::System::loadRectangle(GameEngine::Entity& entity,
  * @param entity The entity containing the circle component.
  * @param shapeComp The circle component to be loaded.
  */
-void GameEngine::System::loadCircle(GameEngine::Entity& entity,
+void GEngine::System::loadCircle(GEngine::Entity& entity,
                                     auto& shapeComp) {
     if (!shapeComp.isLoaded()) {
         sf::CircleShape circle;
@@ -100,8 +100,8 @@ void GameEngine::System::loadCircle(GameEngine::Entity& entity,
  * @param window The render window where the shape will be drawn.
  * @param entity The entity containing the shape and position components.
  */
-void GameEngine::System::shapeSystem(sf::RenderWindow& window,
-                                     GameEngine::Entity& entity) {
+void GEngine::System::shapeSystem(sf::RenderWindow& window,
+                                     GEngine::Entity& entity) {
     if (entity.hasComponent<Shape>() && entity.hasComponent<Position>()) {
         auto& shapeComp = entity.getComponent<Shape>();
         if (shapeComp.getShapeType() == Rectangle) {

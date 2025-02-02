@@ -12,7 +12,7 @@
 
 #include "System.hpp"
 
-GameEngine::System::System() {}
+GEngine::System::System() {}
 
 /**
  * @brief Renders the entities on the window.
@@ -24,7 +24,7 @@ GameEngine::System::System() {}
  * @param window The render window where the entities will be drawn.
  * @param entities The map of entities to be rendered.
  */
-void GameEngine::System::render(sf::RenderWindow& window,
+void GEngine::System::render(sf::RenderWindow& window,
                                 std::map<int, Entity>& entities) {
     for (auto& [id, entity] : entities) {
         spriteSystem(window, entity);
@@ -37,4 +37,4 @@ void GameEngine::System::render(sf::RenderWindow& window,
     }
 }
 
-GameEngine::System::~System() {}
+GEngine::System::~System() {}

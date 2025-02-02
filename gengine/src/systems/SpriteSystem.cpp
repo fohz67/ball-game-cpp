@@ -25,7 +25,7 @@
  * @param spriteComp The sprite component to be loaded.
  * @param textureComp The texture component to be loaded.
  */
-void GameEngine::System::loadSprite(GameEngine::Entity& entity,
+void GEngine::System::loadSprite(GEngine::Entity& entity,
                                     auto& spriteComp, auto& textureComp) {
     if (!spriteComp.isLoaded()) {
         if (textureComp.getTextureRect().size() == 4) {
@@ -57,8 +57,8 @@ void GameEngine::System::loadSprite(GameEngine::Entity& entity,
  * @param window The render window where the sprite will be drawn.
  * @param entity The entity containing the sprite and texture components.
  */
-void GameEngine::System::spriteSystem(sf::RenderWindow& window,
-                                      GameEngine::Entity& entity) {
+void GEngine::System::spriteSystem(sf::RenderWindow& window,
+                                      GEngine::Entity& entity) {
     if (entity.hasComponent<Sprite>() && entity.hasComponent<Texture>()) {
         auto& spriteComp = entity.getComponent<Sprite>();
         auto& textureComp = entity.getComponent<Texture>();
