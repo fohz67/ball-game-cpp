@@ -14,7 +14,8 @@ CellManager& CellManager::get() {
 std::pair<double, double> CellManager::getRandomLocation() {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_real_distribution<double> dis(0, Config::Gameplay::World::SIZE);
+    std::uniform_real_distribution<double> dis(0,
+                                               Config::Gameplay::World::SIZE);
 
     return {dis(gen), dis(gen)};
 }
@@ -61,7 +62,8 @@ void CellManager::resolveEat() {
 
             double minEatDistance =
                 cell.getRadius() -
-                (target.getRadius() * Config::Gameplay::Eat::Eat::RESOLVE_OVERLAP);
+                (target.getRadius() *
+                 Config::Gameplay::Eat::Eat::RESOLVE_OVERLAP);
 
             if (cell.canEat(target) && distance < minEatDistance) {
                 cell.absorb(target);
@@ -78,7 +80,7 @@ void CellManager::createCell(uint32_t ownerId, CellType type) {
     auto [spawnX, spawnY] = getRandomLocation();
     uint32_t cellId = AtomicIdsManager::get().getNextId();
 
-    double mass = type == CellType::PLAYER   ? Config::Gameplay::Cell::SPAWN_MASS
+    double mass = type == CellType::PLAYER ? Config::Gameplay::Cell::SPAWN_MASS
                   : type == CellType::PELLET ? Config::Gameplay::Pellet::MASS
                                              : 0;
     if (!mass) {
