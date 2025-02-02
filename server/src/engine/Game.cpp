@@ -19,12 +19,8 @@ void Game::run() {
 
 void Game::updateLoop() {
     while (true) {
-        CellManager::get().cellPhysics();
-
-        for (auto& player : PlayerManager::get().getAllPlayers()) {
-            viewportUpdate(player);
-            moveUpdate(player);
-        }
+        CellManager::get().updateCells();
+        PlayerManager::get().updatePlayers();
 
         std::this_thread::sleep_for(
             std::chrono::milliseconds(Config::Game::FREQUENCY));

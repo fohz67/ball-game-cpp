@@ -16,7 +16,7 @@ class CellManager {
     std::vector<double> getRandomColor();
 
     void generatePellets();
-    void cellPhysics();
+    void updateCells();
 
     void createCell(uint32_t ownerId, CellType type);
     void addCell(uint32_t ownerId, double x, double y, double radius,

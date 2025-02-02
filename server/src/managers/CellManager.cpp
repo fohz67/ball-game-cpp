@@ -36,7 +36,7 @@ void CellManager::generatePellets() {
     }
 }
 
-void CellManager::cellPhysics() {
+void CellManager::updateCells() {
     std::lock_guard<std::mutex> lock(cellsMutex);
     std::vector<uint32_t> deletedCellsIds;
 

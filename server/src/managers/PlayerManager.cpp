@@ -1,10 +1,18 @@
 #include "managers/PlayerManager.hpp"
+#include "engine/Game.hpp"
 #include "managers/AtomicIdsManager.hpp"
 #include "managers/CellManager.hpp"
 
 PlayerManager& PlayerManager::get() {
     static PlayerManager instance;
     return instance;
+}
+
+void PlayerManager::updatePlayers() {
+    for (auto& player : players) {
+        Game::get().viewportUpdate(player);
+        Game::get().moveUpdate(player);
+    }
 }
 
 Player&

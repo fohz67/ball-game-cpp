@@ -12,6 +12,8 @@ class PlayerManager {
 
     static PlayerManager& get();
 
+    void updatePlayers();
+
     Player& addPlayer(std::shared_ptr<asio::ip::tcp::socket> client);
     void removePlayer(uint32_t playerId);
 
