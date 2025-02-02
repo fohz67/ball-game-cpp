@@ -4,6 +4,7 @@
 #include "config/Config.hpp"
 #include "managers/CellManager.hpp"
 #include "managers/PlayerManager.hpp"
+#include "geometry/FastInvSqrt.hpp"
 
 Game& Game::get() {
     static Game instance;
@@ -60,7 +61,7 @@ void Game::moveUpdate(Player& player) {
     double dirX = mousePosition.first;
     double dirY = mousePosition.second;
 
-    double magnitude = std::sqrt(dirX * dirX + dirY * dirY);
+    double magnitude = fastInvSqrt(dirX * dirX + dirY * dirY);
     double slowdownFactor =
         (magnitude < Config::GameMode::DECREASE_SPEED_THRESHOLD)
             ? magnitude / Config::GameMode::DECREASE_SPEED_THRESHOLD
