@@ -7,3 +7,12 @@
 [submodule "external/asio"]
     path = external/asio
     url = https://github.com/chriskohlhoff/asio.git
+[submodule "SFML"]
+	path = SFML
+	url = https://github.com/SFML/SFML.git
+[submodule "asio"]
+	path = asio
+	url = https://github.com/chriskohlhoff/asio.git
+[submodule "smart-buffer-cpp"]
+	path = smart-buffer-cpp
+	url = https://github.com/fohz67/smart-buffer-cpp.git
