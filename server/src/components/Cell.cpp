@@ -92,12 +92,17 @@ bool Cell::canEat(const Cell& other) const {
 }
 
 void Cell::absorb(Cell& other) {
+    double oldRadius = getRadius();
+    
     if (other.type == CellType::PELLET) {
         mass += (other.getMass() * Config::Gameplay::Pellet::EAT_FACTOR);
-        return;
+    } else {
+        mass += other.getMass();
     }
-
-    mass += other.getMass();
+    
+    double deltaRadius = getRadius() - oldRadius;
+    
+    pos = {pos.first - deltaRadius / 2.0, pos.second - deltaRadius / 2.0};
 }
 
 void Cell::markForDeletion() {
