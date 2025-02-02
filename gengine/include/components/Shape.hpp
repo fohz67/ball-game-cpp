@@ -1,19 +1,20 @@
 #pragma once
 
 #include <utility>
-#include "Components.hpp"
+#include "components/Components.hpp"
+#include "components/Point.hpp"
 
 enum ShapeType { Circle, Rectangle };
 
 class Shape : public Component {
   public:
     // Constants
-    static inline std::pair<double, double> DEFAULT_SIZE = {0.0, 0.0};
+    static inline Point DEFAULT_SIZE = {0.0, 0.0};
     static constexpr double DEFAULT_RADIUS = 1.0;
 
     // Constructor / Destructor
     Shape(ShapeType type = Rectangle,
-          const std::pair<double, double>& size = DEFAULT_SIZE,
+          const Point& size = DEFAULT_SIZE,
           double radius = DEFAULT_RADIUS);
     ~Shape() = default;
 
@@ -23,13 +24,13 @@ class Shape : public Component {
     bool isLoaded() const;
     double getRadius() const;
     ShapeType getShapeType() const;
-    std::pair<double, double> getSize() const;
+    Point getSize() const;
 
     // Setters
     void setShape(const sf::RectangleShape& val);
     void setShape(const sf::CircleShape& val);
     void setLoaded(const bool val);
-    void setSize(const std::pair<double, double>& val);
+    void setSize(const Point& val);
 
     // Methods
     void display() const override;
@@ -42,7 +43,7 @@ class Shape : public Component {
     ShapeType type;
     sf::RectangleShape rectangle;
     sf::CircleShape circle;
-    std::pair<double, double> size;
+    Point size;
     double radius;
     bool loaded = DEFAULT_LOADED;
 };

@@ -18,7 +18,7 @@ void Game::run() {
 
 void Game::updateLoop() {
     while (true) {
-        CellManager::get().resolveEat();
+        CellManager::get().cellPhysics();
 
         for (auto& player : PlayerManager::get().getAllPlayers()) {
             viewportUpdate(player);
@@ -37,45 +37,42 @@ void Game::viewportUpdate(Player& player) {
         return;
     }
 
-    double centerX = 0.0f;
-    double centerY = 0.0f;
+    std::pair cellCenter = {0.0f, 0.0f};
 
     for (const auto* cell : playerCells) {
-        centerX += cell->getX() + cell->getRadius();
-        centerY += cell->getY() + cell->getRadius();
+        Point playerCellCenter = cell->getCenter();
+
+        cellCenter.first += playerCellCenter.first;
+        cellCenter.second += playerCellCenter.second;
     }
 
-    centerX /= playerCells.size();
-    centerY /= playerCells.size();
+    cellCenter.first /= playerCells.size();
+    cellCenter.second /= playerCells.size();
 
-    player.setViewport({centerX, centerY});
+    player.setViewport(cellCenter);
 }
 
 void Game::moveUpdate(Player& player) {
     std::vector<Cell*> playerCells =
         CellManager::get().getCellsFromId(player.getId());
-    if (playerCells.empty())
+    if (playerCells.empty()) {
         return;
+    }
 
-    std::pair<double, double> mousePosition = player.getMousePosition();
-    double dirX = mousePosition.first;
-    double dirY = mousePosition.second;
+    Point dir = player.getMousePosition();
 
-    double magnitude = sqrt(dirX * dirX + dirY * dirY);
+    double magnitude = sqrt(dir.first * dir.first + dir.second * dir.second);
     double slowdownFactor =
         (magnitude < Config::Gameplay::Cell::DECREASE_SPEED_THRESHOLD)
             ? magnitude / Config::Gameplay::Cell::DECREASE_SPEED_THRESHOLD
             : 1.0;
 
     if (magnitude > 0) {
-        dirX /= magnitude;
-        dirY /= magnitude;
+        dir.first /= magnitude;
+        dir.second /= magnitude;
     }
 
-    double speed = Config::Gameplay::Cell::SPEED * slowdownFactor;
-    size_t cellCount = playerCells.size();
-
-    for (size_t i = 0; i < cellCount; ++i) {
-        playerCells[i]->move(dirX, dirY, speed, Config::Gameplay::World::SIZE);
+    for (size_t i = 0; i < playerCells.size(); ++i) {
+        playerCells[i]->move(dir, Config::Gameplay::Cell::SPEED * slowdownFactor);
     }
 }

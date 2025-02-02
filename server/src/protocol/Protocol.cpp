@@ -69,9 +69,11 @@ void Protocol::sendGameState() {
     std::lock_guard<std::mutex> lock(CellManager::get().cellsMutex);
 
     for (const auto& cell : CellManager::get().getAllCells()) {
+        Point pos = cell.getPosition();
+
         SmartBuffer smartBuffer;
-        smartBuffer << OpCodes::GAME_STATE << cell.getId() << cell.getX()
-                    << cell.getY() << cell.getRadius()
+        smartBuffer << OpCodes::GAME_STATE << cell.getId() << pos.first
+                    << pos.second << cell.getRadius()
                     << ColorServer::vecToInt(cell.getColor());
 
         Network::get().sendToAll(smartBuffer);
@@ -85,7 +87,7 @@ void Protocol::sendViewport() {
     SmartBuffer smartBuffer;
 
     for (const auto& player : PlayerManager::get().getAllPlayers()) {
-        std::pair<double, double> viewport = player.getViewport();
+        Point viewport = player.getViewport();
 
         smartBuffer.reset();
         smartBuffer << OpCodes::VIEWPORT << viewport.first << viewport.second;

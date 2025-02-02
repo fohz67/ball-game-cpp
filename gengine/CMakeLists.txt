@@ -10,5 +10,4 @@ file(GLOB_RECURSE HEADERS include/*.hpp include/**/*.hpp)
 add_library(GEngine STATIC ${SOURCES})
 
 target_include_directories(GEngine PUBLIC include)
-
 target_link_libraries(GEngine sfml-graphics sfml-window sfml-system smart_buffer)

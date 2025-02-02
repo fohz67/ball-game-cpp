@@ -1,10 +1,10 @@
 #include "components/Position.hpp"
 #include <iostream>
 
-Position::Position(const std::vector<std::pair<double, double>>& positions)
+Position::Position(const std::vector<Point>& positions)
     : positions(positions) {}
 
-std::vector<std::pair<double, double>> Position::getPositions() const {
+std::vector<Point> Position::getPositions() const {
     return positions;
 }
 

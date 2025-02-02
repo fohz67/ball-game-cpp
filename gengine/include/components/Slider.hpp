@@ -2,17 +2,18 @@
 
 #include <functional>
 #include <utility>
-#include "Components.hpp"
+#include "components/Components.hpp"
+#include "components/Point.hpp"
 
 class Slider : public Component {
   public:
     // Constants
-    Slider(const double current, const std::pair<double, double> lenght,
-           const std::pair<double, double> size);
+    Slider(const double current, const Point lenght,
+           const Point size);
     ~Slider() = default;
 
     // Getters
-    std::pair<double, double> getSize() const;
+    Point getSize() const;
     sf::RectangleShape& getBarShape();
     sf::CircleShape& getCursorShape();
     int getValue() const;
@@ -21,7 +22,7 @@ class Slider : public Component {
     bool isLoaded() const;
 
     // Setters
-    void setSize(const std::pair<double, double> val);
+    void setSize(const Point val);
     void setBarShape(const sf::RectangleShape& val);
     void setCursorShape(const sf::CircleShape& val);
     void setValue(const double var);
@@ -41,7 +42,7 @@ class Slider : public Component {
     // Attributes
     sf::RectangleShape barShape;
     sf::CircleShape cursorShape;
-    std::pair<double, double> size;
+    Point size;
     double min;
     double max;
     double current;

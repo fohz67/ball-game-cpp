@@ -14,11 +14,11 @@ void Viewport::setPreviousViewport(double x, double y) {
     previousViewport = {x, y};
 }
 
-std::pair<double, double> Viewport::getViewport() const {
+Point Viewport::getViewport() const {
     return viewport;
 }
 
-std::pair<double, double> Viewport::getPreviousViewport() const {
+Point Viewport::getPreviousViewport() const {
     return previousViewport;
 }
 

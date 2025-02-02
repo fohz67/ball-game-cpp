@@ -3,21 +3,22 @@
 #include <cstdint>
 #include <utility>
 #include <vector>
-#include "Components.hpp"
+#include "components/Components.hpp"
+#include "components/Point.hpp"
 
 class Position : public Component {
   public:
     // Constants
-    static inline std::vector<std::pair<double, double>> DEFAULT_POSITIONS = {
+    static inline std::vector<Point> DEFAULT_POSITIONS = {
         {0.0f, 0.0f}};
 
     // Constructor / Destructor
-    Position(const std::vector<std::pair<double, double>>& positions =
+    Position(const std::vector<Point>& positions =
                  DEFAULT_POSITIONS);
     ~Position() = default;
 
     // Getters
-    std::vector<std::pair<double, double>> getPositions() const;
+    std::vector<Point> getPositions() const;
     double getPositionX(const uint32_t id) const;
     double getPositionY(const uint32_t id) const;
 
@@ -32,5 +33,5 @@ class Position : public Component {
 
   private:
     // Attributes
-    std::vector<std::pair<double, double>> positions;
+    std::vector<Point> positions;
 };

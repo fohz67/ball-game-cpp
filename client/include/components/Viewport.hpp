@@ -1,6 +1,7 @@
 #pragma once
 
 #include <utility>
+#include "components/Point.hpp"
 
 class Viewport {
   public:
@@ -12,8 +13,8 @@ class Viewport {
     void setViewport(double x, double y);
     void setPreviousViewport(double x, double y);
 
-    std::pair<double, double> getViewport() const;
-    std::pair<double, double> getPreviousViewport() const;
+    Point getViewport() const;
+    Point getPreviousViewport() const;
 
     void applyInterpolation();
 
@@ -21,6 +22,6 @@ class Viewport {
     Viewport() = default;
     ~Viewport() = default;
 
-    std::pair<double, double> viewport{0, 0};
-    std::pair<double, double> previousViewport{0, 0};
+    Point viewport{0.0f, 0.0f};
+    Point previousViewport{0.0f, 0.0f};
 };

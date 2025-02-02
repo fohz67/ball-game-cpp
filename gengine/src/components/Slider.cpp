@@ -2,11 +2,11 @@
 #include <cmath>
 #include <iostream>
 
-Slider::Slider(const double current, const std::pair<double, double> lenght,
-               const std::pair<double, double> size)
+Slider::Slider(const double current, const Point lenght,
+               const Point size)
     : min(lenght.first), max(lenght.second), size(size), current(current) {}
 
-std::pair<double, double> Slider::getSize() const {
+Point Slider::getSize() const {
     return this->size;
 }
 
@@ -34,7 +34,7 @@ double Slider::getMaxValue() const {
     return this->max;
 }
 
-void Slider::setSize(const std::pair<double, double> val) {
+void Slider::setSize(const Point val) {
     this->size = val;
 }
 

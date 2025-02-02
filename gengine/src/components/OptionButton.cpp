@@ -1,9 +1,9 @@
 #include "components/OptionButton.hpp"
 #include <iostream>
 
-OptionButton::OptionButton(std::pair<double, double> size) : size(size) {}
+OptionButton::OptionButton(Point size) : size(size) {}
 
-std::pair<double, double> OptionButton::getSize() const {
+Point OptionButton::getSize() const {
     return this->size;
 }
 
@@ -19,7 +19,7 @@ bool OptionButton::isChecked() const {
     return this->checked;
 }
 
-void OptionButton::setSize(const std::pair<double, double> val) {
+void OptionButton::setSize(const Point val) {
     this->size = val;
 }
 

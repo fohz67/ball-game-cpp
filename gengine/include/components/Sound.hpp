@@ -3,7 +3,7 @@
 #include <SFML/Audio.hpp>
 #include <string>
 #include <utility>
-#include "Components.hpp"
+#include "components/Components.hpp"
 
 class Sound : public Component {
   public:

@@ -12,11 +12,11 @@ class CellManager {
 
     static CellManager& get();
 
-    std::pair<double, double> getRandomLocation();
+    Point getRandomLocation();
     std::vector<double> getRandomColor();
 
     void generatePellets();
-    void resolveEat();
+    void cellPhysics();
 
     void createCell(uint32_t ownerId, CellType type);
     void addCell(uint32_t ownerId, double x, double y, double radius,

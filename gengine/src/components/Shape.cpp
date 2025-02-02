@@ -1,11 +1,11 @@
 #include "components/Shape.hpp"
 #include <iostream>
 
-Shape::Shape(const ShapeType type, const std::pair<double, double>& size,
+Shape::Shape(const ShapeType type, const Point& size,
              const double radius)
     : type(type), size(size), radius(radius) {}
 
-std::pair<double, double> Shape::getSize() const {
+Point Shape::getSize() const {
     return size;
 }
 
@@ -29,7 +29,7 @@ double Shape::getRadius() const {
     return radius;
 }
 
-void Shape::setSize(const std::pair<double, double>& val) {
+void Shape::setSize(const Point& val) {
     size = val;
 }
 

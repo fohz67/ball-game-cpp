@@ -2,7 +2,7 @@
 
 #include <functional>
 #include <utility>
-#include "Components.hpp"
+#include "components/Components.hpp"
 
 class ButtonRect : public Component {
   public:

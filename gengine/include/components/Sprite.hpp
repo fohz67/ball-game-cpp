@@ -1,27 +1,28 @@
 #pragma once
 
 #include <utility>
-#include "Components.hpp"
-#include "Texture.hpp"
+#include "components/Components.hpp"
+#include "components/Texture.hpp"
+#include "components/Point.hpp"
 
 class Sprite : public Component {
   public:
     // Constants
-    static inline std::pair<double, double> DEFAULT_SIZE = {-1, -1};
+    static inline Point DEFAULT_SIZE = {-1, -1};
 
     // Constructor / Destructor
-    Sprite(const std::pair<double, double>& size = DEFAULT_SIZE);
+    Sprite(const Point& size = DEFAULT_SIZE);
     ~Sprite() = default;
 
     // Getters
     std::string getTexturePath() const;
-    std::pair<double, double> getSize() const;
+    Point getSize() const;
     bool isLoaded() const;
     sf::Sprite& getSprite();
 
     // Setters
     void setTexturePath(const std::string& val);
-    void setSize(const std::pair<double, double>& val);
+    void setSize(const Point& val);
     void setLoaded(const bool val);
     void setSprite(const sf::Sprite& val);
 
@@ -34,7 +35,7 @@ class Sprite : public Component {
 
     // Attributes
     std::string texturePath;
-    std::pair<double, double> size;
+    Point size;
     sf::Sprite sprite;
     bool loaded = DEFAULT_LOADED;
 };

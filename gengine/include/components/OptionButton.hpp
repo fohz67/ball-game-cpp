@@ -2,25 +2,26 @@
 
 #include <functional>
 #include <utility>
-#include "Components.hpp"
+#include "components/Components.hpp"
+#include "components/Point.hpp"
 
 class OptionButton : public Component {
   public:
     // Constants
-    static inline std::pair<double, double> DEFAULT_SIZE = {0.0, 0.0};
+    static inline Point DEFAULT_SIZE = {0.0, 0.0};
 
     // Constructor / Destructor
-    OptionButton(std::pair<double, double> size = DEFAULT_SIZE);
+    OptionButton(Point size = DEFAULT_SIZE);
     ~OptionButton() = default;
 
     // Getters
-    std::pair<double, double> getSize() const;
+    Point getSize() const;
     sf::RectangleShape& getShape();
     bool isLoaded() const;
     bool isChecked() const;
 
     // Setters
-    void setSize(const std::pair<double, double> size);
+    void setSize(const Point size);
     void setShape(const sf::RectangleShape&);
     void setLoaded();
     void setChecked();
@@ -36,7 +37,7 @@ class OptionButton : public Component {
 
     // Attributes
     sf::RectangleShape optionbutton;
-    std::pair<double, double> size;
+    Point size;
     std::function<void()> callback;
     bool loaded = DEFAULT_LOADED;
     bool checked = DEFAULT_LOADED;

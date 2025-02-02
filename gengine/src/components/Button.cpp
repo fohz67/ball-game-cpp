@@ -25,7 +25,7 @@ uint16_t Button::getCharacterSize() const {
     return characterSize;
 }
 
-std::pair<double, double> Button::getSize() const {
+Point Button::getSize() const {
     return size;
 }
 

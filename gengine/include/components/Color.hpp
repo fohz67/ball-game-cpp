@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "Components.hpp"
+#include "components/Components.hpp"
 
 class Color : public Component {
   public:

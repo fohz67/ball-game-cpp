@@ -4,6 +4,7 @@
 #include <asio.hpp>
 #include <cstdint>
 #include <memory>
+#include "components/Point.hpp"
 
 class Player {
   public:
@@ -12,15 +13,15 @@ class Player {
     uint32_t getId() const;
     std::shared_ptr<asio::ip::tcp::socket> getClient() const;
 
-    std::pair<double, double> getViewport() const;
-    std::pair<double, double> getMousePosition() const;
+    Point getViewport() const;
+    Point getMousePosition() const;
 
-    void setViewport(std::pair<double, double> viewport);
-    void setMousePosition(std::pair<double, double> mousePosition);
+    void setViewport(Point viewport);
+    void setMousePosition(Point mousePosition);
 
   private:
     uint32_t id;
     std::shared_ptr<asio::ip::tcp::socket> client;
-    std::pair<double, double> viewport;
-    std::pair<double, double> mousePosition;
+    Point viewport;
+    Point mousePosition;
 };

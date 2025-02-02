@@ -11,7 +11,7 @@ CellManager& CellManager::get() {
     return instance;
 }
 
-std::pair<double, double> CellManager::getRandomLocation() {
+Point CellManager::getRandomLocation() {
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<double> dis(0,
@@ -36,7 +36,7 @@ void CellManager::generatePellets() {
     }
 }
 
-void CellManager::resolveEat() {
+void CellManager::cellPhysics() {
     std::lock_guard<std::mutex> lock(cellsMutex);
     std::vector<uint32_t> deletedCellsIds;
 
@@ -46,26 +46,13 @@ void CellManager::resolveEat() {
 
         cell.decay();
 
-        double cellCenterX = cell.getX() + cell.getRadius();
-        double cellCenterY = cell.getY() + cell.getRadius();
-
         for (auto& target : cells) {
-            if (cell.getId() == target.getId() || target.isMarkedForDeletion())
+            if (cell.getId() == target.getId() ||
+                target.isMarkedForDeletion()) {
                 continue;
+            }
 
-            double targetCenterX = target.getX() + target.getRadius();
-            double targetCenterY = target.getY() + target.getRadius();
-
-            double dx = cellCenterX - targetCenterX;
-            double dy = cellCenterY - targetCenterY;
-            double distance = std::sqrt(dx * dx + dy * dy);
-
-            double minEatDistance =
-                cell.getRadius() -
-                (target.getRadius() *
-                 Config::Gameplay::Eat::Eat::RESOLVE_OVERLAP);
-
-            if (cell.canEat(target) && distance < minEatDistance) {
+            if (cell.canEat(target)) {
                 cell.absorb(target);
                 target.markForDeletion();
                 deletedCellsIds.push_back(target.getId());
@@ -77,7 +64,7 @@ void CellManager::resolveEat() {
 }
 
 void CellManager::createCell(uint32_t ownerId, CellType type) {
-    auto [spawnX, spawnY] = getRandomLocation();
+    Point location = getRandomLocation();
     uint32_t cellId = AtomicIdsManager::get().getNextId();
 
     double mass = type == CellType::PLAYER ? Config::Gameplay::Cell::SPAWN_MASS
@@ -87,7 +74,7 @@ void CellManager::createCell(uint32_t ownerId, CellType type) {
         return;
     }
 
-    cells.emplace_back(cellId, ownerId, type, spawnX, spawnY, mass,
+    cells.emplace_back(cellId, ownerId, type, location, mass,
                        getRandomColor());
 }
 

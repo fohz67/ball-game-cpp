@@ -1,30 +1,32 @@
 #pragma once
 
 #include <cstdint>
+#include <utility>
 #include <vector>
+#include "components/Point.hpp"
 
 enum CellType { PLAYER, DEAD, EJECTED, PELLET };
 
 class Cell {
   public:
-    Cell(uint32_t id, uint32_t ownerId, CellType type, double x, double y,
-         double mass, std::vector<double> color);
+    Cell(uint32_t id, uint32_t ownerId, CellType type, Point pos, double mass,
+         std::vector<double> color);
 
     uint32_t getId() const;
     uint32_t getOwnerId() const;
     CellType getType() const;
-    double getX() const;
-    double getY() const;
+    Point getPosition() const;
     double getMass() const;
     double getRadius() const;
+    Point getCenter() const;
     std::vector<double> getColor() const;
 
-    void setPosition(double x, double y);
+    void setPosition(Point newPos);
     void setMass(double mass);
 
     void decay();
 
-    void move(double dirX, double dirY, double speed, double worldSize);
+    void move(Point dir, double speed);
     bool canEat(const Cell& other) const;
     void absorb(Cell& other);
 
@@ -35,8 +37,7 @@ class Cell {
     uint32_t id;
     uint32_t ownerId;
     CellType type;
-    double x;
-    double y;
+    Point pos;
     double mass;
     std::vector<double> color;
     double speed;

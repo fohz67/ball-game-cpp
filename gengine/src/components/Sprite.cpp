@@ -1,13 +1,13 @@
 #include "components/Sprite.hpp"
 #include <iostream>
 
-Sprite::Sprite(const std::pair<double, double>& size) : size(size) {}
+Sprite::Sprite(const Point& size) : size(size) {}
 
 std::string Sprite::getTexturePath() const {
     return this->texturePath;
 }
 
-std::pair<double, double> Sprite::getSize() const {
+Point Sprite::getSize() const {
     return this->size;
 }
 
@@ -23,7 +23,7 @@ void Sprite::setTexturePath(const std::string& val) {
     this->texturePath = val;
 }
 
-void Sprite::setSize(const std::pair<double, double>& val) {
+void Sprite::setSize(const Point& val) {
     this->size = val;
 }
 

@@ -3,7 +3,8 @@
 #include <cstdint>
 #include <functional>
 #include <utility>
-#include "Components.hpp"
+#include "components/Components.hpp"
+#include "components/Point.hpp"
 
 class Button : public Component {
   public:
@@ -24,7 +25,7 @@ class Button : public Component {
     std::string getString() const;
     std::string getFontFile() const;
     uint16_t getCharacterSize() const;
-    std::pair<double, double> getSize() const;
+    Point getSize() const;
     sf::Font& getFont();
     bool isLoaded() const;
 
@@ -48,7 +49,7 @@ class Button : public Component {
     std::string initText;
     std::string fontFile;
     uint16_t characterSize;
-    std::pair<double, double> size;
+    Point size;
     sf::Font font;
     bool load = DEFAULT_LOADED;
     std::function<void()> callback;

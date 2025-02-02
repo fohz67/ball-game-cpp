@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <string>
 #include <utility>
-#include "Components.hpp"
+#include "components/Components.hpp"
 
 class Text : public Component {
   public:

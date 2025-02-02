@@ -8,12 +8,12 @@ struct Config {
     };
 
     struct Game {
-        static constexpr int FREQUENCY = 3;
+        static constexpr int FREQUENCY = 5;
     };
 
     struct Network {
         static constexpr int PORT = 12345;
-        static constexpr int FREQUENCY = 3;
+        static constexpr int FREQUENCY = 5;
     };
 
     struct Gameplay {
@@ -26,6 +26,7 @@ struct Config {
             static constexpr double SPEED = 0.07f;
             static constexpr double DECREASE_SPEED_THRESHOLD = 0.05f;
             static constexpr double DECAY_RATE = 0.02f;
+            static constexpr int DECAY_TIMING = 1000;
             static constexpr double RADIUS_FACTOR = 1.0f;
         };
 

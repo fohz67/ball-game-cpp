@@ -1,11 +1,12 @@
 #include "components/Cell.hpp"
+#include "components/World.hpp"
 #include "config/Config.hpp"
 #include "geometry/FastInvSqrt.hpp"
 
-Cell::Cell(uint32_t id, uint32_t ownerId, CellType type, double x, double y,
-           double mass, std::vector<double> color)
-    : id(id), ownerId(ownerId), type(type), x(x), y(y), mass(mass),
-      color(color) {}
+Cell::Cell(uint32_t id, uint32_t ownerId, CellType type, Point pos, double mass,
+           std::vector<double> color)
+    : id(id), ownerId(ownerId), type(type), pos(pos), mass(mass), color(color) {
+}
 
 uint32_t Cell::getId() const {
     return id;
@@ -19,12 +20,8 @@ CellType Cell::getType() const {
     return type;
 }
 
-double Cell::getX() const {
-    return x;
-}
-
-double Cell::getY() const {
-    return y;
+Point Cell::getPosition() const {
+    return pos;
 }
 
 double Cell::getMass() const {
@@ -35,13 +32,16 @@ double Cell::getRadius() const {
     return Config::Gameplay::Cell::RADIUS_FACTOR * (mass * FIS(M_PI * mass));
 }
 
+Point Cell::getCenter() const {
+    return {pos.first + getRadius(), pos.second + getRadius()};
+}
+
 std::vector<double> Cell::getColor() const {
     return color;
 }
 
-void Cell::setPosition(double x, double y) {
-    this->x = x;
-    this->y = y;
+void Cell::setPosition(Point newPos) {
+    pos = newPos;
 }
 
 void Cell::setMass(double mass) {
@@ -49,28 +49,26 @@ void Cell::setMass(double mass) {
 }
 
 void Cell::decay() {
-    if (this->decayResolver < 1000) {
-        this->decayResolver += Config::Game::FREQUENCY;
+    if (decayResolver < Config::Gameplay::Cell::DECAY_TIMING) {
+        decayResolver += Config::Game::FREQUENCY;
         return;
     }
 
-    this->decayResolver = 0;
-    this->mass -= mass * Config::Gameplay::Cell::DECAY_RATE;
+    decayResolver = 0;
+    mass -= mass * Config::Gameplay::Cell::DECAY_RATE;
 }
 
-void Cell::move(double dirX, double dirY, double speed, double worldSize) {
-    double newX = getX() + dirX * speed;
-    double newY = getY() + dirY * speed;
+void Cell::move(Point dir, double speed) {
+    Point newPos = {pos.first + dir.first * speed,
+                    pos.second + dir.second * speed};
+    std::vector<double> boundaries = World::getWorldBoundaries();
 
-    double minX = 0;
-    double minY = 0;
-    double maxX = worldSize - getRadius();
-    double maxY = worldSize - getRadius();
+    newPos.first =
+        std::max(boundaries[0], std::min(boundaries[1], newPos.first));
+    newPos.second =
+        std::max(boundaries[2], std::min(boundaries[3], newPos.second));
 
-    newX = std::max(minX, std::min(maxX, newX));
-    newY = std::max(minY, std::min(maxY, newY));
-
-    setPosition(newX, newY);
+    setPosition(newPos);
 }
 
 bool Cell::canEat(const Cell& other) const {
@@ -78,13 +76,20 @@ bool Cell::canEat(const Cell& other) const {
         return false;
     }
 
-    double dx = x - other.x;
-    double dy = y - other.y;
-    double distanceSquared = dx * dx + dy * dy;
+    Point cellCenter = getCenter();
+    Point otherCellCenter = other.getCenter();
+    Point diff = {cellCenter.first - otherCellCenter.first,
+                  cellCenter.second - otherCellCenter.second};
 
-    return distanceSquared < (mass - other.mass) * (mass - other.mass);
+    double distanceSquared =
+        diff.first * diff.first + diff.second * diff.second;
+    double minEatDistance =
+        getRadius() -
+        (other.getRadius() * Config::Gameplay::Eat::Eat::RESOLVE_OVERLAP);
+    double minEatDistanceSquared = minEatDistance * minEatDistance;
+
+    return distanceSquared < minEatDistanceSquared;
 }
-
 void Cell::absorb(Cell& other) {
     if (other.type == CellType::PELLET) {
         mass += (other.getMass() * Config::Gameplay::Pellet::EAT_FACTOR);
