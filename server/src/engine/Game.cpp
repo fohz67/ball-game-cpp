@@ -3,8 +3,8 @@
 #include <iostream>
 #include "components/Cell.hpp"
 #include "config/Config.hpp"
-#include "managers/CellManager.hpp"
 #include "geometry/FastInvSqrt.hpp"
+#include "managers/CellManager.hpp"
 #include "managers/PlayerManager.hpp"
 
 Game& Game::get() {
