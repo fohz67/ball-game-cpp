@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Components.hpp"
+#include <cstdint>
 
 class Link : public Component {
   public:

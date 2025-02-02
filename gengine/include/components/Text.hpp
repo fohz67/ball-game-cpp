@@ -1,6 +1,8 @@
 #pragma once
 
 #include <cstdint>
+#include <string>
+#include <utility>
 #include "Components.hpp"
 
 class Text : public Component {

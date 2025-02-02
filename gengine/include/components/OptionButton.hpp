@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Components.hpp"
+#include <functional>
+#include <utility>
 
 class OptionButton : public Component {
   public:
@@ -31,7 +33,6 @@ class OptionButton : public Component {
   private:
     // Constants
     static constexpr bool DEFAULT_LOADED = false;
-    enum Shape { Circle, Rectangle };
 
     // Attributes
     sf::RectangleShape optionbutton;

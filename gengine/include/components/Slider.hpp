@@ -1,17 +1,8 @@
-/*
-** EPITECH PROJECT, 2024
-** R-Type
-** File description:
-** Slider.hpp
-**
-** The Slider class represents a UI slider component that allows users to select
-** a value from a range by dragging a thumb along a track.
-*/
-
 #pragma once
 
-#include <SFML/Graphics.hpp>
 #include "Components.hpp"
+#include <utility>
+#include <functional>
 
 class Slider : public Component {
   public:

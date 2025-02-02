@@ -1,7 +1,8 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
+#include <functional>
 #include "Components.hpp"
+#include <utility>
 
 class ButtonRect : public Component {
   public:

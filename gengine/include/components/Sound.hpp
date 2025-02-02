@@ -2,6 +2,8 @@
 
 #include <SFML/Audio.hpp>
 #include "Components.hpp"
+#include <string>
+#include <utility>
 
 class Sound : public Component {
   public:

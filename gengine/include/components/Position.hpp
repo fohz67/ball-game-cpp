@@ -1,13 +1,9 @@
-/*
-** EPITECH PROJECT, 2024
-** R-Type
-** File description:
-** Position.hpp
-*/
-
 #pragma once
 
 #include "Components.hpp"
+#include <cstdint>
+#include <vector>
+#include <utility>
 
 class Position : public Component {
   public:

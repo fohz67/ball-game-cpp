@@ -1,8 +1,9 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
 #include <cstdint>
+#include <functional>
 #include "Components.hpp"
+#include <utility>
 
 class Button : public Component {
   public:
