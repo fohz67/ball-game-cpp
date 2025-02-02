@@ -43,18 +43,25 @@ void CellManager::resolveEat() {
         if (cell.getType() != CellType::PLAYER)
             continue;
 
+        cell.decay();
+
+        double cellCenterX = cell.getX() + cell.getRadius();
+        double cellCenterY = cell.getY() + cell.getRadius();
+
         for (auto& target : cells) {
             if (cell.getId() == target.getId() || target.isMarkedForDeletion())
                 continue;
 
-            double dx = cell.getX() - target.getX();
-            double dy = cell.getY() - target.getY();
-            double distanceSquared = dx * dx + dy * dy;
-            double minEatDistance =
-                cell.getRadius() - (target.getRadius() * 0.2);
+            double targetCenterX = target.getX() + target.getRadius();
+            double targetCenterY = target.getY() + target.getRadius();
 
-            if (cell.canEat(target) &&
-                distanceSquared < (minEatDistance * minEatDistance)) {
+            double dx = cellCenterX - targetCenterX;
+            double dy = cellCenterY - targetCenterY;
+            double distance = std::sqrt(dx * dx + dy * dy);
+
+            double minEatDistance = cell.getRadius() - (target.getRadius() * Config::GameMode::RESOLVE_EAT_OVERLAP);
+
+            if (cell.canEat(target) && distance < minEatDistance) {
                 cell.absorb(target);
                 target.markForDeletion();
                 deletedCellsIds.push_back(target.getId());
@@ -69,7 +76,7 @@ void CellManager::createCell(uint32_t ownerId, CellType type) {
     auto [spawnX, spawnY] = getRandomLocation();
     uint32_t cellId = AtomicIdsManager::get().getNextId();
 
-    double mass = type == CellType::PLAYER   ? Config::GameMode::SPAWN_MASS
+    double mass = type == CellType::PLAYER   ? Config::GameMode::CELL_SPAWN_MASS
                   : type == CellType::PELLET ? Config::GameMode::PELLET_MASS
                                              : 0;
     if (!mass) {

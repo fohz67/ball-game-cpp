@@ -22,6 +22,8 @@ class Cell {
     void setPosition(double x, double y);
     void setMass(double mass);
 
+    void decay();
+
     void move(double dirX, double dirY, double speed, double worldSize);
     bool canEat(const Cell& other) const;
     void absorb(Cell& other);
@@ -39,4 +41,5 @@ class Cell {
     std::vector<double> color;
     double speed;
     bool markedForDeletion = false;
+    int decayResolver = 0;
 };

@@ -4,7 +4,7 @@
 #include "config/Config.hpp"
 #include "managers/CellManager.hpp"
 #include "managers/PlayerManager.hpp"
-#include "geometry/FastInvSqrt.hpp"
+#include <cmath>
 
 Game& Game::get() {
     static Game instance;
@@ -26,7 +26,7 @@ void Game::updateLoop() {
         }
 
         std::this_thread::sleep_for(
-            std::chrono::milliseconds(Config::Network::FREQUENCY));
+            std::chrono::milliseconds(Config::Game::FREQUENCY));
     }
 }
 
@@ -61,10 +61,10 @@ void Game::moveUpdate(Player& player) {
     double dirX = mousePosition.first;
     double dirY = mousePosition.second;
 
-    double magnitude = fastInvSqrt(dirX * dirX + dirY * dirY);
+    double magnitude = sqrt(dirX * dirX + dirY * dirY);
     double slowdownFactor =
-        (magnitude < Config::GameMode::DECREASE_SPEED_THRESHOLD)
-            ? magnitude / Config::GameMode::DECREASE_SPEED_THRESHOLD
+        (magnitude < Config::GameMode::CELL_DECREASE_SPEED_THRESHOLD)
+            ? magnitude / Config::GameMode::CELL_DECREASE_SPEED_THRESHOLD
             : 1.0;
 
     if (magnitude > 0) {

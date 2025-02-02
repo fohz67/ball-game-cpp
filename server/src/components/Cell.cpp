@@ -32,7 +32,7 @@ double Cell::getMass() const {
 }
 
 double Cell::getRadius() const {
-    return mass * fastInvSqrt(M_PI * mass);
+    return Config::GameMode::CELL_RADIUS_FACTOR * (mass * FIS(M_PI * mass));
 }
 
 std::vector<double> Cell::getColor() const {
@@ -46,6 +46,16 @@ void Cell::setPosition(double x, double y) {
 
 void Cell::setMass(double mass) {
     this->mass = mass;
+}
+
+void Cell::decay() {
+    if (this->decayResolver < 1000) {
+        this->decayResolver += Config::Game::FREQUENCY;
+        return;
+    }
+
+    this->decayResolver = 0;
+    this->mass -= mass * Config::GameMode::CELL_DECAY_RATE;
 }
 
 void Cell::move(double dirX, double dirY, double speed, double worldSize) {
@@ -64,7 +74,7 @@ void Cell::move(double dirX, double dirY, double speed, double worldSize) {
 }
 
 bool Cell::canEat(const Cell& other) const {
-    if (mass < other.mass * 1.1) {
+    if (mass < other.mass * Config::GameMode::RESOLVE_EAT_FACTOR) {
         return false;
     }
 
@@ -76,7 +86,12 @@ bool Cell::canEat(const Cell& other) const {
 }
 
 void Cell::absorb(Cell& other) {
-    mass += other.getMass() * Config::GameMode::PELLET_EAT_FACTOR;
+    if (other.type == CellType::PELLET) {
+        mass += (other.getMass() * Config::GameMode::PELLET_EAT_FACTOR);
+        return;
+    }
+
+    mass += other.getMass();
 }
 
 void Cell::markForDeletion() {

@@ -1,7 +1,7 @@
 #include <cmath>
 #include <cstdint>
 
-inline float fastInvSqrt(float number) {
+inline float FIS(float number) {
     int32_t i;
     float x2, y;
     const float threehalfs = 1.5F;
