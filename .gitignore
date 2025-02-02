@@ -45,7 +45,4 @@ Makefile
 # Custom
 .DS_Store
 .vscode
-external/asio/*
-external/SFML/*
-external/smart-buffer-cpp/*
 logs/*
