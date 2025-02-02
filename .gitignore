@@ -48,3 +48,4 @@ Makefile
 external/asio/*
 external/SFML/*
 external/smart-buffer-cpp/*
+logs/*
