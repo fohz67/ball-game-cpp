@@ -1,8 +1,7 @@
 #include "components/Shape.hpp"
 #include <iostream>
 
-Shape::Shape(const ShapeType type, const Point& size,
-             const double radius)
+Shape::Shape(const ShapeType type, const Point& size, const double radius)
     : type(type), size(size), radius(radius) {}
 
 Point Shape::getSize() const {

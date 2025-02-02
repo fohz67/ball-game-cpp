@@ -73,6 +73,7 @@ void Game::moveUpdate(Player& player) {
     }
 
     for (size_t i = 0; i < playerCells.size(); ++i) {
-        playerCells[i]->move(dir, Config::Gameplay::Cell::SPEED * slowdownFactor);
+        playerCells[i]->move(dir,
+                             Config::Gameplay::Cell::SPEED * slowdownFactor);
     }
 }

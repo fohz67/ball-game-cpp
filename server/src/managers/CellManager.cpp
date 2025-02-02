@@ -74,8 +74,7 @@ void CellManager::createCell(uint32_t ownerId, CellType type) {
         return;
     }
 
-    cells.emplace_back(cellId, ownerId, type, location, mass,
-                       getRandomColor());
+    cells.emplace_back(cellId, ownerId, type, location, mass, getRandomColor());
 }
 
 void CellManager::removeCellsFromId(uint32_t ownerId) {

@@ -13,8 +13,7 @@ class Shape : public Component {
     static constexpr double DEFAULT_RADIUS = 1.0;
 
     // Constructor / Destructor
-    Shape(ShapeType type = Rectangle,
-          const Point& size = DEFAULT_SIZE,
+    Shape(ShapeType type = Rectangle, const Point& size = DEFAULT_SIZE,
           double radius = DEFAULT_RADIUS);
     ~Shape() = default;
 

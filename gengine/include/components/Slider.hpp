@@ -8,8 +8,7 @@
 class Slider : public Component {
   public:
     // Constants
-    Slider(const double current, const Point lenght,
-           const Point size);
+    Slider(const double current, const Point lenght, const Point size);
     ~Slider() = default;
 
     // Getters

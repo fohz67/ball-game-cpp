@@ -2,8 +2,7 @@
 #include <cmath>
 #include <iostream>
 
-Slider::Slider(const double current, const Point lenght,
-               const Point size)
+Slider::Slider(const double current, const Point lenght, const Point size)
     : min(lenght.first), max(lenght.second), size(size), current(current) {}
 
 Point Slider::getSize() const {

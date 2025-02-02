@@ -9,12 +9,10 @@
 class Position : public Component {
   public:
     // Constants
-    static inline std::vector<Point> DEFAULT_POSITIONS = {
-        {0.0f, 0.0f}};
+    static inline std::vector<Point> DEFAULT_POSITIONS = {{0.0f, 0.0f}};
 
     // Constructor / Destructor
-    Position(const std::vector<Point>& positions =
-                 DEFAULT_POSITIONS);
+    Position(const std::vector<Point>& positions = DEFAULT_POSITIONS);
     ~Position() = default;
 
     // Getters

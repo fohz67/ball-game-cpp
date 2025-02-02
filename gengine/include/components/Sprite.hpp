@@ -2,8 +2,8 @@
 
 #include <utility>
 #include "components/Components.hpp"
-#include "components/Texture.hpp"
 #include "components/Point.hpp"
+#include "components/Texture.hpp"
 
 class Sprite : public Component {
   public:
