@@ -1,7 +1,6 @@
 #pragma once
 
 #include <cstdint>
-#include <mutex>
 #include <vector>
 #include "components/Cell.hpp"
 
@@ -12,22 +11,17 @@ class CellManager {
 
     static CellManager& get();
 
-    Point getRandomLocation();
+    Vector2 getRandomLocation();
     std::vector<double> getRandomColor();
 
     void generatePellets();
-    void updateCells();
 
     void createCell(uint32_t ownerId, CellType type);
-    void addCell(uint32_t ownerId, double x, double y, double radius,
-                 double speed);
-
-    void removeCellsFromId(uint32_t ownerId);
-    std::vector<Cell*> getCellsFromId(uint32_t ownerId);
+    void updateCells();
+    void removeCells(uint32_t ownerId);
     void deleteCells(const std::vector<uint32_t>& deletedIds);
+    std::vector<Cell*> getCells(uint32_t ownerId);
     const std::vector<Cell>& getAllCells() const;
-
-    std::mutex cellsMutex;
 
   private:
     CellManager() = default;

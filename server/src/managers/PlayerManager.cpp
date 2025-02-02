@@ -32,7 +32,7 @@ void PlayerManager::removePlayer(uint32_t playerId) {
                                  }),
                   players.end());
 
-    CellManager::get().removeCellsFromId(playerId);
+    CellManager::get().removeCells(playerId);
     AtomicIdsManager::get().removeId(playerId);
 }
 

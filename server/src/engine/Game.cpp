@@ -29,48 +29,41 @@ void Game::updateLoop() {
 
 void Game::viewportUpdate(Player& player) {
     std::vector<Cell*> playerCells =
-        CellManager::get().getCellsFromId(player.getId());
+        CellManager::get().getCells(player.getId());
     if (playerCells.empty()) {
         return;
     }
 
-    std::pair cellCenter = {0.0f, 0.0f};
+    Vector2 cellCenter(0.0f, 0.0f);
 
     for (const auto* cell : playerCells) {
-        Point playerCellCenter = cell->getCenter();
-
-        cellCenter.first += playerCellCenter.first;
-        cellCenter.second += playerCellCenter.second;
+        cellCenter += cell->getCenter();
     }
 
-    cellCenter.first /= playerCells.size();
-    cellCenter.second /= playerCells.size();
+    cellCenter /= playerCells.size();
 
     player.setViewport(cellCenter);
 }
 
-void Game::moveUpdate(Player& player) {
+void Game::moveUpdate(const Player& player) {
     std::vector<Cell*> playerCells =
-        CellManager::get().getCellsFromId(player.getId());
+        CellManager::get().getCells(player.getId());
     if (playerCells.empty()) {
         return;
     }
 
-    Point dir = player.getMousePosition();
-
-    double magnitude = 1 / FIS(dir.first * dir.first + dir.second * dir.second);
+    Vector2 dir = player.getMousePosition();
+    double magnitude = dir.magnitude();
     double slowdownFactor =
         (magnitude < Config::Gameplay::Cell::DECREASE_SPEED_THRESHOLD)
             ? magnitude / Config::Gameplay::Cell::DECREASE_SPEED_THRESHOLD
-            : 1.0;
+            : 1.0f;
 
-    if (magnitude > 0) {
-        dir.first /= magnitude;
-        dir.second /= magnitude;
+    if (magnitude) {
+        dir /= magnitude;
     }
 
-    for (size_t i = 0; i < playerCells.size(); ++i) {
-        playerCells[i]->move(dir,
-                             Config::Gameplay::Cell::SPEED * slowdownFactor);
+    for (Cell* cell : playerCells) {
+        cell->move(dir, Config::Gameplay::Cell::SPEED * slowdownFactor);
     }
 }

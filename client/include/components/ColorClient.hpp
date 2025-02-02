@@ -6,14 +6,16 @@
 
 struct ColorClient {
     static uint32_t vecToInt(const std::vector<double>& color) {
-        if (color.size() != 4)
-            throw std::runtime_error("Error: Color vector must have exactly 4 "
-                                     "elements (R, G, B, A).");
+        std::vector<double> finalColor = {255, 255, 255, 255};
 
-        uint8_t r = static_cast<uint8_t>(color[0]);
-        uint8_t g = static_cast<uint8_t>(color[1]);
-        uint8_t b = static_cast<uint8_t>(color[2]);
-        uint8_t a = static_cast<uint8_t>(color[3]);
+        if (color.size() == 4) {
+            finalColor = color;
+        }
+
+        uint8_t r = static_cast<uint8_t>(finalColor[0]);
+        uint8_t g = static_cast<uint8_t>(finalColor[1]);
+        uint8_t b = static_cast<uint8_t>(finalColor[2]);
+        uint8_t a = static_cast<uint8_t>(finalColor[3]);
 
         return (r << 24) | (g << 16) | (b << 8) | a;
     }

@@ -13,7 +13,7 @@ class Game {
     void run();
     void updateLoop();
     void viewportUpdate(Player& player);
-    void moveUpdate(Player& player);
+    void moveUpdate(const Player& player);
 
   private:
     Game() = default;

@@ -27,7 +27,6 @@ struct Config {
             static constexpr double DECREASE_SPEED_THRESHOLD = 0.05f;
             static constexpr double DECAY_RATE = 0.02f;
             static constexpr int DECAY_TIMING = 1000;
-            static constexpr double RADIUS_FACTOR = 1.0f;
         };
 
         struct Eat {
@@ -36,9 +35,9 @@ struct Config {
         };
 
         struct Pellet {
-            static constexpr int COUNT = 200;
+            static constexpr int COUNT = 1000;
             static constexpr double MASS = 2.0f;
-            static constexpr double EAT_FACTOR = 2000.0f;
+            static constexpr double EAT_FACTOR = 2.0f;
         };
     };
 };
