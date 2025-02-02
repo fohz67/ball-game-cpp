@@ -7,8 +7,8 @@ std::vector<double> Color::getColor() const {
     return this->_initColor;
 }
 
-void Color::setColor(const std::vector<double>& color) {
-    this->_initColor = color;
+void Color::setColor(const std::vector<double>& val) {
+    this->_initColor = val;
 }
 
 void Color::display() const {

@@ -137,7 +137,7 @@ void GameEngine::System::optionButtonSystem(sf::RenderWindow& window,
                 wasPressedMap[&entity] = false;
             }
         }
-        if (buttonComp.getChecked()) {
+        if (buttonComp.isChecked()) {
             buttonComp.getShape().setFillColor(sf::Color::White);
         } else {
             buttonComp.getShape().setFillColor(sf::Color::Transparent);

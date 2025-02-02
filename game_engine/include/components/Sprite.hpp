@@ -1,35 +1,39 @@
-/*
-** EPITECH PROJECT, 2024
-** R-Type
-** File description:
-** Sprite.hpp
-*/
-
 #pragma once
 
 #include "Components.hpp"
 #include "Texture.hpp"
 
-#include <string>
-#include <vector>
-
 class Sprite : public Component {
   public:
-    Sprite(const std::pair<float, float>& size = {-1, -1});
-    ~Sprite();
+    // Constants
+    static inline std::pair<double, double> DEFAULT_SIZE = {-1, -1};
+
+    // Constructor / Destructor
+    Sprite(const std::pair<double, double>& size = DEFAULT_SIZE);
+    ~Sprite() = default;
+
+    // Getters
     std::string getTexturePath() const;
-    void setTexturePath(const std::string& texturePath);
-    std::pair<float, float> getSize() const;
-    void setSize(const std::pair<float, float>& size);
+    std::pair<double, double> getSize() const;
     bool isLoaded() const;
-    void setLoaded(bool isLoaded);
     sf::Sprite& getSprite();
-    void setSprite(const sf::Sprite& sprite);
+
+    // Setters
+    void setTexturePath(const std::string& val);
+    void setSize(const std::pair<double, double>& val);
+    void setLoaded(const bool val);
+    void setSprite(const sf::Sprite& val);
+
+    // Methods
     void display() const override;
 
   private:
-    std::string _texturePath;
-    std::pair<float, float> _size;
-    sf::Sprite _sprite;
-    bool _isLoad = false;
+    // Constants
+    static constexpr bool DEFAULT_LOADED = false;
+
+    // Attributes
+    std::string texturePath;
+    std::pair<double, double> size;
+    sf::Sprite sprite;
+    bool loaded = DEFAULT_LOADED;
 };

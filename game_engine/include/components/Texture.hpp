@@ -1,33 +1,40 @@
-/*
-** EPITECH PROJECT, 2024
-** R-Type
-** File description:
-** Texture.hpp
-*/
-
 #pragma once
 
-#include <string>
 #include "Components.hpp"
 
 class Texture : public Component {
   public:
-    Texture(const std::string& texturePath = "",
-            const std::vector<int>& textureRect = {});
-    ~Texture();
+    // Constants
+    static inline std::string DEFAULT_TEXTURE_PATH = "";
+    static inline std::vector<int> DEFAULT_TEXTURE_RECT = {};
+
+    // Constructor / Destructor
+    Texture(const std::string& texturePath = DEFAULT_TEXTURE_PATH,
+            const std::vector<int>& textureRect = DEFAULT_TEXTURE_RECT);
+    ~Texture() = default;
+
+    // Getters
     std::string getTexturePath() const;
-    void setTexturePath(const std::string& texturePath);
     bool isLoaded() const;
-    void setLoaded(bool isLoaded);
     sf::Texture& getTexture();
     std::vector<int> getTextureRect() const;
-    void setTexture(const sf::Texture& texture);
+
+    // Setters
+    void setTexturePath(const std::string& val);
+    void setLoaded(bool val);
+    void setTexture(const sf::Texture& val);
+
+    // Methods
     void display() const override;
 
   protected:
   private:
-    std::string _texturePath;
-    std::vector<int> _textureRect;
-    sf::Texture _texture;
-    bool _isLoad = false;
+    // Constants
+    static constexpr bool DEFAULT_LOADED = false;
+
+    // Attributes
+    std::string texturePath;
+    std::vector<int> textureRect;
+    sf::Texture texture;
+    bool loaded = DEFAULT_LOADED;
 };

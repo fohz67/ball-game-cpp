@@ -1,37 +1,42 @@
-/*
-** EPITECH PROJECT, 2024
-** R-Type
-** File description:
-** OptionButton.hpp
-*/
-
 #pragma once
 
-#include <functional>
-#include <string>
 #include "Components.hpp"
 
 class OptionButton : public Component {
   public:
-    OptionButton(std::pair<double, double> size = {0.0, 0.0});
-    ~OptionButton();
+    // Constants
+    static inline std::pair<double, double> DEFAULT_SIZE = {0.0, 0.0};
+
+    // Constructor / Destructor
+    OptionButton(std::pair<double, double> size = DEFAULT_SIZE);
+    ~OptionButton() = default;
+
+    // Getters
     std::pair<double, double> getSize() const;
-    void setSize(std::pair<double, double> size);
     sf::RectangleShape& getShape();
-    void setShape(const sf::RectangleShape&);
     bool isLoaded() const;
+    bool isChecked() const;
+
+    // Setters
+    void setSize(const std::pair<double, double> size);
+    void setShape(const sf::RectangleShape&);
     void setLoaded();
-    bool getChecked() const;
     void setChecked();
-    void setCallback(std::function<void()>);
-    void executeCallback();
+    void setCallback(const std::function<void()> callbackFunc);
+
+    // Methods
+    void executeCallback() const;
     void display() const override;
 
   private:
-    std::pair<double, double> _size;
+    // Constants
+    static constexpr bool DEFAULT_LOADED = false;
     enum Shape { Circle, Rectangle };
-    sf::RectangleShape _optionbutton;
-    bool _isLoad = false;
-    bool _isChecked = false;
-    std::function<void()> _callback;
+
+    // Attributes
+    sf::RectangleShape optionbutton;
+    std::pair<double, double> size;
+    std::function<void()> callback;
+    bool loaded = DEFAULT_LOADED;
+    bool checked = DEFAULT_LOADED;
 };

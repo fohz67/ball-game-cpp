@@ -19,7 +19,7 @@
  *
  * @param id The ID of the entity.
  */
-GameEngine::Entity::Entity(const int id) : _id(id) {}
+GameEngine::Entity::Entity(const int id) : id(id) {}
 
 /**
  * @brief Destructor for the Entity.
@@ -36,7 +36,7 @@ GameEngine::Entity::~Entity() {}
  * @return The ID of the entity.
  */
 int GameEngine::Entity::getEntityId() const {
-    return (_id);
+    return (id);
 }
 
 /**

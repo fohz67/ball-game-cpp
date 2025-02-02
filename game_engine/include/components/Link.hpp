@@ -1,21 +1,23 @@
-/*
-** EPITECH PROJECT, 2024
-** R-Type
-** File description:
-** Link.hpp
-*/
-
 #pragma once
+
 #include "Components.hpp"
 
 class Link : public Component {
   public:
-    Link(int id);
-    ~Link();
-    int getId() const;
-    void setId(int id);
+    // Constructor / Destructor
+    Link(uint32_t id);
+    ~Link() = default;
+
+    // Getters
+    uint32_t getId() const;
+
+    // Setters
+    void setId(const uint32_t val);
+
+    // Methods
     void display() const override;
 
   private:
-    int _id;
+    // Attributes
+    uint32_t id;
 };

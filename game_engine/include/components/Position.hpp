@@ -6,22 +6,35 @@
 */
 
 #pragma once
+
 #include "Components.hpp"
 
 class Position : public Component {
   public:
-    Position(const std::vector<std::pair<float, float>>& positions = {
-                 {0.0f, 0.0f}});
-    ~Position();
-    std::vector<std::pair<float, float>> getPositions() const;
-    float getPositionX(int id) const;
-    void setPositionX(int id, float x);
-    float getPositionY(int id) const;
-    void setPositionY(int id, float y);
-    void addPosition(float x, float y);
-    void removePosition(int id);
+    // Constants
+    static inline std::vector<std::pair<double, double>> DEFAULT_POSITIONS = {
+        {0.0f, 0.0f}};
+
+    // Constructor / Destructor
+    Position(const std::vector<std::pair<double, double>>& positions =
+                 DEFAULT_POSITIONS);
+    ~Position() = default;
+
+    // Getters
+    std::vector<std::pair<double, double>> getPositions() const;
+    double getPositionX(const uint32_t id) const;
+    double getPositionY(const uint32_t id) const;
+
+    // Setters
+    void setPositionX(const uint32_t id, const double x);
+    void setPositionY(const uint32_t id, const double y);
+
+    // Methods
+    void addPosition(const double x, const double y);
+    void removePosition(const uint32_t id);
     void display() const override;
 
   private:
-    std::vector<std::pair<float, float>> _positions;
+    // Attributes
+    std::vector<std::pair<double, double>> positions;
 };

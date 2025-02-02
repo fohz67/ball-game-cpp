@@ -1,6 +1,5 @@
 #pragma once
 
-#include <vector>
 #include "Components.hpp"
 
 class Color : public Component {
@@ -16,7 +15,7 @@ class Color : public Component {
     std::vector<double> getColor() const;
 
     // Setters
-    void setColor(const std::vector<double>& color);
+    void setColor(const std::vector<double>& val);
 
     // Methods
     void display() const override;

@@ -1,66 +1,74 @@
-/*
-** EPITECH PROJECT, 2024
-** R-Type
-** File description:
-** Sound.hpp
-*/
-
 #pragma once
 
 #include <SFML/Audio.hpp>
-#include <string>
 #include "Components.hpp"
 
 class Sound : public Component {
   public:
-    Sound(std::string soundFile = "");
-    Sound(const Sound& other)
-        : _soundFile(other._soundFile), _volume(other._volume),
-          _buffer(other._buffer), _isLoad(other._isLoad) {
-        _sound.setBuffer(_buffer);
-    }
+    // Constants
+    static inline std::string DEFAULT_SOUND_FILE = "";
 
-    Sound& operator=(const Sound& other) {
-        if (this != &other) {
-            _soundFile = other._soundFile;
-            _volume = other._volume;
-            _buffer = other._buffer;
-            _isLoad = other._isLoad;
-            _sound.setBuffer(_buffer);
-        }
-        return *this;
+    // Constructor / Destructor
+    Sound(const std::string soundFile = DEFAULT_SOUND_FILE);
+    Sound(const Sound& other)
+        : soundFile(other.soundFile), volume(other.volume),
+          buffer(other.buffer), loaded(other.loaded) {
+        sound.setBuffer(buffer);
     }
     Sound(Sound&& other) noexcept
-        : _soundFile(std::move(other._soundFile)), _volume(other._volume),
-          _buffer(std::move(other._buffer)), _isLoad(other._isLoad) {
-        _sound.setBuffer(_buffer);
+        : soundFile(std::move(other.soundFile)), volume(other.volume),
+          buffer(std::move(other.buffer)), loaded(other.loaded) {
+        sound.setBuffer(buffer);
     }
+    ~Sound() = default;
 
+    // Operators
+    Sound& operator=(const Sound& other) {
+        if (this != &other) {
+            soundFile = other.soundFile;
+            volume = other.volume;
+            buffer = other.buffer;
+            loaded = other.loaded;
+            sound.setBuffer(buffer);
+        }
+        return *this;
+    }
     Sound& operator=(Sound&& other) noexcept {
         if (this != &other) {
-            _soundFile = std::move(other._soundFile);
-            _volume = other._volume;
-            _buffer = std::move(other._buffer);
-            _isLoad = other._isLoad;
-            _sound.setBuffer(_buffer);
+            soundFile = std::move(other.soundFile);
+            volume = other.volume;
+            buffer = std::move(other.buffer);
+            loaded = other.loaded;
+            sound.setBuffer(buffer);
         }
         return *this;
     }
 
-    ~Sound();
+    // Singleton
     static Sound& get();
+
+    // Getters
     sf::Sound& getSound();
     sf::SoundBuffer& getSoundBuffer();
     std::string getSoundFile() const;
-    void setSoundFile(std::string soundFile);
     int getVolume() const;
-    void setVolumeSound(int volume);
+
+    // Setters
+    void setSoundFile(const std::string val);
+    void setVolumeSound(const int val);
+
+    // Methods
     void display() const override;
 
   private:
-    std::string _soundFile;
-    int _volume = 50;
-    sf::SoundBuffer _buffer;
-    sf::Sound _sound;
-    bool _isLoad = false;
+    // Constants
+    static constexpr int DEFAULT_VOLUME = 50;
+    static constexpr bool DEFAULT_LOADED = false;
+
+    // Attributes
+    std::string soundFile;
+    int volume = DEFAULT_VOLUME;
+    sf::SoundBuffer buffer;
+    sf::Sound sound;
+    bool loaded = DEFAULT_LOADED;
 };

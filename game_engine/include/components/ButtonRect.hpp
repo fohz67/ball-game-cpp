@@ -2,9 +2,6 @@
 
 #include <SFML/Graphics.hpp>
 #include "Components.hpp"
-#include <cstdint>
-#include <functional>
-#include <utility>
 
 class ButtonRect : public Component {
   public:
@@ -25,22 +22,25 @@ class ButtonRect : public Component {
     sf::Color getColor() const;
     bool isLoaded() const;
     bool isShowOutline() const;
-    bool isHovered(const sf::Vector2i mousePos) const;
 
     // Setters
-    void setLoaded(const bool isLoaded);
-    void setCallback(const std::function<void()>& callback);
+    void setLoaded(const bool val);
+    void setCallback(const std::function<void()>& val);
 
     // Methods
+    bool isHovered(const sf::Vector2i mousePos) const;
     void display() const override;
     void executeCallback() const;
 
   private:
+    // Constants
+    static constexpr bool DEFAULT_LOADED = false;
+
     // Attributes
     sf::RectangleShape buttonRect;
     std::pair<uint16_t, uint16_t> size;
     sf::Color color;
-    bool showOutline;
-    bool load = false;
     std::function<void()> callback;
+    bool showOutline;
+    bool load = DEFAULT_LOADED;
 };

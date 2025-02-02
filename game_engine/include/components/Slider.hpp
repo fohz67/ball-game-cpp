@@ -11,46 +11,49 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <functional>
-#include <utility>
 #include "Components.hpp"
 
 class Slider : public Component {
   public:
-    Slider(float current, std::pair<double, double> lenght,
-           std::pair<double, double> size);
-    ~Slider();
+    // Constants
+    Slider(const double current, const std::pair<double, double> lenght,
+           const std::pair<double, double> size);
+    ~Slider() = default;
 
+    // Getters
     std::pair<double, double> getSize() const;
-    void setSize(std::pair<double, double> size);
     sf::RectangleShape& getBarShape();
-    void setBarShape(const sf::RectangleShape&);
     sf::CircleShape& getCursorShape();
-    void setCursorShape(const sf::CircleShape&);
     int getValue() const;
-    void setValue(float);
-
-    void setMinValue(float minValue);
-    float getMinValue() const;
-
-    void setMaxValue(float maxValue);
-    float getMaxValue() const;
-
+    double getMinValue() const;
+    double getMaxValue() const;
     bool isLoaded() const;
+
+    // Setters
+    void setSize(const std::pair<double, double> val);
+    void setBarShape(const sf::RectangleShape& val);
+    void setCursorShape(const sf::CircleShape& val);
+    void setValue(const double var);
+    void setMinValue(const double minValue);
+    void setMaxValue(const double maxValue);
     void setLoaded();
+    void setCallback(const std::function<void(double)> val);
 
-    void setCallback(std::function<void(float)>);
-    void executeCallback(int arg);
-
-    void display() const;
+    // Methods
+    void executeCallback(const int arg);
+    void display() const override;
 
   private:
-    std::pair<double, double> _size;
-    float _minValue;
-    float _maxValue;
-    float _currentValue;
-    bool _isLoad = false;
-    sf::RectangleShape _barShape;
-    sf::CircleShape _cursorShape;
-    std::function<void(float)> _callback;
+    // Constants
+    static constexpr bool DEFAULT_LOADED = false;
+
+    // Attributes
+    sf::RectangleShape barShape;
+    sf::CircleShape cursorShape;
+    std::pair<double, double> size;
+    double min;
+    double max;
+    double current;
+    bool loaded = DEFAULT_LOADED;
+    std::function<void(double)> callback;
 };

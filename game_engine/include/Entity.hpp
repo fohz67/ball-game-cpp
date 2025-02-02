@@ -16,7 +16,7 @@ namespace GameEngine {
 
 class Entity {
   public:
-    Entity() : _id(0) {}
+    Entity() : id(0) {}
     Entity(int id);
 
     template <typename... Args> Entity(int id, Args&&... args);
@@ -36,7 +36,7 @@ class Entity {
     int getEntityId() const;
 
   private:
-    int _id;
+    int id;
     std::unordered_map<std::type_index, std::shared_ptr<Component>> _components;
 };
 
@@ -54,7 +54,7 @@ class Entity {
  * @throws std::runtime_error If a component already exists in the entity.
  */
 template <typename... Args>
-Entity::Entity(const int id, Args&&... args) : _id(id) {
+Entity::Entity(const int id, Args&&... args) : id(id) {
     (addComponent(std::forward<Args>(args)), ...);
 }
 

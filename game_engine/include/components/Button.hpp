@@ -1,8 +1,8 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "Components.hpp"
 #include <cstdint>
+#include "Components.hpp"
 
 class Button : public Component {
   public:
@@ -22,22 +22,25 @@ class Button : public Component {
     sf::Text& getText();
     std::string getString() const;
     std::string getFontFile() const;
-    sf::Font& getFont();
     uint16_t getCharacterSize() const;
     std::pair<double, double> getSize() const;
+    sf::Font& getFont();
     bool isLoaded() const;
-    bool isHovered(const sf::Vector2i mousePos) const;
 
     // Setters
-    void setString(const std::string text);
-    void setLoaded(bool isLoaded);
-    void setCallback(const std::function<void()> callback);
+    void setString(const std::string val);
+    void setLoaded(const bool val);
+    void setCallback(const std::function<void()> val);
 
     // Methods
+    bool isHovered(const sf::Vector2i mousePos) const;
     void display() const override;
     void executeCallback() const;
 
   private:
+    // Constants
+    static constexpr bool DEFAULT_LOADED = false;
+
     // Attributes
     sf::RectangleShape button;
     sf::Text text;
@@ -46,6 +49,6 @@ class Button : public Component {
     uint16_t characterSize;
     std::pair<double, double> size;
     sf::Font font;
-    bool load = false;
+    bool load = DEFAULT_LOADED;
     std::function<void()> callback;
 };

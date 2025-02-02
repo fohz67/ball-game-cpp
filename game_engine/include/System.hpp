@@ -33,7 +33,7 @@ class System {
                 const std::any& value, int posId = 0);
 
   private:
-    std::string _fontFile;
+    std::string fontFile;
     template <typename Drawable>
     void setColor(Entity& entity, Drawable& drawable);
     template <typename Drawable>
