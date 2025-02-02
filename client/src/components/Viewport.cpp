@@ -6,12 +6,8 @@ Viewport& Viewport::get() {
     return instance;
 }
 
-void Viewport::setViewport(double x, double y) {
-    viewport = {x, y};
-}
-
-void Viewport::setPreviousViewport(double x, double y) {
-    previousViewport = {x, y};
+void Viewport::setViewport(Point newViewport) {
+    viewport = newViewport;
 }
 
 Point Viewport::getViewport() const {

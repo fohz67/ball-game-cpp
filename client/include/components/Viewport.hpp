@@ -10,8 +10,7 @@ class Viewport {
 
     static Viewport& get();
 
-    void setViewport(double x, double y);
-    void setPreviousViewport(double x, double y);
+    void setViewport(Point newViewport);
 
     Point getViewport() const;
     Point getPreviousViewport() const;

@@ -64,9 +64,9 @@ void Cell::move(Point dir, double speed) {
     std::vector<double> boundaries = World::getWorldBoundaries();
 
     newPos.first =
-        std::max(boundaries[0], std::min(boundaries[1], newPos.first));
+        std::max(boundaries[0], std::min(boundaries[1] - getRadius() * 2, newPos.first));
     newPos.second =
-        std::max(boundaries[2], std::min(boundaries[3], newPos.second));
+        std::max(boundaries[2], std::min(boundaries[3] - getRadius() * 2, newPos.second));
 
     setPosition(newPos);
 }
@@ -90,6 +90,7 @@ bool Cell::canEat(const Cell& other) const {
 
     return distanceSquared < minEatDistanceSquared;
 }
+
 void Cell::absorb(Cell& other) {
     if (other.type == CellType::PELLET) {
         mass += (other.getMass() * Config::Gameplay::Pellet::EAT_FACTOR);

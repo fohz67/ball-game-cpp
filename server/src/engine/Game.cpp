@@ -4,6 +4,7 @@
 #include "components/Cell.hpp"
 #include "config/Config.hpp"
 #include "managers/CellManager.hpp"
+#include "geometry/FastInvSqrt.hpp"
 #include "managers/PlayerManager.hpp"
 
 Game& Game::get() {
@@ -61,7 +62,7 @@ void Game::moveUpdate(Player& player) {
 
     Point dir = player.getMousePosition();
 
-    double magnitude = sqrt(dir.first * dir.first + dir.second * dir.second);
+    double magnitude = 1 / FIS(dir.first * dir.first + dir.second * dir.second);
     double slowdownFactor =
         (magnitude < Config::Gameplay::Cell::DECREASE_SPEED_THRESHOLD)
             ? magnitude / Config::Gameplay::Cell::DECREASE_SPEED_THRESHOLD

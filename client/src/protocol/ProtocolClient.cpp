@@ -65,7 +65,7 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
         if (ConfigClient::Client::DEV_MODE)
             std::cout << "Viewport updated: " << x << " " << y << std::endl;
 
-        Viewport::get().setViewport(x, y);
+        Viewport::get().setViewport({x, y});
         break;
     }
     case OpCodes::REMOVE_ENTITY: {

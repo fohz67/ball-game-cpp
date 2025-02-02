@@ -8,12 +8,12 @@ struct Config {
     };
 
     struct Game {
-        static constexpr int FREQUENCY = 5;
+        static constexpr int FREQUENCY = 1;
     };
 
     struct Network {
         static constexpr int PORT = 12345;
-        static constexpr int FREQUENCY = 5;
+        static constexpr int FREQUENCY = 1;
     };
 
     struct Gameplay {
@@ -38,7 +38,7 @@ struct Config {
         struct Pellet {
             static constexpr int COUNT = 200;
             static constexpr double MASS = 2.0f;
-            static constexpr double EAT_FACTOR = 1.0f;
+            static constexpr double EAT_FACTOR = 1000.0f;
         };
     };
 };
