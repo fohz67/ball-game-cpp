@@ -2,6 +2,7 @@
 #include <components/Position.hpp>
 #include "components/Hotkeys.hpp"
 #include "components/Viewport.hpp"
+#include "components/Zoom.hpp"
 #include "config/ConfigClient.hpp"
 #include "managers/EntityManager.hpp"
 #include "protocol/ProtocolClient.hpp"
@@ -52,6 +53,11 @@ void GameClient::processEvents() {
         if (event.type == sf::Event::KeyPressed) {
             ProtocolClient::get().sendKeyPressed(
                 Hotkeys::keyToString(event.key.code));
+        }
+        if (event.type == sf::Event::MouseWheelScrolled) {
+            if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel) {
+                Zoom::get().setZoom(event.mouseWheelScroll.delta, view);
+            }
         }
     }
 }

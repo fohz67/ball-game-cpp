@@ -26,10 +26,10 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
     switch (static_cast<OpCodes>(opcode)) {
     case OpCodes::JOIN: {
         smartBuffer.reset();
-        smartBuffer << OpCodes::WORLD << Config::GameMode::WORLD_SIZE;
+        smartBuffer << OpCodes::WORLD << Config::Gameplay::World::SIZE;
 
         if (Config::Server::DEV_MODE)
-            std::cout << "World size sent: " << Config::GameMode::WORLD_SIZE
+            std::cout << "World size sent: " << Config::Gameplay::World::SIZE
                       << std::endl;
 
         Network::get().sendToClient(client, smartBuffer);

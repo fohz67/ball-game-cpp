@@ -1,8 +1,8 @@
 #pragma once
 
+#include <utility>
 #include "Components.hpp"
 #include "Texture.hpp"
-#include <utility>
 
 class Sprite : public Component {
   public:

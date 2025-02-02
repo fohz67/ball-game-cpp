@@ -54,7 +54,7 @@ void GEngine::System::loadText(GEngine::Entity& entity, auto& textComp) {
  * @param entity The entity containing the text and position components.
  */
 void GEngine::System::textSystem(sf::RenderWindow& window,
-                                    GEngine::Entity& entity) {
+                                 GEngine::Entity& entity) {
     if (entity.hasComponent<Text>() && entity.hasComponent<Position>()) {
         auto& textComp = entity.getComponent<Text>();
         loadText(entity, textComp);

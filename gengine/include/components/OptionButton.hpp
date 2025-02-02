@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Components.hpp"
 #include <functional>
 #include <utility>
+#include "Components.hpp"
 
 class OptionButton : public Component {
   public:

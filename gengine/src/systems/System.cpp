@@ -25,7 +25,7 @@ GEngine::System::System() {}
  * @param entities The map of entities to be rendered.
  */
 void GEngine::System::render(sf::RenderWindow& window,
-                                std::map<int, Entity>& entities) {
+                             std::map<int, Entity>& entities) {
     for (auto& [id, entity] : entities) {
         spriteSystem(window, entity);
         textSystem(window, entity);

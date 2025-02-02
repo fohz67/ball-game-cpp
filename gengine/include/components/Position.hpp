@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Components.hpp"
 #include <cstdint>
-#include <vector>
 #include <utility>
+#include <vector>
+#include "Components.hpp"
 
 class Position : public Component {
   public:

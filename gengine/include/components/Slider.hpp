@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Components.hpp"
-#include <utility>
 #include <functional>
+#include <utility>
+#include "Components.hpp"
 
 class Slider : public Component {
   public:

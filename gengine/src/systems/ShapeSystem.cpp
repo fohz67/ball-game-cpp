@@ -27,8 +27,7 @@
  * @param entity The entity containing the rectangle component.
  * @param shapeComp The rectangle component to be loaded.
  */
-void GEngine::System::loadRectangle(GEngine::Entity& entity,
-                                       auto& shapeComp) {
+void GEngine::System::loadRectangle(GEngine::Entity& entity, auto& shapeComp) {
     if (!shapeComp.isLoaded()) {
         sf::RectangleShape rectangle;
         rectangle.setSize(sf::Vector2f(shapeComp.getSize().first,
@@ -64,8 +63,7 @@ void GEngine::System::loadRectangle(GEngine::Entity& entity,
  * @param entity The entity containing the circle component.
  * @param shapeComp The circle component to be loaded.
  */
-void GEngine::System::loadCircle(GEngine::Entity& entity,
-                                    auto& shapeComp) {
+void GEngine::System::loadCircle(GEngine::Entity& entity, auto& shapeComp) {
     if (!shapeComp.isLoaded()) {
         sf::CircleShape circle;
         circle.setRadius(shapeComp.getRadius());
@@ -101,7 +99,7 @@ void GEngine::System::loadCircle(GEngine::Entity& entity,
  * @param entity The entity containing the shape and position components.
  */
 void GEngine::System::shapeSystem(sf::RenderWindow& window,
-                                     GEngine::Entity& entity) {
+                                  GEngine::Entity& entity) {
     if (entity.hasComponent<Shape>() && entity.hasComponent<Position>()) {
         auto& shapeComp = entity.getComponent<Shape>();
         if (shapeComp.getShapeType() == Rectangle) {

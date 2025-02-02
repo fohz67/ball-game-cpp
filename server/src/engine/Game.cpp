@@ -1,10 +1,10 @@
 #include "engine/Game.hpp"
+#include <cmath>
 #include <iostream>
 #include "components/Cell.hpp"
 #include "config/Config.hpp"
 #include "managers/CellManager.hpp"
 #include "managers/PlayerManager.hpp"
-#include <cmath>
 
 Game& Game::get() {
     static Game instance;
@@ -63,8 +63,8 @@ void Game::moveUpdate(Player& player) {
 
     double magnitude = sqrt(dirX * dirX + dirY * dirY);
     double slowdownFactor =
-        (magnitude < Config::GameMode::CELL_DECREASE_SPEED_THRESHOLD)
-            ? magnitude / Config::GameMode::CELL_DECREASE_SPEED_THRESHOLD
+        (magnitude < Config::Gameplay::Cell::DECREASE_SPEED_THRESHOLD)
+            ? magnitude / Config::Gameplay::Cell::DECREASE_SPEED_THRESHOLD
             : 1.0;
 
     if (magnitude > 0) {
@@ -72,10 +72,10 @@ void Game::moveUpdate(Player& player) {
         dirY /= magnitude;
     }
 
-    double speed = Config::GameMode::CELL_SPEED * slowdownFactor;
+    double speed = Config::Gameplay::Cell::SPEED * slowdownFactor;
     size_t cellCount = playerCells.size();
 
     for (size_t i = 0; i < cellCount; ++i) {
-        playerCells[i]->move(dirX, dirY, speed, Config::GameMode::WORLD_SIZE);
+        playerCells[i]->move(dirX, dirY, speed, Config::Gameplay::World::SIZE);
     }
 }

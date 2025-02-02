@@ -1,8 +1,8 @@
 #pragma once
 
 #include <functional>
-#include "Components.hpp"
 #include <utility>
+#include "Components.hpp"
 
 class ButtonRect : public Component {
   public:

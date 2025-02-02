@@ -2,8 +2,8 @@
 
 #include <cstdint>
 #include <functional>
-#include "Components.hpp"
 #include <utility>
+#include "Components.hpp"
 
 class Button : public Component {
   public:

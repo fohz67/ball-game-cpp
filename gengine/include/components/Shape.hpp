@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Components.hpp"
 #include <utility>
+#include "Components.hpp"
 
 enum ShapeType { Circle, Rectangle };
 

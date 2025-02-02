@@ -25,8 +25,8 @@
  * @param spriteComp The sprite component to be loaded.
  * @param textureComp The texture component to be loaded.
  */
-void GEngine::System::loadSprite(GEngine::Entity& entity,
-                                    auto& spriteComp, auto& textureComp) {
+void GEngine::System::loadSprite(GEngine::Entity& entity, auto& spriteComp,
+                                 auto& textureComp) {
     if (!spriteComp.isLoaded()) {
         if (textureComp.getTextureRect().size() == 4) {
             const auto& textureRect = textureComp.getTextureRect();
@@ -58,7 +58,7 @@ void GEngine::System::loadSprite(GEngine::Entity& entity,
  * @param entity The entity containing the sprite and texture components.
  */
 void GEngine::System::spriteSystem(sf::RenderWindow& window,
-                                      GEngine::Entity& entity) {
+                                   GEngine::Entity& entity) {
     if (entity.hasComponent<Sprite>() && entity.hasComponent<Texture>()) {
         auto& spriteComp = entity.getComponent<Sprite>();
         auto& textureComp = entity.getComponent<Texture>();

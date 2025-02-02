@@ -31,9 +31,10 @@
  * @param posId An identifier for the position update, used internally by the
  * system.
  */
-void GEngine::System::updateEntityPosition(
-    const int id, std::map<int, Entity>& entities,
-    const std::pair<float, float>& pos, const int posId) {
+void GEngine::System::updateEntityPosition(const int id,
+                                           std::map<int, Entity>& entities,
+                                           const std::pair<float, float>& pos,
+                                           const int posId) {
     linkSystem(id, entities, pos, posId);
     if (!entities.contains(id)) {
         std::cerr << "Entity " << id << " does not exist." << std::endl;
@@ -94,8 +95,7 @@ void GEngine::System::updateText(Entity& entity, const std::string& text) {
  * @param entity The entity to update.
  * @param font The new font to set for the entity.
  */
-void GEngine::System::updateTextFont(Entity& entity,
-                                        const std::string& font) {
+void GEngine::System::updateTextFont(Entity& entity, const std::string& font) {
     if (entity.hasComponent<Text>()) {
         auto& textComp = entity.getComponent<Text>();
         textComp.getFont().loadFromFile(font);
@@ -116,8 +116,8 @@ void GEngine::System::updateTextFont(Entity& entity,
  * @param textSize The new text size to set for the entity.
  */
 void GEngine::System::updateTextSize(const int id,
-                                        std::map<int, Entity>& entities,
-                                        const unsigned int textSize) {
+                                     std::map<int, Entity>& entities,
+                                     const unsigned int textSize) {
     Entity& entity = entities.at(id);
     if (entity.hasComponent<Text>()) {
         auto& textComp = entity.getComponent<Text>();
@@ -192,8 +192,8 @@ void GEngine::System::updateShapeSize(Entity& entity, double radius) {
  * system.
  */
 void GEngine::System::update(const int id, std::map<int, Entity>& entities,
-                                const UpdateType type, const std::any& value,
-                                const int posId) {
+                             const UpdateType type, const std::any& value,
+                             const int posId) {
     if (!entities.contains(id)) {
         return;
     }

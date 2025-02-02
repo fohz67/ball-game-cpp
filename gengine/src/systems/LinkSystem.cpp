@@ -29,9 +29,9 @@
  * @param posId The position id.
  */
 void GEngine::System::linkSystem(int id,
-                                    std::map<int, GEngine::Entity>& entities,
-                                    std::pair<float, float> newLinkedEntityPos,
-                                    const int posId) {
+                                 std::map<int, GEngine::Entity>& entities,
+                                 std::pair<float, float> newLinkedEntityPos,
+                                 const int posId) {
     for (auto& [_, entity] : entities) {
         if (entity.hasComponent<Link>() &&
             entity.getComponent<Link>().getId() == id) {

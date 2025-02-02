@@ -28,7 +28,7 @@
  * @param entity The entity containing the button and position components.
  */
 void GEngine::System::buttonSystem(sf::RenderWindow& window,
-                                      GEngine::Entity& entity) {
+                                   GEngine::Entity& entity) {
     if (entity.hasComponent<Button>() && entity.hasComponent<Position>()) {
         auto& buttonComp = entity.getComponent<Button>();
         auto& positionComp = entity.getComponent<Position>();
@@ -96,7 +96,7 @@ void GEngine::System::buttonSystem(sf::RenderWindow& window,
  * @param entity The entity containing the checkbox and position components.
  */
 void GEngine::System::optionButtonSystem(sf::RenderWindow& window,
-                                            GEngine::Entity& entity) {
+                                         GEngine::Entity& entity) {
     if (entity.hasComponent<OptionButton>() &&
         entity.hasComponent<Position>()) {
         auto& buttonComp = entity.getComponent<OptionButton>();
@@ -160,8 +160,8 @@ void GEngine::System::optionButtonSystem(sf::RenderWindow& window,
  * @param entities The map of entities.
  */
 void GEngine::System::sliderSystem(sf::RenderWindow& window,
-                                      GEngine::Entity& entity,
-                                      std::map<int, Entity>& entities) {
+                                   GEngine::Entity& entity,
+                                   std::map<int, Entity>& entities) {
     GEngine::System system;
     if (entity.hasComponent<Slider>() && entity.hasComponent<Position>()) {
         auto& sliderComp = entity.getComponent<Slider>();
@@ -254,7 +254,7 @@ void GEngine::System::sliderSystem(sf::RenderWindow& window,
  * @param entity The entity containing the buttonRect and position components.
  */
 void GEngine::System::buttonRectSystem(sf::RenderWindow& window,
-                                          GEngine::Entity& entity) {
+                                       GEngine::Entity& entity) {
     if (entity.hasComponent<ButtonRect>() && entity.hasComponent<Position>()) {
         auto& buttonRectComp = entity.getComponent<ButtonRect>();
         auto& positionComp = entity.getComponent<Position>();

@@ -8,7 +8,7 @@ struct ConfigClient {
     };
 
     struct Game {
-        static constexpr int FRAME_RATE = 144;
+        static constexpr int FRAME_RATE = 120;
         static constexpr double CAMERA_INTERPOLATE_FACTOR = 0.1f;
     };
 
@@ -28,5 +28,9 @@ struct ConfigClient {
         static constexpr int ID = 1;
         static inline const std::vector<double> BACKGROUND_COLOR = {20, 20, 20,
                                                                     255};
+    };
+
+    struct Zoom {
+        static constexpr double ZOOM_SPEED = 50.0f;
     };
 };

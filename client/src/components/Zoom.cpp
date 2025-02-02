@@ -1,0 +1,15 @@
+#include "components/Zoom.hpp"
+#include "config/ConfigClient.hpp"
+
+Zoom& Zoom::get() {
+    static Zoom instance;
+    return instance;
+}
+
+void Zoom::setZoom(double delta, sf::View& view) {
+    if (delta > 0) {
+        view.zoom(1.0f - ConfigClient::Zoom::ZOOM_SPEED / 1000);
+    } else if (delta < 0) {
+        view.zoom(1.0f + ConfigClient::Zoom::ZOOM_SPEED / 1000);
+    }
+}

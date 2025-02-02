@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Components.hpp"
+#include <string>
 #include <utility>
 #include <vector>
-#include <string>
+#include "Components.hpp"
 
 class Texture : public Component {
   public:

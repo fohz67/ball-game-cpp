@@ -1,9 +1,9 @@
 #pragma once
 
 #include <SFML/Audio.hpp>
-#include "Components.hpp"
 #include <string>
 #include <utility>
+#include "Components.hpp"
 
 class Sound : public Component {
   public:
