@@ -3,7 +3,6 @@
 #include <iostream>
 #include "components/Cell.hpp"
 #include "config/Config.hpp"
-#include "geometry/FastInvSqrt.hpp"
 #include "managers/CellManager.hpp"
 #include "managers/PlayerManager.hpp"
 
@@ -34,17 +33,13 @@ void Game::viewportUpdate(Player& player) {
         return;
     }
 
-    std::pair cellCenter = {0.0f, 0.0f};
+    Vector2 cellCenter(0, 0);
 
     for (const auto* cell : playerCells) {
-        Point playerCellCenter = cell->getCenter();
-
-        cellCenter.first += playerCellCenter.first;
-        cellCenter.second += playerCellCenter.second;
+        cellCenter += cell->getCenter();
     }
 
-    cellCenter.first /= playerCells.size();
-    cellCenter.second /= playerCells.size();
+    cellCenter /= playerCells.size();
 
     player.setViewport(cellCenter);
 }
@@ -56,21 +51,20 @@ void Game::moveUpdate(Player& player) {
         return;
     }
 
-    Point dir = player.getMousePosition();
+    Vector2 dir = player.getMousePosition();
 
-    double magnitude = 1 / FIS(dir.first * dir.first + dir.second * dir.second);
+    double magnitude = dir.magnitude();
     double slowdownFactor =
         (magnitude < Config::Gameplay::Cell::DECREASE_SPEED_THRESHOLD)
             ? magnitude / Config::Gameplay::Cell::DECREASE_SPEED_THRESHOLD
             : 1.0;
 
     if (magnitude > 0) {
-        dir.first /= magnitude;
-        dir.second /= magnitude;
+        dir.x /= magnitude;
+        dir.y /= magnitude;
     }
 
-    for (size_t i = 0; i < playerCells.size(); ++i) {
-        playerCells[i]->move(dir,
-                             Config::Gameplay::Cell::SPEED * slowdownFactor);
+    for (auto* cell : playerCells) {
+        cell->move(dir, Config::Gameplay::Cell::SPEED * slowdownFactor);
     }
 }

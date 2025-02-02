@@ -4,6 +4,8 @@
 #include <mutex>
 #include <vector>
 #include "components/Cell.hpp"
+#include "components/Player.hpp"
+#include "util/Vector2.hpp"
 
 class CellManager {
   public:
@@ -12,20 +14,19 @@ class CellManager {
 
     static CellManager& get();
 
-    Point getRandomLocation();
+    Vector2 getRandomLocation();
     std::vector<double> getRandomColor();
 
     void generatePellets();
     void updateCells();
-
+    void splitCells(Player& player);
     void createCell(uint32_t ownerId, CellType type);
-    void addCell(uint32_t ownerId, double x, double y, double radius,
-                 double speed);
+
+    std::vector<Cell*> getCellsFromId(uint32_t ownerId);
+    const std::vector<Cell>& getAllCells() const;
 
     void removeCellsFromId(uint32_t ownerId);
-    std::vector<Cell*> getCellsFromId(uint32_t ownerId);
-    void deleteCells(const std::vector<uint32_t>& deletedIds);
-    const std::vector<Cell>& getAllCells() const;
+    void deleteCellsFromIds(const std::vector<uint32_t>& deletedIds);
 
     std::mutex cellsMutex;
 

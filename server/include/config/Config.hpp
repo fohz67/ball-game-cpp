@@ -19,6 +19,7 @@ struct Config {
     struct Gameplay {
         struct World {
             static constexpr uint16_t SIZE = 700.0f;
+            static constexpr double FRICTION = 0.9f;
         };
 
         struct Cell {
@@ -28,6 +29,9 @@ struct Config {
             static constexpr double DECAY_RATE = 0.02f;
             static constexpr int DECAY_TIMING = 1000;
             static constexpr double RADIUS_FACTOR = 1.0f;
+            static constexpr double SPLIT_BOOST = 0.5f;
+            static constexpr double SPLIT_DISTANCE = 50.0f;
+            static constexpr double MIN_SPLIT_MASS = 100.0f;
         };
 
         struct Eat {
@@ -38,7 +42,7 @@ struct Config {
         struct Pellet {
             static constexpr int COUNT = 200;
             static constexpr double MASS = 2.0f;
-            static constexpr double EAT_FACTOR = 2000.0f;
+            static constexpr double EAT_FACTOR = 1.0f;
         };
     };
 };

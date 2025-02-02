@@ -11,18 +11,18 @@ std::shared_ptr<asio::ip::tcp::socket> Player::getClient() const {
     return client;
 }
 
-Point Player::getViewport() const {
+Vector2 Player::getViewport() const {
     return viewport;
 }
 
-Point Player::getMousePosition() const {
+Vector2 Player::getMousePosition() const {
     return mousePosition;
 }
 
-void Player::setViewport(Point viewport) {
+void Player::setViewport(Vector2 viewport) {
     this->viewport = viewport;
 }
 
-void Player::setMousePosition(Point mousePosition) {
+void Player::setMousePosition(Vector2 mousePosition) {
     this->mousePosition = mousePosition;
 }

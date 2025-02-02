@@ -5,6 +5,7 @@
 #include "config/Config.hpp"
 #include "engine/Network.hpp"
 #include "managers/CellManager.hpp"
+#include "managers/HotkeysManager.hpp"
 #include "managers/PlayerManager.hpp"
 #include "protocol/OpCodes.hpp"
 
@@ -33,6 +34,21 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
                       << std::endl;
 
         Network::get().sendToClient(client, smartBuffer);
+    
+        for (const auto& cell : CellManager::get().getAllCells()) {
+            if (cell.getType() != CellType::PELLET) {
+                continue;
+            }
+
+            Vector2 pos = cell.getPosition();
+
+            smartBuffer.reset();
+            smartBuffer << OpCodes::GAME_STATE << cell.getId() << pos.x << pos.y
+                        << cell.getRadius()
+                        << ColorServer::vecToInt(cell.getColor());
+            
+            Network::get().sendToClient(client, smartBuffer);
+        }
         break;
     }
     case OpCodes::MOUSE_POSITION: {
@@ -55,7 +71,8 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
         if (Config::Server::DEV_MODE)
             std::cout << "Key pressed received: " << keyName << std::endl;
 
-        // @TODO handle key pressed
+        HotkeysManager::get().handleKeyPressed(client, keyName);
+
         break;
     }
     default:
@@ -66,14 +83,19 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
 }
 
 void Protocol::sendGameState() {
+    SmartBuffer smartBuffer;
     std::lock_guard<std::mutex> lock(CellManager::get().cellsMutex);
 
     for (const auto& cell : CellManager::get().getAllCells()) {
-        Point pos = cell.getPosition();
+        if (cell.getType() == CellType::PELLET) {
+            continue;
+        }
 
-        SmartBuffer smartBuffer;
-        smartBuffer << OpCodes::GAME_STATE << cell.getId() << pos.first
-                    << pos.second << cell.getRadius()
+        Vector2 pos = cell.getPosition();
+
+        smartBuffer.reset();
+        smartBuffer << OpCodes::GAME_STATE << cell.getId() << pos.x << pos.y
+                    << cell.getRadius()
                     << ColorServer::vecToInt(cell.getColor());
 
         Network::get().sendToAll(smartBuffer);
@@ -87,14 +109,14 @@ void Protocol::sendViewport() {
     SmartBuffer smartBuffer;
 
     for (const auto& player : PlayerManager::get().getAllPlayers()) {
-        Point viewport = player.getViewport();
+        Vector2 viewport = player.getViewport();
 
         smartBuffer.reset();
-        smartBuffer << OpCodes::VIEWPORT << viewport.first << viewport.second;
+        smartBuffer << OpCodes::VIEWPORT << viewport.x << viewport.y;
 
         if (Config::Server::DEV_MODE)
-            std::cout << "Viewport sent: " << viewport.first << " "
-                      << viewport.second << " to player: " << player.getId()
+            std::cout << "Viewport sent: " << viewport.x << " "
+                      << viewport.y << " to player: " << player.getId()
                       << "." << std::endl;
 
         Network::get().sendToClient(player.getClient(), smartBuffer);

@@ -11,13 +11,13 @@ CellManager& CellManager::get() {
     return instance;
 }
 
-Point CellManager::getRandomLocation() {
+Vector2 CellManager::getRandomLocation() {
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<double> dis(0,
                                                Config::Gameplay::World::SIZE);
 
-    return {dis(gen), dis(gen)};
+    return Vector2(dis(gen), dis(gen));
 }
 
 std::vector<double> CellManager::getRandomColor() {
@@ -41,8 +41,9 @@ void CellManager::updateCells() {
     std::vector<uint32_t> deletedCellsIds;
 
     for (auto& cell : cells) {
-        if (cell.getType() != CellType::PLAYER)
+        if (cell.getType() != CellType::PLAYER) {
             continue;
+        }
 
         cell.decay();
 
@@ -60,11 +61,11 @@ void CellManager::updateCells() {
         }
     }
 
-    deleteCells(deletedCellsIds);
+    deleteCellsFromIds(deletedCellsIds);
 }
 
 void CellManager::createCell(uint32_t ownerId, CellType type) {
-    Point location = getRandomLocation();
+    Vector2 location = getRandomLocation();
     uint32_t cellId = AtomicIdsManager::get().getNextId();
 
     double mass = type == CellType::PLAYER ? Config::Gameplay::Cell::SPAWN_MASS
@@ -77,16 +78,44 @@ void CellManager::createCell(uint32_t ownerId, CellType type) {
     cells.emplace_back(cellId, ownerId, type, location, mass, getRandomColor());
 }
 
-void CellManager::removeCellsFromId(uint32_t ownerId) {
-    std::vector<uint32_t> deletedCellsIds;
+void CellManager::splitCells(Player& player) {
+    std::lock_guard<std::mutex> lock(cellsMutex);
+    std::vector<Cell*> playerCells =
+        CellManager::get().getCellsFromId(player.getId());
 
-    for (const auto& cell : cells) {
-        if (cell.getOwnerId() == ownerId) {
-            deletedCellsIds.push_back(cell.getId());
-        }
+    if (playerCells.empty()) {
+        return;
     }
 
-    deleteCells(deletedCellsIds);
+    for (Cell* cell : playerCells) {
+        if (cell->getMass() < Config::Gameplay::Cell::MIN_SPLIT_MASS) {
+            continue;
+        }
+
+        double parentMass = cell->getMass();
+        double newMass = parentMass / 2.0;
+
+        cell->setMass(parentMass - newMass);
+
+        Vector2 splitDir =
+            (player.getMousePosition() - cell->getPosition()).normalized();
+        Vector2 newPosition = cell->getPosition() +
+                              splitDir * Config::Gameplay::Cell::SPLIT_DISTANCE;
+        Vector2 newBoost = splitDir * Config::Gameplay::Cell::SPLIT_BOOST;
+        uint32_t newId = AtomicIdsManager::get().getNextId();
+
+        cells.emplace_back(newId, cell->getOwnerId(), CellType::PLAYER,
+                           cell->getPosition(), newMass, cell->getColor());
+
+        Cell& newCell = cells.back();
+
+        newCell.setPosition(newPosition);
+        newCell.setBoost(newBoost);
+    }
+
+    for (Cell* cell : playerCells) {
+        cell->stepMotion();
+    }
 }
 
 std::vector<Cell*> CellManager::getCellsFromId(uint32_t ownerId) {
@@ -102,9 +131,27 @@ std::vector<Cell*> CellManager::getCellsFromId(uint32_t ownerId) {
     return playerCells;
 }
 
-void CellManager::deleteCells(const std::vector<uint32_t>& deletedCellsIds) {
-    if (deletedCellsIds.empty())
+const std::vector<Cell>& CellManager::getAllCells() const {
+    return cells;
+}
+
+void CellManager::removeCellsFromId(uint32_t ownerId) {
+    std::vector<uint32_t> deletedCellsIds;
+
+    for (const auto& cell : cells) {
+        if (cell.getOwnerId() == ownerId) {
+            deletedCellsIds.push_back(cell.getId());
+        }
+    }
+
+    deleteCellsFromIds(deletedCellsIds);
+}
+
+void CellManager::deleteCellsFromIds(
+    const std::vector<uint32_t>& deletedCellsIds) {
+    if (deletedCellsIds.empty()) {
         return;
+    }
 
     cells.erase(std::remove_if(cells.begin(), cells.end(),
                                [&deletedCellsIds](const Cell& cell) {
@@ -116,8 +163,4 @@ void CellManager::deleteCells(const std::vector<uint32_t>& deletedCellsIds) {
                 cells.end());
 
     Protocol::get().sendEntityRemoved(deletedCellsIds);
-}
-
-const std::vector<Cell>& CellManager::getAllCells() const {
-    return cells;
 }
