@@ -2,6 +2,7 @@
 #include <iostream>
 #include "config/ConfigClient.hpp"
 #include "protocol/ProtocolClient.hpp"
+#include "protocol/OpCodes.hpp"
 
 NetworkClient& NetworkClient::get() {
     static NetworkClient instance;
@@ -69,4 +70,9 @@ void NetworkClient::receive() {
     } catch (const std::exception& e) {
         std::cerr << "Receive error: " << e.what() << std::endl;
     }
+}
+
+uint32_t NetworkClient::getCutPacketSize(SmartBuffer smartBuffer,
+                                             uint32_t size) const {
+    return (smartBuffer.getSize() - sizeof(OpCodes)) / size;
 }

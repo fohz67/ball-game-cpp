@@ -15,6 +15,8 @@ class NetworkClient {
     void run();
     void send(SmartBuffer& smartBuffer);
 
+    uint32_t getCutPacketSize(SmartBuffer smartBuffer, uint32_t size) const;
+
   private:
     NetworkClient();
     ~NetworkClient() = default;

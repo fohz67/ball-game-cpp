@@ -3,6 +3,7 @@
 #include "components/ColorServer.hpp"
 #include "config/Config.hpp"
 #include "engine/Network.hpp"
+#include "protocol/DataInterfaces.hpp"
 #include "managers/CellManager.hpp"
 #include "managers/PlayerManager.hpp"
 #include "protocol/OpCodes.hpp"
@@ -69,12 +70,10 @@ void Protocol::sendPlayer(const Player& player) {
 }
 
 void Protocol::sendPlayers(std::shared_ptr<asio::ip::tcp::socket> client) {
-    const size_t playerSize = sizeof(uint32_t) * 2 + sizeof(double);
-
     SmartBuffer smartBuffer;
 
     for (const auto& player : PlayerManager::get().getAllPlayers()) {
-        if (sizeof(uint32_t) + smartBuffer.getSize() + playerSize >=
+        if (sizeof(uint32_t) + smartBuffer.getSize() + sizeof(PlayerInterface) >=
             Config::Network::MAX_SIZE) {
             Network::get().sendToClient(client, smartBuffer);
 
@@ -87,12 +86,12 @@ void Protocol::sendPlayers(std::shared_ptr<asio::ip::tcp::socket> client) {
                     << ColorServer::vecToInt(player.getCellColor());
     }
 
-    Network::get().sendToClient(client, smartBuffer);
+    if (smartBuffer.getSize() >= sizeof(PlayerInterface) + sizeof(OpCodes)) {
+        Network::get().sendToClient(client, smartBuffer);
+    }
 }
 
 void Protocol::sendCells() {
-    const size_t cellSize = sizeof(uint32_t) * 2 + sizeof(double) * 3;
-
     SmartBuffer smartBuffer;
     smartBuffer << OpCodes::CELL;
 
@@ -101,7 +100,7 @@ void Protocol::sendCells() {
             continue;
         }
 
-        if (sizeof(uint32_t) + smartBuffer.getSize() + cellSize >=
+        if (sizeof(uint32_t) + smartBuffer.getSize() + sizeof(CellInterface) >=
             Config::Network::MAX_SIZE) {
             Network::get().sendToAll(smartBuffer);
 
@@ -115,14 +114,12 @@ void Protocol::sendCells() {
                     << cell.getRadius();
     }
 
-    if (smartBuffer.getSize() >= cellSize + sizeof(uint8_t)) {
+    if (smartBuffer.getSize() >= sizeof(CellInterface) + sizeof(OpCodes)) {
         Network::get().sendToAll(smartBuffer);
     }
 }
 
 void Protocol::sendPellets(std::shared_ptr<asio::ip::tcp::socket> client) {
-    const size_t pelletSize = sizeof(uint32_t) * 2 + sizeof(double) * 3;
-
     SmartBuffer smartBuffer;
     smartBuffer << OpCodes::PELLET;
 
@@ -131,7 +128,7 @@ void Protocol::sendPellets(std::shared_ptr<asio::ip::tcp::socket> client) {
             continue;
         }
 
-        if (sizeof(uint32_t) + smartBuffer.getSize() + pelletSize >=
+        if (sizeof(uint32_t) + smartBuffer.getSize() + sizeof(PelletInterface) >=
             Config::Network::MAX_SIZE) {
             Network::get().sendToClient(client, smartBuffer);
 
@@ -145,7 +142,7 @@ void Protocol::sendPellets(std::shared_ptr<asio::ip::tcp::socket> client) {
                     << ColorServer::vecToInt(cell.getColor());
     }
 
-    if (smartBuffer.getSize() >= pelletSize + sizeof(uint8_t)) {
+    if (smartBuffer.getSize() >= sizeof(PelletInterface) + sizeof(OpCodes)) {
         Network::get().sendToClient(client, smartBuffer);
     }
 }
@@ -165,8 +162,6 @@ void Protocol::sendViewport() {
 
 void Protocol::sendEntityRemoved(const bool isPlayer,
                                  const std::vector<uint32_t>& deletedIds) {
-    const size_t entitySize = sizeof(uint8_t) + sizeof(uint32_t);
-
     SmartBuffer smartBuffer;
     smartBuffer << OpCodes::ENTITY_REMOVED;
 
@@ -178,7 +173,7 @@ void Protocol::sendEntityRemoved(const bool isPlayer,
     }
 
     for (uint32_t cellId : deletedIds) {
-        if (smartBuffer.getSize() + entitySize >= Config::Network::MAX_SIZE) {
+        if (smartBuffer.getSize() + sizeof(EntityInterface) >= Config::Network::MAX_SIZE) {
             if (smartBuffer.getSize() >= Config::Network::MAX_SIZE) {
                 std::cout << "Packet size exceeds maximum size" << std::endl;
             }
@@ -186,10 +181,10 @@ void Protocol::sendEntityRemoved(const bool isPlayer,
             Network::get().sendToAll(smartBuffer);
 
             smartBuffer.reset();
-            smartBuffer << OpCodes::ENTITY_REMOVED;
+            smartBuffer << OpCodes::ENTITY_REMOVED << static_cast<uint8_t>(1);
         }
 
-        smartBuffer << static_cast<uint8_t>(1) << cellId;
+        smartBuffer << cellId;
     }
 
     Network::get().sendToAll(smartBuffer);

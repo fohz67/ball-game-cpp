@@ -1,6 +1,6 @@
 #include "protocol/ProtocolClient.hpp"
 #include <iostream>
-#include "components/CellData.hpp"
+#include "protocol/DataInterfaces.hpp"
 #include "components/ColorClient.hpp"
 #include "components/Viewport.hpp"
 #include "config/ConfigClient.hpp"
@@ -22,10 +22,22 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
     switch (static_cast<OpCodes>(opcode)) {
 
     case OpCodes::WORLD: {
-        uint16_t size;
-        smartBuffer >> size;
+        WorldInterface world;
+        smartBuffer >> world.size;
+        
+        EntityManager::get().createWorld(world.size);
 
-        EntityManager::get().createWorld(size);
+        break;
+    }
+
+    case OpCodes::PLAYER: {
+        return;
+        
+        PlayerInterface player;
+        smartBuffer >> player.id >> player.color >> player.cellColor;
+
+        PlayerManagerClient::get().players.emplace_back(player.id, ColorClient::intToVec(player.color),
+                             ColorClient::intToVec(player.cellColor));
 
         break;
     }
@@ -34,12 +46,8 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
         uint32_t actualOwnrId = 0;
         std::vector<double> actualColor = {-1};
 
-        const size_t cellSize = sizeof(uint32_t) * 2 + sizeof(double) * 3;
-        const size_t smartBufferSize = smartBuffer.getSize();
-        const size_t cellsNb = (smartBufferSize - sizeof(uint8_t)) / cellSize;
-
-        for (size_t i = 0; i < cellsNb; i++) {
-            CellData cell;
+        for (size_t i = 0; i < NetworkClient::get().getCutPacketSize(smartBuffer, sizeof(CellInterface)); i++) {
+            CellInterface cell;
             smartBuffer >> cell.id >> cell.ownerId >> cell.x >> cell.y >>
                 cell.radius;
 
@@ -67,12 +75,8 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
     }
 
     case OpCodes::PELLET: {
-        const size_t pelletSize = sizeof(uint32_t) * 2 + sizeof(double) * 3;
-        const size_t smartBufferSize = smartBuffer.getSize();
-        const size_t cellsNb = (smartBufferSize - sizeof(uint8_t)) / pelletSize;
-
-        for (size_t i = 0; i < cellsNb; i++) {
-            PelletData cell;
+        for (size_t i = 0; i < NetworkClient::get().getCutPacketSize(smartBuffer, sizeof(PelletInterface)); i++) {
+            PelletInterface cell;
             smartBuffer >> cell.id >> cell.x >> cell.y >> cell.radius >>
                 cell.color;
 
@@ -85,30 +89,26 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
     }
 
     case OpCodes::VIEWPORT: {
-        double x;
-        double y;
-        smartBuffer >> x >> y;
+        ViewportInterface viewport;
+        smartBuffer >> viewport.x >> viewport.y;
 
-        Viewport::get().setViewport({x, y});
+        Viewport::get().setViewport({viewport.x, viewport.y});
 
         break;
     }
 
     case OpCodes::ENTITY_REMOVED: {
-        const size_t entitySize = sizeof(uint8_t) + sizeof(uint32_t);
-        const size_t smartBufferSize = smartBuffer.getSize();
-        const size_t entitiesNb =
-            (smartBufferSize - sizeof(uint8_t)) / entitySize;
+        EntityInterface entity;
+        smartBuffer >> entity.type;
 
-        for (size_t i = 0; i < entitiesNb; i++) {
-            uint8_t entityType;
-            uint32_t entityId;
-            smartBuffer >> entityType >> entityId;
+        for (size_t i = 0; i < NetworkClient::get().getCutPacketSize(smartBuffer, sizeof(EntityInterface)); i++) {            
+            smartBuffer >> entity.id;
+            std::cout << "Entity removed with id: " << entity.id << std::endl;
 
-            if (entityType) {
-                EntityManager::get().removeEntity(entityId);
+            if (entity.type) {
+                EntityManager::get().removeEntity(entity.id);
             } else {
-                PlayerManagerClient::get().removePlayer(entityId);
+                PlayerManagerClient::get().removePlayer(entity.id);
             }
         }
 
