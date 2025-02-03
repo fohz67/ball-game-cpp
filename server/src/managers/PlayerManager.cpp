@@ -40,7 +40,7 @@ void PlayerManager::removePlayer(uint32_t playerId) {
                                  }),
                   players.end());
 
-    Protocol::get().sendEntityRemoved(true, {playerId});
+    Protocol::get().sendPlayerDeleted(playerId);
     CellManager::get().removeCells(playerId);
     AtomicIdsManager::get().removeId(playerId);
 }

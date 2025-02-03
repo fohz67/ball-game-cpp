@@ -1,6 +1,5 @@
 #include "protocol/ProtocolClient.hpp"
 #include <iostream>
-#include "protocol/DataInterfaces.hpp"
 #include "components/ColorClient.hpp"
 #include "components/Viewport.hpp"
 #include "config/ConfigClient.hpp"
@@ -8,6 +7,7 @@
 #include "engine/NetworkClient.hpp"
 #include "managers/EntityManager.hpp"
 #include "managers/PlayerManagerClient.hpp"
+#include "protocol/DataInterfaces.hpp"
 #include "protocol/OpCodes.hpp"
 
 ProtocolClient& ProtocolClient::get() {
@@ -24,20 +24,19 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
     case OpCodes::WORLD: {
         WorldInterface world;
         smartBuffer >> world.size;
-        
+
         EntityManager::get().createWorld(world.size);
 
         break;
     }
 
     case OpCodes::PLAYER: {
-        return;
-        
         PlayerInterface player;
         smartBuffer >> player.id >> player.color >> player.cellColor;
 
-        PlayerManagerClient::get().players.emplace_back(player.id, ColorClient::intToVec(player.color),
-                             ColorClient::intToVec(player.cellColor));
+        PlayerManagerClient::get().players.emplace_back(
+            player.id, ColorClient::intToVec(player.color),
+            ColorClient::intToVec(player.cellColor));
 
         break;
     }
@@ -46,19 +45,19 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
         uint32_t actualOwnrId = 0;
         std::vector<double> actualColor = {-1};
 
-        for (size_t i = 0; i < NetworkClient::get().getCutPacketSize(smartBuffer, sizeof(CellInterface)); i++) {
+        size_t cellsNb = NetworkClient::get().getCutPacketSize(
+            smartBuffer, sizeof(CellInterface));
+
+        for (size_t i = 0; i < cellsNb; i++) {
             CellInterface cell;
             smartBuffer >> cell.id >> cell.ownerId >> cell.x >> cell.y >>
                 cell.radius;
 
-            if (actualOwnrId != cell.ownerId && actualOwnrId) {
-                actualOwnrId = 0;
-            }
-            if (actualOwnrId) {
+            if (cell.ownerId != actualOwnrId) {
                 actualOwnrId = cell.ownerId;
                 actualColor = PlayerManagerClient::get()
                                   .getPlayer(cell.ownerId)
-                                  ->getColor();
+                                  ->getCellColor();
             }
 
             if (EntityManager::get().entities.find(cell.id) ==
@@ -75,7 +74,10 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
     }
 
     case OpCodes::PELLET: {
-        for (size_t i = 0; i < NetworkClient::get().getCutPacketSize(smartBuffer, sizeof(PelletInterface)); i++) {
+        size_t pelletsNb = NetworkClient::get().getCutPacketSize(
+            smartBuffer, sizeof(PelletInterface));
+
+        for (size_t i = 0; i < pelletsNb; i++) {
             PelletInterface cell;
             smartBuffer >> cell.id >> cell.x >> cell.y >> cell.radius >>
                 cell.color;
@@ -98,19 +100,24 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
     }
 
     case OpCodes::ENTITY_REMOVED: {
-        EntityInterface entity;
-        smartBuffer >> entity.type;
+        size_t deletedEntitiesNb = NetworkClient::get().getCutPacketSize(
+            smartBuffer, sizeof(EntityInterface));
 
-        for (size_t i = 0; i < NetworkClient::get().getCutPacketSize(smartBuffer, sizeof(EntityInterface)); i++) {            
+        for (size_t i = 0; i < deletedEntitiesNb; i++) {
+            EntityInterface entity;
             smartBuffer >> entity.id;
-            std::cout << "Entity removed with id: " << entity.id << std::endl;
 
-            if (entity.type) {
-                EntityManager::get().removeEntity(entity.id);
-            } else {
-                PlayerManagerClient::get().removePlayer(entity.id);
-            }
+            EntityManager::get().removeEntity(entity.id);
         }
+
+        break;
+    }
+
+    case OpCodes::PLAYER_DELETED: {
+        EntityInterface entity;
+        smartBuffer >> entity.id;
+
+        PlayerManagerClient::get().removePlayer(entity.id);
 
         break;
     }

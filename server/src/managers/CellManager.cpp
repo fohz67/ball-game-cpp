@@ -104,7 +104,7 @@ void CellManager::deleteCells(const std::vector<uint32_t>& deletedCellsIds) {
                                }),
                 cells.end());
 
-    Protocol::get().sendEntityRemoved(false, deletedCellsIds);
+    Protocol::get().sendEntityRemoved(deletedCellsIds);
 }
 
 std::vector<Cell*> CellManager::getCells(uint32_t ownerId) {

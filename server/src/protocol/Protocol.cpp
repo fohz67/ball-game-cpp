@@ -3,9 +3,9 @@
 #include "components/ColorServer.hpp"
 #include "config/Config.hpp"
 #include "engine/Network.hpp"
-#include "protocol/DataInterfaces.hpp"
 #include "managers/CellManager.hpp"
 #include "managers/PlayerManager.hpp"
+#include "protocol/DataInterfaces.hpp"
 #include "protocol/OpCodes.hpp"
 
 Protocol& Protocol::get() {
@@ -72,8 +72,11 @@ void Protocol::sendPlayer(const Player& player) {
 void Protocol::sendPlayers(std::shared_ptr<asio::ip::tcp::socket> client) {
     SmartBuffer smartBuffer;
 
-    for (const auto& player : PlayerManager::get().getAllPlayers()) {
-        if (sizeof(uint32_t) + smartBuffer.getSize() + sizeof(PlayerInterface) >=
+    const auto& players = PlayerManager::get().getAllPlayers();
+
+    for (const auto& player : players) {
+        if (sizeof(uint32_t) + smartBuffer.getSize() +
+                sizeof(PlayerInterface) >=
             Config::Network::MAX_SIZE) {
             Network::get().sendToClient(client, smartBuffer);
 
@@ -95,7 +98,9 @@ void Protocol::sendCells() {
     SmartBuffer smartBuffer;
     smartBuffer << OpCodes::CELL;
 
-    for (const auto& cell : CellManager::get().getAllCells()) {
+    const auto& cells = CellManager::get().getAllCells();
+
+    for (const auto& cell : cells) {
         if (cell.getType() != CellType::PLAYER) {
             continue;
         }
@@ -123,12 +128,15 @@ void Protocol::sendPellets(std::shared_ptr<asio::ip::tcp::socket> client) {
     SmartBuffer smartBuffer;
     smartBuffer << OpCodes::PELLET;
 
-    for (const auto& cell : CellManager::get().getAllCells()) {
-        if (cell.getType() != CellType::PELLET) {
+    const auto& pellets = CellManager::get().getAllCells();
+
+    for (const auto& pellet : pellets) {
+        if (pellet.getType() != CellType::PELLET) {
             continue;
         }
 
-        if (sizeof(uint32_t) + smartBuffer.getSize() + sizeof(PelletInterface) >=
+        if (sizeof(uint32_t) + smartBuffer.getSize() +
+                sizeof(PelletInterface) >=
             Config::Network::MAX_SIZE) {
             Network::get().sendToClient(client, smartBuffer);
 
@@ -136,10 +144,10 @@ void Protocol::sendPellets(std::shared_ptr<asio::ip::tcp::socket> client) {
             smartBuffer << OpCodes::PELLET;
         }
 
-        Vector2 pos = cell.getPosition();
+        Vector2 pos = pellet.getPosition();
 
-        smartBuffer << cell.getId() << pos.x << pos.y << cell.getRadius()
-                    << ColorServer::vecToInt(cell.getColor());
+        smartBuffer << pellet.getId() << pos.x << pos.y << pellet.getRadius()
+                    << ColorServer::vecToInt(pellet.getColor());
     }
 
     if (smartBuffer.getSize() >= sizeof(PelletInterface) + sizeof(OpCodes)) {
@@ -150,7 +158,9 @@ void Protocol::sendPellets(std::shared_ptr<asio::ip::tcp::socket> client) {
 void Protocol::sendViewport() {
     SmartBuffer smartBuffer;
 
-    for (const auto& player : PlayerManager::get().getAllPlayers()) {
+    const auto& players = PlayerManager::get().getAllPlayers();
+
+    for (const auto& player : players) {
         Vector2 viewport = player.getViewport();
 
         smartBuffer.reset();
@@ -160,20 +170,13 @@ void Protocol::sendViewport() {
     }
 }
 
-void Protocol::sendEntityRemoved(const bool isPlayer,
-                                 const std::vector<uint32_t>& deletedIds) {
+void Protocol::sendEntityRemoved(const std::vector<uint32_t>& deletedIds) {
     SmartBuffer smartBuffer;
     smartBuffer << OpCodes::ENTITY_REMOVED;
 
-    if (isPlayer) {
-        smartBuffer << static_cast<uint8_t>(0) << deletedIds[0];
-
-        Network::get().sendToAll(smartBuffer);
-        return;
-    }
-
     for (uint32_t cellId : deletedIds) {
-        if (smartBuffer.getSize() + sizeof(EntityInterface) >= Config::Network::MAX_SIZE) {
+        if (smartBuffer.getSize() + sizeof(EntityInterface) >=
+            Config::Network::MAX_SIZE) {
             if (smartBuffer.getSize() >= Config::Network::MAX_SIZE) {
                 std::cout << "Packet size exceeds maximum size" << std::endl;
             }
@@ -181,11 +184,20 @@ void Protocol::sendEntityRemoved(const bool isPlayer,
             Network::get().sendToAll(smartBuffer);
 
             smartBuffer.reset();
-            smartBuffer << OpCodes::ENTITY_REMOVED << static_cast<uint8_t>(1);
+            smartBuffer << OpCodes::ENTITY_REMOVED;
         }
 
         smartBuffer << cellId;
     }
+
+    if (smartBuffer.getSize() >= sizeof(EntityInterface) + sizeof(OpCodes)) {
+        Network::get().sendToAll(smartBuffer);
+    }
+}
+
+void Protocol::sendPlayerDeleted(uint32_t playerId) {
+    SmartBuffer smartBuffer;
+    smartBuffer << OpCodes::PLAYER_DELETED << playerId;
 
     Network::get().sendToAll(smartBuffer);
 }

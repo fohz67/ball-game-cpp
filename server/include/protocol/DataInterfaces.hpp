@@ -34,6 +34,5 @@ struct ViewportInterface {
 };
 
 struct EntityInterface {
-    uint8_t type;
     uint32_t id;
 };

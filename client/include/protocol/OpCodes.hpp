@@ -12,4 +12,5 @@ enum class OpCodes : uint8_t {
     MOUSE_POSITION,
     KEY_PRESSED,
     ENTITY_REMOVED,
+    PLAYER_DELETED,
 };

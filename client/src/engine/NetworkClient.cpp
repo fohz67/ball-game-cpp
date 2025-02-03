@@ -1,8 +1,8 @@
 #include "engine/NetworkClient.hpp"
 #include <iostream>
 #include "config/ConfigClient.hpp"
-#include "protocol/ProtocolClient.hpp"
 #include "protocol/OpCodes.hpp"
+#include "protocol/ProtocolClient.hpp"
 
 NetworkClient& NetworkClient::get() {
     static NetworkClient instance;
@@ -73,6 +73,6 @@ void NetworkClient::receive() {
 }
 
 uint32_t NetworkClient::getCutPacketSize(SmartBuffer smartBuffer,
-                                             uint32_t size) const {
+                                         uint32_t size) const {
     return (smartBuffer.getSize() - sizeof(OpCodes)) / size;
 }

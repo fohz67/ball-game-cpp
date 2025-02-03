@@ -80,7 +80,9 @@ void Network::sendToClient(std::shared_ptr<asio::ip::tcp::socket> client,
 }
 
 void Network::sendToAll(SmartBuffer& smartBuffer) {
-    for (const auto& player : PlayerManager::get().getAllPlayers()) {
+    const auto& players = PlayerManager::get().getAllPlayers();
+
+    for (const auto& player : players) {
         sendToClient(player.getClient(), smartBuffer);
     }
 }
