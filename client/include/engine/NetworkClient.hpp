@@ -4,8 +4,6 @@
 #include <asio.hpp>
 #include <thread>
 
-#define MAX_BUFFER_SIZE 1024
-
 class NetworkClient {
   public:
     NetworkClient(const NetworkClient&) = delete;

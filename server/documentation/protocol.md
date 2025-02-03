@@ -31,7 +31,7 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
 - **Payload**: None.
 - **Sent To**: Server.
 
-### 3. **GAME_STATE**
+### 3. **CELL**
 - **Value**: `3`
 - **Description**: Sends the current game state.
 - **Payload**:
@@ -66,7 +66,7 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
   - `keyName` (string): The key pressed.
 - **Sent To**: Server.
 
-### 7. **REMOVE_ENTITY**
+### 7. **ENTITY_REMOVED**
 - **Value**: `7`
 - **Description**: Notifies all clients that an entity has been removed
 - **Payload**:

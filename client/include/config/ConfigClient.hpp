@@ -3,10 +3,6 @@
 #include <vector>
 
 struct ConfigClient {
-    struct Client {
-        static constexpr bool DEV_MODE = true;
-    };
-
     struct Game {
         static constexpr int FRAME_RATE = 120;
         static constexpr double CAMERA_INTERPOLATE_FACTOR = 0.1f;
@@ -19,9 +15,9 @@ struct ConfigClient {
     };
 
     struct Network {
-        static constexpr int FREQUENCY = 50;
         static inline const char* HOST = "127.0.0.1";
         static constexpr int PORT = 12345;
+        static constexpr int MAX_SIZE = 1024;
     };
 
     struct World {

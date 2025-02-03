@@ -40,7 +40,8 @@ void Network::doAccept() {
 }
 
 void Network::newClient(std::shared_ptr<asio::ip::tcp::socket> socket) {
-    auto buffer = std::make_shared<std::vector<char>>(MAX_BUFFER_SIZE);
+    auto buffer =
+        std::make_shared<std::vector<char>>(Config::Network::MAX_SIZE);
 
     socket->async_read_some(
         asio::buffer(*buffer),
@@ -80,7 +81,7 @@ void Network::sendToAll(SmartBuffer& smartBuffer) {
 
 void Network::sendLoop() {
     while (true) {
-        Protocol::get().sendGameState();
+        Protocol::get().sendCells(CellType::PLAYER);
         Protocol::get().sendViewport();
 
         std::this_thread::sleep_for(

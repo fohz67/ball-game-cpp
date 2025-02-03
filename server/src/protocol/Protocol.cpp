@@ -23,56 +23,35 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
     smartBuffer >> opcode;
 
     switch (static_cast<OpCodes>(opcode)) {
+
     case OpCodes::JOIN: {
         smartBuffer.reset();
         smartBuffer << OpCodes::WORLD << Config::Gameplay::World::SIZE;
 
-        if (Config::Server::DEV_MODE)
-            std::cout << "World size sent: " << Config::Gameplay::World::SIZE
-                      << std::endl;
-
         Network::get().sendToClient(client, smartBuffer);
-
-        for (const auto& cell : CellManager::get().getAllCells()) {
-            if (cell.getType() != CellType::PELLET) {
-                continue;
-            }
-
-            Vector2 pos = cell.getPosition();
-
-            smartBuffer.reset();
-            smartBuffer << OpCodes::GAME_STATE << cell.getId() << pos.x << pos.y
-                        << cell.getRadius()
-                        << ColorServer::vecToInt(cell.getColor());
-
-            Network::get().sendToClient(client, smartBuffer);
-        }
+        sendCells(CellType::PELLET);
 
         break;
     }
+
     case OpCodes::MOUSE_POSITION: {
-        double mouseX, mouseY;
+        double mouseX;
+        double mouseY;
         smartBuffer >> mouseX >> mouseY;
 
-        if (Config::Server::DEV_MODE)
-            std::cout << "Mouse position received: " << mouseX << " " << mouseY
-                      << std::endl;
-
         PlayerManager::get().getPlayerByClient(client)->setMousePosition(
-            {mouseX, mouseY});
+            Vector2(mouseX, mouseY));
 
         break;
     }
+
     case OpCodes::KEY_PRESSED: {
         std::string keyName;
         smartBuffer >> keyName;
 
-        if (Config::Server::DEV_MODE)
-            std::cout << "Key pressed received: " << keyName << std::endl;
-
-        // @TODO handle key pressed
         break;
     }
+
     default:
         std::cout << "Unknown opcode received: " << static_cast<int>(opcode)
                   << std::endl;
@@ -80,26 +59,39 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
     }
 }
 
-void Protocol::sendGameState() {
+void Protocol::sendCells(CellType type) {
+    const size_t cellSize = sizeof(uint32_t) * 3 + sizeof(double) * 2;
+
     SmartBuffer smartBuffer;
+    smartBuffer << OpCodes::CELL;
 
     for (const auto& cell : CellManager::get().getAllCells()) {
-        if (cell.getType() == CellType::PELLET) {
+        if (cell.getType() != type) {
             continue;
+        }
+
+        std::cout << "size = " << smartBuffer.getSize()
+                  << " cellSize = " << cellSize
+                  << "opCodeSize = " << sizeof(OpCodes) << std::endl;
+
+        if (smartBuffer.getSize() + cellSize >= Config::Network::MAX_SIZE) {
+            if (smartBuffer.getSize() >= Config::Network::MAX_SIZE) {
+                std::cout << "Packet size exceeds maximum size" << std::endl;
+            }
+
+            Network::get().sendToAll(smartBuffer);
+
+            smartBuffer.reset();
+            smartBuffer << OpCodes::CELL;
         }
 
         Vector2 pos = cell.getPosition();
 
-        smartBuffer.reset();
-        smartBuffer << OpCodes::GAME_STATE << cell.getId() << pos.x << pos.y
-                    << cell.getRadius()
+        smartBuffer << cell.getId() << pos.x << pos.y << cell.getRadius()
                     << ColorServer::vecToInt(cell.getColor());
-
-        Network::get().sendToAll(smartBuffer);
     }
 
-    if (Config::Server::DEV_MODE)
-        std::cout << "Game state sent to everyone." << std::endl;
+    Network::get().sendToAll(smartBuffer);
 }
 
 void Protocol::sendViewport() {
@@ -111,26 +103,17 @@ void Protocol::sendViewport() {
         smartBuffer.reset();
         smartBuffer << OpCodes::VIEWPORT << viewport.x << viewport.y;
 
-        if (Config::Server::DEV_MODE)
-            std::cout << "Viewport sent: " << viewport.x << " " << viewport.y
-                      << " to player: " << player.getId() << "." << std::endl;
-
         Network::get().sendToClient(player.getClient(), smartBuffer);
     }
 }
 
 void Protocol::sendEntityRemoved(const std::vector<uint32_t>& deletedIds) {
     SmartBuffer smartBuffer;
-    smartBuffer << OpCodes::REMOVE_ENTITY;
+    smartBuffer << OpCodes::ENTITY_REMOVED;
 
     for (uint32_t cellId : deletedIds) {
         smartBuffer << cellId;
     }
 
     Network::get().sendToAll(smartBuffer);
-
-    if (Config::Server::DEV_MODE) {
-        std::cout << "Ids sent for " << deletedIds.size()
-                  << " entities deleted." << std::endl;
-    }
 }

@@ -3,10 +3,6 @@
 #include <cstdint>
 
 struct Config {
-    struct Server {
-        static constexpr bool DEV_MODE = true;
-    };
-
     struct Game {
         static constexpr int FREQUENCY = 1;
     };
@@ -14,6 +10,7 @@ struct Config {
     struct Network {
         static constexpr int PORT = 12345;
         static constexpr int FREQUENCY = 1;
+        static constexpr int MAX_SIZE = 1024;
     };
 
     struct Gameplay {
@@ -35,7 +32,7 @@ struct Config {
         };
 
         struct Pellet {
-            static constexpr int COUNT = 1000;
+            static constexpr int COUNT = 3;
             static constexpr double MASS = 2.0f;
             static constexpr double EAT_FACTOR = 2.0f;
         };

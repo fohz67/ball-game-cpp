@@ -1,5 +1,6 @@
 #include "engine/NetworkClient.hpp"
 #include <iostream>
+#include "config/ConfigClient.hpp"
 #include "protocol/ProtocolClient.hpp"
 
 NetworkClient& NetworkClient::get() {
@@ -45,7 +46,7 @@ void NetworkClient::receive() {
 
     try {
         while (true) {
-            char buffer[MAX_BUFFER_SIZE];
+            char buffer[ConfigClient::Network::MAX_SIZE];
             asio::error_code error;
             size_t length = socket.read_some(asio::buffer(buffer), error);
 

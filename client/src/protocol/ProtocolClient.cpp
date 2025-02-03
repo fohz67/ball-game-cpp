@@ -25,68 +25,70 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
     smartBuffer >> opcode;
 
     switch (static_cast<OpCodes>(opcode)) {
+
     case OpCodes::WORLD: {
         uint16_t size;
         smartBuffer >> size;
 
-        if (ConfigClient::Client::DEV_MODE)
-            std::cout << "World size received: " << size << std::endl;
-
         EntityManager::get().createWorld(size);
+
         break;
     }
-    case OpCodes::GAME_STATE: {
-        CellData cell;
-        smartBuffer >> cell.id >> cell.x >> cell.y >> cell.radius >> cell.color;
 
-        if (ConfigClient::Client::DEV_MODE)
-            std::cout << "Cell received: " << cell.id << " " << cell.x << " "
-                      << cell.y << " " << cell.radius << " " << cell.color
-                      << std::endl;
+    case OpCodes::CELL: {
+        const size_t cellSize = sizeof(uint32_t) * 3 + sizeof(double) * 2;
+        const size_t smartBufferSize = smartBuffer.getSize();
+        const size_t cellsNb = (smartBufferSize - sizeof(uint8_t)) / cellSize;
 
-        if (EntityManager::get().entities.find(cell.id) ==
-            EntityManager::get().entities.end()) {
-            EntityManager::get().createCell(cell.id, cell.x, cell.y,
-                                            cell.radius,
-                                            ColorClient::intToVec(cell.color));
-        } else {
-            EntityManager::get().updateCell(cell.id, cell.x, cell.y,
-                                            cell.radius,
-                                            ColorClient::intToVec(cell.color));
+        for (size_t i = 0; i < cellsNb; i++) {
+            CellData cell;
+            smartBuffer >> cell.id >> cell.x >> cell.y >> cell.radius >>
+                cell.color;
+
+            if (EntityManager::get().entities.find(cell.id) ==
+                EntityManager::get().entities.end()) {
+                EntityManager::get().createCell(
+                    cell.id, cell.x, cell.y, cell.radius,
+                    ColorClient::intToVec(cell.color));
+            } else {
+                EntityManager::get().updateCell(
+                    cell.id, cell.x, cell.y, cell.radius,
+                    ColorClient::intToVec(cell.color));
+            }
         }
 
         break;
     }
+
     case OpCodes::VIEWPORT: {
         double x;
         double y;
         smartBuffer >> x >> y;
 
-        if (ConfigClient::Client::DEV_MODE)
-            std::cout << "Viewport updated: " << x << " " << y << std::endl;
-
         Viewport::get().setViewport({x, y});
+
         break;
     }
-    case OpCodes::REMOVE_ENTITY: {
-        uint32_t entityId;
-        size_t size = smartBuffer.getSize() - sizeof(uint8_t);
-        size_t entitiesNb = size / sizeof(uint32_t);
+
+    case OpCodes::ENTITY_REMOVED: {
+        const size_t idSize = sizeof(uint32_t);
+        const size_t smartBufferSize = smartBuffer.getSize();
+        const size_t entitiesNb = (smartBufferSize - sizeof(uint8_t)) / idSize;
 
         for (size_t i = 0; i < entitiesNb; i++) {
+            uint32_t entityId;
             smartBuffer >> entityId;
-
-            if (ConfigClient::Client::DEV_MODE)
-                std::cout << "Entity removed: " << entityId << std::endl;
 
             EntityManager::get().removeEntity(entityId);
         }
 
         break;
     }
+
     default:
         std::cout << "Unknown opcode received: " << static_cast<int>(opcode)
                   << std::endl;
+
         break;
     }
 }
