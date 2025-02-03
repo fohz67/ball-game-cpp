@@ -36,7 +36,7 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
     }
 
     case OpCodes::CELL: {
-        const size_t cellSize = sizeof(uint32_t) * 3 + sizeof(double) * 2;
+        const size_t cellSize = sizeof(uint32_t) * 2 + sizeof(double) * 3;
         const size_t smartBufferSize = smartBuffer.getSize();
         const size_t cellsNb = (smartBufferSize - sizeof(uint8_t)) / cellSize;
 
@@ -71,9 +71,9 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
     }
 
     case OpCodes::ENTITY_REMOVED: {
-        const size_t idSize = sizeof(uint32_t);
+        const size_t entitySize = sizeof(uint32_t);
         const size_t smartBufferSize = smartBuffer.getSize();
-        const size_t entitiesNb = (smartBufferSize - sizeof(uint8_t)) / idSize;
+        const size_t entitiesNb = (smartBufferSize - sizeof(uint8_t)) / entitySize;
 
         for (size_t i = 0; i < entitiesNb; i++) {
             uint32_t entityId;

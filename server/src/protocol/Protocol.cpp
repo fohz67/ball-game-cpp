@@ -60,7 +60,7 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
 }
 
 void Protocol::sendCells(CellType type) {
-    const size_t cellSize = sizeof(uint32_t) * 3 + sizeof(double) * 2;
+    const size_t cellSize = sizeof(uint32_t) * 2 + sizeof(double) * 3;
 
     SmartBuffer smartBuffer;
     smartBuffer << OpCodes::CELL;
@@ -70,11 +70,7 @@ void Protocol::sendCells(CellType type) {
             continue;
         }
 
-        std::cout << "size = " << smartBuffer.getSize()
-                  << " cellSize = " << cellSize
-                  << "opCodeSize = " << sizeof(OpCodes) << std::endl;
-
-        if (smartBuffer.getSize() + cellSize >= Config::Network::MAX_SIZE) {
+        if (smartBuffer.getSize() + cellSize >= Config::Network::MAX_SIZE + 1) {
             if (smartBuffer.getSize() >= Config::Network::MAX_SIZE) {
                 std::cout << "Packet size exceeds maximum size" << std::endl;
             }
@@ -89,9 +85,11 @@ void Protocol::sendCells(CellType type) {
 
         smartBuffer << cell.getId() << pos.x << pos.y << cell.getRadius()
                     << ColorServer::vecToInt(cell.getColor());
-    }
+    }    
 
-    Network::get().sendToAll(smartBuffer);
+    if (smartBuffer.getSize() > sizeof(uint8_t)) {
+        Network::get().sendToAll(smartBuffer);
+    }
 }
 
 void Protocol::sendViewport() {
@@ -108,10 +106,23 @@ void Protocol::sendViewport() {
 }
 
 void Protocol::sendEntityRemoved(const std::vector<uint32_t>& deletedIds) {
+    const size_t entitySize = sizeof(uint32_t);
+
     SmartBuffer smartBuffer;
     smartBuffer << OpCodes::ENTITY_REMOVED;
 
     for (uint32_t cellId : deletedIds) {
+        if (smartBuffer.getSize() + entitySize >= Config::Network::MAX_SIZE) {
+            if (smartBuffer.getSize() >= Config::Network::MAX_SIZE) {
+                std::cout << "Packet size exceeds maximum size" << std::endl;
+            }
+
+            Network::get().sendToAll(smartBuffer);
+
+            smartBuffer.reset();
+            smartBuffer << OpCodes::ENTITY_REMOVED;
+        }
+
         smartBuffer << cellId;
     }
 
