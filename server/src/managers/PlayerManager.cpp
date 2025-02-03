@@ -21,8 +21,9 @@ Player&
 PlayerManager::addPlayer(std::shared_ptr<asio::ip::tcp::socket> client) {
     uint32_t playerId = AtomicIdsManager::get().getNextId();
 
-    players.emplace_back(playerId, client, CellManager::get().getRandomColor(),
-                         Config::Gameplay::Player::NICKNAME_COLOR);
+    players.emplace_back(playerId, client,
+                         Config::Gameplay::Player::NICKNAME_COLOR,
+                         CellManager::get().getRandomColor());
 
     Protocol::get().sendPlayer(players.back());
     Protocol::get().sendPlayers(client);
