@@ -1,7 +1,8 @@
 #include "components/Player.hpp"
 
-Player::Player(uint32_t id, std::shared_ptr<asio::ip::tcp::socket> client)
-    : id(id), client(client) {}
+Player::Player(uint32_t id, std::shared_ptr<asio::ip::tcp::socket> client,
+               std::vector<double> color, std::vector<double> cellColor)
+    : id(id), client(client), color(color), cellColor(cellColor) {}
 
 uint32_t Player::getId() const {
     return id;
@@ -17,6 +18,14 @@ Vector2 Player::getViewport() const {
 
 Vector2 Player::getMousePosition() const {
     return mousePosition;
+}
+
+std::vector<double> Player::getColor() const {
+    return color;
+}
+
+std::vector<double> Player::getCellColor() const {
+    return cellColor;
 }
 
 void Player::setViewport(const Vector2& newViewport) {

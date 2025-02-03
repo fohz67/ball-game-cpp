@@ -49,7 +49,8 @@ void NetworkClient::receive() {
             asio::error_code error;
 
             uint32_t packetSize;
-            asio::read(socket, asio::buffer(&packetSize, sizeof(packetSize)), error);
+            asio::read(socket, asio::buffer(&packetSize, sizeof(packetSize)),
+                       error);
             if (error) {
                 throw asio::system_error(error);
             }
@@ -62,7 +63,7 @@ void NetworkClient::receive() {
 
             smartBuffer.reset();
             smartBuffer.inject(buffer.data(), packetSize);
-            
+
             ProtocolClient::get().handleMessage(smartBuffer);
         }
     } catch (const std::exception& e) {

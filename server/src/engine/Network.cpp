@@ -72,7 +72,8 @@ void Network::sendToClient(std::shared_ptr<asio::ip::tcp::socket> client,
         std::vector<uint8_t> data(sizeof(uint32_t) + packetSize);
 
         std::memcpy(data.data(), &packetSize, sizeof(uint32_t));
-        std::memcpy(data.data() + sizeof(uint32_t), smartBuffer.getBuffer(), packetSize);
+        std::memcpy(data.data() + sizeof(uint32_t), smartBuffer.getBuffer(),
+                    packetSize);
 
         asio::write(*client, asio::buffer(data));
     }
@@ -81,7 +82,6 @@ void Network::sendToClient(std::shared_ptr<asio::ip::tcp::socket> client,
 void Network::sendToAll(SmartBuffer& smartBuffer) {
     for (const auto& player : PlayerManager::get().getAllPlayers()) {
         sendToClient(player.getClient(), smartBuffer);
-        std::cout << "[ALL] Sent " << smartBuffer.getSize() << " bytes" << std::endl;
     }
 }
 

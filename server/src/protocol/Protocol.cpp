@@ -59,6 +59,37 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
     }
 }
 
+void Protocol::sendPlayer(const Player& player) {
+    SmartBuffer smartBuffer;
+    smartBuffer << OpCodes::PLAYER << player.getId()
+                << ColorServer::vecToInt(player.getColor())
+                << ColorServer::vecToInt(player.getCellColor());
+
+    Network::get().sendToAll(smartBuffer);
+}
+
+void Protocol::sendPlayers(std::shared_ptr<asio::ip::tcp::socket> client) {
+    const size_t playerSize = sizeof(uint32_t) * 2 + sizeof(double);
+
+    SmartBuffer smartBuffer;
+
+    for (const auto& player : PlayerManager::get().getAllPlayers()) {
+        if (sizeof(uint32_t) + smartBuffer.getSize() + playerSize >=
+            Config::Network::MAX_SIZE) {
+            Network::get().sendToClient(client, smartBuffer);
+
+            smartBuffer.reset();
+            smartBuffer << OpCodes::PLAYER;
+        }
+
+        smartBuffer << OpCodes::PLAYER << player.getId()
+                    << ColorServer::vecToInt(player.getColor())
+                    << ColorServer::vecToInt(player.getCellColor());
+    }
+
+    Network::get().sendToClient(client, smartBuffer);
+}
+
 void Protocol::sendCells() {
     const size_t cellSize = sizeof(uint32_t) * 2 + sizeof(double) * 3;
 
@@ -70,9 +101,9 @@ void Protocol::sendCells() {
             continue;
         }
 
-        if (sizeof (uint32_t) + smartBuffer.getSize() + cellSize >= Config::Network::MAX_SIZE) {
+        if (sizeof(uint32_t) + smartBuffer.getSize() + cellSize >=
+            Config::Network::MAX_SIZE) {
             Network::get().sendToAll(smartBuffer);
-
 
             smartBuffer.reset();
             smartBuffer << OpCodes::CELL;
@@ -80,9 +111,9 @@ void Protocol::sendCells() {
 
         Vector2 pos = cell.getPosition();
 
-        smartBuffer << cell.getId() << pos.x << pos.y << cell.getRadius()
-                    << ColorServer::vecToInt(cell.getColor());
-    }    
+        smartBuffer << cell.getId() << cell.getOwnerId() << pos.x << pos.y
+                    << cell.getRadius();
+    }
 
     if (smartBuffer.getSize() >= cellSize + sizeof(uint8_t)) {
         Network::get().sendToAll(smartBuffer);
@@ -100,7 +131,8 @@ void Protocol::sendPellets(std::shared_ptr<asio::ip::tcp::socket> client) {
             continue;
         }
 
-        if (sizeof (uint32_t) + smartBuffer.getSize() + pelletSize >= Config::Network::MAX_SIZE) {
+        if (sizeof(uint32_t) + smartBuffer.getSize() + pelletSize >=
+            Config::Network::MAX_SIZE) {
             Network::get().sendToClient(client, smartBuffer);
 
             smartBuffer.reset();
@@ -111,7 +143,7 @@ void Protocol::sendPellets(std::shared_ptr<asio::ip::tcp::socket> client) {
 
         smartBuffer << cell.getId() << pos.x << pos.y << cell.getRadius()
                     << ColorServer::vecToInt(cell.getColor());
-    }    
+    }
 
     if (smartBuffer.getSize() >= pelletSize + sizeof(uint8_t)) {
         Network::get().sendToClient(client, smartBuffer);
@@ -131,11 +163,19 @@ void Protocol::sendViewport() {
     }
 }
 
-void Protocol::sendEntityRemoved(const std::vector<uint32_t>& deletedIds) {
-    const size_t entitySize = sizeof(uint32_t);
+void Protocol::sendEntityRemoved(const bool isPlayer,
+                                 const std::vector<uint32_t>& deletedIds) {
+    const size_t entitySize = sizeof(uint8_t) + sizeof(uint32_t);
 
     SmartBuffer smartBuffer;
     smartBuffer << OpCodes::ENTITY_REMOVED;
+
+    if (isPlayer) {
+        smartBuffer << static_cast<uint8_t>(0) << deletedIds[0];
+
+        Network::get().sendToAll(smartBuffer);
+        return;
+    }
 
     for (uint32_t cellId : deletedIds) {
         if (smartBuffer.getSize() + entitySize >= Config::Network::MAX_SIZE) {
@@ -149,7 +189,7 @@ void Protocol::sendEntityRemoved(const std::vector<uint32_t>& deletedIds) {
             smartBuffer << OpCodes::ENTITY_REMOVED;
         }
 
-        smartBuffer << cellId;
+        smartBuffer << static_cast<uint8_t>(1) << cellId;
     }
 
     Network::get().sendToAll(smartBuffer);

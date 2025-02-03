@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <vector>
 
 struct Config {
     struct Game {
@@ -35,6 +36,11 @@ struct Config {
             static constexpr int COUNT = 5000;
             static constexpr double MASS = 2.0f;
             static constexpr double EAT_FACTOR = 10.0f;
+        };
+
+        struct Player {
+            static inline std::vector<double> NICKNAME_COLOR = {255, 255, 255,
+                                                                255};
         };
     };
 };

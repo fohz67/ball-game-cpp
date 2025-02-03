@@ -36,7 +36,8 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
 - **Description**: Sends new player.
 - **Payload**:
   - `id` (uint32_t): ID of the player.
-  - `color` (uint32_t): Color of the pellet.
+  - `color` (uint32_t): Color of the nickname.
+  - `cellColor` (uint32_t): Color of the cells.
 - **Sent To**: All clients.
 
 ### 4. **CELL**
@@ -88,6 +89,7 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
 - **Value**: `9`
 - **Description**: Notifies all clients that an entity has been removed
 - **Payload**:
+  - `entityType` (uint8_t): Player or not (0 = player, otherwise, it's not).
   - `entityId` (uint32_t): ID of the entity.
 - **Sent To**: All clients.
 

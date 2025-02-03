@@ -4,6 +4,7 @@
 #include <asio.hpp>
 #include <memory>
 #include "components/Cell.hpp"
+#include "components/Player.hpp"
 
 class Protocol {
   public:
@@ -17,10 +18,13 @@ class Protocol {
     void handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
                        SmartBuffer& smartBuffer);
 
+    void sendPlayer(const Player& player);
+    void sendPlayers(std::shared_ptr<asio::ip::tcp::socket> client);
     void sendCells();
     void sendPellets(std::shared_ptr<asio::ip::tcp::socket> client);
     void sendViewport();
-    void sendEntityRemoved(const std::vector<uint32_t>& deletedCellsIds);
+    void sendEntityRemoved(const bool isPlayer,
+                           const std::vector<uint32_t>& deletedCellsIds);
 
   private:
     Protocol() = default;

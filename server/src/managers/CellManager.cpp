@@ -1,10 +1,11 @@
 #include "managers/CellManager.hpp"
 #include <cmath>
-#include <random>
 #include <iostream>
+#include <random>
 #include "components/Cell.hpp"
 #include "config/Config.hpp"
 #include "managers/AtomicIdsManager.hpp"
+#include "managers/PlayerManager.hpp"
 #include "protocol/Protocol.hpp"
 
 CellManager& CellManager::get() {
@@ -103,7 +104,7 @@ void CellManager::deleteCells(const std::vector<uint32_t>& deletedCellsIds) {
                                }),
                 cells.end());
 
-    Protocol::get().sendEntityRemoved(deletedCellsIds);
+    Protocol::get().sendEntityRemoved(false, deletedCellsIds);
 }
 
 std::vector<Cell*> CellManager::getCells(uint32_t ownerId) {

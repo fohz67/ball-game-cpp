@@ -1,7 +1,9 @@
 #include "managers/PlayerManager.hpp"
+#include "config/Config.hpp"
 #include "engine/Game.hpp"
 #include "managers/AtomicIdsManager.hpp"
 #include "managers/CellManager.hpp"
+#include "protocol/Protocol.hpp"
 
 PlayerManager& PlayerManager::get() {
     static PlayerManager instance;
@@ -19,7 +21,12 @@ Player&
 PlayerManager::addPlayer(std::shared_ptr<asio::ip::tcp::socket> client) {
     uint32_t playerId = AtomicIdsManager::get().getNextId();
 
-    players.emplace_back(playerId, client);
+    players.emplace_back(playerId, client, CellManager::get().getRandomColor(),
+                         Config::Gameplay::Player::NICKNAME_COLOR);
+
+    Protocol::get().sendPlayer(players.back());
+    Protocol::get().sendPlayers(client);
+
     CellManager::get().createCell(playerId, CellType::PLAYER);
 
     return players.back();
@@ -32,6 +39,7 @@ void PlayerManager::removePlayer(uint32_t playerId) {
                                  }),
                   players.end());
 
+    Protocol::get().sendEntityRemoved(true, {playerId});
     CellManager::get().removeCells(playerId);
     AtomicIdsManager::get().removeId(playerId);
 }
