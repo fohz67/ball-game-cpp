@@ -31,43 +31,61 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
 - **Payload**: None.
 - **Sent To**: Server.
 
-### 3. **CELL**
+### 3. **PLAYER**
 - **Value**: `3`
-- **Description**: Sends the current game state.
+- **Description**: Sends new player.
+- **Payload**:
+  - `id` (uint32_t): ID of the player.
+  - `color` (uint32_t): Color of the pellet.
+- **Sent To**: All clients.
+
+### 4. **CELL**
+- **Value**: `4`
+- **Description**: Sends all cells.
 - **Payload**:
   - `ownerId` (uint32_t): ID of the owner.
   - `id` (uint32_t): ID of the cell.
   - `x` (double): X position.
   - `y` (double): Y position.
   - `radius` (double): Radius of the cell.
-  - `color` (uint32_t): Color of the cell.
 - **Sent To**: All clients.
 
-### 4. **VIEWPORT**
-- **Value**: `4`
+### 5. **PELLET**
+- **Value**: `5`
+- **Description**: Sends all pellets.
+- **Payload**:
+  - `id` (uint32_t): ID of the cell.
+  - `x` (double): X position.
+  - `y` (double): Y position.
+  - `radius` (double): Radius of the pellet.
+  - `color` (uint32_t): Color of the pellet.
+- **Sent To**: Client.
+
+### 6 **VIEWPORT**
+- **Value**: `6`
 - **Description**: Sends viewport updates to clients.
 - **Payload**:
   - `x` (double): Viewport X position.
   - `y` (double): Viewport Y position.
 - **Sent To**: Client.
 
-### 5. **MOUSE_POSITION**
-- **Value**: `5`
+### 7. **MOUSE_POSITION**
+- **Value**: `7`
 - **Description**: Sends the player's mouse position.
 - **Payload**:
   - `normX` (double): Normalized X coordinate.
   - `normY` (double): Normalized Y coordinate.
 - **Sent To**: Server.
 
-### 6. **KEY_PRESSED**
-- **Value**: `6`
+### 8. **KEY_PRESSED**
+- **Value**: `8`
 - **Description**: Notifies the server of a key press.
 - **Payload**:
   - `keyName` (string): The key pressed.
 - **Sent To**: Server.
 
-### 7. **ENTITY_REMOVED**
-- **Value**: `7`
+### 9. **ENTITY_REMOVED**
+- **Value**: `9`
 - **Description**: Notifies all clients that an entity has been removed
 - **Payload**:
   - `entityId` (uint32_t): ID of the entity.
