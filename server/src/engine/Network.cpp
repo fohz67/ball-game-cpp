@@ -68,20 +68,26 @@ void Network::newClient(std::shared_ptr<asio::ip::tcp::socket> socket) {
 void Network::sendToClient(std::shared_ptr<asio::ip::tcp::socket> client,
                            SmartBuffer& smartBuffer) {
     if (client && client->is_open()) {
-        asio::write(*client, asio::buffer(smartBuffer.getBuffer(),
-                                          smartBuffer.getSize()));
+        uint32_t packetSize = smartBuffer.getSize();
+        std::vector<uint8_t> data(sizeof(uint32_t) + packetSize);
+
+        std::memcpy(data.data(), &packetSize, sizeof(uint32_t));
+        std::memcpy(data.data() + sizeof(uint32_t), smartBuffer.getBuffer(), packetSize);
+
+        asio::write(*client, asio::buffer(data));
     }
 }
 
 void Network::sendToAll(SmartBuffer& smartBuffer) {
     for (const auto& player : PlayerManager::get().getAllPlayers()) {
         sendToClient(player.getClient(), smartBuffer);
+        std::cout << "[ALL] Sent " << smartBuffer.getSize() << " bytes" << std::endl;
     }
 }
 
 void Network::sendLoop() {
     while (true) {
-        Protocol::get().sendCells(CellType::PLAYER);
+        Protocol::get().sendCells();
         Protocol::get().sendViewport();
 
         std::this_thread::sleep_for(

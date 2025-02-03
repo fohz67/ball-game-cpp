@@ -10,4 +10,5 @@ enum class OpCodes : uint8_t {
     MOUSE_POSITION = 5,
     KEY_PRESSED = 6,
     ENTITY_REMOVED = 7,
+    PELLET = 8,
 };

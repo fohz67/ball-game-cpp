@@ -1,6 +1,7 @@
 #include "managers/CellManager.hpp"
 #include <cmath>
 #include <random>
+#include <iostream>
 #include "components/Cell.hpp"
 #include "config/Config.hpp"
 #include "managers/AtomicIdsManager.hpp"

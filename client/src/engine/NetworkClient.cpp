@@ -46,18 +46,23 @@ void NetworkClient::receive() {
 
     try {
         while (true) {
-            char buffer[ConfigClient::Network::MAX_SIZE];
             asio::error_code error;
-            size_t length = socket.read_some(asio::buffer(buffer), error);
 
-            if (error == asio::error::eof) {
-                std::cerr << "Server disconnected." << std::endl;
-                return;
-            } else if (error) {
+            uint32_t packetSize;
+            asio::read(socket, asio::buffer(&packetSize, sizeof(packetSize)), error);
+            if (error) {
                 throw asio::system_error(error);
             }
 
-            ProtocolClient::get().injector(buffer, length, smartBuffer);
+            std::vector<uint8_t> buffer(packetSize);
+            asio::read(socket, asio::buffer(buffer.data(), packetSize), error);
+            if (error) {
+                throw asio::system_error(error);
+            }
+
+            smartBuffer.reset();
+            smartBuffer.inject(buffer.data(), packetSize);
+            
             ProtocolClient::get().handleMessage(smartBuffer);
         }
     } catch (const std::exception& e) {

@@ -29,7 +29,7 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
         smartBuffer << OpCodes::WORLD << Config::Gameplay::World::SIZE;
 
         Network::get().sendToClient(client, smartBuffer);
-        sendCells(CellType::PELLET);
+        sendPellets(client);
 
         break;
     }
@@ -59,23 +59,20 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
     }
 }
 
-void Protocol::sendCells(CellType type) {
+void Protocol::sendCells() {
     const size_t cellSize = sizeof(uint32_t) * 2 + sizeof(double) * 3;
 
     SmartBuffer smartBuffer;
     smartBuffer << OpCodes::CELL;
 
     for (const auto& cell : CellManager::get().getAllCells()) {
-        if (cell.getType() != type) {
+        if (cell.getType() != CellType::PLAYER) {
             continue;
         }
 
-        if (smartBuffer.getSize() + cellSize >= Config::Network::MAX_SIZE + 1) {
-            if (smartBuffer.getSize() >= Config::Network::MAX_SIZE) {
-                std::cout << "Packet size exceeds maximum size" << std::endl;
-            }
-
+        if (sizeof (uint32_t) + smartBuffer.getSize() + cellSize >= Config::Network::MAX_SIZE) {
             Network::get().sendToAll(smartBuffer);
+
 
             smartBuffer.reset();
             smartBuffer << OpCodes::CELL;
@@ -87,8 +84,37 @@ void Protocol::sendCells(CellType type) {
                     << ColorServer::vecToInt(cell.getColor());
     }    
 
-    if (smartBuffer.getSize() > sizeof(uint8_t)) {
+    if (smartBuffer.getSize() >= cellSize + sizeof(uint8_t)) {
         Network::get().sendToAll(smartBuffer);
+    }
+}
+
+void Protocol::sendPellets(std::shared_ptr<asio::ip::tcp::socket> client) {
+    const size_t pelletSize = sizeof(uint32_t) * 2 + sizeof(double) * 3;
+
+    SmartBuffer smartBuffer;
+    smartBuffer << OpCodes::PELLET;
+
+    for (const auto& cell : CellManager::get().getAllCells()) {
+        if (cell.getType() != CellType::PELLET) {
+            continue;
+        }
+
+        if (sizeof (uint32_t) + smartBuffer.getSize() + pelletSize >= Config::Network::MAX_SIZE) {
+            Network::get().sendToClient(client, smartBuffer);
+
+            smartBuffer.reset();
+            smartBuffer << OpCodes::PELLET;
+        }
+
+        Vector2 pos = cell.getPosition();
+
+        smartBuffer << cell.getId() << pos.x << pos.y << cell.getRadius()
+                    << ColorServer::vecToInt(cell.getColor());
+    }    
+
+    if (smartBuffer.getSize() >= pelletSize + sizeof(uint8_t)) {
+        Network::get().sendToClient(client, smartBuffer);
     }
 }
 

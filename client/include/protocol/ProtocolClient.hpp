@@ -10,7 +10,6 @@ class ProtocolClient {
 
     static ProtocolClient& get();
 
-    void injector(char* buffer, size_t length, SmartBuffer& smartBuffer);
     void handleMessage(SmartBuffer& smartBuffer);
 
     void sendJoin();

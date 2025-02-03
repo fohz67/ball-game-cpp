@@ -17,7 +17,8 @@ class Protocol {
     void handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
                        SmartBuffer& smartBuffer);
 
-    void sendCells(CellType type);
+    void sendCells();
+    void sendPellets(std::shared_ptr<asio::ip::tcp::socket> client);
     void sendViewport();
     void sendEntityRemoved(const std::vector<uint32_t>& deletedCellsIds);
 

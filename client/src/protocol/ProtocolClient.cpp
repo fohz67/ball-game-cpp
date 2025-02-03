@@ -14,12 +14,6 @@ ProtocolClient& ProtocolClient::get() {
     return instance;
 }
 
-void ProtocolClient::injector(char* buffer, size_t length,
-                              SmartBuffer& smartBuffer) {
-    smartBuffer.reset();
-    smartBuffer.inject(reinterpret_cast<uint8_t*>(buffer), length);
-}
-
 void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
     uint8_t opcode;
     smartBuffer >> opcode;
@@ -55,6 +49,24 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
                     cell.id, cell.x, cell.y, cell.radius,
                     ColorClient::intToVec(cell.color));
             }
+        }
+
+        break;
+    }
+
+    case OpCodes::PELLET: {
+        const size_t pelletSize = sizeof(uint32_t) * 2 + sizeof(double) * 3;
+        const size_t smartBufferSize = smartBuffer.getSize();
+        const size_t cellsNb = (smartBufferSize - sizeof(uint8_t)) / pelletSize;
+
+        for (size_t i = 0; i < cellsNb; i++) {
+            CellData cell;
+            smartBuffer >> cell.id >> cell.x >> cell.y >> cell.radius >>
+                cell.color;
+
+            EntityManager::get().createCell(
+                    cell.id, cell.x, cell.y, cell.radius,
+                    ColorClient::intToVec(cell.color));
         }
 
         break;

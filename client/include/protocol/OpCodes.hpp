@@ -9,5 +9,6 @@ enum class OpCodes : uint8_t {
     VIEWPORT = 4,
     MOUSE_POSITION = 5,
     KEY_PRESSED = 6,
-    ENTITY_REMOVED = 7
+    ENTITY_REMOVED = 7,
+    PELLET = 8,
 };

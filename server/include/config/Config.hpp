@@ -34,7 +34,7 @@ struct Config {
         struct Pellet {
             static constexpr int COUNT = 5000;
             static constexpr double MASS = 2.0f;
-            static constexpr double EAT_FACTOR = 2.0f;
+            static constexpr double EAT_FACTOR = 10.0f;
         };
     };
 };
