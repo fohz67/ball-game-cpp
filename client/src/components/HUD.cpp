@@ -1,10 +1,12 @@
 #include "components/HUD.hpp"
+#include <iostream>
 #include "components/Color.hpp"
 #include "components/Position.hpp"
 #include "components/Shape.hpp"
 #include "components/Text.hpp"
 #include "config/ConfigClient.hpp"
 #include "engine/GameClient.hpp"
+#include "engine/NetworkClient.hpp"
 #include "managers/EntityManager.hpp"
 #include "managers/PlayerManagerClient.hpp"
 
@@ -17,6 +19,20 @@ void HUD::create() {
     createLeaderboard();
     createStats();
     createChatBox();
+}
+
+void HUD::update() {
+    static auto lastUpdate = std::chrono::high_resolution_clock::now();
+
+    auto now     = std::chrono::high_resolution_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(now - lastUpdate);
+
+    if (elapsed.count() < 1) {
+        return;
+    }
+    lastUpdate = now;
+
+    updateStats();
 }
 
 void HUD::createLeaderboard() {
@@ -98,7 +114,7 @@ void HUD::createStats() {
     statsEntity.emplace(currentId, std::move(newEntity));
 
     // Titles & Values
-    float                    yOffset = ConfigClient::HUD::PADDING + 30;
+    float                    yOffset = ConfigClient::HUD::PADDING + 20;
     std::vector<std::string> labels  = {"Score:", "Mass:", "Ping:", "FPS:"};
 
     for (const auto& label : labels) {
@@ -140,6 +156,41 @@ void HUD::createStats() {
 
         yOffset += 40;
     }
+}
+
+void HUD::updateStats() {
+    GEngine::System system;
+    double          bias = ConfigClient::World::ID +
+                  (leaderboardEntities.size() * ConfigClient::Network::ENTITY_LINKING_BIAS);
+
+    bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 3;
+
+    system.update(
+        bias, EntityManager::get().entities, GEngine::UpdateType::Text, std::to_string(0));
+
+    bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
+
+    system.update(
+        bias, EntityManager::get().entities, GEngine::UpdateType::Text, std::to_string(0));
+
+    bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
+
+
+    std::cout << NetworkClient::get().getPing() << std::endl;
+
+    system.update(bias,
+                  EntityManager::get().entities,
+                  GEngine::UpdateType::Text,
+                  std::to_string(NetworkClient::get().getPing()));
+
+    bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
+
+    std::cout << GameClient::get().getFPS() << std::endl;
+
+    system.update(bias,
+                  EntityManager::get().entities,
+                  GEngine::UpdateType::Text,
+                  std::to_string(GameClient::get().getFPS()));
 }
 
 void HUD::createChatBox() {

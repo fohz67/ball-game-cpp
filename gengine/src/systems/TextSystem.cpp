@@ -2,23 +2,32 @@
 #include "System.hpp"
 
 void GEngine::System::loadText(GEngine::Entity& entity, auto& textComp) {
-    if (!textComp.isLoaded()) {
-        unsigned int highResSize = textComp.getCharacterSize() * 5;
-        float        scaleFactor = 1.0f / 5.0f;
+    static std::unordered_map<std::string, sf::Font> fontCache;
 
-        textComp.getText().setCharacterSize(highResSize);
-        textComp.getText().setScale(scaleFactor, scaleFactor);
-        textComp.getFont().loadFromFile(textComp.getFontFile());
-        textComp.getText().setFont(textComp.getFont());
+    if (!textComp.isLoaded()) {
+        textComp.getText().setCharacterSize(textComp.getCharacterSize());
+
+        if (fontCache.find(textComp.getFontFile()) == fontCache.end()) {
+            sf::Font font;
+
+            if (font.loadFromFile(textComp.getFontFile())) {
+                fontCache[textComp.getFontFile()] = std::move(font);
+            }
+        }
+
+        textComp.getText().setFont(fontCache[textComp.getFontFile()]);
         textComp.getText().setString(textComp.getString());
 
         if (textComp.getCentering() == 1) {
             sf::FloatRect bounds = textComp.getText().getLocalBounds();
+
             textComp.getText().setOrigin(
                 bounds.left + bounds.width / 2, bounds.top + bounds.height / 2);
         }
+
         if (textComp.getCentering() == 2) {
             sf::FloatRect bounds = textComp.getText().getLocalBounds();
+
             textComp.getText().setOrigin(bounds.width, 0);
         }
 
@@ -38,9 +47,11 @@ void GEngine::System::textSystem(sf::RenderWindow& window, GEngine::Entity& enti
         loadText(entity, textComp);
 
         auto& positionComp = entity.getComponent<Position>();
+
         if (positionComp.getPositions().size() > 1) {
             for (auto& position : positionComp.getPositions()) {
                 textComp.getText().setPosition(position.first, position.second);
+
                 window.draw(textComp.getText());
             }
         } else {

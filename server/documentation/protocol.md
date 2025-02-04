@@ -18,6 +18,14 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
 
 ## OpCode Definitions
 
+### 0. **PINGPONG**
+- **Value**: `0`
+- **Description**: Sends the game world configuration to the client.
+- **Payload**:
+  - `timestamp` (uint64_t): The timestamp when the packet is sent to the server.
+- **Sent To**: Server.
+- **Send From**: Server.
+
 ### 1. **WORLD**
 - **Value**: `1`
 - **Description**: Sends the game world configuration to the client.

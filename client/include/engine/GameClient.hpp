@@ -15,6 +15,7 @@ class GameClient {
     sf::RenderWindow& getWindow();
     sf::View&         getView();
     sf::Vector2u      getWindowSize() const;
+    int               getFPS() const;
 
   private:
     GameClient()  = default;
@@ -28,4 +29,6 @@ class GameClient {
     sf::RenderWindow window;
     sf::View         view;
     sf::Vector2u     windowSize;
+
+    int fps = 0;
 };

@@ -4,6 +4,7 @@
 
 class HandlersClient {
   public:
+    static void handlePing(SmartBuffer& smartBuffer);
     static void handleWorld(SmartBuffer& smartBuffer);
     static void handlePlayer(SmartBuffer& smartBuffer);
     static void handleCell(SmartBuffer& smartBuffer);

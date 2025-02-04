@@ -19,7 +19,7 @@ class System {
 
     // Methods
     void render(sf::RenderWindow& window, std::map<double, Entity>& entities);
-    void update(int                       id,
+    void update(const double              id,
                 std::map<double, Entity>& entities,
                 UpdateType                type,
                 const std::any&           value,

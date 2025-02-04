@@ -118,7 +118,7 @@ void GEngine::System::updateShapeSize(Entity& entity, double radius) {
     }
 }
 
-void GEngine::System::update(const int                 id,
+void GEngine::System::update(const double              id,
                              std::map<double, Entity>& entities,
                              const UpdateType          type,
                              const std::any&           value,

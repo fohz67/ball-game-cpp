@@ -5,7 +5,7 @@
 
 struct ConfigClient {
     struct Game {
-        static constexpr int    FRAME_RATE                = 120;
+        static constexpr int    FRAME_RATE                = 144;
         static constexpr double CAMERA_INTERPOLATE_FACTOR = 0.1f;
     };
 
@@ -55,11 +55,11 @@ struct ConfigClient {
 
         struct Stats {
             static constexpr double                 WIDTH       = 180.0f;
-            static constexpr double                 HEIGHT      = 120.0f;
+            static constexpr double                 HEIGHT      = 180.0f;
             static inline const std::string         TITLE       = "Stats";
             static constexpr double                 LABEL_SIZE  = 18.0f;
             static constexpr double                 VALUE_SIZE  = 18.0f;
-            static inline const std::vector<double> VALUE_COLOR = {20, 20, 255, 255};
+            static inline const std::vector<double> VALUE_COLOR = {120, 107, 242, 255};
         };
 
         struct Leaderboard {

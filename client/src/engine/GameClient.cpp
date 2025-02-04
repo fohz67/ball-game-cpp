@@ -16,6 +16,8 @@ GameClient& GameClient::get() {
 void GameClient::run() {
     GEngine::System system;
     sf::Vector2i    lastMousePos = sf::Mouse::getPosition(window);
+    sf::Clock       clock;
+    float           deltaTime = 0.0f;
 
     initWindow();
     initView();
@@ -27,6 +29,10 @@ void GameClient::run() {
 
         ProtocolClient::get().sendMousePosition(window, lastMousePos);
         Viewport::get().applyInterpolation();
+
+        deltaTime = clock.restart().asSeconds();
+        fps       = static_cast<int>(1.0f / deltaTime);
+        HUD::get().update();
 
         render(system);
     }
@@ -66,18 +72,21 @@ void GameClient::processEvents() {
 }
 
 void GameClient::render(GEngine::System& system) {
+    // Gameplay
     view.setCenter(
         Viewport::get().getPreviousViewport().first, Viewport::get().getPreviousViewport().second);
-
     window.setView(view);
     window.clear();
+
     std::map<double, GEngine::Entity> gameEntities = EntityManager::get().getGameEntities();
     system.render(window, gameEntities);
 
+    // HUD
     window.setView(window.getDefaultView());
     std::map<double, GEngine::Entity> hudEntities = EntityManager::get().getHUDEntities();
     system.render(window, hudEntities);
 
+    // Final render
     window.display();
 }
 
@@ -91,4 +100,8 @@ sf::View& GameClient::getView() {
 
 sf::Vector2u GameClient::getWindowSize() const {
     return windowSize;
+}
+
+int GameClient::getFPS() const {
+    return fps;
 }

@@ -3,6 +3,7 @@
 #include <cstdint>
 
 enum class OpCodes : uint8_t {
+    PINGPONG,
     WORLD,
     JOIN,
     PLAYER,

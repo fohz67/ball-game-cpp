@@ -6,6 +6,10 @@
 #include "protocol/OpCodes.hpp"
 #include "protocol/Protocol.hpp"
 
+void Handlers::handlePing(std::shared_ptr<asio::ip::tcp::socket> client, SmartBuffer& smartBuffer) {
+    Network::get().sendToClient(client, smartBuffer);
+}
+
 void Handlers::handleJoin(std::shared_ptr<asio::ip::tcp::socket> client, SmartBuffer& smartBuffer) {
     std::string nickname;
     smartBuffer >> nickname;

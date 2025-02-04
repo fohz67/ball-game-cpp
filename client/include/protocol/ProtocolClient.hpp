@@ -13,6 +13,7 @@ class ProtocolClient {
 
     void handleMessage(SmartBuffer& smartBuffer);
 
+    void sendPing();
     void sendJoin(const std::string nickname);
     void sendMousePosition(sf::RenderWindow& window, sf::Vector2i& lastMousePos);
     void sendKeyPressed(std::string keyName);

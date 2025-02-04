@@ -26,6 +26,11 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
 
     switch (static_cast<OpCodes>(opcode)) {
 
+    case OpCodes::PINGPONG: {
+        Handlers::handlePing(client, smartBuffer);
+        break;
+    }
+
     case OpCodes::JOIN: {
         Handlers::handleJoin(client, smartBuffer);
         break;

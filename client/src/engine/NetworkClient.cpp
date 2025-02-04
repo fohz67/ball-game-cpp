@@ -72,3 +72,11 @@ void NetworkClient::receive() {
 uint32_t NetworkClient::getCutPacketSize(SmartBuffer smartBuffer, uint32_t size) const {
     return (smartBuffer.getSize() - sizeof(OpCodes)) / size;
 }
+
+uint64_t NetworkClient::getPing() const {
+    return ping;
+}
+
+void NetworkClient::setPing(uint64_t newPing) {
+    ping = newPing;
+}

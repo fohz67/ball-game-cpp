@@ -22,6 +22,11 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
 
     switch (static_cast<OpCodes>(opcode)) {
 
+    case OpCodes::PINGPONG: {
+        HandlersClient::handlePing(smartBuffer);
+        break;
+    }
+
     case OpCodes::WORLD: {
         HandlersClient::handleWorld(smartBuffer);
         break;
@@ -62,6 +67,19 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
 
         break;
     }
+}
+
+void ProtocolClient::sendPing() {
+    SmartBuffer smartBuffer;
+    smartBuffer << OpCodes::PINGPONG;
+
+    auto     now = std::chrono::high_resolution_clock::now();
+    uint64_t timestamp =
+        std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count();
+
+    smartBuffer << timestamp;
+
+    NetworkClient::get().send(smartBuffer);
 }
 
 void ProtocolClient::sendJoin(const std::string nickname) {

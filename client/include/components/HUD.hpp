@@ -15,6 +15,9 @@ class HUD {
     void createStats();
     void createChatBox();
 
+    void update();
+    void updateStats();
+
     void increaseId();
 
     void setMass(long mass);

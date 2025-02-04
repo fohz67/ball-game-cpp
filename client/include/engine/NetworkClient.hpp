@@ -2,6 +2,7 @@
 
 #include <SmartBuffer.hpp>
 #include <asio.hpp>
+#include <cstdint>
 #include <thread>
 
 class NetworkClient {
@@ -16,6 +17,9 @@ class NetworkClient {
     void send(SmartBuffer& smartBuffer);
 
     uint32_t getCutPacketSize(SmartBuffer smartBuffer, uint32_t size) const;
+    uint64_t getPing() const;
+
+    void setPing(uint64_t newPing);
 
   private:
     NetworkClient();
@@ -28,4 +32,5 @@ class NetworkClient {
     std::string           host;
     unsigned short        port;
     std::thread           networkThread;
+    uint64_t              ping = 0;
 };

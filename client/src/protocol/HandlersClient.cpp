@@ -7,6 +7,17 @@
 #include "protocol/DataInterfaces.hpp"
 #include "protocol/OpCodes.hpp"
 
+void HandlersClient::handlePing(SmartBuffer& smartBuffer) {
+    uint64_t sentTimestamp;
+    smartBuffer >> sentTimestamp;
+
+    auto     now = std::chrono::high_resolution_clock::now();
+    uint64_t receivedTimestamp =
+        std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count();
+
+    NetworkClient::get().setPing(receivedTimestamp - sentTimestamp);
+}
+
 void HandlersClient::handleWorld(SmartBuffer& smartBuffer) {
     WorldInterface world;
     smartBuffer >> world.size;
