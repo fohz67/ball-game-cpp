@@ -4,10 +4,10 @@
 #include <components/Text.hpp>
 #include "System.hpp"
 
-void GEngine::System::updateEntityPosition(const int                      id,
-                                           std::map<double, Entity>&      entities,
+void GEngine::System::updateEntityPosition(const int                        id,
+                                           std::map<double, Entity>&        entities,
                                            const std::pair<double, double>& pos,
-                                           const int                      posId) {
+                                           const int                        posId) {
     linkSystem(id, entities, pos, posId);
 
     auto it = entities.find(id);

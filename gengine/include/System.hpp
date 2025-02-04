@@ -34,14 +34,14 @@ class System {
     // Position
     template <typename Drawable> void setPosition(Entity& entity, Drawable& drawable);
     template <typename Drawable>
-    void updatePosition(Entity&                        entity,
-                        Drawable&                      drawable,
+    void updatePosition(Entity&                          entity,
+                        Drawable&                        drawable,
                         const std::pair<double, double>& pos,
-                        const int&                     posId);
-    void updateEntityPosition(int                            id,
-                              std::map<double, Entity>&      entities,
+                        const int&                       posId);
+    void updateEntityPosition(int                              id,
+                              std::map<double, Entity>&        entities,
                               const std::pair<double, double>& pos,
-                              int                            posId);
+                              int                              posId);
 
     // Texture
     void updateTexture(Entity& entity, std::string& texture);
@@ -53,7 +53,7 @@ class System {
     // Link
     void linkSystem(int                       id,
                     std::map<double, Entity>& entities,
-                    std::pair<double, double>   newLinkedEntityPos,
+                    std::pair<double, double> newLinkedEntityPos,
                     int                       posId);
 
     // Text
@@ -101,10 +101,10 @@ template <typename Drawable> void System::setPosition(Entity& entity, Drawable& 
 }
 
 template <typename Drawable>
-void System::updatePosition(Entity&                        entity,
-                            Drawable&                      drawable,
+void System::updatePosition(Entity&                          entity,
+                            Drawable&                        drawable,
                             const std::pair<double, double>& pos,
-                            const int&                     posId) {
+                            const int&                       posId) {
     if (entity.hasComponent<Position>()) {
         auto& positionComp = entity.getComponent<Position>();
 

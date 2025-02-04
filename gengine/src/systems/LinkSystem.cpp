@@ -7,7 +7,7 @@
 
 void GEngine::System::linkSystem(int                                id,
                                  std::map<double, GEngine::Entity>& entities,
-                                 std::pair<double, double>            newLinkedEntityPos,
+                                 std::pair<double, double>          newLinkedEntityPos,
                                  const int                          posId) {
     for (auto& [_, entity] : entities) {
         if (entity.hasComponent<Link>() && entity.getComponent<Link>().getId() == id) {
