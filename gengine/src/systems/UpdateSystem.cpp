@@ -6,7 +6,7 @@
 
 void GEngine::System::updateEntityPosition(const int                      id,
                                            std::map<double, Entity>&      entities,
-                                           const std::pair<float, float>& pos,
+                                           const std::pair<double, double>& pos,
                                            const int                      posId) {
     linkSystem(id, entities, pos, posId);
 
@@ -22,7 +22,7 @@ void GEngine::System::updateEntityPosition(const int                      id,
 
     if (entity.hasComponent<Text>()) {
         auto& textComp = entity.getComponent<Text>();
-        static std::unordered_map<uint32_t, std::pair<float, float>> lastPositions;
+        static std::unordered_map<uint32_t, std::pair<double, double>> lastPositions;
 
         if (lastPositions[entity.getEntityId()] != pos) {
             sf::FloatRect bounds = textComp.getText().getLocalBounds();
@@ -155,7 +155,7 @@ void GEngine::System::update(const double              id,
 
     switch (type) {
     case UpdateType::Position:
-        updateEntityPosition(id, entities, std::any_cast<std::pair<float, float>>(value), posId);
+        updateEntityPosition(id, entities, std::any_cast<std::pair<double, double>>(value), posId);
         break;
     case UpdateType::Text:
         updateText(entity, std::any_cast<std::string>(value));

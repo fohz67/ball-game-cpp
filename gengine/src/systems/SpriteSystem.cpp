@@ -41,7 +41,7 @@ void GEngine::System::spriteSystem(sf::RenderWindow& window, GEngine::Entity& en
 
         loadSprite(entity, spriteComp, textureComp);
 
-        static std::unordered_map<uint32_t, std::pair<float, float>> lastPositions;
+        static std::unordered_map<uint32_t, std::pair<double, double>> lastPositions;
 
         if (positionComp.getPositions().size() == 1) {
             auto newPos = positionComp.getPositions()[0];
