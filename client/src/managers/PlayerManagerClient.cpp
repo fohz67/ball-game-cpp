@@ -1,4 +1,5 @@
 #include "managers/PlayerManagerClient.hpp"
+#include <algorithm>
 
 PlayerManagerClient& PlayerManagerClient::get() {
     static PlayerManagerClient instance;
