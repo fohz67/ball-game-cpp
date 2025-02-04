@@ -181,17 +181,12 @@ void HUD::updateStats() {
 
     bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
 
-
-    std::cout << NetworkClient::get().getPing() << std::endl;
-
     system.update(bias,
                   EntityManager::get().entities,
                   GEngine::UpdateType::Text,
                   std::to_string(NetworkClient::get().getPing()));
 
     bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
-
-    std::cout << GameClient::get().getFPS() << std::endl;
 
     system.update(bias,
                   EntityManager::get().entities,
