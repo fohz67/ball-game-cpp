@@ -10,10 +10,12 @@ namespace GEngine {
 
 class Entity {
   public:
+    // Constructor / Destructor
     Entity();
     Entity(uint32_t id);
     ~Entity() = default;
 
+    // Template methods
     template <typename... Args> Entity(uint32_t id, Args&&... args);
     template <typename ComponentType>
     void addComponent(const ComponentType& component);
@@ -21,10 +23,12 @@ class Entity {
     template <typename ComponentType> ComponentType& getComponent();
     template <typename ComponentType> bool hasComponent() const;
 
+    // Methods
     void displayComponents() const;
     uint32_t getEntityId() const;
 
   private:
+    // Attributes
     uint32_t id;
     std::unordered_map<std::type_index, std::shared_ptr<Component>> components;
 };

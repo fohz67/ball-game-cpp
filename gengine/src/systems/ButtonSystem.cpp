@@ -1,32 +1,9 @@
-/*
-** EPITECH PROJECT, 2024
-** B-CPP-500-TLS-5-2-rtype-anastasia.bouby
-** File description:
-** Implements the `buttonSystem` function, which handles the rendering and
-** interaction of button components within the game engine.
-** Responsibility:
-** - Check if an entity has button and position components
-** - Load button resources if not already loaded
-** - Render the button on the window
-** - Execute the button's callback function when pressed
-*/
-
 #include <components/Button.hpp>
 #include <components/ButtonRect.hpp>
 #include <components/OptionButton.hpp>
 #include <components/Slider.hpp>
 #include "System.hpp"
 
-/**
- * @brief Renders the button component of an entity on the window.
- *
- * This function checks if the entity has both button and position components.
- * If so, it loads the button component and then draws the button on the window.
- * If the button is pressed, it executes the callback function.
- *
- * @param window The render window where the button will be drawn.
- * @param entity The entity containing the button and position components.
- */
 void GEngine::System::buttonSystem(sf::RenderWindow& window,
                                    GEngine::Entity& entity) {
     if (entity.hasComponent<Button>() && entity.hasComponent<Position>()) {
@@ -34,9 +11,7 @@ void GEngine::System::buttonSystem(sf::RenderWindow& window,
         auto& positionComp = entity.getComponent<Position>();
 
         if (!buttonComp.isLoaded()) {
-
             buttonComp.getFont().loadFromFile(buttonComp.getFontFile());
-
             buttonComp.getText().setFont(buttonComp.getFont());
             buttonComp.getText().setString(buttonComp.getString());
             buttonComp.getText().setCharacterSize(
@@ -44,15 +19,14 @@ void GEngine::System::buttonSystem(sf::RenderWindow& window,
             buttonComp.getText().setFillColor(sf::Color::White);
 
             sf::FloatRect textBounds = buttonComp.getText().getLocalBounds();
-
             float padding = 10.f;
+
             buttonComp.getButton().setSize(
                 sf::Vector2f(textBounds.width + 2 * padding,
                              textBounds.height + 2 * padding));
             buttonComp.getButton().setFillColor(sf::Color::Transparent);
             buttonComp.getButton().setPosition(positionComp.getPositionX(0),
                                                positionComp.getPositionY(0));
-
             buttonComp.getText().setOrigin(
                 textBounds.left + textBounds.width / 2,
                 textBounds.top + textBounds.height / 2);
@@ -66,12 +40,14 @@ void GEngine::System::buttonSystem(sf::RenderWindow& window,
         }
 
         static std::map<GEngine::Entity*, bool> wasPressedMap;
+
         sf::Vector2i mousePos = sf::Mouse::getPosition(window);
         sf::FloatRect buttonBounds = buttonComp.getButton().getGlobalBounds();
 
         if (buttonBounds.contains(static_cast<float>(mousePos.x),
                                   static_cast<float>(mousePos.y))) {
             bool isPressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
+
             if (isPressed && !wasPressedMap[&entity]) {
                 buttonComp.executeCallback();
                 wasPressedMap[&entity] = true;
@@ -79,22 +55,12 @@ void GEngine::System::buttonSystem(sf::RenderWindow& window,
                 wasPressedMap[&entity] = false;
             }
         }
+
         window.draw(buttonComp.getButton());
         window.draw(buttonComp.getText());
     }
 }
 
-/**
- * @brief Renders the checkbox component of an entity on the window.
- *
- * This function checks if the entity has both checkbox and position components.
- * If so, it loads the checkbox component and then draws the checkbox on the
- * window. If the checkbox is checked, it fills the button with white color. If
- * the checkbox is pressed, it executes the callback function.
- *
- * @param window The render window where the checkbox will be drawn.
- * @param entity The entity containing the checkbox and position components.
- */
 void GEngine::System::optionButtonSystem(sf::RenderWindow& window,
                                          GEngine::Entity& entity) {
     if (entity.hasComponent<OptionButton>() &&
@@ -104,31 +70,37 @@ void GEngine::System::optionButtonSystem(sf::RenderWindow& window,
 
         if (!buttonComp.isLoaded()) {
             sf::RectangleShape buttonShape;
+
             buttonShape.setSize(
                 {static_cast<float>(buttonComp.getSize().first),
                  static_cast<float>(buttonComp.getSize().second)});
             buttonShape.setPosition(positionComp.getPositionX(0),
                                     positionComp.getPositionY(0));
             buttonShape.setOutlineThickness(2);
+
             if (entity.hasComponent<Color>() &&
                 entity.getComponent<Color>().getColor().size() == 4) {
                 auto& colorComp = entity.getComponent<Color>();
                 const auto color = colorComp.getColor();
+
                 buttonComp.getShape().setOutlineColor(
                     sf::Color(color[0], color[1], color[2], color[3]));
                 buttonShape.setFillColor(sf::Color::Transparent);
             }
+
             buttonComp.setShape(buttonShape);
             buttonComp.setLoaded();
         }
 
         static std::map<GEngine::Entity*, bool> wasPressedMap;
+
         sf::Vector2i mousePos = sf::Mouse::getPosition(window);
         sf::FloatRect buttonBounds = buttonComp.getShape().getGlobalBounds();
 
         if (buttonBounds.contains(static_cast<float>(mousePos.x),
                                   static_cast<float>(mousePos.y))) {
             bool isPressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
+
             if (isPressed && !wasPressedMap[&entity]) {
                 buttonComp.setChecked();
                 buttonComp.executeCallback();
@@ -137,6 +109,7 @@ void GEngine::System::optionButtonSystem(sf::RenderWindow& window,
                 wasPressedMap[&entity] = false;
             }
         }
+
         if (buttonComp.isChecked()) {
             buttonComp.getShape().setFillColor(sf::Color::White);
         } else {
@@ -147,18 +120,6 @@ void GEngine::System::optionButtonSystem(sf::RenderWindow& window,
     }
 }
 
-/**
- * @brief Renders the slider component of an entity on the window.
- *
- * This function checks if the entity has both slider and position components.
- * If so, it loads the slider component and then draws the slider on the window.
- * If the slider is pressed, it updates the value of the slider and executes the
- * callback function.
- *
- * @param window The render window where the slider will be drawn.
- * @param entity The entity containing the slider and position components.
- * @param entities The map of entities.
- */
 void GEngine::System::sliderSystem(sf::RenderWindow& window,
                                    GEngine::Entity& entity,
                                    std::map<int, Entity>& entities) {
@@ -169,6 +130,7 @@ void GEngine::System::sliderSystem(sf::RenderWindow& window,
 
         if (!sliderComp.isLoaded()) {
             sf::RectangleShape barShape;
+
             barShape.setPosition(positionComp.getPositionX(0),
                                  positionComp.getPositionY(0));
             barShape.setSize({static_cast<float>(sliderComp.getSize().first),
@@ -183,11 +145,13 @@ void GEngine::System::sliderSystem(sf::RenderWindow& window,
                 entity.getComponent<Color>().getColor().size() == 4) {
                 auto& colorComp = entity.getComponent<Color>();
                 const auto color = colorComp.getColor();
+
                 barShape.setFillColor(
                     sf::Color(color[0], color[1], color[2], color[3]));
                 cursorShape.setFillColor(
                     sf::Color(color[0], color[1], color[2], color[3]));
             }
+
             float normalizedValue =
                 (sliderComp.getValue() - sliderComp.getMinValue()) /
                 (sliderComp.getMaxValue() - sliderComp.getMinValue());
@@ -203,6 +167,7 @@ void GEngine::System::sliderSystem(sf::RenderWindow& window,
         }
 
         static std::map<GEngine::Entity*, bool> wasPressedMap;
+
         sf::Vector2i mousePos = sf::Mouse::getPosition(window);
         sf::FloatRect barBounds = sliderComp.getBarShape().getGlobalBounds();
 
@@ -242,17 +207,6 @@ void GEngine::System::sliderSystem(sf::RenderWindow& window,
     }
 }
 
-/**
- * @brief Renders the buttonRect component of an entity on the window.
- *
- * This function checks if the entity has both buttonRect and position
- * components. If so, it loads the buttonRect component and then draws the
- * buttonRect on the window. If the buttonRect is pressed, it executes the
- * callback function. The buttonRect is an input where text can be written.
- *
- * @param window The render window where the buttonRect will be drawn.
- * @param entity The entity containing the buttonRect and position components.
- */
 void GEngine::System::buttonRectSystem(sf::RenderWindow& window,
                                        GEngine::Entity& entity) {
     if (entity.hasComponent<ButtonRect>() && entity.hasComponent<Position>()) {
@@ -265,6 +219,7 @@ void GEngine::System::buttonRectSystem(sf::RenderWindow& window,
                              buttonRectComp.getSize().second));
             buttonRectComp.getButtonRect().setPosition(
                 positionComp.getPositionX(0), positionComp.getPositionY(0));
+
             if (!buttonRectComp.isShowOutline()) {
                 buttonRectComp.getButtonRect().setFillColor(
                     buttonRectComp.getColor());
@@ -275,15 +230,20 @@ void GEngine::System::buttonRectSystem(sf::RenderWindow& window,
                 buttonRectComp.getButtonRect().setFillColor(
                     sf::Color::Transparent);
             }
+
             buttonRectComp.setLoaded(true);
         }
+
         static std::map<GEngine::Entity*, bool> wasPressedMap;
+
         sf::Vector2i mousePos = sf::Mouse::getPosition(window);
         sf::FloatRect buttonRectBounds =
             buttonRectComp.getButtonRect().getGlobalBounds();
+
         if (buttonRectBounds.contains(static_cast<float>(mousePos.x),
                                       static_cast<float>(mousePos.y))) {
             bool isPressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
+
             if (isPressed && !wasPressedMap[&entity]) {
                 buttonRectComp.executeCallback();
                 wasPressedMap[&entity] = true;
@@ -291,6 +251,7 @@ void GEngine::System::buttonRectSystem(sf::RenderWindow& window,
                 wasPressedMap[&entity] = false;
             }
         }
+
         window.draw(buttonRectComp.getButtonRect());
     }
 }
