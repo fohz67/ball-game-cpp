@@ -1,4 +1,5 @@
 #include "protocol/HandlersClient.hpp"
+#include <cmath>
 #include "components/ColorClient.hpp"
 #include "components/Viewport.hpp"
 #include "engine/NetworkClient.hpp"
@@ -6,7 +7,6 @@
 #include "managers/PlayerManagerClient.hpp"
 #include "protocol/DataInterfaces.hpp"
 #include "protocol/OpCodes.hpp"
-#include <cmath>
 
 void HandlersClient::handlePing(SmartBuffer& smartBuffer) {
     uint64_t sentTimestamp;
