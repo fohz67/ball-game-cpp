@@ -64,12 +64,10 @@ void GEngine::System::updateTextSize(const int                 id,
                                      const unsigned int        textSize) {
     Entity& entity = entities.at(id);
     if (entity.hasComponent<Text>()) {
-        auto&        textComp = entity.getComponent<Text>();
-        unsigned int newSize =
-            static_cast<unsigned int>(textComp.getInitCharacterSize() * (textSize / 100.0f));
+        auto& textComp = entity.getComponent<Text>();
 
-        textComp.setCharacterSize(newSize);
-        textComp.getText().setCharacterSize(newSize);
+        textComp.setCharacterSize(textSize);
+        textComp.getText().setCharacterSize(textSize);
 
         if (entity.hasComponent<Position>()) {
             auto& positionComp = entity.getComponent<Position>();

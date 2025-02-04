@@ -1,8 +1,15 @@
 #include "components/Text.hpp"
 #include <iostream>
 
-Text::Text(const std::string& text, const std::string& fontFile, const double characterSize)
-    : initText(text), fontFile(fontFile), charSize(characterSize), initSize(characterSize) {}
+Text::Text(const std::string& text,
+           const std::string& fontFile,
+           const double       characterSize,
+           const int          centering)
+    : initText(text),
+      fontFile(fontFile),
+      charSize(characterSize),
+      initSize(characterSize),
+      centering(centering) {}
 
 std::string Text::getString() const {
     return this->initText;
@@ -30,6 +37,10 @@ std::string Text::getFontFile() const {
 
 sf::Text& Text::getText() {
     return this->text;
+}
+
+int Text::getCentering() const {
+    return this->centering;
 }
 
 void Text::setString(const std::string& val) {

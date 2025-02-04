@@ -39,7 +39,7 @@ struct Config {
         };
 
         struct Player {
-            static inline std::vector<double> NICKNAME_COLOR = {255, 255, 255, 255};
+            static inline std::vector<double> COLOR = {255, 255, 255, 255};
         };
     };
 };

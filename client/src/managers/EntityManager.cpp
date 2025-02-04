@@ -43,9 +43,9 @@ void EntityManager::createNickname(
 
     newNickname.addComponent(
         Text(nickname,
-             "assets/fonts/" + ConfigClient::Player::Nickname::NICKNAME_FONT_FAMILY + "/" +
-                 std::to_string(ConfigClient::Player::Nickname::NICKNAME_FONT_WEIGHT) + ".ttf",
-             ConfigClient::Player::Nickname::NICKNAME_TEXT_SIZE));
+             "assets/fonts/" + ConfigClient::Player::Nickname::FONT_FAMILY + "/" +
+                 std::to_string(ConfigClient::Player::Nickname::FONT_WEIGHT) + ".ttf",
+             ConfigClient::Player::Nickname::TEXT_SIZE));
     newNickname.addComponent(Position({{x + radius, y + radius}}));
     newNickname.addComponent(Link(id));
 

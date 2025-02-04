@@ -28,43 +28,53 @@ struct ConfigClient {
     };
 
     struct Zoom {
-        static constexpr double ZOOM_SPEED = 50.0f;
+        static constexpr double SPEED = 50.0f;
     };
 
     struct Player {
         struct Nickname {
-            static constexpr double   NICKNAME_TEXT_SIZE   = 10.0f;
-            static inline std::string NICKNAME_FONT_FAMILY = "Montserrat";
-            static constexpr int      NICKNAME_FONT_WEIGHT = 800;
+            static constexpr double   TEXT_SIZE   = 10.0f;
+            static inline std::string FONT_FAMILY = "Montserrat";
+            static constexpr int      FONT_WEIGHT = 800;
         };
 
         struct Mass {
-            static constexpr double   MASS_TEXT_SIZE   = 4.0f;
-            static inline std::string MASS_FONT        = "Montserrat";
-            static constexpr int      MASS_FONT_WEIGHT = 500;
+            static constexpr double   TEXT_SIZE   = 4.0f;
+            static inline std::string FONT        = "Montserrat";
+            static constexpr int      FONT_WEIGHT = 500;
         };
     };
 
     struct HUD {
+        static inline const std::vector<double> BACKGROUND_COLOR = {255, 255, 255, 25};
+        static constexpr double                 PADDING          = 10.0f;
+        static constexpr double                 TEXT_PADDING     = 25.0f;
+        static inline std::string               FONT_FAMILY      = "Montserrat";
+        static constexpr int                    FONT_WEIGHT      = 800;
+        static inline const std::vector<double> TEXT_COLOR       = {255, 255, 255, 255};
+
         struct Stats {
-            static constexpr double                 WIDTH            = 150.0f;
-            static constexpr double                 HEIGHT           = 90.0f;
-            static constexpr double                 PADDING          = 10.0f;
-            static inline const std::vector<double> BACKGROUND_COLOR = {255, 255, 255, 25};
+            static constexpr double                 WIDTH       = 180.0f;
+            static constexpr double                 HEIGHT      = 120.0f;
+            static inline const std::string         TITLE       = "Stats";
+            static constexpr double                 LABEL_SIZE  = 18.0f;
+            static constexpr double                 VALUE_SIZE  = 18.0f;
+            static inline const std::vector<double> VALUE_COLOR = {20, 20, 255, 255};
         };
 
         struct Leaderboard {
-            static constexpr double                 WIDTH            = 250.0f;
-            static constexpr double                 HEIGHT           = 400.0f;
-            static constexpr double                 PADDING          = 10.0f;
-            static inline const std::vector<double> BACKGROUND_COLOR = {255, 255, 255, 25};
+            static constexpr double         WIDTH        = 250.0f;
+            static constexpr double         HEIGHT       = 400.0f;
+            static inline const std::string TITLE        = "Leaderboard";
+            static constexpr double         TITLE_SIZE   = 23.0f;
+            static constexpr double         CONTENT_SIZE = 18.0f;
         };
 
         struct ChatBox {
-            static constexpr double                 WIDTH            = 350.0f;
-            static constexpr double                 HEIGHT           = 300.0f;
-            static constexpr double                 PADDING          = 10.0f;
-            static inline const std::vector<double> BACKGROUND_COLOR = {255, 255, 255, 25};
+            static constexpr double WIDTH        = 350.0f;
+            static constexpr double HEIGHT       = 300.0f;
+            static constexpr double TITLE_SIZE   = 30.0f;
+            static constexpr double CONTENT_SIZE = 30.0f;
         };
     };
 };

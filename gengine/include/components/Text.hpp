@@ -11,11 +11,13 @@ class Text : public Component {
     static inline std::string DEFAULT_TEXT           = "";
     static inline std::string DEFAULT_FONT_FILE      = "";
     static constexpr double   DEFAULT_CHARACTER_SIZE = 30;
+    static constexpr int      DEFAULT_CENTERING      = 0;
 
     // Constructor / Destructor
     Text(const std::string& text          = DEFAULT_TEXT,
          const std::string& fontFile      = DEFAULT_FONT_FILE,
-         double             characterSize = DEFAULT_CHARACTER_SIZE);
+         double             characterSize = DEFAULT_CHARACTER_SIZE,
+         int                centering     = DEFAULT_CENTERING);
     ~Text() = default;
 
     // Getters
@@ -26,6 +28,7 @@ class Text : public Component {
     bool        isLoaded() const;
     std::string getFontFile() const;
     sf::Text&   getText();
+    int         getCentering() const;
 
     // Setters
     void setLoaded(const bool val);
@@ -47,5 +50,6 @@ class Text : public Component {
     double      charSize;
     sf::Text    text;
     sf::Font    font;
-    bool        loaded = DEFAULT_LOADED;
+    int         centering = false;
+    bool        loaded    = DEFAULT_LOADED;
 };

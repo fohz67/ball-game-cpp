@@ -8,8 +8,8 @@ Zoom& Zoom::get() {
 
 void Zoom::setZoom(double delta, sf::View& view) {
     if (delta > 0) {
-        view.zoom(1.0f - ConfigClient::Zoom::ZOOM_SPEED / 1000);
+        view.zoom(1.0f - ConfigClient::Zoom::SPEED / 1000);
     } else if (delta < 0) {
-        view.zoom(1.0f + ConfigClient::Zoom::ZOOM_SPEED / 1000);
+        view.zoom(1.0f + ConfigClient::Zoom::SPEED / 1000);
     }
 }
