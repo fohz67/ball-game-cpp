@@ -27,10 +27,18 @@
  */
 void GEngine::System::loadText(GEngine::Entity& entity, auto& textComp) {
     if (!textComp.isLoaded()) {
+        unsigned int baseSize = textComp.getCharacterSize();
+        unsigned int highResSize = baseSize * 4;
+
+        textComp.getText().setCharacterSize(highResSize);
+
+        float scaleFactor = 1.0f / 4.0f;
+        
+        textComp.getText().setScale(scaleFactor, scaleFactor);
+
         textComp.getFont().loadFromFile(textComp.getFontFile());
         textComp.getText().setFont(textComp.getFont());
         textComp.getText().setString(textComp.getString());
-        textComp.getText().setCharacterSize(textComp.getCharacterSize());
         setPosition(entity, textComp.getText());
         setColor(entity, textComp.getText());
         sf::FloatRect bounds = textComp.getText().getLocalBounds();

@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <SmartBuffer.hpp>
+#include <string>
 
 class ProtocolClient {
   public:
@@ -12,7 +13,7 @@ class ProtocolClient {
 
     void handleMessage(SmartBuffer& smartBuffer);
 
-    void sendJoin();
+    void sendJoin(const std::string nickname);
     void sendMousePosition(sf::RenderWindow& window,
                            sf::Vector2i& lastMousePos);
     void sendKeyPressed(std::string keyName);

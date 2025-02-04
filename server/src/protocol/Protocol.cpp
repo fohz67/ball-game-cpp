@@ -7,6 +7,7 @@
 #include "managers/PlayerManager.hpp"
 #include "protocol/DataInterfaces.hpp"
 #include "protocol/OpCodes.hpp"
+#include "protocol/Handlers.hpp"
 
 Protocol& Protocol::get() {
     static Protocol instance;
@@ -26,30 +27,17 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
     switch (static_cast<OpCodes>(opcode)) {
 
     case OpCodes::JOIN: {
-        smartBuffer.reset();
-        smartBuffer << OpCodes::WORLD << Config::Gameplay::World::SIZE;
-
-        Network::get().sendToClient(client, smartBuffer);
-        sendPellets(client);
-
+        Handlers::handleJoin(client, smartBuffer);
         break;
     }
 
     case OpCodes::MOUSE_POSITION: {
-        double mouseX;
-        double mouseY;
-        smartBuffer >> mouseX >> mouseY;
-
-        PlayerManager::get().getPlayerByClient(client)->setMousePosition(
-            Vector2(mouseX, mouseY));
-
+        Handlers::handleMousePosition(client, smartBuffer);
         break;
     }
 
     case OpCodes::KEY_PRESSED: {
-        std::string keyName;
-        smartBuffer >> keyName;
-
+        Handlers::handleKeyPressed(client, smartBuffer);
         break;
     }
 
@@ -62,7 +50,7 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
 
 void Protocol::sendPlayer(const Player& player) {
     SmartBuffer smartBuffer;
-    smartBuffer << OpCodes::PLAYER << player.getId()
+    smartBuffer << OpCodes::PLAYER << player.getId() << player.getNickname()
                 << ColorServer::vecToInt(player.getColor())
                 << ColorServer::vecToInt(player.getCellColor());
 
@@ -84,7 +72,9 @@ void Protocol::sendPlayers(std::shared_ptr<asio::ip::tcp::socket> client) {
             smartBuffer << OpCodes::PLAYER;
         }
 
-        smartBuffer << OpCodes::PLAYER << player.getId()
+        std::cout << "Nickname: " << player.getNickname() << std::endl;
+
+        smartBuffer << OpCodes::PLAYER << player.getId() << player.getNickname()
                     << ColorServer::vecToInt(player.getColor())
                     << ColorServer::vecToInt(player.getCellColor());
     }

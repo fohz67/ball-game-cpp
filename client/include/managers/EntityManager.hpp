@@ -2,6 +2,7 @@
 
 #include <map>
 #include "Entity.hpp"
+#include "protocol/DataInterfaces.hpp"
 
 class EntityManager {
   public:
@@ -11,9 +12,8 @@ class EntityManager {
     static EntityManager& get();
 
     void createCell(uint32_t id, double x, double y, double radius,
-                    std::vector<double> color);
-    void updateCell(uint32_t id, double x, double y, double radius,
-                    std::vector<double> color);
+                    std::vector<double> color, std::string nickname);
+    void updateCell(uint32_t id, double x, double y, double radius, bool isNickname);
 
     void createWorld(uint16_t size);
 

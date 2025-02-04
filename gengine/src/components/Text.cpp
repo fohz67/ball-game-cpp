@@ -2,7 +2,7 @@
 #include <iostream>
 
 Text::Text(const std::string& text, const std::string& fontFile,
-           const uint16_t characterSize)
+           const double characterSize)
     : initText(text), fontFile(fontFile), charSize(characterSize),
       initSize(characterSize) {}
 
@@ -14,11 +14,11 @@ sf::Font& Text::getFont() {
     return this->font;
 }
 
-uint16_t Text::getCharacterSize() const {
+double Text::getCharacterSize() const {
     return this->charSize;
 }
 
-uint16_t Text::getInitCharacterSize() const {
+double Text::getInitCharacterSize() const {
     return this->initSize;
 }
 
@@ -38,7 +38,7 @@ void Text::setString(const std::string& val) {
     this->initText = val;
 }
 
-void Text::setCharacterSize(const uint16_t val) {
+void Text::setCharacterSize(const double val) {
     this->charSize = val;
 }
 

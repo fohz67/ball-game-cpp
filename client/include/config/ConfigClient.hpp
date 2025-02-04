@@ -18,6 +18,7 @@ struct ConfigClient {
         static inline const char* HOST = "127.0.0.1";
         static constexpr int PORT = 12345;
         static constexpr int MAX_SIZE = 1024;
+        static constexpr int ENTITY_LINKING_BIAS = 10000;
     };
 
     struct World {

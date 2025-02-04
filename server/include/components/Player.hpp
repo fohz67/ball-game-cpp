@@ -17,9 +17,11 @@ class Player {
     Vector2 getMousePosition() const;
     std::vector<double> getColor() const;
     std::vector<double> getCellColor() const;
+    std::string getNickname() const;
 
     void setViewport(const Vector2& newViewport);
     void setMousePosition(const Vector2& newMousePosition);
+    void setNickname(const std::string& newNickname);
 
   private:
     uint32_t id;
@@ -28,4 +30,5 @@ class Player {
     Vector2 mousePosition;
     std::vector<double> color;
     std::vector<double> cellColor;
+    std::string nickname;
 };

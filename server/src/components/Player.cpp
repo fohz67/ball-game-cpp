@@ -28,10 +28,18 @@ std::vector<double> Player::getCellColor() const {
     return cellColor;
 }
 
+std::string Player::getNickname() const {
+    return nickname;
+}
+
 void Player::setViewport(const Vector2& newViewport) {
     viewport = newViewport;
 }
 
 void Player::setMousePosition(const Vector2& newMousePosition) {
     mousePosition = newMousePosition;
+}
+
+void Player::setNickname(const std::string& newNickname) {
+    nickname = newNickname;
 }

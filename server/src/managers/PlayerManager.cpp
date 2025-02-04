@@ -25,11 +25,6 @@ PlayerManager::addPlayer(std::shared_ptr<asio::ip::tcp::socket> client) {
                          Config::Gameplay::Player::NICKNAME_COLOR,
                          CellManager::get().getRandomColor());
 
-    Protocol::get().sendPlayer(players.back());
-    Protocol::get().sendPlayers(client);
-
-    CellManager::get().createCell(playerId, CellType::PLAYER);
-
     return players.back();
 }
 

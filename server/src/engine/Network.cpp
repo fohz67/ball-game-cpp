@@ -26,12 +26,7 @@ void Network::doAccept() {
                 auto clientSocket =
                     std::make_shared<asio::ip::tcp::socket>(std::move(socket));
 
-                Player newPlayer = PlayerManager::get().addPlayer(clientSocket);
-
-                std::cout << "New player connected: " << newPlayer.getId()
-                          << " from " << clientSocket->remote_endpoint()
-                          << std::endl;
-
+                PlayerManager::get().addPlayer(clientSocket);
                 newClient(clientSocket);
             }
 
