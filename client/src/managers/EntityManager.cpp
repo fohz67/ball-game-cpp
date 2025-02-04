@@ -57,7 +57,7 @@ void EntityManager::createNickname(
 
 void EntityManager::updateCell(uint32_t id, double x, double y, double radius, bool isNickname) {
     GEngine::System         system;
-    std::pair<float, float> position = {x, y};
+    std::pair<double, double> position = {x, y};
 
     system.update(id, entities, GEngine::UpdateType::Position, position);
     system.update(id, entities, GEngine::UpdateType::ShapeSize, radius);

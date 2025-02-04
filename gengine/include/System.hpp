@@ -36,11 +36,11 @@ class System {
     template <typename Drawable>
     void updatePosition(Entity&                        entity,
                         Drawable&                      drawable,
-                        const std::pair<float, float>& pos,
+                        const std::pair<double, double>& pos,
                         const int&                     posId);
     void updateEntityPosition(int                            id,
                               std::map<double, Entity>&      entities,
-                              const std::pair<float, float>& pos,
+                              const std::pair<double, double>& pos,
                               int                            posId);
 
     // Texture
@@ -53,7 +53,7 @@ class System {
     // Link
     void linkSystem(int                       id,
                     std::map<double, Entity>& entities,
-                    std::pair<float, float>   newLinkedEntityPos,
+                    std::pair<double, double>   newLinkedEntityPos,
                     int                       posId);
 
     // Text
@@ -103,7 +103,7 @@ template <typename Drawable> void System::setPosition(Entity& entity, Drawable& 
 template <typename Drawable>
 void System::updatePosition(Entity&                        entity,
                             Drawable&                      drawable,
-                            const std::pair<float, float>& pos,
+                            const std::pair<double, double>& pos,
                             const int&                     posId) {
     if (entity.hasComponent<Position>()) {
         auto& positionComp = entity.getComponent<Position>();

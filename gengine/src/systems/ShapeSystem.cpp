@@ -76,7 +76,7 @@ void GEngine::System::shapeSystem(sf::RenderWindow& window, GEngine::Entity& ent
         auto& shapeComp    = entity.getComponent<Shape>();
         auto& positionComp = entity.getComponent<Position>();
 
-        static std::unordered_map<uint32_t, std::pair<float, float>> lastPositions;
+        static std::unordered_map<uint32_t, std::pair<double, double>> lastPositions;
 
         if (shapeComp.getShapeType() == Rectangle) {
             loadRectangle(entity, shapeComp);
