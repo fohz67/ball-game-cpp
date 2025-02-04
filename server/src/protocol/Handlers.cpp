@@ -18,6 +18,7 @@ void Handlers::handleJoin(std::shared_ptr<asio::ip::tcp::socket> client, SmartBu
 
     player.setNickname(nickname);
 
+    Protocol::get().sendMe(client);
     Protocol::get().sendPlayer(player);
     Protocol::get().sendPlayers(client);
     CellManager::get().createCell(player.getId(), CellType::PLAYER);

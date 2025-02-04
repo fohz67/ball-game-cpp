@@ -1,22 +1,33 @@
 #include <components/Sprite.hpp>
+#include <unordered_map>
 #include "System.hpp"
 
 void GEngine::System::loadSprite(GEngine::Entity& entity, auto& spriteComp, auto& textureComp) {
+    static std::unordered_map<std::string, sf::Texture> textureCache;
+
     if (!spriteComp.isLoaded()) {
+        if (textureCache.find(textureComp.getTexturePath()) == textureCache.end()) {
+            sf::Texture texture;
+
+            if (texture.loadFromFile(textureComp.getTexturePath())) {
+                textureCache[textureComp.getTexturePath()] = std::move(texture);
+            }
+        }
+
+        spriteComp.getSprite().setTexture(textureCache[textureComp.getTexturePath()]);
+
         if (textureComp.getTextureRect().size() == 4) {
             const auto& textureRect = textureComp.getTextureRect();
             spriteComp.getSprite().setTextureRect(
                 sf::IntRect(textureRect[0], textureRect[1], textureRect[2], textureRect[3]));
         }
 
-        spriteComp.getSprite().setTexture(textureComp.getTexture());
-        setPosition(entity, spriteComp.getSprite());
-
         if (spriteComp.getSize().first != -1 && spriteComp.getSize().second != -1) {
             spriteComp.getSprite().setScale(
                 spriteComp.getSize().first, spriteComp.getSize().second);
         }
 
+        setPosition(entity, spriteComp.getSprite());
         setColor(entity, spriteComp.getSprite());
         spriteComp.setLoaded(true);
     }
@@ -24,23 +35,22 @@ void GEngine::System::loadSprite(GEngine::Entity& entity, auto& spriteComp, auto
 
 void GEngine::System::spriteSystem(sf::RenderWindow& window, GEngine::Entity& entity) {
     if (entity.hasComponent<Sprite>() && entity.hasComponent<Texture>()) {
-        auto& spriteComp  = entity.getComponent<Sprite>();
-        auto& textureComp = entity.getComponent<Texture>();
-
-        if (!textureComp.isLoaded()) {
-            textureComp.getTexture().loadFromFile(textureComp.getTexturePath());
-            textureComp.setLoaded(true);
-        }
+        auto& spriteComp   = entity.getComponent<Sprite>();
+        auto& textureComp  = entity.getComponent<Texture>();
+        auto& positionComp = entity.getComponent<Position>();
 
         loadSprite(entity, spriteComp, textureComp);
 
-        auto& positionComp = entity.getComponent<Position>();
-        if (positionComp.getPositions().size() > 1) {
-            for (auto& position : positionComp.getPositions()) {
-                spriteComp.getSprite().setPosition(position.first, position.second);
-                window.draw(spriteComp.getSprite());
+        static std::unordered_map<uint32_t, std::pair<float, float>> lastPositions;
+
+        if (positionComp.getPositions().size() == 1) {
+            auto newPos = positionComp.getPositions()[0];
+
+            if (lastPositions[entity.getEntityId()] != newPos) {
+                spriteComp.getSprite().setPosition(newPos.first, newPos.second);
+                lastPositions[entity.getEntityId()] = newPos;
             }
-        } else {
+
             window.draw(spriteComp.getSprite());
         }
     }

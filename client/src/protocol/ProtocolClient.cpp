@@ -62,6 +62,11 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
         break;
     }
 
+    case OpCodes::ME: {
+        HandlersClient::handleMe(smartBuffer);
+        break;
+    }
+
     default:
         std::cout << "Unknown opcode received: " << static_cast<int>(opcode) << std::endl;
 

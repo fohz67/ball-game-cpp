@@ -14,4 +14,5 @@ enum class OpCodes : uint8_t {
     KEY_PRESSED,
     ENTITY_REMOVED,
     PLAYER_DELETED,
+    ME,
 };

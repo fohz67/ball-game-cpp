@@ -10,23 +10,27 @@ void GEngine::System::updateEntityPosition(const int                      id,
                                            const int                      posId) {
     linkSystem(id, entities, pos, posId);
 
-    if (!entities.contains(id)) {
+    auto it = entities.find(id);
+    if (it == entities.end())
         return;
-    }
 
-    Entity& entity = entities.at(id);
+    Entity& entity = it->second;
 
     if (entity.hasComponent<Sprite>()) {
         updatePosition(entity, entity.getComponent<Sprite>().getSprite(), pos, posId);
     }
 
     if (entity.hasComponent<Text>()) {
-        auto&         textComp = entity.getComponent<Text>();
-        sf::FloatRect bounds   = textComp.getText().getLocalBounds();
+        auto& textComp = entity.getComponent<Text>();
+        static std::unordered_map<uint32_t, std::pair<float, float>> lastPositions;
 
-        textComp.getText().setOrigin(
-            bounds.left + bounds.width / 2, bounds.top + bounds.height / 2);
-        textComp.getText().setPosition(pos.first, pos.second);
+        if (lastPositions[entity.getEntityId()] != pos) {
+            sf::FloatRect bounds = textComp.getText().getLocalBounds();
+            textComp.getText().setOrigin(
+                bounds.left + bounds.width / 2, bounds.top + bounds.height / 2);
+            textComp.getText().setPosition(pos.first, pos.second);
+            lastPositions[entity.getEntityId()] = pos;
+        }
     }
 
     if (entity.hasComponent<Shape>()) {
@@ -51,10 +55,20 @@ void GEngine::System::updateText(Entity& entity, const std::string& text) {
 }
 
 void GEngine::System::updateTextFont(Entity& entity, const std::string& font) {
+    static std::unordered_map<std::string, sf::Font> fontCache;
+
     if (entity.hasComponent<Text>()) {
         auto& textComp = entity.getComponent<Text>();
 
-        textComp.getFont().loadFromFile(font);
+        if (fontCache.find(font) == fontCache.end()) {
+            sf::Font newFont;
+
+            if (newFont.loadFromFile(font)) {
+                fontCache[font] = std::move(newFont);
+            }
+        }
+
+        textComp.getText().setFont(fontCache[font]);
         textComp.setFontFile(font);
     }
 }
@@ -80,26 +94,36 @@ void GEngine::System::updateTextSize(const int                 id,
 }
 
 void GEngine::System::updateTexture(Entity& entity, std::string& texture) {
+    static std::unordered_map<std::string, sf::Texture> textureCache;
+
     if (entity.hasComponent<Texture>()) {
         auto& textureComp = entity.getComponent<Texture>();
 
+        if (textureCache.find(texture) == textureCache.end()) {
+            sf::Texture newTexture;
+
+            if (newTexture.loadFromFile(texture)) {
+                textureCache[texture] = std::move(newTexture);
+            }
+        }
+
         textureComp.setTexturePath(texture);
-        textureComp.getTexture().loadFromFile(textureComp.getTexturePath());
+        textureComp.getTexture() = textureCache[texture];
 
         if (entity.hasComponent<Sprite>()) {
             auto& spriteComp = entity.getComponent<Sprite>();
-            spriteComp.getSprite().setTexture(textureComp.getTexture());
+            spriteComp.getSprite().setTexture(textureCache[texture]);
         }
 
         if (entity.hasComponent<Shape>()) {
             auto& shapeComp = entity.getComponent<Shape>();
 
             if (shapeComp.getShapeType() == Circle) {
-                shapeComp.getCircle().setTexture(&textureComp.getTexture());
+                shapeComp.getCircle().setTexture(&textureCache[texture]);
             }
 
             if (shapeComp.getShapeType() == Rectangle) {
-                shapeComp.getRect().setTexture(&textureComp.getTexture());
+                shapeComp.getRect().setTexture(&textureCache[texture]);
             }
         }
     }
@@ -123,42 +147,33 @@ void GEngine::System::update(const double              id,
                              const UpdateType          type,
                              const std::any&           value,
                              const int                 posId) {
-    if (!entities.contains(id)) {
+    auto it = entities.find(id);
+    if (it == entities.end())
         return;
-    }
 
-    Entity& entity = entities.at(id);
+    Entity& entity = it->second;
 
     switch (type) {
-    case UpdateType::Position: {
+    case UpdateType::Position:
         updateEntityPosition(id, entities, std::any_cast<std::pair<float, float>>(value), posId);
         break;
-    }
-    case UpdateType::Text: {
-        auto text = std::any_cast<std::string>(value);
-        updateText(entity, text);
+    case UpdateType::Text:
+        updateText(entity, std::any_cast<std::string>(value));
         break;
-    }
-    case UpdateType::TextSize: {
-        auto textSize = std::any_cast<unsigned int>(value);
-        updateTextSize(id, entities, textSize);
+    case UpdateType::TextSize:
+        updateTextSize(id, entities, std::any_cast<unsigned int>(value));
         break;
-    }
-    case UpdateType::TextFont: {
-        auto textFont = std::any_cast<std::string>(value);
-        updateTextFont(entity, textFont);
+    case UpdateType::TextFont:
+        updateTextFont(entity, std::any_cast<std::string>(value));
         break;
-    }
     case UpdateType::Texture: {
-        auto texture = std::any_cast<std::string>(value);
-        updateTexture(entity, texture);
+        auto val = std::any_cast<std::string>(value);
+        updateTexture(entity, val);
         break;
     }
-    case UpdateType::ShapeSize: {
-        auto shapeSize = std::any_cast<double>(value);
-        updateShapeSize(entity, shapeSize);
+    case UpdateType::ShapeSize:
+        updateShapeSize(entity, std::any_cast<double>(value));
         break;
-    }
     default:
         break;
     }

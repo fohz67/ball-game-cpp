@@ -24,6 +24,7 @@ class Protocol {
     void sendViewport();
     void sendEntityRemoved(const std::vector<uint32_t>& deletedCellsIds);
     void sendPlayerDeleted(uint32_t playerId);
+    void sendMe(std::shared_ptr<asio::ip::tcp::socket> client);
 
   private:
     Protocol()  = default;

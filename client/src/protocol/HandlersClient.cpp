@@ -38,22 +38,41 @@ void HandlersClient::handlePlayer(SmartBuffer& smartBuffer) {
 }
 
 void HandlersClient::handleCell(SmartBuffer& smartBuffer) {
-    uint32_t            actualOwnrId   = 0;
+    uint32_t            actualOwnerId  = 0;
     std::vector<double> actualColor    = {};
     std::string         actualNickname = "";
+    long                actualMass     = 0;
+    long                actualScore    = 0;
+    bool                isMe           = false;
 
     size_t cellsNb = NetworkClient::get().getCutPacketSize(smartBuffer, sizeof(CellInterface));
+
+    auto* myPlayer    = PlayerManagerClient::get().getMe();
+    long  myTotalMass = 0;
+    long  myMaxScore  = myPlayer ? myPlayer->getScore() : 0;
 
     for (size_t i = 0; i < cellsNb; i++) {
         CellInterface cell;
         smartBuffer >> cell.id >> cell.ownerId >> cell.x >> cell.y >> cell.radius;
 
-        if (cell.ownerId != actualOwnrId) {
-            const auto player = PlayerManagerClient::get().getPlayer(cell.ownerId);
+        if (cell.ownerId != actualOwnerId) {
+            actualOwnerId = cell.ownerId;
+            auto* player  = PlayerManagerClient::get().getPlayer(cell.ownerId);
 
-            actualOwnrId   = cell.ownerId;
-            actualColor    = player->getCellColor();
-            actualNickname = player->getNickname();
+            if (player) {
+                actualColor    = player->getCellColor();
+                actualNickname = player->getNickname();
+            }
+
+            actualMass = cell.radius * cell.radius / M_PI;
+        } else {
+            actualMass += cell.radius * cell.radius / M_PI;
+        }
+
+        if (cell.ownerId == PlayerManagerClient::get().getMyId()) {
+            isMe = true;
+            myTotalMass += cell.radius * cell.radius / M_PI;
+            myMaxScore = std::max(myMaxScore, myTotalMass);
         }
 
         if (EntityManager::get().entities.find(cell.id) == EntityManager::get().entities.end()) {
@@ -62,6 +81,11 @@ void HandlersClient::handleCell(SmartBuffer& smartBuffer) {
         } else {
             EntityManager::get().updateCell(cell.id, cell.x, cell.y, cell.radius, true);
         }
+    }
+
+    if (isMe && myPlayer) {
+        myPlayer->setMass(myTotalMass);
+        myPlayer->setScore(myMaxScore);
     }
 }
 
@@ -101,4 +125,11 @@ void HandlersClient::handlePlayerDeleted(SmartBuffer& smartBuffer) {
     smartBuffer >> entity.id;
 
     PlayerManagerClient::get().removePlayer(entity.id);
+}
+
+void HandlersClient::handleMe(SmartBuffer& smartBuffer) {
+    EntityInterface entity;
+    smartBuffer >> entity.id;
+
+    PlayerManagerClient::get().setMyId(entity.id);
 }

@@ -101,6 +101,13 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
   - `entityId` (uint32_t): ID of the entity.
 - **Sent To**: All clients.
 
+### 10. **ME**
+- **Value**: `10`
+- **Description**: Return the ID of the current client associated with the player
+- **Payload**:
+  - `id` (uint32_t): ID of the player.
+- **Sent To**: Client.
+
 ---
 
 ## Notes

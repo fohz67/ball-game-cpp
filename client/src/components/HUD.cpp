@@ -9,6 +9,7 @@
 #include "engine/NetworkClient.hpp"
 #include "managers/EntityManager.hpp"
 #include "managers/PlayerManagerClient.hpp"
+#include "protocol/ProtocolClient.hpp"
 
 HUD& HUD::get() {
     static HUD instance;
@@ -23,15 +24,15 @@ void HUD::create() {
 
 void HUD::update() {
     static auto lastUpdate = std::chrono::high_resolution_clock::now();
-
-    auto now     = std::chrono::high_resolution_clock::now();
-    auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(now - lastUpdate);
+    auto        now        = std::chrono::high_resolution_clock::now();
+    auto        elapsed    = std::chrono::duration_cast<std::chrono::seconds>(now - lastUpdate);
 
     if (elapsed.count() < 1) {
         return;
     }
     lastUpdate = now;
 
+    ProtocolClient::get().sendPing();
     updateStats();
 }
 
@@ -162,16 +163,21 @@ void HUD::updateStats() {
     GEngine::System system;
     double          bias = ConfigClient::World::ID +
                   (leaderboardEntities.size() * ConfigClient::Network::ENTITY_LINKING_BIAS);
+    auto me = PlayerManagerClient::get().getMe();
 
     bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 3;
 
-    system.update(
-        bias, EntityManager::get().entities, GEngine::UpdateType::Text, std::to_string(0));
+    system.update(bias,
+                  EntityManager::get().entities,
+                  GEngine::UpdateType::Text,
+                  std::to_string(me->getScore()));
 
     bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
 
-    system.update(
-        bias, EntityManager::get().entities, GEngine::UpdateType::Text, std::to_string(0));
+    system.update(bias,
+                  EntityManager::get().entities,
+                  GEngine::UpdateType::Text,
+                  std::to_string(me->getMass()));
 
     bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
 

@@ -12,4 +12,5 @@ class HandlersClient {
     static void handleViewport(SmartBuffer& smartBuffer);
     static void handleEntityRemoved(SmartBuffer& smartBuffer);
     static void handlePlayerDeleted(SmartBuffer& smartBuffer);
+    static void handleMe(SmartBuffer& smartBuffer);
 };

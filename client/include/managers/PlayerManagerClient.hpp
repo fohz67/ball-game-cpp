@@ -10,12 +10,19 @@ class PlayerManagerClient {
 
     static PlayerManagerClient& get();
 
-    void          removePlayer(uint32_t playerId);
+    void removePlayer(uint32_t playerId);
+
     PlayerClient* getPlayer(uint32_t playerId);
+    PlayerClient* getMe();
+    uint32_t      getMyId();
+
+    void setMyId(uint32_t id);
 
     std::vector<PlayerClient> players;
 
   private:
     PlayerManagerClient()  = default;
     ~PlayerManagerClient() = default;
+
+    uint32_t myId;
 };

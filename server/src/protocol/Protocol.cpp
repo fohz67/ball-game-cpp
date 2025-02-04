@@ -189,3 +189,10 @@ void Protocol::sendPlayerDeleted(uint32_t playerId) {
 
     Network::get().sendToAll(smartBuffer);
 }
+
+void Protocol::sendMe(std::shared_ptr<asio::ip::tcp::socket> client) {
+    SmartBuffer smartBuffer;
+    smartBuffer << OpCodes::ME << PlayerManager::get().getPlayerByClient(client)->getId();
+
+    Network::get().sendToClient(client, smartBuffer);
+}

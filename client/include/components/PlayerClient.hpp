@@ -15,12 +15,18 @@ class PlayerClient {
     std::string         getNickname() const;
     std::vector<double> getColor() const;
     std::vector<double> getCellColor() const;
+    long                getMass() const;
+    long                getScore() const;
 
     void setNickname(const std::string& nickname);
+    void setMass(long newMass);
+    void setScore(long newScore);
 
   private:
     uint32_t            id;
     std::string         nickname;
     std::vector<double> color;
     std::vector<double> cellColor;
+    long                mass;
+    long                score;
 };

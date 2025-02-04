@@ -1,4 +1,5 @@
 #include <components/Text.hpp>
+#include <unordered_map>
 #include "System.hpp"
 
 void GEngine::System::loadText(GEngine::Entity& entity, auto& textComp) {

@@ -54,7 +54,7 @@ struct ConfigClient {
         static inline const std::vector<double> TEXT_COLOR       = {255, 255, 255, 255};
 
         struct Stats {
-            static constexpr double                 WIDTH       = 180.0f;
+            static constexpr double                 WIDTH       = 210.0f;
             static constexpr double                 HEIGHT      = 180.0f;
             static inline const std::string         TITLE       = "Stats";
             static constexpr double                 LABEL_SIZE  = 18.0f;
