@@ -6,11 +6,11 @@ PlayerManagerClient& PlayerManagerClient::get() {
 }
 
 void PlayerManagerClient::removePlayer(uint32_t playerId) {
-    players.erase(std::remove_if(players.begin(), players.end(),
-                                 [playerId](const PlayerClient& p) {
-                                     return p.getId() == playerId;
-                                 }),
-                  players.end());
+    players.erase(
+        std::remove_if(players.begin(),
+                       players.end(),
+                       [playerId](const PlayerClient& p) { return p.getId() == playerId; }),
+        players.end());
 }
 
 PlayerClient* PlayerManagerClient::getPlayer(uint32_t playerId) {

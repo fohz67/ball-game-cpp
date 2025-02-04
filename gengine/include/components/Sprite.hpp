@@ -16,8 +16,8 @@ class Sprite : public Component {
 
     // Getters
     std::string getTexturePath() const;
-    Point getSize() const;
-    bool isLoaded() const;
+    Point       getSize() const;
+    bool        isLoaded() const;
     sf::Sprite& getSprite();
 
     // Setters
@@ -35,7 +35,7 @@ class Sprite : public Component {
 
     // Attributes
     std::string texturePath;
-    Point size;
-    sf::Sprite sprite;
-    bool loaded = DEFAULT_LOADED;
+    Point       size;
+    sf::Sprite  sprite;
+    bool        loaded = DEFAULT_LOADED;
 };

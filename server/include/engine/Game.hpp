@@ -5,7 +5,7 @@
 
 class Game {
   public:
-    Game(const Game&) = delete;
+    Game(const Game&)            = delete;
     Game& operator=(const Game&) = delete;
 
     static Game& get();
@@ -16,7 +16,7 @@ class Game {
     void moveUpdate(const Player& player);
 
   private:
-    Game() = default;
+    Game()  = default;
     ~Game() = default;
 
     std::thread updateThread;

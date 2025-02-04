@@ -4,7 +4,7 @@
 
 class Zoom {
   public:
-    Zoom(const Zoom&) = delete;
+    Zoom(const Zoom&)            = delete;
     Zoom& operator=(const Zoom&) = delete;
 
     static Zoom& get();
@@ -12,7 +12,7 @@ class Zoom {
     void setZoom(double delta, sf::View& view);
 
   private:
-    Zoom() = default;
+    Zoom()  = default;
     ~Zoom() = default;
 
     double currentZoom;

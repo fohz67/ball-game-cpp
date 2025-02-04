@@ -12,13 +12,13 @@ class Slider : public Component {
     ~Slider() = default;
 
     // Getters
-    Point getSize() const;
+    Point               getSize() const;
     sf::RectangleShape& getBarShape();
-    sf::CircleShape& getCursorShape();
-    int getValue() const;
-    double getMinValue() const;
-    double getMaxValue() const;
-    bool isLoaded() const;
+    sf::CircleShape&    getCursorShape();
+    int                 getValue() const;
+    double              getMinValue() const;
+    double              getMaxValue() const;
+    bool                isLoaded() const;
 
     // Setters
     void setSize(const Point val);
@@ -39,12 +39,12 @@ class Slider : public Component {
     static constexpr bool DEFAULT_LOADED = false;
 
     // Attributes
-    sf::RectangleShape barShape;
-    sf::CircleShape cursorShape;
-    Point size;
-    double min;
-    double max;
-    double current;
-    bool loaded = DEFAULT_LOADED;
+    sf::RectangleShape          barShape;
+    sf::CircleShape             cursorShape;
+    Point                       size;
+    double                      min;
+    double                      max;
+    double                      current;
+    bool                        loaded = DEFAULT_LOADED;
     std::function<void(double)> callback;
 };

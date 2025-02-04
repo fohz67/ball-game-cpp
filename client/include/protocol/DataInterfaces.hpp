@@ -8,25 +8,25 @@ struct WorldInterface {
 };
 
 struct PlayerInterface {
-    uint32_t id;
+    uint32_t    id;
     std::string nickname;
-    uint32_t color;
-    uint32_t cellColor;
+    uint32_t    color;
+    uint32_t    cellColor;
 };
 
 struct CellInterface {
     uint32_t id;
     uint32_t ownerId;
-    double x;
-    double y;
-    double radius;
+    double   x;
+    double   y;
+    double   radius;
 };
 
 struct PelletInterface {
     uint32_t id;
-    double x;
-    double y;
-    double radius;
+    double   x;
+    double   y;
+    double   radius;
     uint32_t color;
 };
 

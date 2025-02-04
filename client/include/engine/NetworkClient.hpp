@@ -6,7 +6,7 @@
 
 class NetworkClient {
   public:
-    NetworkClient(const NetworkClient&) = delete;
+    NetworkClient(const NetworkClient&)            = delete;
     NetworkClient& operator=(const NetworkClient&) = delete;
 
     static NetworkClient& get();
@@ -23,9 +23,9 @@ class NetworkClient {
 
     void receive();
 
-    asio::io_context io_context;
+    asio::io_context      io_context;
     asio::ip::tcp::socket socket;
-    std::string host;
-    unsigned short port;
-    std::thread networkThread;
+    std::string           host;
+    unsigned short        port;
+    std::thread           networkThread;
 };

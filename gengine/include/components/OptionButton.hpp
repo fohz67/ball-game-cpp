@@ -15,10 +15,10 @@ class OptionButton : public Component {
     ~OptionButton() = default;
 
     // Getters
-    Point getSize() const;
+    Point               getSize() const;
     sf::RectangleShape& getShape();
-    bool isLoaded() const;
-    bool isChecked() const;
+    bool                isLoaded() const;
+    bool                isChecked() const;
 
     // Setters
     void setSize(const Point size);
@@ -36,9 +36,9 @@ class OptionButton : public Component {
     static constexpr bool DEFAULT_LOADED = false;
 
     // Attributes
-    sf::RectangleShape optionbutton;
-    Point size;
+    sf::RectangleShape    optionbutton;
+    Point                 size;
     std::function<void()> callback;
-    bool loaded = DEFAULT_LOADED;
-    bool checked = DEFAULT_LOADED;
+    bool                  loaded  = DEFAULT_LOADED;
+    bool                  checked = DEFAULT_LOADED;
 };

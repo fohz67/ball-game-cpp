@@ -14,7 +14,7 @@ GameClient& GameClient::get() {
 
 void GameClient::run() {
     GEngine::System system;
-    sf::Vector2i lastMousePos = sf::Mouse::getPosition(window);
+    sf::Vector2i    lastMousePos = sf::Mouse::getPosition(window);
 
     initWindow();
     initView();
@@ -28,8 +28,7 @@ void GameClient::run() {
 }
 
 void GameClient::initWindow() {
-    window.create(sf::VideoMode(ConfigClient::Window::WIDTH,
-                                ConfigClient::Window::HEIGHT),
+    window.create(sf::VideoMode(ConfigClient::Window::WIDTH, ConfigClient::Window::HEIGHT),
                   ConfigClient::Window::NAME);
     window.setVerticalSyncEnabled(true);
     window.setFramerateLimit(ConfigClient::Game::FRAME_RATE);
@@ -37,8 +36,7 @@ void GameClient::initWindow() {
 
 void GameClient::initView() {
     view.setSize(ConfigClient::Window::WIDTH, ConfigClient::Window::HEIGHT);
-    view.setCenter(ConfigClient::Window::WIDTH / 2,
-                   ConfigClient::Window::HEIGHT / 2);
+    view.setCenter(ConfigClient::Window::WIDTH / 2, ConfigClient::Window::HEIGHT / 2);
     window.setView(view);
 }
 
@@ -51,8 +49,7 @@ void GameClient::processEvents() {
             return;
         }
         if (event.type == sf::Event::KeyPressed) {
-            ProtocolClient::get().sendKeyPressed(
-                Hotkeys::keyToString(event.key.code));
+            ProtocolClient::get().sendKeyPressed(Hotkeys::keyToString(event.key.code));
         }
         if (event.type == sf::Event::MouseWheelScrolled) {
             if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel) {
@@ -63,13 +60,25 @@ void GameClient::processEvents() {
 }
 
 void GameClient::render(GEngine::System& system) {
-    view.setCenter(Viewport::get().getPreviousViewport().first,
-                   Viewport::get().getPreviousViewport().second);
+    view.setCenter(
+        Viewport::get().getPreviousViewport().first, Viewport::get().getPreviousViewport().second);
 
     window.setView(view);
     window.clear();
+    std::map<double, GEngine::Entity> gameEntities = EntityManager::get().getGameEntities();
+    system.render(window, gameEntities);
 
-    system.render(window, EntityManager::get().entities);
+    window.setView(window.getDefaultView());
+    std::map<double, GEngine::Entity> hudEntities = EntityManager::get().getHUDEntities();
+    system.render(window, hudEntities);
 
     window.display();
+}
+
+sf::RenderWindow& GameClient::getWindow() {
+    return window;
+}
+
+sf::View& GameClient::getView() {
+    return view;
 }

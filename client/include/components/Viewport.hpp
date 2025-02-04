@@ -5,7 +5,7 @@
 
 class Viewport {
   public:
-    Viewport(const Viewport&) = delete;
+    Viewport(const Viewport&)            = delete;
     Viewport& operator=(const Viewport&) = delete;
 
     static Viewport& get();
@@ -18,7 +18,7 @@ class Viewport {
     void applyInterpolation();
 
   private:
-    Viewport() = default;
+    Viewport()  = default;
     ~Viewport() = default;
 
     Point viewport{0.0f, 0.0f};

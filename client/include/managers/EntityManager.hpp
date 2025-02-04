@@ -6,23 +6,30 @@
 
 class EntityManager {
   public:
-    EntityManager(const EntityManager&) = delete;
+    EntityManager(const EntityManager&)            = delete;
     EntityManager& operator=(const EntityManager&) = delete;
 
     static EntityManager& get();
 
-    void createCell(uint32_t id, double x, double y, double radius,
-                    std::vector<double> color, std::string nickname);
-    void updateCell(uint32_t id, double x, double y, double radius,
-                    bool isNickname);
-
+    void createCell(uint32_t            id,
+                    double              x,
+                    double              y,
+                    double              radius,
+                    std::vector<double> color,
+                    std::string         nickname);
+    void createNickname(uint32_t id, double x, double y, double radius, std::string nickname);
     void createWorld(uint16_t size);
 
-    void removeEntity(uint32_t id);
+    void updateCell(uint32_t id, double x, double y, double radius, bool isNickname);
 
-    std::map<int, GEngine::Entity> entities;
+    void                              removeEntity(double id);
+    std::map<double, GEngine::Entity> getGameEntities() const;
+    std::map<double, GEngine::Entity> getHUDEntities() const;
+    std::map<double, GEngine::Entity> entities;
 
   private:
-    EntityManager() = default;
+    EntityManager()  = default;
     ~EntityManager() = default;
+
+    std::map<double, int> entitiesLinkingBiases;
 };

@@ -17,11 +17,11 @@ void PlayerManager::updatePlayers() {
     }
 }
 
-Player&
-PlayerManager::addPlayer(std::shared_ptr<asio::ip::tcp::socket> client) {
+Player& PlayerManager::addPlayer(std::shared_ptr<asio::ip::tcp::socket> client) {
     uint32_t playerId = AtomicIdsManager::get().getNextId();
 
-    players.emplace_back(playerId, client,
+    players.emplace_back(playerId,
+                         client,
                          Config::Gameplay::Player::NICKNAME_COLOR,
                          CellManager::get().getRandomColor());
 
@@ -29,10 +29,9 @@ PlayerManager::addPlayer(std::shared_ptr<asio::ip::tcp::socket> client) {
 }
 
 void PlayerManager::removePlayer(uint32_t playerId) {
-    players.erase(std::remove_if(players.begin(), players.end(),
-                                 [playerId](const Player& p) {
-                                     return p.getId() == playerId;
-                                 }),
+    players.erase(std::remove_if(players.begin(),
+                                 players.end(),
+                                 [playerId](const Player& p) { return p.getId() == playerId; }),
                   players.end());
 
     Protocol::get().sendPlayerDeleted(playerId);
@@ -40,8 +39,7 @@ void PlayerManager::removePlayer(uint32_t playerId) {
     AtomicIdsManager::get().removeId(playerId);
 }
 
-Player* PlayerManager::getPlayerByClient(
-    std::shared_ptr<asio::ip::tcp::socket> client) {
+Player* PlayerManager::getPlayerByClient(std::shared_ptr<asio::ip::tcp::socket> client) {
     for (auto& player : players) {
         if (player.getClient() == client) {
             return &player;

@@ -3,10 +3,13 @@
 #include "config/Config.hpp"
 #include "geometry/FastInvSqrt.hpp"
 
-Cell::Cell(uint32_t id, uint32_t ownerId, CellType type, Vector2& pos,
-           double mass, std::vector<double> color)
-    : id(id), ownerId(ownerId), type(type), pos(pos), mass(mass), color(color) {
-}
+Cell::Cell(uint32_t            id,
+           uint32_t            ownerId,
+           CellType            type,
+           Vector2&            pos,
+           double              mass,
+           std::vector<double> color)
+    : id(id), ownerId(ownerId), type(type), pos(pos), mass(mass), color(color) {}
 
 uint32_t Cell::getId() const {
     return id;
@@ -59,15 +62,13 @@ void Cell::decay() {
 }
 
 void Cell::move(const Vector2& dir, const double speed) {
-    Vector2 newPos(pos + dir * speed);
-    std::vector<double> boundaries = World::getWorldBoundaries();
-    double limitRadius = getRadius() * 2;
+    Vector2             newPos(pos + dir * speed);
+    std::vector<double> boundaries  = World::getWorldBoundaries();
+    double              limitRadius = getRadius() * 2;
 
-    newPos.x = std::max(boundaries[0],
-                        std::min(boundaries[1] - limitRadius, newPos.x));
-    newPos.y = std::max(boundaries[2],
-                        std::min(boundaries[3] - limitRadius, newPos.y));
-    pos = newPos;
+    newPos.x = std::max(boundaries[0], std::min(boundaries[1] - limitRadius, newPos.x));
+    newPos.y = std::max(boundaries[2], std::min(boundaries[3] - limitRadius, newPos.y));
+    pos      = newPos;
 }
 
 bool Cell::canEat(const Cell& other) const {
@@ -76,10 +77,9 @@ bool Cell::canEat(const Cell& other) const {
     }
 
     Vector2 diff(getCenter() - other.getCenter());
-    double distanceSquared = diff.dot(diff);
-    double minEatDistance =
-        getRadius() -
-        (other.getRadius() * Config::Gameplay::Eat::Eat::RESOLVE_OVERLAP);
+    double  distanceSquared = diff.dot(diff);
+    double  minEatDistance =
+        getRadius() - (other.getRadius() * Config::Gameplay::Eat::Eat::RESOLVE_OVERLAP);
 
     return distanceSquared < minEatDistance * minEatDistance;
 }

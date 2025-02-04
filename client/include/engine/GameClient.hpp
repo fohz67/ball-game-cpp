@@ -5,15 +5,18 @@
 
 class GameClient {
   public:
-    GameClient(const GameClient&) = delete;
+    GameClient(const GameClient&)            = delete;
     GameClient& operator=(const GameClient&) = delete;
 
     static GameClient& get();
 
     void run();
 
+    sf::RenderWindow& getWindow();
+    sf::View&         getView();
+
   private:
-    GameClient() = default;
+    GameClient()  = default;
     ~GameClient() = default;
 
     void initWindow();
@@ -22,5 +25,5 @@ class GameClient {
     void render(GEngine::System& system);
 
     sf::RenderWindow window;
-    sf::View view;
+    sf::View         view;
 };

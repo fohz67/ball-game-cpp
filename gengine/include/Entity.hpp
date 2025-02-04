@@ -17,29 +17,26 @@ class Entity {
 
     // Template methods
     template <typename... Args> Entity(uint32_t id, Args&&... args);
-    template <typename ComponentType>
-    void addComponent(const ComponentType& component);
-    template <typename ComponentType> void removeComponent();
+    template <typename ComponentType> void           addComponent(const ComponentType& component);
+    template <typename ComponentType> void           removeComponent();
     template <typename ComponentType> ComponentType& getComponent();
-    template <typename ComponentType> bool hasComponent() const;
+    template <typename ComponentType> bool           hasComponent() const;
 
     // Methods
-    void displayComponents() const;
+    void     displayComponents() const;
     uint32_t getEntityId() const;
 
   private:
     // Attributes
-    uint32_t id;
+    uint32_t                                                        id;
     std::unordered_map<std::type_index, std::shared_ptr<Component>> components;
 };
 
-template <typename... Args>
-Entity::Entity(const uint32_t id, Args&&... args) : id(id) {
+template <typename... Args> Entity::Entity(const uint32_t id, Args&&... args) : id(id) {
     (addComponent(std::forward<Args>(args)), ...);
 }
 
-template <typename ComponentType>
-void Entity::addComponent(const ComponentType& component) {
+template <typename ComponentType> void Entity::addComponent(const ComponentType& component) {
     const auto found = components.find(std::type_index(typeid(ComponentType)));
 
     if (found == components.end()) {
@@ -72,8 +69,7 @@ template <typename ComponentType> ComponentType& Entity::getComponent() {
 }
 
 template <typename ComponentType> bool Entity::hasComponent() const {
-    return components.find(std::type_index(typeid(ComponentType))) !=
-           components.end();
+    return components.find(std::type_index(typeid(ComponentType))) != components.end();
 }
 
 }; // namespace GEngine

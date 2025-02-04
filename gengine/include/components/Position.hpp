@@ -17,8 +17,8 @@ class Position : public Component {
 
     // Getters
     std::vector<Point> getPositions() const;
-    double getPositionX(const uint32_t id) const;
-    double getPositionY(const uint32_t id) const;
+    double             getPositionX(const uint32_t id) const;
+    double             getPositionY(const uint32_t id) const;
 
     // Setters
     void setPositionX(const uint32_t id, const double x);

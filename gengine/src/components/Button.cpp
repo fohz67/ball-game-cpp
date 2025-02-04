@@ -1,8 +1,7 @@
 #include "components/Button.hpp"
 #include <iostream>
 
-Button::Button(const std::string text, const std::string fontFile,
-               const uint16_t characterSize)
+Button::Button(const std::string text, const std::string fontFile, const uint16_t characterSize)
     : initText(text), fontFile(fontFile), characterSize(characterSize) {}
 
 sf::RectangleShape& Button::getButton() {
@@ -50,8 +49,8 @@ void Button::setCallback(const std::function<void()> val) {
 }
 
 bool Button::isHovered(const sf::Vector2i mousePos) const {
-    return button.getGlobalBounds().contains(static_cast<float>(mousePos.x),
-                                             static_cast<float>(mousePos.y));
+    return button.getGlobalBounds().contains(
+        static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
 }
 
 void Button::display() const {

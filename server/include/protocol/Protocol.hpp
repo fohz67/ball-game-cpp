@@ -8,15 +8,14 @@
 
 class Protocol {
   public:
-    Protocol(const Protocol&) = delete;
+    Protocol(const Protocol&)            = delete;
     Protocol& operator=(const Protocol&) = delete;
 
     static Protocol& get();
 
     void injector(char* buffer, size_t length, SmartBuffer& smartBuffer);
 
-    void handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
-                       SmartBuffer& smartBuffer);
+    void handleMessage(std::shared_ptr<asio::ip::tcp::socket> client, SmartBuffer& smartBuffer);
 
     void sendPlayer(const Player& player);
     void sendPlayers(std::shared_ptr<asio::ip::tcp::socket> client);
@@ -27,6 +26,6 @@ class Protocol {
     void sendPlayerDeleted(uint32_t playerId);
 
   private:
-    Protocol() = default;
+    Protocol()  = default;
     ~Protocol() = default;
 };

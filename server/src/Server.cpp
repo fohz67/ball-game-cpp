@@ -10,8 +10,7 @@ Server& Server::get() {
 }
 
 void Server::run() {
-    std::cout << "Server is running on port " << Config::Network::PORT
-              << std::endl;
+    std::cout << "Server is running on port " << Config::Network::PORT << std::endl;
 
     Game::get().run();
     Network::get().run();

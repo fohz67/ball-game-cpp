@@ -18,14 +18,13 @@ void NetworkClient::init(std::string ip, unsigned short port) {
 
 void NetworkClient::run() {
     try {
-        asio::ip::tcp::resolver resolver(io_context);
+        asio::ip::tcp::resolver               resolver(io_context);
         asio::ip::tcp::resolver::results_type endpoints =
             resolver.resolve(host, std::to_string(port));
 
         asio::connect(socket, endpoints);
 
-        std::cout << "Connected to server: " << host << ":" << port
-                  << std::endl;
+        std::cout << "Connected to server: " << host << ":" << port << std::endl;
 
         networkThread = std::thread(&NetworkClient::receive, this);
     } catch (const std::exception& e) {
@@ -35,8 +34,7 @@ void NetworkClient::run() {
 
 void NetworkClient::send(SmartBuffer& smartBuffer) {
     try {
-        asio::write(socket, asio::buffer(smartBuffer.getBuffer(),
-                                         smartBuffer.getSize()));
+        asio::write(socket, asio::buffer(smartBuffer.getBuffer(), smartBuffer.getSize()));
     } catch (const std::exception& e) {
         std::cerr << "Send error: " << e.what() << std::endl;
     }
@@ -50,8 +48,7 @@ void NetworkClient::receive() {
             asio::error_code error;
 
             uint32_t packetSize;
-            asio::read(socket, asio::buffer(&packetSize, sizeof(packetSize)),
-                       error);
+            asio::read(socket, asio::buffer(&packetSize, sizeof(packetSize)), error);
             if (error) {
                 throw asio::system_error(error);
             }
@@ -72,7 +69,6 @@ void NetworkClient::receive() {
     }
 }
 
-uint32_t NetworkClient::getCutPacketSize(SmartBuffer smartBuffer,
-                                         uint32_t size) const {
+uint32_t NetworkClient::getCutPacketSize(SmartBuffer smartBuffer, uint32_t size) const {
     return (smartBuffer.getSize() - sizeof(OpCodes)) / size;
 }

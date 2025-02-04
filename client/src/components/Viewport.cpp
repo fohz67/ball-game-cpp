@@ -19,8 +19,8 @@ Point Viewport::getPreviousViewport() const {
 }
 
 void Viewport::applyInterpolation() {
-    previousViewport.first += (viewport.first - previousViewport.first) *
-                              ConfigClient::Game::CAMERA_INTERPOLATE_FACTOR;
-    previousViewport.second += (viewport.second - previousViewport.second) *
-                               ConfigClient::Game::CAMERA_INTERPOLATE_FACTOR;
+    previousViewport.first +=
+        (viewport.first - previousViewport.first) * ConfigClient::Game::CAMERA_INTERPOLATE_FACTOR;
+    previousViewport.second +=
+        (viewport.second - previousViewport.second) * ConfigClient::Game::CAMERA_INTERPOLATE_FACTOR;
 }

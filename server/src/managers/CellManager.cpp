@@ -14,17 +14,16 @@ CellManager& CellManager::get() {
 }
 
 Vector2 CellManager::getRandomLocation() {
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_real_distribution<double> dis(0,
-                                               Config::Gameplay::World::SIZE);
+    std::random_device                     rd;
+    std::mt19937                           gen(rd());
+    std::uniform_real_distribution<double> dis(0, Config::Gameplay::World::SIZE);
 
     return Vector2(dis(gen), dis(gen));
 }
 
 std::vector<double> CellManager::getRandomColor() {
-    std::random_device rd;
-    std::mt19937 gen(rd());
+    std::random_device                    rd;
+    std::mt19937                          gen(rd());
     std::uniform_real_distribution<float> dis(0, 255);
 
     return {dis(gen), dis(gen), dis(gen), 255};
@@ -39,10 +38,10 @@ void CellManager::generatePellets() {
 }
 
 void CellManager::createCell(uint32_t ownerId, CellType type) {
-    Vector2 location = getRandomLocation();
-    uint32_t cellId = AtomicIdsManager::get().getNextId();
+    Vector2  location = getRandomLocation();
+    uint32_t cellId   = AtomicIdsManager::get().getNextId();
 
-    double mass = type == CellType::PLAYER ? Config::Gameplay::Cell::SPAWN_MASS
+    double mass = type == CellType::PLAYER   ? Config::Gameplay::Cell::SPAWN_MASS
                   : type == CellType::PELLET ? Config::Gameplay::Pellet::MASS
                                              : 0;
     if (!mass) {
@@ -62,8 +61,7 @@ void CellManager::updateCells() {
         cell.decay();
 
         for (auto& target : cells) {
-            if (cell.getId() == target.getId() ||
-                target.isMarkedForDeletion()) {
+            if (cell.getId() == target.getId() || target.isMarkedForDeletion()) {
                 continue;
             }
 
@@ -95,12 +93,12 @@ void CellManager::deleteCells(const std::vector<uint32_t>& deletedCellsIds) {
         return;
     }
 
-    cells.erase(std::remove_if(cells.begin(), cells.end(),
+    cells.erase(std::remove_if(cells.begin(),
+                               cells.end(),
                                [&deletedCellsIds](const Cell& cell) {
                                    return std::find(deletedCellsIds.begin(),
                                                     deletedCellsIds.end(),
-                                                    cell.getId()) !=
-                                          deletedCellsIds.end();
+                                                    cell.getId()) != deletedCellsIds.end();
                                }),
                 cells.end());
 
@@ -111,8 +109,7 @@ std::vector<Cell*> CellManager::getCells(uint32_t ownerId) {
     std::vector<Cell*> playerCells;
 
     for (auto& cell : cells) {
-        if (cell.getType() == CellType::PLAYER &&
-            cell.getOwnerId() == ownerId) {
+        if (cell.getType() == CellType::PLAYER && cell.getOwnerId() == ownerId) {
             playerCells.push_back(&cell);
         }
     }

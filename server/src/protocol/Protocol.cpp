@@ -20,7 +20,7 @@ void Protocol::injector(char* buffer, size_t length, SmartBuffer& smartBuffer) {
 }
 
 void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
-                             SmartBuffer& smartBuffer) {
+                             SmartBuffer&                           smartBuffer) {
     uint8_t opcode;
     smartBuffer >> opcode;
 
@@ -42,8 +42,7 @@ void Protocol::handleMessage(std::shared_ptr<asio::ip::tcp::socket> client,
     }
 
     default:
-        std::cout << "Unknown opcode received: " << static_cast<int>(opcode)
-                  << std::endl;
+        std::cout << "Unknown opcode received: " << static_cast<int>(opcode) << std::endl;
         break;
     }
 }
@@ -63,8 +62,7 @@ void Protocol::sendPlayers(std::shared_ptr<asio::ip::tcp::socket> client) {
     const auto& players = PlayerManager::get().getAllPlayers();
 
     for (const auto& player : players) {
-        if (sizeof(uint32_t) + smartBuffer.getSize() +
-                sizeof(PlayerInterface) >=
+        if (sizeof(uint32_t) + smartBuffer.getSize() + sizeof(PlayerInterface) >=
             Config::Network::MAX_SIZE) {
             Network::get().sendToClient(client, smartBuffer);
 
@@ -105,8 +103,7 @@ void Protocol::sendCells() {
 
         Vector2 pos = cell.getPosition();
 
-        smartBuffer << cell.getId() << cell.getOwnerId() << pos.x << pos.y
-                    << cell.getRadius();
+        smartBuffer << cell.getId() << cell.getOwnerId() << pos.x << pos.y << cell.getRadius();
     }
 
     if (smartBuffer.getSize() >= sizeof(CellInterface) + sizeof(OpCodes)) {
@@ -125,8 +122,7 @@ void Protocol::sendPellets(std::shared_ptr<asio::ip::tcp::socket> client) {
             continue;
         }
 
-        if (sizeof(uint32_t) + smartBuffer.getSize() +
-                sizeof(PelletInterface) >=
+        if (sizeof(uint32_t) + smartBuffer.getSize() + sizeof(PelletInterface) >=
             Config::Network::MAX_SIZE) {
             Network::get().sendToClient(client, smartBuffer);
 
@@ -165,8 +161,7 @@ void Protocol::sendEntityRemoved(const std::vector<uint32_t>& deletedIds) {
     smartBuffer << OpCodes::ENTITY_REMOVED;
 
     for (uint32_t cellId : deletedIds) {
-        if (smartBuffer.getSize() + sizeof(EntityInterface) >=
-            Config::Network::MAX_SIZE) {
+        if (smartBuffer.getSize() + sizeof(EntityInterface) >= Config::Network::MAX_SIZE) {
             if (smartBuffer.getSize() >= Config::Network::MAX_SIZE) {
                 std::cout << "Packet size exceeds maximum size" << std::endl;
             }

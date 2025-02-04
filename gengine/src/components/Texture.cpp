@@ -1,8 +1,7 @@
 #include "components/Texture.hpp"
 #include <iostream>
 
-Texture::Texture(const std::string& texturePath,
-                 const std::vector<int>& textureRect)
+Texture::Texture(const std::string& texturePath, const std::vector<int>& textureRect)
     : texturePath(texturePath), textureRect(textureRect) {}
 
 std::string Texture::getTexturePath() const {

@@ -22,14 +22,12 @@ void Game::updateLoop() {
         CellManager::get().updateCells();
         PlayerManager::get().updatePlayers();
 
-        std::this_thread::sleep_for(
-            std::chrono::milliseconds(Config::Game::FREQUENCY));
+        std::this_thread::sleep_for(std::chrono::milliseconds(Config::Game::FREQUENCY));
     }
 }
 
 void Game::viewportUpdate(Player& player) {
-    std::vector<Cell*> playerCells =
-        CellManager::get().getCells(player.getId());
+    std::vector<Cell*> playerCells = CellManager::get().getCells(player.getId());
     if (playerCells.empty()) {
         return;
     }
@@ -46,18 +44,16 @@ void Game::viewportUpdate(Player& player) {
 }
 
 void Game::moveUpdate(const Player& player) {
-    std::vector<Cell*> playerCells =
-        CellManager::get().getCells(player.getId());
+    std::vector<Cell*> playerCells = CellManager::get().getCells(player.getId());
     if (playerCells.empty()) {
         return;
     }
 
-    Vector2 dir = player.getMousePosition();
-    double magnitude = dir.magnitude();
-    double slowdownFactor =
-        (magnitude < Config::Gameplay::Cell::DECREASE_SPEED_THRESHOLD)
-            ? magnitude / Config::Gameplay::Cell::DECREASE_SPEED_THRESHOLD
-            : 1.0f;
+    Vector2 dir            = player.getMousePosition();
+    double  magnitude      = dir.magnitude();
+    double  slowdownFactor = (magnitude < Config::Gameplay::Cell::DECREASE_SPEED_THRESHOLD)
+                                 ? magnitude / Config::Gameplay::Cell::DECREASE_SPEED_THRESHOLD
+                                 : 1.0f;
 
     if (magnitude) {
         dir /= magnitude;

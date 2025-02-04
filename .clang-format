@@ -1,10 +1,12 @@
 ---
 Language: Cpp
 
+# Indentation & Tabs
 IndentWidth: 4
 TabWidth: 4
-UseTab: Never
+UseTab: Never  # Always use spaces instead of tabs
 
+# Brace Wrapping (Places where `{` goes to the next line)
 BraceWrapping:
   AfterClass: true
   AfterControlStatement: true
@@ -12,33 +14,72 @@ BraceWrapping:
   AfterFunction: true
   AfterNamespace: true
   AfterStruct: true
+  AfterUnion: true
   SplitEmptyFunction: true
   SplitEmptyRecord: true
   SplitEmptyNamespace: true
 
-ColumnLimit: 80
+# Line Length & Formatting
+ColumnLimit: 100  # Increase from 80 to 100 for better readability
 BreakBeforeBraces: Attach
 AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: false
 AllowShortLoopsOnASingleLine: false
 
+# Alignment Rules
 AlignAfterOpenBracket: Align
 AlignOperands: Align
 AlignEscapedNewlines: Right
 AlignArrayOfStructures: None
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
+AlignConsecutiveMacros: true
+AlignTrailingComments: true
 
+# Spaces & Parentheses
 SpaceBeforeParens: ControlStatements
 SpacesInParentheses: false
 SpacesInSquareBrackets: false
-PointerAlignment: Left
+PointerAlignment: Left  # `int* ptr;` instead of `int *ptr;`
 
-AccessModifierOffset: -2
+# Access Specifier Alignment
+AccessModifierOffset: -2  # Makes `private:` and `public:` properly aligned
 
+# Include Formatting
 SortIncludes: true
 IncludeBlocks: Preserve
-
 IncludeCategories:
   - Regex: '^<.*>$'
     Priority: 1
   - Regex: '^".*"$'
     Priority: 2
+
+# Namespace Handling
+FixNamespaceComments: true
+
+# Formatting of Lambdas, Operators & Templates
+BreakBeforeBinaryOperators: None
+BreakBeforeTernaryOperators: true
+Cpp11BracedListStyle: true
+DerivePointerAlignment: false
+ExperimentalAutoDetectBinPacking: false
+
+# Keep simple code blocks readable
+KeepEmptyLinesAtTheStartOfBlocks: true
+MaxEmptyLinesToKeep: 2
+
+# Wrapping rules for function declarations
+PackConstructorInitializers: NextLine
+PenaltyBreakAssignment: 2
+PenaltyBreakBeforeFirstCallParameter: 0
+BinPackArguments: false
+BinPackParameters: false
+PenaltyBreakString: 2
+PenaltyExcessCharacter: 100
+PenaltyReturnTypeOnItsOwnLine: 60
+ReflowComments: true
+
+# Struct & Union Formatting
+SpaceBeforeAssignmentOperators: true
+SortUsingDeclarations: true
+UseCRLF: false  # Use LF instead of CRLF (Unix-friendly)

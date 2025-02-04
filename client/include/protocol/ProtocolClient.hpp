@@ -6,7 +6,7 @@
 
 class ProtocolClient {
   public:
-    ProtocolClient(const ProtocolClient&) = delete;
+    ProtocolClient(const ProtocolClient&)            = delete;
     ProtocolClient& operator=(const ProtocolClient&) = delete;
 
     static ProtocolClient& get();
@@ -14,12 +14,11 @@ class ProtocolClient {
     void handleMessage(SmartBuffer& smartBuffer);
 
     void sendJoin(const std::string nickname);
-    void sendMousePosition(sf::RenderWindow& window,
-                           sf::Vector2i& lastMousePos);
+    void sendMousePosition(sf::RenderWindow& window, sf::Vector2i& lastMousePos);
     void sendKeyPressed(std::string keyName);
 
   private:
-    ProtocolClient() = default;
+    ProtocolClient()  = default;
     ~ProtocolClient() = default;
 
     void handleGameState(SmartBuffer& smartBuffer);

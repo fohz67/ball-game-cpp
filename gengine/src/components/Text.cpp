@@ -1,10 +1,8 @@
 #include "components/Text.hpp"
 #include <iostream>
 
-Text::Text(const std::string& text, const std::string& fontFile,
-           const double characterSize)
-    : initText(text), fontFile(fontFile), charSize(characterSize),
-      initSize(characterSize) {}
+Text::Text(const std::string& text, const std::string& fontFile, const double characterSize)
+    : initText(text), fontFile(fontFile), charSize(characterSize), initSize(characterSize) {}
 
 std::string Text::getString() const {
     return this->initText;

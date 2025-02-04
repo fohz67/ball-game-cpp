@@ -8,27 +8,29 @@
 
 class Player {
   public:
-    Player(uint32_t id, std::shared_ptr<asio::ip::tcp::socket> client,
-           std::vector<double> color, std::vector<double> cellColor);
+    Player(uint32_t                               id,
+           std::shared_ptr<asio::ip::tcp::socket> client,
+           std::vector<double>                    color,
+           std::vector<double>                    cellColor);
 
-    uint32_t getId() const;
+    uint32_t                               getId() const;
     std::shared_ptr<asio::ip::tcp::socket> getClient() const;
-    Vector2 getViewport() const;
-    Vector2 getMousePosition() const;
-    std::vector<double> getColor() const;
-    std::vector<double> getCellColor() const;
-    std::string getNickname() const;
+    Vector2                                getViewport() const;
+    Vector2                                getMousePosition() const;
+    std::vector<double>                    getColor() const;
+    std::vector<double>                    getCellColor() const;
+    std::string                            getNickname() const;
 
     void setViewport(const Vector2& newViewport);
     void setMousePosition(const Vector2& newMousePosition);
     void setNickname(const std::string& newNickname);
 
   private:
-    uint32_t id;
+    uint32_t                               id;
     std::shared_ptr<asio::ip::tcp::socket> client;
-    Vector2 viewport;
-    Vector2 mousePosition;
-    std::vector<double> color;
-    std::vector<double> cellColor;
-    std::string nickname;
+    Vector2                                viewport;
+    Vector2                                mousePosition;
+    std::vector<double>                    color;
+    std::vector<double>                    cellColor;
+    std::string                            nickname;
 };

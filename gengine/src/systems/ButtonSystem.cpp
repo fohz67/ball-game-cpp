@@ -4,48 +4,41 @@
 #include <components/Slider.hpp>
 #include "System.hpp"
 
-void GEngine::System::buttonSystem(sf::RenderWindow& window,
-                                   GEngine::Entity& entity) {
+void GEngine::System::buttonSystem(sf::RenderWindow& window, GEngine::Entity& entity) {
     if (entity.hasComponent<Button>() && entity.hasComponent<Position>()) {
-        auto& buttonComp = entity.getComponent<Button>();
+        auto& buttonComp   = entity.getComponent<Button>();
         auto& positionComp = entity.getComponent<Position>();
 
         if (!buttonComp.isLoaded()) {
             buttonComp.getFont().loadFromFile(buttonComp.getFontFile());
             buttonComp.getText().setFont(buttonComp.getFont());
             buttonComp.getText().setString(buttonComp.getString());
-            buttonComp.getText().setCharacterSize(
-                buttonComp.getCharacterSize());
+            buttonComp.getText().setCharacterSize(buttonComp.getCharacterSize());
             buttonComp.getText().setFillColor(sf::Color::White);
 
             sf::FloatRect textBounds = buttonComp.getText().getLocalBounds();
-            float padding = 10.f;
+            float         padding    = 10.f;
 
             buttonComp.getButton().setSize(
-                sf::Vector2f(textBounds.width + 2 * padding,
-                             textBounds.height + 2 * padding));
+                sf::Vector2f(textBounds.width + 2 * padding, textBounds.height + 2 * padding));
             buttonComp.getButton().setFillColor(sf::Color::Transparent);
-            buttonComp.getButton().setPosition(positionComp.getPositionX(0),
-                                               positionComp.getPositionY(0));
+            buttonComp.getButton().setPosition(
+                positionComp.getPositionX(0), positionComp.getPositionY(0));
             buttonComp.getText().setOrigin(
-                textBounds.left + textBounds.width / 2,
-                textBounds.top + textBounds.height / 2);
+                textBounds.left + textBounds.width / 2, textBounds.top + textBounds.height / 2);
             buttonComp.getText().setPosition(
-                buttonComp.getButton().getPosition().x +
-                    buttonComp.getButton().getSize().x / 2,
-                buttonComp.getButton().getPosition().y +
-                    buttonComp.getButton().getSize().y / 2);
+                buttonComp.getButton().getPosition().x + buttonComp.getButton().getSize().x / 2,
+                buttonComp.getButton().getPosition().y + buttonComp.getButton().getSize().y / 2);
 
             buttonComp.setLoaded(true);
         }
 
         static std::map<GEngine::Entity*, bool> wasPressedMap;
 
-        sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+        sf::Vector2i  mousePos     = sf::Mouse::getPosition(window);
         sf::FloatRect buttonBounds = buttonComp.getButton().getGlobalBounds();
 
-        if (buttonBounds.contains(static_cast<float>(mousePos.x),
-                                  static_cast<float>(mousePos.y))) {
+        if (buttonBounds.contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
             bool isPressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
 
             if (isPressed && !wasPressedMap[&entity]) {
@@ -61,27 +54,23 @@ void GEngine::System::buttonSystem(sf::RenderWindow& window,
     }
 }
 
-void GEngine::System::optionButtonSystem(sf::RenderWindow& window,
-                                         GEngine::Entity& entity) {
-    if (entity.hasComponent<OptionButton>() &&
-        entity.hasComponent<Position>()) {
-        auto& buttonComp = entity.getComponent<OptionButton>();
+void GEngine::System::optionButtonSystem(sf::RenderWindow& window, GEngine::Entity& entity) {
+    if (entity.hasComponent<OptionButton>() && entity.hasComponent<Position>()) {
+        auto& buttonComp   = entity.getComponent<OptionButton>();
         auto& positionComp = entity.getComponent<Position>();
 
         if (!buttonComp.isLoaded()) {
             sf::RectangleShape buttonShape;
 
-            buttonShape.setSize(
-                {static_cast<float>(buttonComp.getSize().first),
-                 static_cast<float>(buttonComp.getSize().second)});
-            buttonShape.setPosition(positionComp.getPositionX(0),
-                                    positionComp.getPositionY(0));
+            buttonShape.setSize({static_cast<float>(buttonComp.getSize().first),
+                                 static_cast<float>(buttonComp.getSize().second)});
+            buttonShape.setPosition(positionComp.getPositionX(0), positionComp.getPositionY(0));
             buttonShape.setOutlineThickness(2);
 
             if (entity.hasComponent<Color>() &&
                 entity.getComponent<Color>().getColor().size() == 4) {
-                auto& colorComp = entity.getComponent<Color>();
-                const auto color = colorComp.getColor();
+                auto&      colorComp = entity.getComponent<Color>();
+                const auto color     = colorComp.getColor();
 
                 buttonComp.getShape().setOutlineColor(
                     sf::Color(color[0], color[1], color[2], color[3]));
@@ -94,11 +83,10 @@ void GEngine::System::optionButtonSystem(sf::RenderWindow& window,
 
         static std::map<GEngine::Entity*, bool> wasPressedMap;
 
-        sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+        sf::Vector2i  mousePos     = sf::Mouse::getPosition(window);
         sf::FloatRect buttonBounds = buttonComp.getShape().getGlobalBounds();
 
-        if (buttonBounds.contains(static_cast<float>(mousePos.x),
-                                  static_cast<float>(mousePos.y))) {
+        if (buttonBounds.contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
             bool isPressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
 
             if (isPressed && !wasPressedMap[&entity]) {
@@ -120,19 +108,18 @@ void GEngine::System::optionButtonSystem(sf::RenderWindow& window,
     }
 }
 
-void GEngine::System::sliderSystem(sf::RenderWindow& window,
-                                   GEngine::Entity& entity,
-                                   std::map<int, Entity>& entities) {
+void GEngine::System::sliderSystem(sf::RenderWindow&         window,
+                                   GEngine::Entity&          entity,
+                                   std::map<double, Entity>& entities) {
     GEngine::System system;
     if (entity.hasComponent<Slider>() && entity.hasComponent<Position>()) {
-        auto& sliderComp = entity.getComponent<Slider>();
+        auto& sliderComp   = entity.getComponent<Slider>();
         auto& positionComp = entity.getComponent<Position>();
 
         if (!sliderComp.isLoaded()) {
             sf::RectangleShape barShape;
 
-            barShape.setPosition(positionComp.getPositionX(0),
-                                 positionComp.getPositionY(0));
+            barShape.setPosition(positionComp.getPositionX(0), positionComp.getPositionY(0));
             barShape.setSize({static_cast<float>(sliderComp.getSize().first),
                               static_cast<float>(sliderComp.getSize().second)});
             barShape.setOutlineThickness(5);
@@ -143,23 +130,19 @@ void GEngine::System::sliderSystem(sf::RenderWindow& window,
 
             if (entity.hasComponent<Color>() &&
                 entity.getComponent<Color>().getColor().size() == 4) {
-                auto& colorComp = entity.getComponent<Color>();
-                const auto color = colorComp.getColor();
+                auto&      colorComp = entity.getComponent<Color>();
+                const auto color     = colorComp.getColor();
 
-                barShape.setFillColor(
-                    sf::Color(color[0], color[1], color[2], color[3]));
-                cursorShape.setFillColor(
-                    sf::Color(color[0], color[1], color[2], color[3]));
+                barShape.setFillColor(sf::Color(color[0], color[1], color[2], color[3]));
+                cursorShape.setFillColor(sf::Color(color[0], color[1], color[2], color[3]));
             }
 
-            float normalizedValue =
-                (sliderComp.getValue() - sliderComp.getMinValue()) /
-                (sliderComp.getMaxValue() - sliderComp.getMinValue());
-            float cursorX = barShape.getPosition().x +
-                            normalizedValue * barShape.getSize().x;
+            float normalizedValue = (sliderComp.getValue() - sliderComp.getMinValue()) /
+                                    (sliderComp.getMaxValue() - sliderComp.getMinValue());
+            float cursorX = barShape.getPosition().x + normalizedValue * barShape.getSize().x;
 
-            cursorShape.setPosition(cursorX - cursorShape.getRadius(),
-                                    barShape.getPosition().y - 7);
+            cursorShape.setPosition(
+                cursorX - cursorShape.getRadius(), barShape.getPosition().y - 7);
 
             sliderComp.setBarShape(barShape);
             sliderComp.setCursorShape(cursorShape);
@@ -168,11 +151,10 @@ void GEngine::System::sliderSystem(sf::RenderWindow& window,
 
         static std::map<GEngine::Entity*, bool> wasPressedMap;
 
-        sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+        sf::Vector2i  mousePos  = sf::Mouse::getPosition(window);
         sf::FloatRect barBounds = sliderComp.getBarShape().getGlobalBounds();
 
-        if (barBounds.contains(static_cast<float>(mousePos.x),
-                               static_cast<float>(mousePos.y))) {
+        if (barBounds.contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
             bool isPressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
 
             if (isPressed && !wasPressedMap[&entity]) {
@@ -182,13 +164,12 @@ void GEngine::System::sliderSystem(sf::RenderWindow& window,
             }
 
             if (wasPressedMap[&entity]) {
-                float newValue =
-                    (mousePos.x - barBounds.left) / barBounds.width;
-                newValue = std::clamp(newValue, 0.f, 1.f);
+                float newValue = (mousePos.x - barBounds.left) / barBounds.width;
+                newValue       = std::clamp(newValue, 0.f, 1.f);
 
-                float sliderValue = sliderComp.getMinValue() +
-                                    newValue * (sliderComp.getMaxValue() -
-                                                sliderComp.getMinValue());
+                float sliderValue =
+                    sliderComp.getMinValue() +
+                    newValue * (sliderComp.getMaxValue() - sliderComp.getMinValue());
                 sliderComp.setValue(sliderValue);
 
                 float cursorX = barBounds.left + newValue * barBounds.width;
@@ -197,7 +178,9 @@ void GEngine::System::sliderSystem(sf::RenderWindow& window,
                     sliderComp.getCursorShape().getPosition().y);
                 sliderComp.executeCallback(sliderComp.getValue());
 
-                system.update(entity.getEntityId(), entities, UpdateType::Text,
+                system.update(entity.getEntityId(),
+                              entities,
+                              UpdateType::Text,
                               std::to_string(sliderComp.getValue()));
             }
         }
@@ -207,28 +190,23 @@ void GEngine::System::sliderSystem(sf::RenderWindow& window,
     }
 }
 
-void GEngine::System::buttonRectSystem(sf::RenderWindow& window,
-                                       GEngine::Entity& entity) {
+void GEngine::System::buttonRectSystem(sf::RenderWindow& window, GEngine::Entity& entity) {
     if (entity.hasComponent<ButtonRect>() && entity.hasComponent<Position>()) {
         auto& buttonRectComp = entity.getComponent<ButtonRect>();
-        auto& positionComp = entity.getComponent<Position>();
+        auto& positionComp   = entity.getComponent<Position>();
 
         if (!buttonRectComp.isLoaded()) {
             buttonRectComp.getButtonRect().setSize(
-                sf::Vector2f(buttonRectComp.getSize().first,
-                             buttonRectComp.getSize().second));
+                sf::Vector2f(buttonRectComp.getSize().first, buttonRectComp.getSize().second));
             buttonRectComp.getButtonRect().setPosition(
                 positionComp.getPositionX(0), positionComp.getPositionY(0));
 
             if (!buttonRectComp.isShowOutline()) {
-                buttonRectComp.getButtonRect().setFillColor(
-                    buttonRectComp.getColor());
+                buttonRectComp.getButtonRect().setFillColor(buttonRectComp.getColor());
             } else {
                 buttonRectComp.getButtonRect().setOutlineThickness(2);
-                buttonRectComp.getButtonRect().setOutlineColor(
-                    buttonRectComp.getColor());
-                buttonRectComp.getButtonRect().setFillColor(
-                    sf::Color::Transparent);
+                buttonRectComp.getButtonRect().setOutlineColor(buttonRectComp.getColor());
+                buttonRectComp.getButtonRect().setFillColor(sf::Color::Transparent);
             }
 
             buttonRectComp.setLoaded(true);
@@ -236,12 +214,11 @@ void GEngine::System::buttonRectSystem(sf::RenderWindow& window,
 
         static std::map<GEngine::Entity*, bool> wasPressedMap;
 
-        sf::Vector2i mousePos = sf::Mouse::getPosition(window);
-        sf::FloatRect buttonRectBounds =
-            buttonRectComp.getButtonRect().getGlobalBounds();
+        sf::Vector2i  mousePos         = sf::Mouse::getPosition(window);
+        sf::FloatRect buttonRectBounds = buttonRectComp.getButtonRect().getGlobalBounds();
 
-        if (buttonRectBounds.contains(static_cast<float>(mousePos.x),
-                                      static_cast<float>(mousePos.y))) {
+        if (buttonRectBounds.contains(
+                static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
             bool isPressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
 
             if (isPressed && !wasPressedMap[&entity]) {

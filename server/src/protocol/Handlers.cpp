@@ -6,8 +6,7 @@
 #include "protocol/OpCodes.hpp"
 #include "protocol/Protocol.hpp"
 
-void Handlers::handleJoin(std::shared_ptr<asio::ip::tcp::socket> client,
-                          SmartBuffer& smartBuffer) {
+void Handlers::handleJoin(std::shared_ptr<asio::ip::tcp::socket> client, SmartBuffer& smartBuffer) {
     std::string nickname;
     smartBuffer >> nickname;
 
@@ -27,18 +26,17 @@ void Handlers::handleJoin(std::shared_ptr<asio::ip::tcp::socket> client,
     Protocol::get().sendPellets(client);
 }
 
-void Handlers::handleMousePosition(
-    std::shared_ptr<asio::ip::tcp::socket> client, SmartBuffer& smartBuffer) {
+void Handlers::handleMousePosition(std::shared_ptr<asio::ip::tcp::socket> client,
+                                   SmartBuffer&                           smartBuffer) {
     double mouseX;
     double mouseY;
     smartBuffer >> mouseX >> mouseY;
 
-    PlayerManager::get().getPlayerByClient(client)->setMousePosition(
-        Vector2(mouseX, mouseY));
+    PlayerManager::get().getPlayerByClient(client)->setMousePosition(Vector2(mouseX, mouseY));
 }
 
 void Handlers::handleKeyPressed(std::shared_ptr<asio::ip::tcp::socket> client,
-                                SmartBuffer& smartBuffer) {
+                                SmartBuffer&                           smartBuffer) {
     std::string keyName;
     smartBuffer >> keyName;
 }

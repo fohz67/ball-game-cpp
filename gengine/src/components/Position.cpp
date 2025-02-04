@@ -1,8 +1,7 @@
 #include "components/Position.hpp"
 #include <iostream>
 
-Position::Position(const std::vector<Point>& positions)
-    : positions(positions) {}
+Position::Position(const std::vector<Point>& positions) : positions(positions) {}
 
 std::vector<Point> Position::getPositions() const {
     return positions;

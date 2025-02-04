@@ -8,24 +8,24 @@
 class Text : public Component {
   public:
     // Constants
-    static inline std::string DEFAULT_TEXT = "";
-    static inline std::string DEFAULT_FONT_FILE = "";
-    static constexpr double DEFAULT_CHARACTER_SIZE = 30;
+    static inline std::string DEFAULT_TEXT           = "";
+    static inline std::string DEFAULT_FONT_FILE      = "";
+    static constexpr double   DEFAULT_CHARACTER_SIZE = 30;
 
     // Constructor / Destructor
-    Text(const std::string& text = DEFAULT_TEXT,
-         const std::string& fontFile = DEFAULT_FONT_FILE,
-         double characterSize = DEFAULT_CHARACTER_SIZE);
+    Text(const std::string& text          = DEFAULT_TEXT,
+         const std::string& fontFile      = DEFAULT_FONT_FILE,
+         double             characterSize = DEFAULT_CHARACTER_SIZE);
     ~Text() = default;
 
     // Getters
     std::string getString() const;
-    sf::Font& getFont();
-    double getCharacterSize() const;
-    double getInitCharacterSize() const;
-    bool isLoaded() const;
+    sf::Font&   getFont();
+    double      getCharacterSize() const;
+    double      getInitCharacterSize() const;
+    bool        isLoaded() const;
     std::string getFontFile() const;
-    sf::Text& getText();
+    sf::Text&   getText();
 
     // Setters
     void setLoaded(const bool val);
@@ -42,10 +42,10 @@ class Text : public Component {
 
     // Attributes
     std::string initText;
-    double initSize;
+    double      initSize;
     std::string fontFile;
-    double charSize;
-    sf::Text text;
-    sf::Font font;
-    bool loaded = DEFAULT_LOADED;
+    double      charSize;
+    sf::Text    text;
+    sf::Font    font;
+    bool        loaded = DEFAULT_LOADED;
 };

@@ -9,16 +9,20 @@ enum CellType { PLAYER, DEAD, EJECTED, PELLET };
 
 class Cell {
   public:
-    Cell(uint32_t id, uint32_t ownerId, CellType type, Vector2& pos,
-         double mass, std::vector<double> color);
+    Cell(uint32_t            id,
+         uint32_t            ownerId,
+         CellType            type,
+         Vector2&            pos,
+         double              mass,
+         std::vector<double> color);
 
-    uint32_t getId() const;
-    uint32_t getOwnerId() const;
-    CellType getType() const;
-    Vector2 getPosition() const;
-    double getMass() const;
-    double getRadius() const;
-    Vector2 getCenter() const;
+    uint32_t            getId() const;
+    uint32_t            getOwnerId() const;
+    CellType            getType() const;
+    Vector2             getPosition() const;
+    double              getMass() const;
+    double              getRadius() const;
+    Vector2             getCenter() const;
     std::vector<double> getColor() const;
 
     void setPosition(const Vector2& newPos);
@@ -33,13 +37,13 @@ class Cell {
     bool isMarkedForDeletion() const;
 
   private:
-    uint32_t id;
-    uint32_t ownerId;
-    CellType type;
-    Vector2 pos;
-    double mass;
+    uint32_t            id;
+    uint32_t            ownerId;
+    CellType            type;
+    Vector2             pos;
+    double              mass;
     std::vector<double> color;
-    double speed;
-    bool markedForDeletion = false;
-    int decayResolver = 0;
+    double              speed;
+    bool                markedForDeletion = false;
+    int                 decayResolver     = 0;
 };

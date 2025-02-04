@@ -9,9 +9,9 @@ struct Config {
     };
 
     struct Network {
-        static constexpr int PORT = 12345;
+        static constexpr int PORT      = 12345;
         static constexpr int FREQUENCY = 1;
-        static constexpr int MAX_SIZE = 1024;
+        static constexpr int MAX_SIZE  = 1024;
     };
 
     struct Gameplay {
@@ -20,27 +20,26 @@ struct Config {
         };
 
         struct Cell {
-            static constexpr double SPAWN_MASS = 2000.0f;
-            static constexpr double SPEED = 0.07f;
+            static constexpr double SPAWN_MASS               = 2000.0f;
+            static constexpr double SPEED                    = 0.07f;
             static constexpr double DECREASE_SPEED_THRESHOLD = 0.05f;
-            static constexpr double DECAY_RATE = 0.02f;
-            static constexpr int DECAY_TIMING = 1000;
+            static constexpr double DECAY_RATE               = 0.02f;
+            static constexpr int    DECAY_TIMING             = 1000;
         };
 
         struct Eat {
-            static constexpr double RESOLVE_FACTOR = 1.2f;
+            static constexpr double RESOLVE_FACTOR  = 1.2f;
             static constexpr double RESOLVE_OVERLAP = 0.2f;
         };
 
         struct Pellet {
-            static constexpr int COUNT = 5000;
-            static constexpr double MASS = 2.0f;
+            static constexpr int    COUNT      = 5000;
+            static constexpr double MASS       = 2.0f;
             static constexpr double EAT_FACTOR = 10.0f;
         };
 
         struct Player {
-            static inline std::vector<double> NICKNAME_COLOR = {255, 255, 255,
-                                                                255};
+            static inline std::vector<double> NICKNAME_COLOR = {255, 255, 255, 255};
         };
     };
 };

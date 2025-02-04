@@ -1,7 +1,9 @@
 #include "components/Player.hpp"
 
-Player::Player(uint32_t id, std::shared_ptr<asio::ip::tcp::socket> client,
-               std::vector<double> color, std::vector<double> cellColor)
+Player::Player(uint32_t                               id,
+               std::shared_ptr<asio::ip::tcp::socket> client,
+               std::vector<double>                    color,
+               std::vector<double>                    cellColor)
     : id(id), client(client), color(color), cellColor(cellColor) {}
 
 uint32_t Player::getId() const {

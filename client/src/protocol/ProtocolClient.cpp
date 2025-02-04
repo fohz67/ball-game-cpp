@@ -58,8 +58,7 @@ void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
     }
 
     default:
-        std::cout << "Unknown opcode received: " << static_cast<int>(opcode)
-                  << std::endl;
+        std::cout << "Unknown opcode received: " << static_cast<int>(opcode) << std::endl;
 
         break;
     }
@@ -72,21 +71,18 @@ void ProtocolClient::sendJoin(const std::string nickname) {
     NetworkClient::get().send(smartBuffer);
 }
 
-void ProtocolClient::sendMousePosition(sf::RenderWindow& window,
-                                       sf::Vector2i& lastMousePos) {
-    sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+void ProtocolClient::sendMousePosition(sf::RenderWindow& window, sf::Vector2i& lastMousePos) {
+    sf::Vector2i mousePos   = sf::Mouse::getPosition(window);
     sf::Vector2u windowSize = window.getSize();
 
-    std::pair<double, double> normMousePos(
-        ((double)mousePos.x / windowSize.x) * 2.0f - 1.0f,
-        ((double)mousePos.y / windowSize.y) * 2.0f - 1.0f);
+    std::pair<double, double> normMousePos(((double)mousePos.x / windowSize.x) * 2.0f - 1.0f,
+                                           ((double)mousePos.y / windowSize.y) * 2.0f - 1.0f);
 
     if (mousePos != lastMousePos) {
         lastMousePos = mousePos;
 
         SmartBuffer smartBuffer;
-        smartBuffer << OpCodes::MOUSE_POSITION << normMousePos.first
-                    << normMousePos.second;
+        smartBuffer << OpCodes::MOUSE_POSITION << normMousePos.first << normMousePos.second;
 
         NetworkClient::get().send(smartBuffer);
     }

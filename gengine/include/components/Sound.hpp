@@ -13,13 +13,17 @@ class Sound : public Component {
     // Constructor / Destructor
     Sound(const std::string soundFile = DEFAULT_SOUND_FILE);
     Sound(const Sound& other)
-        : soundFile(other.soundFile), volume(other.volume),
-          buffer(other.buffer), loaded(other.loaded) {
+        : soundFile(other.soundFile),
+          volume(other.volume),
+          buffer(other.buffer),
+          loaded(other.loaded) {
         sound.setBuffer(buffer);
     }
     Sound(Sound&& other) noexcept
-        : soundFile(std::move(other.soundFile)), volume(other.volume),
-          buffer(std::move(other.buffer)), loaded(other.loaded) {
+        : soundFile(std::move(other.soundFile)),
+          volume(other.volume),
+          buffer(std::move(other.buffer)),
+          loaded(other.loaded) {
         sound.setBuffer(buffer);
     }
     ~Sound() = default;
@@ -28,9 +32,9 @@ class Sound : public Component {
     Sound& operator=(const Sound& other) {
         if (this != &other) {
             soundFile = other.soundFile;
-            volume = other.volume;
-            buffer = other.buffer;
-            loaded = other.loaded;
+            volume    = other.volume;
+            buffer    = other.buffer;
+            loaded    = other.loaded;
             sound.setBuffer(buffer);
         }
         return *this;
@@ -38,9 +42,9 @@ class Sound : public Component {
     Sound& operator=(Sound&& other) noexcept {
         if (this != &other) {
             soundFile = std::move(other.soundFile);
-            volume = other.volume;
-            buffer = std::move(other.buffer);
-            loaded = other.loaded;
+            volume    = other.volume;
+            buffer    = std::move(other.buffer);
+            loaded    = other.loaded;
             sound.setBuffer(buffer);
         }
         return *this;
@@ -50,10 +54,10 @@ class Sound : public Component {
     static Sound& get();
 
     // Getters
-    sf::Sound& getSound();
+    sf::Sound&       getSound();
     sf::SoundBuffer& getSoundBuffer();
-    std::string getSoundFile() const;
-    int getVolume() const;
+    std::string      getSoundFile() const;
+    int              getVolume() const;
 
     // Setters
     void setSoundFile(const std::string val);
@@ -64,13 +68,13 @@ class Sound : public Component {
 
   private:
     // Constants
-    static constexpr int DEFAULT_VOLUME = 50;
+    static constexpr int  DEFAULT_VOLUME = 50;
     static constexpr bool DEFAULT_LOADED = false;
 
     // Attributes
-    std::string soundFile;
-    int volume = DEFAULT_VOLUME;
+    std::string     soundFile;
+    int             volume = DEFAULT_VOLUME;
     sf::SoundBuffer buffer;
-    sf::Sound sound;
-    bool loaded = DEFAULT_LOADED;
+    sf::Sound       sound;
+    bool            loaded = DEFAULT_LOADED;
 };

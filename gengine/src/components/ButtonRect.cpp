@@ -2,7 +2,8 @@
 #include <iostream>
 
 ButtonRect::ButtonRect(const std::pair<uint16_t, uint16_t>& sizeRect,
-                       sf::Color color, bool showOutline)
+                       sf::Color                            color,
+                       bool                                 showOutline)
     : size(sizeRect), color(color), showOutline(showOutline) {}
 
 sf::RectangleShape& ButtonRect::getButtonRect() {

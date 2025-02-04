@@ -5,10 +5,10 @@
 #include <iostream>
 #include "System.hpp"
 
-void GEngine::System::updateEntityPosition(const int id,
-                                           std::map<int, Entity>& entities,
+void GEngine::System::updateEntityPosition(const int                      id,
+                                           std::map<double, Entity>&      entities,
                                            const std::pair<float, float>& pos,
-                                           const int posId) {
+                                           const int                      posId) {
     linkSystem(id, entities, pos, posId);
 
     if (!entities.contains(id)) {
@@ -18,16 +18,15 @@ void GEngine::System::updateEntityPosition(const int id,
     Entity& entity = entities.at(id);
 
     if (entity.hasComponent<Sprite>()) {
-        updatePosition(entity, entity.getComponent<Sprite>().getSprite(), pos,
-                       posId);
+        updatePosition(entity, entity.getComponent<Sprite>().getSprite(), pos, posId);
     }
 
     if (entity.hasComponent<Text>()) {
-        auto& textComp = entity.getComponent<Text>();
-        sf::FloatRect bounds = textComp.getText().getLocalBounds();
+        auto&         textComp = entity.getComponent<Text>();
+        sf::FloatRect bounds   = textComp.getText().getLocalBounds();
 
-        textComp.getText().setOrigin(bounds.left + bounds.width / 2,
-                                     bounds.top + bounds.height / 2);
+        textComp.getText().setOrigin(
+            bounds.left + bounds.width / 2, bounds.top + bounds.height / 2);
         textComp.getText().setPosition(pos.first, pos.second);
     }
 
@@ -61,22 +60,22 @@ void GEngine::System::updateTextFont(Entity& entity, const std::string& font) {
     }
 }
 
-void GEngine::System::updateTextSize(const int id,
-                                     std::map<int, Entity>& entities,
-                                     const unsigned int textSize) {
+void GEngine::System::updateTextSize(const int                 id,
+                                     std::map<double, Entity>& entities,
+                                     const unsigned int        textSize) {
     Entity& entity = entities.at(id);
     if (entity.hasComponent<Text>()) {
-        auto& textComp = entity.getComponent<Text>();
-        unsigned int newSize = static_cast<unsigned int>(
-            textComp.getInitCharacterSize() * (textSize / 100.0f));
+        auto&        textComp = entity.getComponent<Text>();
+        unsigned int newSize =
+            static_cast<unsigned int>(textComp.getInitCharacterSize() * (textSize / 100.0f));
 
         textComp.setCharacterSize(newSize);
         textComp.getText().setCharacterSize(newSize);
 
         if (entity.hasComponent<Position>()) {
             auto& positionComp = entity.getComponent<Position>();
-            auto currentPos = std::make_pair(positionComp.getPositionX(0),
-                                             positionComp.getPositionY(0));
+            auto  currentPos =
+                std::make_pair(positionComp.getPositionX(0), positionComp.getPositionY(0));
 
             updateEntityPosition(id, entities, currentPos, 0);
         }
@@ -116,15 +115,17 @@ void GEngine::System::updateShapeSize(Entity& entity, double radius) {
         if (shapeComp.getShapeType() == Circle) {
             shapeComp.getCircle().setRadius(static_cast<float>(radius));
         } else if (shapeComp.getShapeType() == Rectangle) {
-            shapeComp.getRect().setSize({static_cast<float>(radius) * 2,
-                                         static_cast<float>(radius) * 2});
+            shapeComp.getRect().setSize(
+                {static_cast<float>(radius) * 2, static_cast<float>(radius) * 2});
         }
     }
 }
 
-void GEngine::System::update(const int id, std::map<int, Entity>& entities,
-                             const UpdateType type, const std::any& value,
-                             const int posId) {
+void GEngine::System::update(const int                 id,
+                             std::map<double, Entity>& entities,
+                             const UpdateType          type,
+                             const std::any&           value,
+                             const int                 posId) {
     if (!entities.contains(id)) {
         return;
     }
@@ -133,20 +134,22 @@ void GEngine::System::update(const int id, std::map<int, Entity>& entities,
 
     switch (type) {
     case UpdateType::Position: {
-        updateEntityPosition(
-            id, entities, std::any_cast<std::pair<float, float>>(value), posId);
+        updateEntityPosition(id, entities, std::any_cast<std::pair<float, float>>(value), posId);
         break;
     }
     case UpdateType::Text: {
-        updateText(entity, std::any_cast<std::string>(value));
+        auto text = std::any_cast<std::string>(value);
+        updateText(entity, text);
         break;
     }
     case UpdateType::TextSize: {
-        updateTextSize(id, entities, std::any_cast<unsigned int>(value));
+        auto textSize = std::any_cast<unsigned int>(value);
+        updateTextSize(id, entities, textSize);
         break;
     }
     case UpdateType::TextFont: {
-        updateTextFont(entity, std::any_cast<std::string>(value));
+        auto textFont = std::any_cast<std::string>(value);
+        updateTextFont(entity, textFont);
         break;
     }
     case UpdateType::Texture: {
@@ -155,7 +158,8 @@ void GEngine::System::update(const int id, std::map<int, Entity>& entities,
         break;
     }
     case UpdateType::ShapeSize: {
-        updateShapeSize(entity, std::any_cast<double>(value));
+        auto shapeSize = std::any_cast<double>(value);
+        updateShapeSize(entity, shapeSize);
         break;
     }
     default:
