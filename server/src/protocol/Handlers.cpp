@@ -1,10 +1,10 @@
 #include "protocol/Handlers.hpp"
-#include "managers/CellManager.hpp"
-#include "managers/PlayerManager.hpp"
-#include "protocol/Protocol.hpp"
-#include "protocol/OpCodes.hpp"
 #include "config/Config.hpp"
 #include "engine/Network.hpp"
+#include "managers/CellManager.hpp"
+#include "managers/PlayerManager.hpp"
+#include "protocol/OpCodes.hpp"
+#include "protocol/Protocol.hpp"
 
 void Handlers::handleJoin(std::shared_ptr<asio::ip::tcp::socket> client,
                           SmartBuffer& smartBuffer) {
@@ -12,7 +12,7 @@ void Handlers::handleJoin(std::shared_ptr<asio::ip::tcp::socket> client,
     smartBuffer >> nickname;
 
     auto& player = *PlayerManager::get().getPlayerByClient(client);
-    
+
     player.setNickname(nickname);
 
     Protocol::get().sendPlayer(player);
@@ -21,14 +21,14 @@ void Handlers::handleJoin(std::shared_ptr<asio::ip::tcp::socket> client,
 
     smartBuffer.reset();
     smartBuffer << OpCodes::WORLD << Config::Gameplay::World::SIZE;
-    
+
     Network::get().sendToClient(client, smartBuffer);
-    
+
     Protocol::get().sendPellets(client);
 }
 
-void Handlers::handleMousePosition(std::shared_ptr<asio::ip::tcp::socket> client,
-                          SmartBuffer& smartBuffer) {
+void Handlers::handleMousePosition(
+    std::shared_ptr<asio::ip::tcp::socket> client, SmartBuffer& smartBuffer) {
     double mouseX;
     double mouseY;
     smartBuffer >> mouseX >> mouseY;
@@ -38,7 +38,7 @@ void Handlers::handleMousePosition(std::shared_ptr<asio::ip::tcp::socket> client
 }
 
 void Handlers::handleKeyPressed(std::shared_ptr<asio::ip::tcp::socket> client,
-                          SmartBuffer& smartBuffer) {
+                                SmartBuffer& smartBuffer) {
     std::string keyName;
     smartBuffer >> keyName;
 }

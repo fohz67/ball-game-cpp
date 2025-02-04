@@ -1,52 +1,16 @@
-/*
-** EPITECH PROJECT, 2024
-** B-CPP-500-TLS-5-2-rtype-anastasia.bouby
-** File description:
-** Implements the `Entity` class, which represents a game object.
-** Each `Entity` can have various components attached to it, enabling it to
-** have specific behaviors or properties.
-** Responsibility:
-** - Store an entity's unique ID
-*/
-
 #include "Entity.hpp"
 #include <iostream>
 
-/**
- * @brief Construct an Entity with an ID.
- *
- * This constructor initializes the entity with a given ID.
- *
- * @param id The ID of the entity.
- */
-GEngine::Entity::Entity(const int id) : id(id) {}
+GEngine::Entity::Entity() : id(0) {}
 
-/**
- * @brief Destructor for the Entity.
- *
- * This destructor cleans up any resources used by the entity.
- */
-GEngine::Entity::~Entity() {}
+GEngine::Entity::Entity(const uint32_t id) : id(id) {}
 
-/**
- * @brief Get the ID of the Entity.
- *
- * This function retrieves the ID of the entity.
- *
- * @return The ID of the entity.
- */
-int GEngine::Entity::getEntityId() const {
+uint32_t GEngine::Entity::getEntityId() const {
     return (id);
 }
 
-/**
- * @brief Display all components of the Entity.
- *
- * This function iterates over all components attached to the entity
- * and displays each one using its `display()` method.
- */
 void GEngine::Entity::displayComponents() const {
-    for (auto& component : _components) {
+    for (auto& component : components) {
         component.second->display();
     }
 }

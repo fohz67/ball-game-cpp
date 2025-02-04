@@ -6,8 +6,8 @@
 #include "managers/CellManager.hpp"
 #include "managers/PlayerManager.hpp"
 #include "protocol/DataInterfaces.hpp"
-#include "protocol/OpCodes.hpp"
 #include "protocol/Handlers.hpp"
+#include "protocol/OpCodes.hpp"
 
 Protocol& Protocol::get() {
     static Protocol instance;

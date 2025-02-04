@@ -13,7 +13,8 @@ class EntityManager {
 
     void createCell(uint32_t id, double x, double y, double radius,
                     std::vector<double> color, std::string nickname);
-    void updateCell(uint32_t id, double x, double y, double radius, bool isNickname);
+    void updateCell(uint32_t id, double x, double y, double radius,
+                    bool isNickname);
 
     void createWorld(uint16_t size);
 

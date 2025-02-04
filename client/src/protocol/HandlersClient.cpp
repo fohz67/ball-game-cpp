@@ -52,7 +52,8 @@ void HandlersClient::handleCell(SmartBuffer& smartBuffer) {
         if (EntityManager::get().entities.find(cell.id) ==
             EntityManager::get().entities.end()) {
             EntityManager::get().createCell(cell.id, cell.x, cell.y,
-                                            cell.radius, actualColor, actualNickname);
+                                            cell.radius, actualColor,
+                                            actualNickname);
         } else {
             EntityManager::get().updateCell(cell.id, cell.x, cell.y,
                                             cell.radius, true);

@@ -33,7 +33,7 @@ void GEngine::System::loadText(GEngine::Entity& entity, auto& textComp) {
         textComp.getText().setCharacterSize(highResSize);
 
         float scaleFactor = 1.0f / 4.0f;
-        
+
         textComp.getText().setScale(scaleFactor, scaleFactor);
 
         textComp.getFont().loadFromFile(textComp.getFontFile());

@@ -6,8 +6,8 @@
 #include <components/Sprite.hpp>
 #include <components/Text.hpp>
 #include <components/Texture.hpp>
-#include "System.hpp"
 #include <iostream>
+#include "System.hpp"
 #include "config/ConfigClient.hpp"
 
 EntityManager& EntityManager::get() {
@@ -31,19 +31,22 @@ void EntityManager::createCell(uint32_t id, double x, double y, double radius,
 
     entities.emplace(id, std::move(newCell));
 
-    if (nickname.length() > 0) {        
-        auto newNickname = GEngine::Entity(id + ConfigClient::Network::ENTITY_LINKING_BIAS);
+    if (nickname.length() > 0) {
+        auto newNickname =
+            GEngine::Entity(id + ConfigClient::Network::ENTITY_LINKING_BIAS);
 
-        newNickname.addComponent(Text(
-            nickname, "assets/fonts/Inter_Bold.ttf", 10));
+        newNickname.addComponent(
+            Text(nickname, "assets/fonts/Inter_Bold.ttf", 10));
         newNickname.addComponent(Position({{x, y}}));
         newNickname.addComponent(Link(id));
-        
-        entities.emplace(id + ConfigClient::Network::ENTITY_LINKING_BIAS, std::move(newNickname));
+
+        entities.emplace(id + ConfigClient::Network::ENTITY_LINKING_BIAS,
+                         std::move(newNickname));
     }
 }
 
-void EntityManager::updateCell(uint32_t id, double x, double y, double radius, bool isNickname) {
+void EntityManager::updateCell(uint32_t id, double x, double y, double radius,
+                               bool isNickname) {
     GEngine::System system;
     std::pair<float, float> position = {x, y};
 
