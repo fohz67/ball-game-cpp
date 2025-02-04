@@ -1,5 +1,4 @@
 #include "utils/ErrorHandling.hpp"
-#include <iostream>
 #include <regex>
 #include <stdexcept>
 

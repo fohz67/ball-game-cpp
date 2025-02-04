@@ -1,6 +1,5 @@
 #include "managers/CellManager.hpp"
 #include <cmath>
-#include <iostream>
 #include <random>
 #include "components/Cell.hpp"
 #include "config/Config.hpp"

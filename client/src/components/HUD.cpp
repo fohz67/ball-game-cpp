@@ -1,5 +1,4 @@
 #include "components/HUD.hpp"
-#include <iostream>
 #include "components/Color.hpp"
 #include "components/Position.hpp"
 #include "components/Shape.hpp"
@@ -26,15 +25,13 @@ void HUD::createLeaderboard() {
     newEntity.addComponent(
         Shape(ShapeType::Rectangle,
               {ConfigClient::HUD::Leaderboard::WIDTH, ConfigClient::HUD::Leaderboard::HEIGHT}));
-    newEntity.addComponent(Position(
-        {{GameClient::get().getWindow().getSize().x -
-              (ConfigClient::HUD::Leaderboard::WIDTH + ConfigClient::HUD::Leaderboard::PADDING),
-          ConfigClient::HUD::Leaderboard::PADDING}}));
+    newEntity.addComponent(
+        Position({{GameClient::get().getWindowSize().x - (ConfigClient::HUD::Leaderboard::WIDTH +
+                                                          ConfigClient::HUD::Leaderboard::PADDING),
+                   ConfigClient::HUD::Leaderboard::PADDING}}));
     newEntity.addComponent(Color(ConfigClient::HUD::Leaderboard::BACKGROUND_COLOR));
 
     EntityManager::get().entities.emplace(currentId, std::move(newEntity));
-
-    std::cout << "Leaderboard created" << std::endl;
 }
 
 void HUD::createStats() {
@@ -49,8 +46,6 @@ void HUD::createStats() {
     newEntity.addComponent(Color(ConfigClient::HUD::Stats::BACKGROUND_COLOR));
 
     EntityManager::get().entities.emplace(currentId, std::move(newEntity));
-
-    std::cout << "Stats created" << std::endl;
 }
 
 void HUD::createChatBox() {
@@ -62,15 +57,12 @@ void HUD::createChatBox() {
         Shape(ShapeType::Rectangle,
               {ConfigClient::HUD::ChatBox::WIDTH, ConfigClient::HUD::ChatBox::HEIGHT}));
     newEntity.addComponent(Position(
-        {{GameClient::get().getWindow().getSize().x -
-              (ConfigClient::HUD::ChatBox::WIDTH + ConfigClient::HUD::Leaderboard::PADDING),
-          GameClient::get().getWindow().getSize().y -
+        {{ConfigClient::HUD::Leaderboard::PADDING,
+          GameClient::get().getWindowSize().y -
               (ConfigClient::HUD::ChatBox::HEIGHT + ConfigClient::HUD::Leaderboard::PADDING)}}));
     newEntity.addComponent(Color(ConfigClient::HUD::ChatBox::BACKGROUND_COLOR));
 
     EntityManager::get().entities.emplace(currentId, std::move(newEntity));
-
-    std::cout << "ChatBox created" << std::endl;
 }
 
 void HUD::increaseId() {

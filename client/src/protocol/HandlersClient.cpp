@@ -1,6 +1,5 @@
 #include "protocol/HandlersClient.hpp"
 #include "components/ColorClient.hpp"
-#include "components/HUD.hpp"
 #include "components/Viewport.hpp"
 #include "engine/NetworkClient.hpp"
 #include "managers/EntityManager.hpp"
@@ -13,7 +12,6 @@ void HandlersClient::handleWorld(SmartBuffer& smartBuffer) {
     smartBuffer >> world.size;
 
     EntityManager::get().createWorld(world.size);
-    HUD::get().create();
 }
 
 void HandlersClient::handlePlayer(SmartBuffer& smartBuffer) {

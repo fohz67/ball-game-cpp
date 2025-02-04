@@ -1,5 +1,6 @@
 #include "engine/GameClient.hpp"
 #include <components/Position.hpp>
+#include "components/HUD.hpp"
 #include "components/Hotkeys.hpp"
 #include "components/Viewport.hpp"
 #include "components/Zoom.hpp"
@@ -19,10 +20,14 @@ void GameClient::run() {
     initWindow();
     initView();
 
+    HUD::get().create();
+
     while (window.isOpen()) {
         processEvents();
+
         ProtocolClient::get().sendMousePosition(window, lastMousePos);
         Viewport::get().applyInterpolation();
+
         render(system);
     }
 }
@@ -30,6 +35,7 @@ void GameClient::run() {
 void GameClient::initWindow() {
     window.create(sf::VideoMode(ConfigClient::Window::WIDTH, ConfigClient::Window::HEIGHT),
                   ConfigClient::Window::NAME);
+    windowSize = sf::Vector2u(window.getView().getSize());
     window.setVerticalSyncEnabled(true);
     window.setFramerateLimit(ConfigClient::Game::FRAME_RATE);
 }
@@ -81,4 +87,8 @@ sf::RenderWindow& GameClient::getWindow() {
 
 sf::View& GameClient::getView() {
     return view;
+}
+
+sf::Vector2u GameClient::getWindowSize() const {
+    return windowSize;
 }

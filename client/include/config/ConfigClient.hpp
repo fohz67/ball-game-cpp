@@ -47,24 +47,24 @@ struct ConfigClient {
 
     struct HUD {
         struct Stats {
-            static constexpr double                 WIDTH            = 200.0f;
-            static constexpr double                 HEIGHT           = 200.0f;
+            static constexpr double                 WIDTH            = 150.0f;
+            static constexpr double                 HEIGHT           = 90.0f;
             static constexpr double                 PADDING          = 10.0f;
-            static inline const std::vector<double> BACKGROUND_COLOR = {255, 0, 0, 255};
+            static inline const std::vector<double> BACKGROUND_COLOR = {255, 255, 255, 25};
         };
 
         struct Leaderboard {
-            static constexpr double                 WIDTH            = 200.0f;
-            static constexpr double                 HEIGHT           = 200.0f;
+            static constexpr double                 WIDTH            = 250.0f;
+            static constexpr double                 HEIGHT           = 400.0f;
             static constexpr double                 PADDING          = 10.0f;
-            static inline const std::vector<double> BACKGROUND_COLOR = {0, 255, 0, 255};
+            static inline const std::vector<double> BACKGROUND_COLOR = {255, 255, 255, 25};
         };
 
         struct ChatBox {
-            static constexpr double                 WIDTH            = 200.0f;
-            static constexpr double                 HEIGHT           = 200.0f;
+            static constexpr double                 WIDTH            = 350.0f;
+            static constexpr double                 HEIGHT           = 300.0f;
             static constexpr double                 PADDING          = 10.0f;
-            static inline const std::vector<double> BACKGROUND_COLOR = {0, 0, 255, 255};
+            static inline const std::vector<double> BACKGROUND_COLOR = {255, 255, 255, 25};
         };
     };
 };

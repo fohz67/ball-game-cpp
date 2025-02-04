@@ -70,8 +70,6 @@ void Protocol::sendPlayers(std::shared_ptr<asio::ip::tcp::socket> client) {
             smartBuffer << OpCodes::PLAYER;
         }
 
-        std::cout << "Nickname: " << player.getNickname() << std::endl;
-
         smartBuffer << OpCodes::PLAYER << player.getId() << player.getNickname()
                     << ColorServer::vecToInt(player.getColor())
                     << ColorServer::vecToInt(player.getCellColor());

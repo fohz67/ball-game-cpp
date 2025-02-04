@@ -2,7 +2,6 @@
 #include <components/Shape.hpp>
 #include <components/Sprite.hpp>
 #include <components/Text.hpp>
-#include <iostream>
 #include "System.hpp"
 
 void GEngine::System::updateEntityPosition(const int                      id,

@@ -1,6 +1,5 @@
 #include "engine/Game.hpp"
 #include <cmath>
-#include <iostream>
 #include "components/Cell.hpp"
 #include "config/Config.hpp"
 #include "geometry/FastInvSqrt.hpp"
