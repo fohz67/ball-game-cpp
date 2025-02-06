@@ -6,7 +6,7 @@ Zoom& Zoom::get() {
     return instance;
 }
 
-void Zoom::setZoom(double delta, sf::View& view) {
+const void Zoom::setZoom(const double delta, sf::View& view) {
     if (delta > 0) {
         view.zoom(1.0f - ConfigClient::Zoom::SPEED / 1000);
     } else if (delta < 0) {

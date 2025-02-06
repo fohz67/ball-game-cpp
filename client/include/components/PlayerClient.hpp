@@ -6,27 +6,21 @@
 
 class PlayerClient {
   public:
-    PlayerClient(uint32_t            id,
-                 std::string         nickname,
-                 std::vector<double> color,
-                 std::vector<double> cellColor);
+    PlayerClient(const uint32_t            id,
+                 const std::string         nickname,
+                 const std::vector<double> color,
+                 const std::vector<double> cellColor);
 
     uint32_t            getId() const;
     std::string         getNickname() const;
     std::vector<double> getColor() const;
     std::vector<double> getCellColor() const;
-    long                getMass() const;
-    long                getScore() const;
 
-    void setNickname(const std::string& nickname);
-    void setMass(long newMass);
-    void setScore(long newScore);
+    const void setNickname(const std::string& nickname);
 
   private:
     uint32_t            id;
     std::string         nickname;
     std::vector<double> color;
     std::vector<double> cellColor;
-    long                mass;
-    long                score;
 };

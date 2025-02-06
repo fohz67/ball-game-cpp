@@ -14,31 +14,30 @@ EntityManager& EntityManager::get() {
     return instance;
 }
 
-void EntityManager::createCell(uint32_t            id,
-                               double              x,
-                               double              y,
-                               double              radius,
-                               std::vector<double> color,
-                               std::string         nickname) {
+const void EntityManager::createCell(const uint32_t      id,
+                                     const double        x,
+                                     const double        y,
+                                     const double        radius,
+                                     std::vector<double> color,
+                                     const std::string   nickname) {
     if (color.size() != 4) {
         color = {255, 255, 255, 255};
     }
 
-    auto newCell = GameEngine::Entity(id);
+    GameEngine::Entity newCell(id);
 
     newCell.addComponent(Shape(ShapeType::Circle, {radius * 2, radius * 2}, radius));
     newCell.addComponent(Position({{x, y}}));
     newCell.addComponent(Color(color));
 
     entities.emplace(id, std::move(newCell));
-
-    if (nickname.length() > 0) {
-        // createNickname(id, x, y, radius, nickname);
-    }
 }
 
-void EntityManager::createNickname(
-    uint32_t id, double x, double y, double radius, std::string nickname) {
+const void EntityManager::createNickname(const uint32_t    id,
+                                         const double      x,
+                                         const double      y,
+                                         const double      radius,
+                                         const std::string nickname) {
     auto newNickname = GameEngine::Entity(id + ConfigClient::Network::ENTITY_LINKING_BIAS);
 
     newNickname.addComponent(
@@ -49,36 +48,41 @@ void EntityManager::createNickname(
     newNickname.addComponent(Position({{x + radius, y + radius}}));
     newNickname.addComponent(Link(id));
 
-    auto linkingBias = entitiesLinkingBiases.find(id)->second;
+    auto linkingBias = linkedEntitiesBiases.find(id)->second;
+
     entities.emplace(
         id + ConfigClient::Network::ENTITY_LINKING_BIAS * linkingBias, std::move(newNickname));
-    entitiesLinkingBiases.emplace(id, linkingBias + 1);
+    linkedEntitiesBiases.emplace(id, linkingBias + 1);
 }
 
-void EntityManager::updateCell(uint32_t id, double x, double y, double radius, bool isNickname) {
-    GameEngine::System        system;
-    std::pair<double, double> position = {x, y};
+const void EntityManager::createWorld(const uint16_t size) {
+    GameEngine::Entity              newWorld(ConfigClient::World::ID);
+    const std::pair<double, double> position = {0.0f, 0.0f};
+
+    newWorld.addComponent(Shape(ShapeType::Rectangle, {size, size}));
+    newWorld.addComponent(Position({position}));
+    newWorld.addComponent(Color(ConfigClient::World::BACKGROUND_COLOR));
+
+    entities.emplace(ConfigClient::World::ID, std::move(newWorld));
+}
+
+const void EntityManager::updateCell(
+    const uint32_t id, const double x, const double y, const double radius, const bool isNickname) {
+    GameEngine::System system;
+
+    const std::pair<double, double> position = {x, y};
 
     system.update(id, entities, GameEngine::UpdateType::Position, position);
     system.update(id, entities, GameEngine::UpdateType::ShapeSize, radius);
 }
 
-void EntityManager::createWorld(uint16_t size) {
-    auto newEntity = GameEngine::Entity(ConfigClient::World::ID);
-
-    newEntity.addComponent(Shape(ShapeType::Rectangle, {size, size}));
-    newEntity.addComponent(Position({{0.0f, 0.0f}}));
-    newEntity.addComponent(Color(ConfigClient::World::BACKGROUND_COLOR));
-
-    entities.emplace(ConfigClient::World::ID, std::move(newEntity));
-}
-
-void EntityManager::removeEntity(double id) {
+const void EntityManager::removeEntity(const double id) {
     if (entities.contains(id)) {
         entities.erase(id);
     }
-    if (entitiesLinkingBiases.contains(id)) {
-        entitiesLinkingBiases.erase(id);
+
+    if (linkedEntitiesBiases.contains(id)) {
+        linkedEntitiesBiases.erase(id);
     }
 }
 

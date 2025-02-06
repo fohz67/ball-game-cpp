@@ -22,22 +22,6 @@ std::vector<double> PlayerClient::getCellColor() const {
     return cellColor;
 }
 
-long PlayerClient::getMass() const {
-    return mass;
-}
-
-long PlayerClient::getScore() const {
-    return score;
-}
-
-void PlayerClient::setNickname(const std::string& nickname) {
+const void PlayerClient::setNickname(const std::string& nickname) {
     this->nickname = nickname;
-}
-
-void PlayerClient::setMass(long newMass) {
-    mass = newMass;
-}
-
-void PlayerClient::setScore(long newScore) {
-    score = newScore;
 }

@@ -6,7 +6,7 @@ PlayerManagerClient& PlayerManagerClient::get() {
     return instance;
 }
 
-void PlayerManagerClient::removePlayer(uint32_t playerId) {
+const void PlayerManagerClient::removePlayer(const uint32_t playerId) {
     players.erase(
         std::remove_if(players.begin(),
                        players.end(),
@@ -32,6 +32,6 @@ uint32_t PlayerManagerClient::getMyId() {
     return myId;
 }
 
-void PlayerManagerClient::setMyId(uint32_t id) {
+const void PlayerManagerClient::setMyId(const uint32_t id) {
     myId = id;
 }

@@ -11,12 +11,12 @@ NetworkClient& NetworkClient::get() {
 
 NetworkClient::NetworkClient() : socket(io_context) {}
 
-void NetworkClient::init(std::string ip, unsigned short port) {
+const void NetworkClient::init(const std::string ip, const unsigned short port) {
     this->host = ip;
     this->port = port;
 }
 
-void NetworkClient::run() {
+const void NetworkClient::run() {
     try {
         asio::ip::tcp::resolver               resolver(io_context);
         asio::ip::tcp::resolver::results_type endpoints =
@@ -32,7 +32,7 @@ void NetworkClient::run() {
     }
 }
 
-void NetworkClient::send(SmartBuffer& smartBuffer) {
+const void NetworkClient::send(SmartBuffer& smartBuffer) {
     try {
         asio::write(socket, asio::buffer(smartBuffer.getBuffer(), smartBuffer.getSize()));
     } catch (const std::exception& e) {
@@ -40,7 +40,7 @@ void NetworkClient::send(SmartBuffer& smartBuffer) {
     }
 }
 
-void NetworkClient::receive() {
+const void NetworkClient::receive() {
     SmartBuffer smartBuffer;
 
     try {
@@ -69,7 +69,7 @@ void NetworkClient::receive() {
     }
 }
 
-uint32_t NetworkClient::getCutPacketSize(SmartBuffer smartBuffer, uint32_t size) const {
+uint32_t NetworkClient::getCutPacketSize(SmartBuffer smartBuffer, const uint32_t size) const {
     return (smartBuffer.getSize() - sizeof(OpCodes)) / size;
 }
 
@@ -77,6 +77,6 @@ uint64_t NetworkClient::getPing() const {
     return ping;
 }
 
-void NetworkClient::setPing(uint64_t newPing) {
+const void NetworkClient::setPing(const uint64_t newPing) {
     ping = newPing;
 }

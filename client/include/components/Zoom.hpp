@@ -9,7 +9,7 @@ class Zoom {
 
     static Zoom& get();
 
-    void setZoom(double delta, sf::View& view);
+    const void setZoom(const double delta, sf::View& view);
 
   private:
     Zoom()  = default;

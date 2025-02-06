@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <vector>
 
-struct ColorClient {
+struct ColorConverterClient {
     static uint32_t vecToInt(const std::vector<double>& color) {
         std::vector<double> finalColor = {255, 255, 255, 255};
 

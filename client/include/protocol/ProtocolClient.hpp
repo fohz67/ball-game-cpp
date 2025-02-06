@@ -1,8 +1,6 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
 #include <SmartBuffer.hpp>
-#include <string>
 
 class ProtocolClient {
   public:
@@ -11,17 +9,9 @@ class ProtocolClient {
 
     static ProtocolClient& get();
 
-    void handleMessage(SmartBuffer& smartBuffer);
-
-    void sendPing();
-    void sendJoin(const std::string nickname);
-    void sendMousePosition(sf::RenderWindow& window, sf::Vector2i& lastMousePos);
-    void sendKeyPressed(std::string keyName);
+    const void handleMessage(SmartBuffer& smartBuffer);
 
   private:
     ProtocolClient()  = default;
     ~ProtocolClient() = default;
-
-    void handleGameState(SmartBuffer& smartBuffer);
-    void handleViewport(SmartBuffer& smartBuffer);
 };

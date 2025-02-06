@@ -10,12 +10,12 @@ class Viewport {
 
     static Viewport& get();
 
-    void setViewport(Point newViewport);
+    const void setViewport(const Point newViewport);
 
     Point getViewport() const;
     Point getPreviousViewport() const;
 
-    void applyInterpolation();
+    const void applyInterpolation();
 
   private:
     Viewport()  = default;

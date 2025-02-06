@@ -2,11 +2,11 @@
 #include <stdexcept>
 #include <string>
 #include "Client.hpp"
-#include "utils/ErrorHandling.hpp"
+#include "util/Error.hpp"
 
 int main(const int ac, const char** av) {
     try {
-        ErrorHandling::checkArgs(ac, av);
+        Error::checkArgs(ac, av);
         Client::get().run(av);
     } catch (const std::exception& e) {
         std::cerr << "Client error: " << e.what() << std::endl;

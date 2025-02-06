@@ -9,20 +9,20 @@
 #include "engine/NetworkClient.hpp"
 #include "managers/EntityManager.hpp"
 #include "managers/PlayerManagerClient.hpp"
-#include "protocol/ProtocolClient.hpp"
+#include "protocol/SendClient.hpp"
 
 HUD& HUD::get() {
     static HUD instance;
     return instance;
 }
 
-void HUD::create() {
+const void HUD::create() {
     createLeaderboard();
     createStats();
     createChatBox();
 }
 
-void HUD::update() {
+const void HUD::update() {
     static auto lastUpdate = std::chrono::high_resolution_clock::now();
     auto        now        = std::chrono::high_resolution_clock::now();
     auto        elapsed    = std::chrono::duration_cast<std::chrono::seconds>(now - lastUpdate);
@@ -32,11 +32,11 @@ void HUD::update() {
     }
     lastUpdate = now;
 
-    ProtocolClient::get().sendPing();
+    SendClient::sendPing();
     updateStats();
 }
 
-void HUD::createLeaderboard() {
+const void HUD::createLeaderboard() {
     // Box
     increaseId();
 
@@ -101,7 +101,7 @@ void HUD::createLeaderboard() {
     }
 }
 
-void HUD::createStats() {
+const void HUD::createStats() {
     increaseId();
 
     // Box
@@ -159,7 +159,7 @@ void HUD::createStats() {
     }
 }
 
-void HUD::updateStats() {
+const void HUD::updateStats() {
     GameEngine::System system;
     double             bias = ConfigClient::World::ID +
                   (leaderboardEntities.size() * ConfigClient::Network::ENTITY_LINKING_BIAS);
@@ -167,17 +167,13 @@ void HUD::updateStats() {
 
     bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 3;
 
-    system.update(bias,
-                  EntityManager::get().entities,
-                  GameEngine::UpdateType::Text,
-                  std::to_string(me->getScore()));
+    system.update(
+        bias, EntityManager::get().entities, GameEngine::UpdateType::Text, std::to_string(score));
 
     bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
 
-    system.update(bias,
-                  EntityManager::get().entities,
-                  GameEngine::UpdateType::Text,
-                  std::to_string(me->getMass()));
+    system.update(
+        bias, EntityManager::get().entities, GameEngine::UpdateType::Text, std::to_string(mass));
 
     bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
 
@@ -194,7 +190,7 @@ void HUD::updateStats() {
                   std::to_string(GameClient::get().getFPS()));
 }
 
-void HUD::createChatBox() {
+const void HUD::createChatBox() {
     increaseId();
 
     // Box
@@ -212,10 +208,6 @@ void HUD::createChatBox() {
     chatBoxEntitites.emplace(currentId, std::move(newEntity));
 }
 
-void HUD::increaseId() {
+const void HUD::increaseId() {
     currentId += ConfigClient::Network::ENTITY_LINKING_BIAS;
 }
-
-void HUD::setMass(long newMass) {}
-
-void HUD::setScore(long newScore) {}

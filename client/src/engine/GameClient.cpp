@@ -6,18 +6,19 @@
 #include "components/Zoom.hpp"
 #include "config/ConfigClient.hpp"
 #include "managers/EntityManager.hpp"
-#include "protocol/ProtocolClient.hpp"
+#include "protocol/SendClient.hpp"
 
 GameClient& GameClient::get() {
     static GameClient instance;
     return instance;
 }
 
-void GameClient::run() {
+const void GameClient::run() {
     GameEngine::System system;
-    sf::Vector2i       lastMousePos = sf::Mouse::getPosition(window);
-    sf::Clock          clock;
-    float              deltaTime = 0.0f;
+
+    sf::Vector2i lastMousePos = sf::Mouse::getPosition(window);
+    sf::Clock    clock;
+    float        deltaTime = 0.0f;
 
     initWindow();
     initView();
@@ -27,32 +28,35 @@ void GameClient::run() {
     while (window.isOpen()) {
         processEvents();
 
-        ProtocolClient::get().sendMousePosition(window, lastMousePos);
-        Viewport::get().applyInterpolation();
-
         deltaTime = clock.restart().asSeconds();
         fps       = static_cast<int>(1.0f / deltaTime);
+
+        SendClient::sendMousePosition(window, lastMousePos);
+        Viewport::get().applyInterpolation();
         HUD::get().update();
 
         render(system);
     }
 }
 
-void GameClient::initWindow() {
+const void GameClient::initWindow() {
     window.create(sf::VideoMode(ConfigClient::Window::WIDTH, ConfigClient::Window::HEIGHT),
                   ConfigClient::Window::NAME);
+
     windowSize = sf::Vector2u(window.getView().getSize());
+
     window.setVerticalSyncEnabled(true);
     window.setFramerateLimit(ConfigClient::Game::FRAME_RATE);
 }
 
-void GameClient::initView() {
+const void GameClient::initView() {
     view.setSize(ConfigClient::Window::WIDTH, ConfigClient::Window::HEIGHT);
     view.setCenter(ConfigClient::Window::WIDTH / 2, ConfigClient::Window::HEIGHT / 2);
+
     window.setView(view);
 }
 
-void GameClient::processEvents() {
+const void GameClient::processEvents() {
     sf::Event event;
 
     while (window.pollEvent(event)) {
@@ -61,7 +65,7 @@ void GameClient::processEvents() {
             return;
         }
         if (event.type == sf::Event::KeyPressed) {
-            ProtocolClient::get().sendKeyPressed(Hotkeys::keyToString(event.key.code));
+            SendClient::sendKeyPressed(Hotkeys::keyToString(event.key.code));
         }
         if (event.type == sf::Event::MouseWheelScrolled) {
             if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel) {
@@ -71,22 +75,20 @@ void GameClient::processEvents() {
     }
 }
 
-void GameClient::render(GameEngine::System& system) {
-    // Gameplay
+const void GameClient::render(GameEngine::System& system) {
     view.setCenter(
         Viewport::get().getPreviousViewport().first, Viewport::get().getPreviousViewport().second);
+
     window.setView(view);
     window.clear();
 
     std::map<double, GameEngine::Entity> gameEntities = EntityManager::get().getGameEntities();
     system.render(window, gameEntities);
 
-    // HUD
     window.setView(window.getDefaultView());
     std::map<double, GameEngine::Entity> hudEntities = EntityManager::get().getHUDEntities();
     system.render(window, hudEntities);
 
-    // Final render
     window.display();
 }
 

@@ -10,13 +10,13 @@ class PlayerManagerClient {
 
     static PlayerManagerClient& get();
 
-    void removePlayer(uint32_t playerId);
+    const void removePlayer(const uint32_t playerId);
 
-    PlayerClient* getPlayer(uint32_t playerId);
+    PlayerClient* getPlayer(const uint32_t playerId);
     PlayerClient* getMe();
     uint32_t      getMyId();
 
-    void setMyId(uint32_t id);
+    const void setMyId(const uint32_t id);
 
     std::vector<PlayerClient> players;
 

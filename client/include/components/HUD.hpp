@@ -10,18 +10,18 @@ class HUD {
 
     static HUD& get();
 
-    void create();
-    void createLeaderboard();
-    void createStats();
-    void createChatBox();
+    const void create();
+    const void createLeaderboard();
+    const void createStats();
+    const void createChatBox();
 
-    void update();
-    void updateStats();
+    const void update();
+    const void updateStats();
 
-    void increaseId();
+    const void increaseId();
 
-    void setMass(long mass);
-    void setScore(long score);
+    const void setMass(const long mass);
+    const void setScore(const long score);
 
   private:
     HUD()  = default;
@@ -32,4 +32,7 @@ class HUD {
     std::map<double, GameEngine::Entity> leaderboardEntities;
     std::map<double, GameEngine::Entity> statsEntity;
     std::map<double, GameEngine::Entity> chatBoxEntitites;
+
+    long score = 0;
+    long mass  = 0;
 };

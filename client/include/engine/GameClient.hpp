@@ -10,7 +10,7 @@ class GameClient {
 
     static GameClient& get();
 
-    void run();
+    const void run();
 
     sf::RenderWindow& getWindow();
     sf::View&         getView();
@@ -21,10 +21,10 @@ class GameClient {
     GameClient()  = default;
     ~GameClient() = default;
 
-    void initWindow();
-    void initView();
-    void processEvents();
-    void render(GameEngine::System& system);
+    const void initWindow();
+    const void initView();
+    const void processEvents();
+    const void render(GameEngine::System& system);
 
     sf::RenderWindow window;
     sf::View         view;

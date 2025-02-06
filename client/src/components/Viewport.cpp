@@ -6,7 +6,7 @@ Viewport& Viewport::get() {
     return instance;
 }
 
-void Viewport::setViewport(Point newViewport) {
+const void Viewport::setViewport(const Point newViewport) {
     viewport = newViewport;
 }
 
@@ -18,7 +18,7 @@ Point Viewport::getPreviousViewport() const {
     return previousViewport;
 }
 
-void Viewport::applyInterpolation() {
+const void Viewport::applyInterpolation() {
     previousViewport.first +=
         (viewport.first - previousViewport.first) * ConfigClient::Game::CAMERA_INTERPOLATE_FACTOR;
     previousViewport.second +=

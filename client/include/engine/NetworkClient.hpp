@@ -12,20 +12,20 @@ class NetworkClient {
 
     static NetworkClient& get();
 
-    void init(std::string ip, unsigned short port);
-    void run();
-    void send(SmartBuffer& smartBuffer);
+    const void init(const std::string ip, const unsigned short port);
+    const void run();
+    const void send(SmartBuffer& smartBuffer);
 
-    uint32_t getCutPacketSize(SmartBuffer smartBuffer, uint32_t size) const;
+    uint32_t getCutPacketSize(SmartBuffer smartBuffer, const uint32_t size) const;
     uint64_t getPing() const;
 
-    void setPing(uint64_t newPing);
+    const void setPing(const uint64_t newPing);
 
   private:
     NetworkClient();
     ~NetworkClient() = default;
 
-    void receive();
+    const void receive();
 
     asio::io_context      io_context;
     asio::ip::tcp::socket socket;

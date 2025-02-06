@@ -1,8 +1,8 @@
-#include "utils/ErrorHandling.hpp"
+#include "util/Error.hpp"
 #include <regex>
 #include <stdexcept>
 
-void ErrorHandling::checkArgs(const int ac, const char** av) {
+const void Error::checkArgs(const int ac, const char** av) {
     if (ac > 1) {
         std::string ip(av[1]);
         std::regex  ipRegex(
