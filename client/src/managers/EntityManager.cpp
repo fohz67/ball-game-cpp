@@ -56,7 +56,7 @@ void EntityManager::createNickname(
 }
 
 void EntityManager::updateCell(uint32_t id, double x, double y, double radius, bool isNickname) {
-    GameEngine::System           system;
+    GameEngine::System        system;
     std::pair<double, double> position = {x, y};
 
     system.update(id, entities, GameEngine::UpdateType::Position, position);

@@ -38,3 +38,16 @@ struct ViewportInterface {
 struct EntityInterface {
     uint32_t id;
 };
+
+struct JoinInterface {
+    std::string nickname;
+};
+
+struct MousePositionInterface {
+    double x;
+    double y;
+};
+
+struct KeyPressedInterface {
+    std::string key;
+};

@@ -15,9 +15,9 @@ GameClient& GameClient::get() {
 
 void GameClient::run() {
     GameEngine::System system;
-    sf::Vector2i    lastMousePos = sf::Mouse::getPosition(window);
-    sf::Clock       clock;
-    float           deltaTime = 0.0f;
+    sf::Vector2i       lastMousePos = sf::Mouse::getPosition(window);
+    sf::Clock          clock;
+    float              deltaTime = 0.0f;
 
     initWindow();
     initView();

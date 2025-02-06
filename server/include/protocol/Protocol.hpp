@@ -3,8 +3,6 @@
 #include <SmartBuffer.hpp>
 #include <asio.hpp>
 #include <memory>
-#include "components/Cell.hpp"
-#include "components/Player.hpp"
 
 class Protocol {
   public:
@@ -13,18 +11,9 @@ class Protocol {
 
     static Protocol& get();
 
-    void injector(char* buffer, size_t length, SmartBuffer& smartBuffer);
-
-    void handleMessage(std::shared_ptr<asio::ip::tcp::socket> client, SmartBuffer& smartBuffer);
-
-    void sendPlayer(const Player& player);
-    void sendPlayers(std::shared_ptr<asio::ip::tcp::socket> client);
-    void sendCells();
-    void sendPellets(std::shared_ptr<asio::ip::tcp::socket> client);
-    void sendViewport();
-    void sendEntityRemoved(const std::vector<uint32_t>& deletedCellsIds);
-    void sendPlayerDeleted(uint32_t playerId);
-    void sendMe(std::shared_ptr<asio::ip::tcp::socket> client);
+    const void injector(char* buffer, const size_t length, SmartBuffer& smartBuffer);
+    const void handleMessage(const std::shared_ptr<asio::ip::tcp::socket> client,
+                             SmartBuffer&                                 smartBuffer);
 
   private:
     Protocol()  = default;

@@ -9,12 +9,12 @@ enum CellType { PLAYER, DEAD, EJECTED, PELLET };
 
 class Cell {
   public:
-    Cell(uint32_t            id,
-         uint32_t            ownerId,
-         CellType            type,
-         Vector2&            pos,
-         double              mass,
-         std::vector<double> color);
+    Cell(const uint32_t            id,
+         const uint32_t            ownerId,
+         const CellType            type,
+         const Vector2&            pos,
+         const double              mass,
+         const std::vector<double> color);
 
     uint32_t            getId() const;
     uint32_t            getOwnerId() const;

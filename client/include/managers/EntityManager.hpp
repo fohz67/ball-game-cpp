@@ -22,7 +22,7 @@ class EntityManager {
 
     void updateCell(uint32_t id, double x, double y, double radius, bool isNickname);
 
-    void                              removeEntity(double id);
+    void                                 removeEntity(double id);
     std::map<double, GameEngine::Entity> getGameEntities() const;
     std::map<double, GameEngine::Entity> getHUDEntities() const;
     std::map<double, GameEngine::Entity> entities;

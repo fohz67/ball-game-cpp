@@ -2,7 +2,9 @@
 #include <unordered_map>
 #include "System.hpp"
 
-void GameEngine::System::loadSprite(GameEngine::Entity& entity, auto& spriteComp, auto& textureComp) {
+void GameEngine::System::loadSprite(GameEngine::Entity& entity,
+                                    auto&               spriteComp,
+                                    auto&               textureComp) {
     static std::unordered_map<std::string, sf::Texture> textureCache;
 
     if (!spriteComp.isLoaded()) {

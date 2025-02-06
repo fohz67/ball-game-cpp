@@ -8,10 +8,10 @@
 
 class Player {
   public:
-    Player(uint32_t                               id,
-           std::shared_ptr<asio::ip::tcp::socket> client,
-           std::vector<double>                    color,
-           std::vector<double>                    cellColor);
+    Player(const uint32_t                               id,
+           const std::shared_ptr<asio::ip::tcp::socket> client,
+           const std::vector<double>                    color,
+           const std::vector<double>                    cellColor);
 
     uint32_t                               getId() const;
     std::shared_ptr<asio::ip::tcp::socket> getClient() const;

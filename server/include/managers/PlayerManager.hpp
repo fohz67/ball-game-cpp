@@ -12,13 +12,13 @@ class PlayerManager {
 
     static PlayerManager& get();
 
-    void updatePlayers();
+    const void updatePlayers();
 
-    Player& addPlayer(std::shared_ptr<asio::ip::tcp::socket> client);
-    void    removePlayer(uint32_t playerId);
+    const void addPlayer(const std::shared_ptr<asio::ip::tcp::socket> client);
+    const void removePlayer(const std::shared_ptr<asio::ip::tcp::socket> client);
+    Player*    getPlayer(const std::shared_ptr<asio::ip::tcp::socket> client);
 
-    Player*              getPlayerByClient(std::shared_ptr<asio::ip::tcp::socket> client);
-    std::vector<Player>& getAllPlayers();
+    std::vector<Player>& getPlayers();
 
   private:
     PlayerManager()  = default;

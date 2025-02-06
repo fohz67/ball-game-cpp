@@ -109,8 +109,8 @@ void GameEngine::System::optionButtonSystem(sf::RenderWindow& window, GameEngine
 }
 
 void GameEngine::System::sliderSystem(sf::RenderWindow&         window,
-                                   GameEngine::Entity&          entity,
-                                   std::map<double, Entity>& entities) {
+                                      GameEngine::Entity&       entity,
+                                      std::map<double, Entity>& entities) {
     GameEngine::System system;
     if (entity.hasComponent<Slider>() && entity.hasComponent<Position>()) {
         auto& sliderComp   = entity.getComponent<Slider>();

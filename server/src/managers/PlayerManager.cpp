@@ -1,44 +1,49 @@
 #include "managers/PlayerManager.hpp"
 #include "config/Config.hpp"
 #include "engine/Game.hpp"
-#include "managers/AtomicIdsManager.hpp"
 #include "managers/CellManager.hpp"
-#include "protocol/Protocol.hpp"
+#include "protocol/Send.hpp"
+#include "util/AtomicID.hpp"
+#include "util/Util.hpp"
 
 PlayerManager& PlayerManager::get() {
     static PlayerManager instance;
     return instance;
 }
 
-void PlayerManager::updatePlayers() {
-    for (auto& player : players) {
+const void PlayerManager::updatePlayers() {
+    for (Player& player : players) {
         Game::get().viewportUpdate(player);
         Game::get().moveUpdate(player);
     }
 }
 
-Player& PlayerManager::addPlayer(std::shared_ptr<asio::ip::tcp::socket> client) {
-    uint32_t playerId = AtomicIdsManager::get().getNextId();
+const void PlayerManager::addPlayer(const std::shared_ptr<asio::ip::tcp::socket> client) {
+    const uint32_t            playerId      = AtomicID::get().getNextId();
+    const std::vector<double> nicknameColor = Config::Gameplay::Player::COLOR;
+    const std::vector<double> cellColor     = Util::getRandomColor();
 
-    players.emplace_back(
-        playerId, client, Config::Gameplay::Player::COLOR, CellManager::get().getRandomColor());
-
-    return players.back();
+    players.emplace_back(playerId, client, nicknameColor, cellColor);
 }
 
-void PlayerManager::removePlayer(uint32_t playerId) {
-    players.erase(std::remove_if(players.begin(),
-                                 players.end(),
-                                 [playerId](const Player& p) { return p.getId() == playerId; }),
-                  players.end());
+const void PlayerManager::removePlayer(const std::shared_ptr<asio::ip::tcp::socket> client) {
+    for (auto it = players.begin(); it != players.end(); ++it) {
+        if (it->getClient() == client) {
+            uint32_t id = it->getId();
 
-    Protocol::get().sendPlayerDeleted(playerId);
-    CellManager::get().removeCells(playerId);
-    AtomicIdsManager::get().removeId(playerId);
+            players.erase(it);
+
+            Send::sendPlayerDeleted(id);
+            CellManager::get().removeCells(id);
+            AtomicID::get().removeId(id);
+
+            break;
+        }
+    }
 }
 
-Player* PlayerManager::getPlayerByClient(std::shared_ptr<asio::ip::tcp::socket> client) {
-    for (auto& player : players) {
+Player* PlayerManager::getPlayer(const std::shared_ptr<asio::ip::tcp::socket> client) {
+    for (Player& player : players) {
         if (player.getClient() == client) {
             return &player;
         }
@@ -47,6 +52,6 @@ Player* PlayerManager::getPlayerByClient(std::shared_ptr<asio::ip::tcp::socket> 
     return nullptr;
 }
 
-std::vector<Player>& PlayerManager::getAllPlayers() {
+std::vector<Player>& PlayerManager::getPlayers() {
     return players;
 }

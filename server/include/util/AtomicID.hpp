@@ -4,19 +4,19 @@
 #include <queue>
 #include <set>
 
-class AtomicIdsManager {
+class AtomicID {
   public:
-    AtomicIdsManager(const AtomicIdsManager&)            = delete;
-    AtomicIdsManager& operator=(const AtomicIdsManager&) = delete;
+    AtomicID(const AtomicID&)            = delete;
+    AtomicID& operator=(const AtomicID&) = delete;
 
-    static AtomicIdsManager& get();
+    static AtomicID& get();
 
     uint32_t getNextId();
     void     removeId(uint32_t id);
 
   private:
-    AtomicIdsManager()  = default;
-    ~AtomicIdsManager() = default;
+    AtomicID()  = default;
+    ~AtomicID() = default;
 
     uint32_t                                                                     nextId = 2;
     std::set<uint32_t>                                                           usedIds;

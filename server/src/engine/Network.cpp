@@ -3,6 +3,7 @@
 #include "config/Config.hpp"
 #include "managers/PlayerManager.hpp"
 #include "protocol/Protocol.hpp"
+#include "protocol/Send.hpp"
 
 Network& Network::get() {
     static Network instance;
@@ -44,11 +45,7 @@ void Network::newClient(std::shared_ptr<asio::ip::tcp::socket> socket) {
 
                 this->newClient(socket);
             } else {
-                uint32_t playerId = PlayerManager::get().getPlayerByClient(socket)->getId();
-
-                PlayerManager::get().removePlayer(playerId);
-
-                std::cout << "Player " << playerId << " disconnected." << std::endl;
+                PlayerManager::get().removePlayer(socket);
             }
         });
 }
@@ -67,7 +64,7 @@ void Network::sendToClient(std::shared_ptr<asio::ip::tcp::socket> client,
 }
 
 void Network::sendToAll(SmartBuffer& smartBuffer) {
-    const auto& players = PlayerManager::get().getAllPlayers();
+    const auto& players = PlayerManager::get().getPlayers();
 
     for (const auto& player : players) {
         sendToClient(player.getClient(), smartBuffer);
@@ -76,8 +73,8 @@ void Network::sendToAll(SmartBuffer& smartBuffer) {
 
 void Network::sendLoop() {
     while (true) {
-        Protocol::get().sendCells();
-        Protocol::get().sendViewport();
+        Send::sendCells();
+        Send::sendViewport();
 
         std::this_thread::sleep_for(std::chrono::milliseconds(Config::Network::FREQUENCY));
     }

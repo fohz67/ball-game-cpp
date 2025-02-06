@@ -3,12 +3,12 @@
 #include "config/Config.hpp"
 #include "geometry/FastInvSqrt.hpp"
 
-Cell::Cell(uint32_t            id,
-           uint32_t            ownerId,
-           CellType            type,
-           Vector2&            pos,
-           double              mass,
-           std::vector<double> color)
+Cell::Cell(const uint32_t            id,
+           const uint32_t            ownerId,
+           const CellType            type,
+           const Vector2&            pos,
+           const double              mass,
+           const std::vector<double> color)
     : id(id), ownerId(ownerId), type(type), pos(pos), mass(mass), color(color) {}
 
 uint32_t Cell::getId() const {

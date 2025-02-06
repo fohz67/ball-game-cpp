@@ -161,7 +161,7 @@ void HUD::createStats() {
 
 void HUD::updateStats() {
     GameEngine::System system;
-    double          bias = ConfigClient::World::ID +
+    double             bias = ConfigClient::World::ID +
                   (leaderboardEntities.size() * ConfigClient::Network::ENTITY_LINKING_BIAS);
     auto me = PlayerManagerClient::get().getMe();
 

@@ -11,17 +11,15 @@ class CellManager {
 
     static CellManager& get();
 
-    Vector2             getRandomLocation();
-    std::vector<double> getRandomColor();
+    const void generatePellets();
 
-    void generatePellets();
+    const void createCell(uint32_t ownerId);
+    const void updateCells();
+    const void removeCells(const uint32_t ownerId);
+    const void deleteCells(const std::vector<uint32_t>& deletedIds);
 
-    void                     createCell(uint32_t ownerId, CellType type);
-    void                     updateCells();
-    void                     removeCells(uint32_t ownerId);
-    void                     deleteCells(const std::vector<uint32_t>& deletedIds);
-    std::vector<Cell*>       getCells(uint32_t ownerId);
-    const std::vector<Cell>& getAllCells() const;
+    std::vector<Cell*> getCells(const uint32_t ownerId);
+    std::vector<Cell>& getAllCells();
 
   private:
     CellManager()  = default;

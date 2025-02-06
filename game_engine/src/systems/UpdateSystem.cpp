@@ -5,9 +5,9 @@
 #include "System.hpp"
 
 void GameEngine::System::updateEntityPosition(const int                        id,
-                                           std::map<double, Entity>&        entities,
-                                           const std::pair<double, double>& pos,
-                                           const int                        posId) {
+                                              std::map<double, Entity>&        entities,
+                                              const std::pair<double, double>& pos,
+                                              const int                        posId) {
     linkSystem(id, entities, pos, posId);
 
     auto it = entities.find(id);
@@ -74,8 +74,8 @@ void GameEngine::System::updateTextFont(Entity& entity, const std::string& font)
 }
 
 void GameEngine::System::updateTextSize(const int                 id,
-                                     std::map<double, Entity>& entities,
-                                     const unsigned int        textSize) {
+                                        std::map<double, Entity>& entities,
+                                        const unsigned int        textSize) {
     Entity& entity = entities.at(id);
     if (entity.hasComponent<Text>()) {
         auto& textComp = entity.getComponent<Text>();
@@ -143,10 +143,10 @@ void GameEngine::System::updateShapeSize(Entity& entity, double radius) {
 }
 
 void GameEngine::System::update(const double              id,
-                             std::map<double, Entity>& entities,
-                             const UpdateType          type,
-                             const std::any&           value,
-                             const int                 posId) {
+                                std::map<double, Entity>& entities,
+                                const UpdateType          type,
+                                const std::any&           value,
+                                const int                 posId) {
     auto it = entities.find(id);
     if (it == entities.end())
         return;

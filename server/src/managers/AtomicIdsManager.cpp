@@ -1,11 +1,11 @@
-#include "managers/AtomicIdsManager.hpp"
+#include "util/AtomicID.hpp"
 
-AtomicIdsManager& AtomicIdsManager::get() {
-    static AtomicIdsManager instance;
+AtomicID& AtomicID::get() {
+    static AtomicID instance;
     return instance;
 }
 
-uint32_t AtomicIdsManager::getNextId() {
+uint32_t AtomicID::getNextId() {
     if (!recycledIds.empty()) {
         uint32_t id = recycledIds.top();
 
@@ -20,7 +20,7 @@ uint32_t AtomicIdsManager::getNextId() {
     return nextId++;
 }
 
-void AtomicIdsManager::removeId(uint32_t id) {
+void AtomicID::removeId(uint32_t id) {
     if (usedIds.erase(id)) {
         recycledIds.push(id);
     }
