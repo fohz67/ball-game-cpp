@@ -16,7 +16,7 @@ struct Config {
 
     struct Gameplay {
         struct World {
-            static constexpr uint16_t SIZE = 700.0f;
+            static constexpr uint16_t SIZE = 1500.0f;
         };
 
         struct Cell {
@@ -33,7 +33,7 @@ struct Config {
         };
 
         struct Pellet {
-            static constexpr int    COUNT      = 50000;
+            static constexpr int    COUNT      = 3000;
             static constexpr double MASS       = 2.0f;
             static constexpr double EAT_FACTOR = 10.0f;
         };

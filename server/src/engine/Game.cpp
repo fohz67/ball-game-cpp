@@ -1,11 +1,13 @@
 #include "engine/Game.hpp"
+#include <chrono>
 #include <cmath>
+#include <iomanip>
+#include <iostream>
 #include "components/Cell.hpp"
 #include "config/Config.hpp"
 #include "geometry/FastInvSqrt.hpp"
 #include "managers/CellManager.hpp"
 #include "managers/PlayerManager.hpp"
-#include <iostream>
 
 Game& Game::get() {
     static Game instance;
@@ -23,13 +25,14 @@ const void Game::updateLoop() {
         auto start = std::chrono::steady_clock::now();
 
         CellManager::get().updateCells();
-        for (Player &player : PlayerManager::get().getPlayers()) {
+        for (Player& player : PlayerManager::get().getPlayers()) {
             updateGameState(player);
         }
 
-        auto end = std::chrono::steady_clock::now();
-        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-        std::cout << "[Game] Loop iteration took " << duration << " ms" << std::endl;
+        auto   end      = std::chrono::steady_clock::now();
+        double duration = std::chrono::duration<double, std::milli>(end - start).count();
+        std::cout << "[Game] Loop iteration took " << std::fixed << std::setprecision(5) << duration
+                  << " ms" << std::endl;
 
         std::this_thread::sleep_for(std::chrono::milliseconds(Config::Game::FREQUENCY));
     }
@@ -45,7 +48,7 @@ const void Game::updateGameState(Player& player) {
     Vector2      center(0.0f, 0.0f);
     Vector2      dir       = player.getMousePosition();
     const double magnitude = dir.magnitude();
-    const double             decrease    = Config::Gameplay::Cell::DECREASE_SPEED_THRESHOLD;
+    const double decrease  = Config::Gameplay::Cell::DECREASE_SPEED_THRESHOLD;
     const double slowdown  = (magnitude < decrease) ? magnitude / decrease : 1.0f;
 
     if (magnitude) {

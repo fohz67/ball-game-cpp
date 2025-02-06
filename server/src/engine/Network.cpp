@@ -1,9 +1,11 @@
 #include "engine/Network.hpp"
+#include <chrono>
+#include <iomanip>
+#include <iostream>
 #include "config/Config.hpp"
 #include "managers/PlayerManager.hpp"
 #include "protocol/Protocol.hpp"
 #include "protocol/Send.hpp"
-#include <iostream>
 
 Network& Network::get() {
     static Network instance;
@@ -82,9 +84,10 @@ const void Network::sendLoop() {
         Send::sendCells();
         Send::sendViewport();
 
-        auto end = std::chrono::steady_clock::now();
-        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-        std::cout << "[Network] Loop iteration took " << duration << " ms" << std::endl;
+        auto   end      = std::chrono::steady_clock::now();
+        double duration = std::chrono::duration<double, std::milli>(end - start).count();
+        std::cout << "[Network] Loop iteration took " << std::fixed << std::setprecision(5)
+                  << duration << " ms" << std::endl;
 
         std::this_thread::sleep_for(std::chrono::milliseconds(Config::Network::FREQUENCY));
     }

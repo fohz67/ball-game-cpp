@@ -1,11 +1,11 @@
 #include "managers/CellManager.hpp"
+#include <algorithm>
+#include <iostream>
+#include <unordered_set>
 #include "config/Config.hpp"
+#include "protocol/Send.hpp"
 #include "util/AtomicID.hpp"
 #include "util/Util.hpp"
-#include "protocol/Send.hpp"
-#include <algorithm>
-#include <unordered_set>
-#include <iostream>
 
 CellManager& CellManager::get() {
     static CellManager instance;
@@ -17,36 +17,36 @@ const void CellManager::generatePellets() {
     pelletCells.reserve(Config::Gameplay::Pellet::COUNT);
 
     for (int i = 0; i < Config::Gameplay::Pellet::COUNT; i++) {
-       createPellet();
+        createPellet();
     }
 }
 
 const void CellManager::createPellet() {
-    uint32_t pelletId = AtomicID::get().getNextId();
-    Vector2 location = Util::getRandomLocation();
-    double mass = Config::Gameplay::Pellet::MASS;
-    std::vector<double> color = Util::getRandomColor();
+    uint32_t            pelletId = AtomicID::get().getNextId();
+    Vector2             location = Util::getRandomLocation();
+    double              mass     = Config::Gameplay::Pellet::MASS;
+    std::vector<double> color    = Util::getRandomColor();
 
     pelletCells.emplace_back(pelletId, 0, CellType::PELLET, location, mass, color);
 }
 
 const void CellManager::createCell(const uint32_t ownerId) {
-    uint32_t cellId = AtomicID::get().getNextId();
-    Vector2 location = Util::getRandomLocation();
-    double mass = Config::Gameplay::Cell::SPAWN_MASS;
-    std::vector<double> color = Util::getRandomColor();
+    uint32_t            cellId   = AtomicID::get().getNextId();
+    Vector2             location = Util::getRandomLocation();
+    double              mass     = Config::Gameplay::Cell::SPAWN_MASS;
+    std::vector<double> color    = Util::getRandomColor();
 
     playerCells.emplace_back(cellId, ownerId, CellType::PLAYER, location, mass, color);
 }
 
 const void CellManager::updateCells() {
     std::vector<uint32_t> ids;
-    size_t n = playerCells.size();
+    size_t                n = playerCells.size();
 
 
     for (size_t i = 0; i < n; i++) {
         Cell& cell = playerCells[i];
-        
+
         cell.decay();
 
         for (Cell& pellet : pelletCells) {
@@ -67,7 +67,7 @@ const void CellManager::updateCells() {
             if (cell.getId() == target.getId() || target.isMarkedForDeletion()) {
                 continue;
             }
-            
+
             if (cell.canEat(target)) {
                 cell.absorb(target);
                 target.markForDeletion();
@@ -105,17 +105,21 @@ const void CellManager::deleteCells(const std::vector<uint32_t>& ids, const int 
     std::unordered_set<uint32_t> idSet(ids.begin(), ids.end());
 
     if (many > 0) {
-        playerCells.erase(std::remove_if(playerCells.begin(), playerCells.end(),
-            [&idSet](const Cell& cell) {
-                return idSet.find(cell.getId()) != idSet.end();
-            }), playerCells.end());
+        playerCells.erase(std::remove_if(playerCells.begin(),
+                                         playerCells.end(),
+                                         [&idSet](const Cell& cell) {
+                                             return idSet.find(cell.getId()) != idSet.end();
+                                         }),
+                          playerCells.end());
     }
 
     if (many > 1) {
-        pelletCells.erase(std::remove_if(pelletCells.begin(), pelletCells.end(),
-            [&idSet](const Cell& cell) {
-                return idSet.find(cell.getId()) != idSet.end();
-            }), pelletCells.end());
+        pelletCells.erase(std::remove_if(pelletCells.begin(),
+                                         pelletCells.end(),
+                                         [&idSet](const Cell& cell) {
+                                             return idSet.find(cell.getId()) != idSet.end();
+                                         }),
+                          pelletCells.end());
     }
 
     Send::sendEntityRemoved(ids);

@@ -1,18 +1,18 @@
 #pragma once
 
-#include <vector>
 #include <cstdint>
+#include <vector>
 #include "components/Cell.hpp"
 
 class CellManager {
-public:
+  public:
     static CellManager& get();
 
     CellManager(const CellManager&)            = delete;
     CellManager& operator=(const CellManager&) = delete;
 
     const void generatePellets();
-    const void createPellet(); 
+    const void createPellet();
 
     const void createCell(const uint32_t ownerId);
     const void updateCells();
@@ -23,8 +23,8 @@ public:
     std::vector<Cell*> getPelletCells() const;
     std::vector<Cell*> getCellsByPlayerId(const uint32_t ownerId) const;
 
-private:
-    CellManager() = default;
+  private:
+    CellManager()  = default;
     ~CellManager() = default;
 
     std::vector<Cell> playerCells;
