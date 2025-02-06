@@ -1,7 +1,18 @@
 module.exports = {
   tutorialSidebar: [
-    { type: "doc", id: "server", label: "Server" },
-    { type: "doc", id: "client", label: "Client" },
-    { type: "doc", id: "game-engine", label: "Game Engine" },
+    {
+      type: "category",
+      label: "Game Engine",
+      collapsible: true,
+      collapsed: false,
+      items: [
+        "game-engine/architecture",
+        "game-engine/components",
+        "game-engine/entity",
+        "game-engine/intro",
+        "game-engine/rendering",
+        "game-engine/update",
+      ],
+    },
   ],
 };

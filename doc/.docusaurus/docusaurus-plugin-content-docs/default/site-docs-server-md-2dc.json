@@ -12,10 +12,5 @@
   "version": "current",
   "frontMatter": {
     "title": "Server"
-  },
-  "sidebar": "tutorialSidebar",
-  "next": {
-    "title": "🕹️ Client",
-    "permalink": "/docs/client"
   }
 }

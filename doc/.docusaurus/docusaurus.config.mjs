@@ -4,7 +4,7 @@
  * Modify the docusaurus.config.js file at your site's root instead.
  */
 export default {
-  "title": "doc",
+  "title": "Ball Game Documentation",
   "tagline": "Documentation",
   "url": "http://localhost",
   "baseUrl": "/",

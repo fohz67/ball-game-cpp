@@ -1,6 +1,6 @@
 {
   "id": "game-engine",
-  "title": "Game Engine",
+  "title": "Server",
   "description": "",
   "source": "@site/docs/game-engine.md",
   "sourceDirName": ".",
@@ -11,11 +11,6 @@
   "tags": [],
   "version": "current",
   "frontMatter": {
-    "title": "Game Engine"
-  },
-  "sidebar": "tutorialSidebar",
-  "previous": {
-    "title": "🕹️ Client",
-    "permalink": "/docs/client"
+    "title": "Server"
   }
 }

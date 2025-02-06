@@ -39,15 +39,15 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '6d0'),
+    component: ComponentCreator('/docs', '9a1'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', 'a1e'),
+        component: ComponentCreator('/docs', 'b47'),
         routes: [
           {
             path: '/docs',
-            component: ComponentCreator('/docs', '6a7'),
+            component: ComponentCreator('/docs', '19f'),
             routes: [
               {
                 path: '/docs/blank',
@@ -56,21 +56,54 @@ export default [
               },
               {
                 path: '/docs/client',
-                component: ComponentCreator('/docs/client', 'caa'),
+                component: ComponentCreator('/docs/client', 'f42'),
+                exact: true
+              },
+              {
+                path: '/docs/game-engine',
+                component: ComponentCreator('/docs/game-engine', 'fd8'),
+                exact: true
+              },
+              {
+                path: '/docs/game-engine/architecture',
+                component: ComponentCreator('/docs/game-engine/architecture', '042'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/game-engine',
-                component: ComponentCreator('/docs/game-engine', '376'),
+                path: '/docs/game-engine/components',
+                component: ComponentCreator('/docs/game-engine/components', '705'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/game-engine/entity',
+                component: ComponentCreator('/docs/game-engine/entity', '473'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/game-engine/intro',
+                component: ComponentCreator('/docs/game-engine/intro', '483'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/game-engine/rendering',
+                component: ComponentCreator('/docs/game-engine/rendering', 'd22'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/game-engine/update',
+                component: ComponentCreator('/docs/game-engine/update', '0c7'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
                 path: '/docs/server',
-                component: ComponentCreator('/docs/server', 'fc9'),
-                exact: true,
-                sidebar: "tutorialSidebar"
+                component: ComponentCreator('/docs/server', '6b7'),
+                exact: true
               }
             ]
           }

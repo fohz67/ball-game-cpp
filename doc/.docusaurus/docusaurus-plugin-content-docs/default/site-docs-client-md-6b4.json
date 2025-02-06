@@ -12,14 +12,5 @@
   "version": "current",
   "frontMatter": {
     "title": "Client"
-  },
-  "sidebar": "tutorialSidebar",
-  "previous": {
-    "title": "🖥️ Server",
-    "permalink": "/docs/server"
-  },
-  "next": {
-    "title": "🎮 Game Engine",
-    "permalink": "/docs/game-engine"
   }
 }

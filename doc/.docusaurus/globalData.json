@@ -8,7 +8,7 @@
           "label": "Next",
           "isLast": true,
           "path": "/docs",
-          "mainDocId": "server",
+          "mainDocId": "game-engine/architecture",
           "docs": [
             {
               "id": "blank",
@@ -16,26 +16,53 @@
             },
             {
               "id": "client",
-              "path": "/docs/client",
+              "path": "/docs/client"
+            },
+            {
+              "id": "game-engine/architecture",
+              "path": "/docs/game-engine/architecture",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "game-engine",
-              "path": "/docs/game-engine",
+              "id": "game-engine/components",
+              "path": "/docs/game-engine/components",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "game-engine/entity",
+              "path": "/docs/game-engine/entity",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "game-engine/index",
+              "path": "/docs/game-engine"
+            },
+            {
+              "id": "game-engine/intro",
+              "path": "/docs/game-engine/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "game-engine/rendering",
+              "path": "/docs/game-engine/rendering",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "game-engine/update",
+              "path": "/docs/game-engine/update",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "server",
-              "path": "/docs/server",
-              "sidebar": "tutorialSidebar"
+              "path": "/docs/server"
             }
           ],
           "draftIds": [],
           "sidebars": {
             "tutorialSidebar": {
               "link": {
-                "path": "/docs/server",
-                "label": "🖥️ Server"
+                "path": "/docs/game-engine/architecture",
+                "label": "game-engine/architecture"
               }
             }
           }
