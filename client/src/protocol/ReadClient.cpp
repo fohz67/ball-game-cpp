@@ -53,7 +53,7 @@ const void ReadClient::readUpdateGameState(SmartBuffer& smartBuffer) {
         smartBuffer >> updateGameState.id >> updateGameState.ownerId >> updateGameState.x >>
             updateGameState.y >> updateGameState.radius;
 
-        if (updateGameState.ownerId != actualOwnerId) {
+        if (updateGameState.ownerId != 0 && updateGameState.ownerId != actualOwnerId) {
             actualOwnerId = updateGameState.ownerId;
 
             PlayerClient* createPlayer =

@@ -12,7 +12,7 @@ class PlayerClient {
                  const std::vector<double> cellColor);
 
     uint32_t            getId() const;
-    std::string         getNickname() const;
+    const std::string&  getNickname() const;
     std::vector<double> getColor() const;
     std::vector<double> getCellColor() const;
 

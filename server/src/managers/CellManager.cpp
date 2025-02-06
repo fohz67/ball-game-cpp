@@ -30,6 +30,21 @@ const void CellManager::createPellet() {
     pelletCells.emplace_back(pelletId, 0, CellType::PELLET, location, mass, color);
 }
 
+const void CellManager::generateBots() {
+    for (int i = 0; i < Config::Gameplay::Bot::COUNT; i++) {
+        createBot();
+    }
+}
+
+const void CellManager::createBot() {
+    uint32_t            botId    = AtomicID::get().getNextId();
+    Vector2             location = Util::getRandomLocation();
+    double              mass     = Config::Gameplay::Bot::MASS;
+    std::vector<double> color    = Util::getRandomColor();
+
+    playerCells.emplace_back(botId, 0, CellType::BOT, location, mass, color);
+}
+
 const void CellManager::createCell(const uint32_t ownerId) {
     uint32_t            cellId   = AtomicID::get().getNextId();
     Vector2             location = Util::getRandomLocation();
@@ -43,11 +58,12 @@ const void CellManager::updateCells() {
     std::vector<uint32_t> ids;
     size_t                n = playerCells.size();
 
-
     for (size_t i = 0; i < n; i++) {
         Cell& cell = playerCells[i];
 
-        cell.decay();
+        if (cell.getType() != CellType::BOT) {
+            cell.decay();
+        }
 
         for (Cell& pellet : pelletCells) {
             if (pellet.isMarkedForDeletion()) {
@@ -155,7 +171,7 @@ std::vector<Cell*> CellManager::getCellsByPlayerId(const uint32_t ownerId) const
     result.reserve(playerCells.size());
 
     for (const Cell& cell : playerCells) {
-        if (cell.getOwnerId() == ownerId) {
+        if (cell.getType() == CellType::PLAYER && cell.getOwnerId() == ownerId) {
             result.push_back(const_cast<Cell*>(&cell));
         }
     }

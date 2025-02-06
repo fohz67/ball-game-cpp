@@ -13,16 +13,16 @@ class Player {
            const std::vector<double>                     color,
            const std::vector<double>                     cellColor);
 
-    uint32_t                               getId() const;
-    std::shared_ptr<asio::ip::tcp::socket> getClient() const;
-    Vector2                                getViewport() const;
-    Vector2                                getMousePosition() const;
-    std::vector<double>                    getColor() const;
-    std::vector<double>                    getCellColor() const;
-    std::string                            getNickname() const;
-    double                                 getScore() const;
-    double                                 getTotalMass() const;
-    double                                 getCellCount() const;
+    uint32_t                                      getId() const;
+    const std::shared_ptr<asio::ip::tcp::socket>& getClient() const;
+    const Vector2&                                getViewport() const;
+    const Vector2&                                getMousePosition() const;
+    std::vector<double>                           getColor() const;
+    std::vector<double>                           getCellColor() const;
+    const std::string&                            getNickname() const;
+    double                                        getScore() const;
+    double                                        getTotalMass() const;
+    double                                        getCellCount() const;
 
     const void setViewport(const Vector2& newViewport);
     const void setMousePosition(const Vector2& newMousePosition);

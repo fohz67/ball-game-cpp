@@ -6,13 +6,16 @@
 
 class CellManager {
   public:
-    static CellManager& get();
-
     CellManager(const CellManager&)            = delete;
     CellManager& operator=(const CellManager&) = delete;
 
+    static CellManager& get();
+
     const void generatePellets();
     const void createPellet();
+
+    const void generateBots();
+    const void createBot();
 
     const void createCell(const uint32_t ownerId);
     const void updateCells();

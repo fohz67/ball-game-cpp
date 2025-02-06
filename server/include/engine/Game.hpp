@@ -1,7 +1,6 @@
 #pragma once
 
 #include <thread>
-#include "components/Player.hpp"
 
 class Game {
   public:

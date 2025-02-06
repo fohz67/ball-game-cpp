@@ -10,7 +10,7 @@ uint32_t PlayerClient::getId() const {
     return id;
 }
 
-std::string PlayerClient::getNickname() const {
+const std::string& PlayerClient::getNickname() const {
     return nickname;
 }
 

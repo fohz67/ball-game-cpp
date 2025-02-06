@@ -27,13 +27,18 @@ struct Config {
             static constexpr int    DECAY_TIMING             = 1000;
         };
 
+        struct Bot {
+            static constexpr int    COUNT = 0;
+            static constexpr double MASS  = 1000.0f;
+        };
+
         struct Eat {
             static constexpr double RESOLVE_FACTOR  = 1.2f;
             static constexpr double RESOLVE_OVERLAP = 0.2f;
         };
 
         struct Pellet {
-            static constexpr int    COUNT      = 3000;
+            static constexpr int    COUNT      = 10000;
             static constexpr double MASS       = 2.0f;
             static constexpr double EAT_FACTOR = 10.0f;
         };

@@ -17,6 +17,7 @@ Game& Game::get() {
 
 const void Game::run() {
     CellManager::get().generatePellets();
+    CellManager::get().generateBots();
 
     updateThread = std::thread(&Game::updateLoop, this);
 }
@@ -27,7 +28,6 @@ const void Game::updateLoop() {
 
         CellManager::get().updateCells();
         LeaderboardManager::get().updateLeaderboard();
-
         updateGameState();
 
         auto   end      = std::chrono::steady_clock::now();

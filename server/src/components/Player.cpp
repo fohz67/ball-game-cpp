@@ -10,15 +10,15 @@ uint32_t Player::getId() const {
     return id;
 }
 
-std::shared_ptr<asio::ip::tcp::socket> Player::getClient() const {
+const std::shared_ptr<asio::ip::tcp::socket>& Player::getClient() const {
     return client;
 }
 
-Vector2 Player::getViewport() const {
+const Vector2& Player::getViewport() const {
     return viewport;
 }
 
-Vector2 Player::getMousePosition() const {
+const Vector2& Player::getMousePosition() const {
     return mousePosition;
 }
 
@@ -30,7 +30,7 @@ std::vector<double> Player::getCellColor() const {
     return cellColor;
 }
 
-std::string Player::getNickname() const {
+const std::string& Player::getNickname() const {
     return nickname;
 }
 
