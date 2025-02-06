@@ -31,12 +31,12 @@ const void Protocol::handleMessage(const std::shared_ptr<asio::ip::tcp::socket> 
         break;
     }
 
-    case OpCodes::JOIN: {
+    case OpCodes::JOIN_SERVER: {
         Read::readJoin(client, smartBuffer);
         break;
     }
 
-    case OpCodes::MOUSE_POSITION: {
+    case OpCodes::UPDATE_MOUSE_POSITION: {
         Read::readMousePosition(client, smartBuffer);
         break;
     }

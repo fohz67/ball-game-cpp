@@ -26,20 +26,20 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
 - **Sent To**: Server.
 - **Send From**: Server.
 
-### 1. **WORLD**
+### 1. **WORLD_CREATED**
 - **Value**: `1`
 - **Description**: Sends the game world configuration to the client.
 - **Payload**:
   - `size` (uint16_t): The world size.
 - **Sent To**: Client.
 
-### 2. **JOIN**
+### 2. **JOIN_SERVER**
 - **Value**: `2`
 - **Description**: Sent when a player joins the game.
 - **Payload**: None.
 - **Sent To**: Server.
 
-### 3. **PLAYER**
+### 3. **NEW_PLAYER**
 - **Value**: `3`
 - **Description**: Sends new player.
 - **Payload**:
@@ -48,7 +48,7 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
   - `cellColor` (uint32_t): Color of the cells.
 - **Sent To**: All clients.
 
-### 4. **CELL**
+### 4. **UPDATE_CELL**
 - **Value**: `4`
 - **Description**: Sends all cells.
 - **Payload**:
@@ -59,7 +59,7 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
   - `radius` (double): Radius of the cell.
 - **Sent To**: All clients.
 
-### 5. **PELLET**
+### 5. **CREATE_PELLETS**
 - **Value**: `5`
 - **Description**: Sends all pellets.
 - **Payload**:
@@ -70,7 +70,7 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
   - `color` (uint32_t): Color of the pellet.
 - **Sent To**: Client.
 
-### 6 **VIEWPORT**
+### 6 **UPDATE_VIEWPORT**
 - **Value**: `6`
 - **Description**: Sends viewport updates to clients.
 - **Payload**:
@@ -78,7 +78,7 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
   - `y` (double): Viewport Y position.
 - **Sent To**: Client.
 
-### 7. **MOUSE_POSITION**
+### 7. **UPDATE_MOUSE_POSITION**
 - **Value**: `7`
 - **Description**: Sends the player's mouse position.
 - **Payload**:
@@ -93,7 +93,7 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
   - `keyName` (string): The key pressed.
 - **Sent To**: Server.
 
-### 9. **ENTITY_REMOVED**
+### 9. **DELETE_ENTITY**
 - **Value**: `9`
 - **Description**: Notifies all clients that an entity has been removed
 - **Payload**:
@@ -101,7 +101,7 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
   - `entityId` (uint32_t): ID of the entity.
 - **Sent To**: All clients.
 
-### 10. **ME**
+### 10. **UPDATE_SELF_DATA**
 - **Value**: `10`
 - **Description**: Return the ID of the current client associated with the player
 - **Payload**:

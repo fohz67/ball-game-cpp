@@ -5,7 +5,7 @@
 #include <vector>
 #include "geometry/Vector2.hpp"
 
-enum CellType { PLAYER, PELLET };
+enum CellType { NEW_PLAYER, CREATE_PELLETS };
 
 class Cell {
   public:

@@ -9,14 +9,14 @@
 
 const void Send::sendWorld(const std::shared_ptr<asio::ip::tcp::socket> client) {
     SmartBuffer smartBuffer;
-    smartBuffer << OpCodes::WORLD << Config::Gameplay::World::SIZE;
+    smartBuffer << OpCodes::WORLD_CREATED << Config::Gameplay::World::SIZE;
 
     Network::get().sendToClient(client, smartBuffer);
 }
 
 const void Send::sendPlayer(const Player& player) {
     SmartBuffer smartBuffer;
-    smartBuffer << OpCodes::PLAYER << player.getId() << player.getNickname()
+    smartBuffer << OpCodes::NEW_PLAYER << player.getId() << player.getNickname()
                 << ColorConverter::vecToInt(player.getColor())
                 << ColorConverter::vecToInt(player.getCellColor());
 
@@ -34,10 +34,10 @@ const void Send::sendPlayers(const std::shared_ptr<asio::ip::tcp::socket> client
             Network::get().sendToClient(client, smartBuffer);
 
             smartBuffer.reset();
-            smartBuffer << OpCodes::PLAYER;
+            smartBuffer << OpCodes::NEW_PLAYER;
         }
 
-        smartBuffer << OpCodes::PLAYER << player.getId() << player.getNickname()
+        smartBuffer << OpCodes::NEW_PLAYER << player.getId() << player.getNickname()
                     << ColorConverter::vecToInt(player.getColor())
                     << ColorConverter::vecToInt(player.getCellColor());
     }
@@ -49,12 +49,12 @@ const void Send::sendPlayers(const std::shared_ptr<asio::ip::tcp::socket> client
 
 const void Send::sendCells() {
     SmartBuffer smartBuffer;
-    smartBuffer << OpCodes::CELL;
+    smartBuffer << OpCodes::UPDATE_CELL;
 
     const std::vector<Cell>& cells = CellManager::get().getAllCells();
 
     for (const Cell& cell : cells) {
-        if (cell.getType() != CellType::PLAYER) {
+        if (cell.getType() != CellType::NEW_PLAYER) {
             continue;
         }
 
@@ -63,7 +63,7 @@ const void Send::sendCells() {
             Network::get().sendToAll(smartBuffer);
 
             smartBuffer.reset();
-            smartBuffer << OpCodes::CELL;
+            smartBuffer << OpCodes::UPDATE_CELL;
         }
 
         const Vector2 pos = cell.getPosition();
@@ -78,12 +78,12 @@ const void Send::sendCells() {
 
 const void Send::sendPellets(const std::shared_ptr<asio::ip::tcp::socket> client) {
     SmartBuffer smartBuffer;
-    smartBuffer << OpCodes::PELLET;
+    smartBuffer << OpCodes::CREATE_PELLETS;
 
     const std::vector<Cell>& cells = CellManager::get().getAllCells();
 
     for (const Cell& cell : cells) {
-        if (cell.getType() != CellType::PELLET) {
+        if (cell.getType() != CellType::CREATE_PELLETS) {
             continue;
         }
 
@@ -92,7 +92,7 @@ const void Send::sendPellets(const std::shared_ptr<asio::ip::tcp::socket> client
             Network::get().sendToClient(client, smartBuffer);
 
             smartBuffer.reset();
-            smartBuffer << OpCodes::PELLET;
+            smartBuffer << OpCodes::CREATE_PELLETS;
         }
 
         const Vector2 pos = cell.getPosition();
@@ -115,7 +115,7 @@ const void Send::sendViewport() {
         const Vector2 viewport = player.getViewport();
 
         smartBuffer.reset();
-        smartBuffer << OpCodes::VIEWPORT << viewport.x << viewport.y;
+        smartBuffer << OpCodes::UPDATE_VIEWPORT << viewport.x << viewport.y;
 
         Network::get().sendToClient(player.getClient(), smartBuffer);
     }
@@ -123,14 +123,14 @@ const void Send::sendViewport() {
 
 const void Send::sendEntityRemoved(const std::vector<uint32_t>& deletedIds) {
     SmartBuffer smartBuffer;
-    smartBuffer << OpCodes::ENTITY_REMOVED;
+    smartBuffer << OpCodes::DELETE_ENTITY;
 
     for (uint32_t cellId : deletedIds) {
         if (smartBuffer.getSize() + sizeof(EntityInterface) >= Config::Network::MAX_SIZE) {
             Network::get().sendToAll(smartBuffer);
 
             smartBuffer.reset();
-            smartBuffer << OpCodes::ENTITY_REMOVED;
+            smartBuffer << OpCodes::DELETE_ENTITY;
         }
 
         smartBuffer << cellId;
@@ -143,14 +143,14 @@ const void Send::sendEntityRemoved(const std::vector<uint32_t>& deletedIds) {
 
 const void Send::sendPlayerDeleted(const uint32_t playerId) {
     SmartBuffer smartBuffer;
-    smartBuffer << OpCodes::PLAYER_DELETED << playerId;
+    smartBuffer << OpCodes::DELETE_PLAYER << playerId;
 
     Network::get().sendToAll(smartBuffer);
 }
 
 const void Send::sendMe(const std::shared_ptr<asio::ip::tcp::socket> client) {
     SmartBuffer smartBuffer;
-    smartBuffer << OpCodes::ME << PlayerManager::get().getPlayer(client)->getId();
+    smartBuffer << OpCodes::UPDATE_SELF_DATA << PlayerManager::get().getPlayer(client)->getId();
 
     Network::get().sendToClient(client, smartBuffer);
 }

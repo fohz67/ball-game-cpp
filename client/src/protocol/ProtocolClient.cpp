@@ -19,42 +19,42 @@ const void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
         break;
     }
 
-    case OpCodes::WORLD: {
+    case OpCodes::WORLD_CREATED: {
         ReadClient::readWorld(smartBuffer);
         break;
     }
 
-    case OpCodes::PLAYER: {
+    case OpCodes::NEW_PLAYER: {
         ReadClient::readPlayer(smartBuffer);
         break;
     }
 
-    case OpCodes::CELL: {
+    case OpCodes::UPDATE_CELL: {
         ReadClient::readCell(smartBuffer);
         break;
     }
 
-    case OpCodes::PELLET: {
+    case OpCodes::CREATE_PELLETS: {
         ReadClient::readPellet(smartBuffer);
         break;
     }
 
-    case OpCodes::VIEWPORT: {
+    case OpCodes::UPDATE_VIEWPORT: {
         ReadClient::readViewport(smartBuffer);
         break;
     }
 
-    case OpCodes::ENTITY_REMOVED: {
+    case OpCodes::DELETE_ENTITY: {
         ReadClient::readEntityRemoved(smartBuffer);
         break;
     }
 
-    case OpCodes::PLAYER_DELETED: {
+    case OpCodes::DELETE_PLAYER: {
         ReadClient::readPlayerDeleted(smartBuffer);
         break;
     }
 
-    case OpCodes::ME: {
+    case OpCodes::UPDATE_SELF_DATA: {
         ReadClient::readMe(smartBuffer);
         break;
     }

@@ -18,7 +18,7 @@ const void CellManager::generatePellets() {
         const double              mass     = Config::Gameplay::Pellet::MASS;
         const std::vector<double> color    = Util::getRandomColor();
 
-        cells.emplace_back(pelletId, pelletId, CellType::PELLET, location, mass, color);
+        cells.emplace_back(pelletId, pelletId, CellType::CREATE_PELLETS, location, mass, color);
     }
 }
 
@@ -28,14 +28,14 @@ const void CellManager::createCell(uint32_t ownerId) {
     const double              mass     = Config::Gameplay::Cell::SPAWN_MASS;
     const std::vector<double> color    = Util::getRandomColor();
 
-    cells.emplace_back(cellId, ownerId, CellType::PLAYER, location, mass, color);
+    cells.emplace_back(cellId, ownerId, CellType::NEW_PLAYER, location, mass, color);
 }
 
 const void CellManager::updateCells() {
     std::vector<uint32_t> ids;
 
     for (Cell& cell : cells) {
-        if (cell.getType() != CellType::PLAYER) {
+        if (cell.getType() != CellType::NEW_PLAYER) {
             continue;
         }
 
@@ -89,7 +89,7 @@ std::vector<Cell*> CellManager::getCells(uint32_t ownerId) {
     std::vector<Cell*> playerCells;
 
     for (Cell& cell : cells) {
-        if (cell.getType() == CellType::PLAYER && cell.getOwnerId() == ownerId) {
+        if (cell.getType() == CellType::NEW_PLAYER && cell.getOwnerId() == ownerId) {
             playerCells.push_back(&cell);
         }
     }

@@ -19,7 +19,7 @@ const void SendClient::sendPing() {
 
 const void SendClient::sendJoin(const std::string nickname) {
     SmartBuffer smartBuffer;
-    smartBuffer << OpCodes::JOIN << nickname;
+    smartBuffer << OpCodes::JOIN_SERVER << nickname;
 
     NetworkClient::get().send(smartBuffer);
 }
@@ -36,7 +36,7 @@ const void SendClient::sendMousePosition(const sf::RenderWindow& window,
         lastMousePos = mousePos;
 
         SmartBuffer smartBuffer;
-        smartBuffer << OpCodes::MOUSE_POSITION << normMousePos.first << normMousePos.second;
+        smartBuffer << OpCodes::UPDATE_MOUSE_POSITION << normMousePos.first << normMousePos.second;
 
         NetworkClient::get().send(smartBuffer);
     }
