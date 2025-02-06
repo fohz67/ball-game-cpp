@@ -4,13 +4,12 @@
 
 class ReadClient {
   public:
-    static const void readPing(SmartBuffer& smartBuffer);
-    static const void readWorld(SmartBuffer& smartBuffer);
-    static const void readPlayer(SmartBuffer& smartBuffer);
-    static const void readCell(SmartBuffer& smartBuffer);
-    static const void readPellet(SmartBuffer& smartBuffer);
-    static const void readViewport(SmartBuffer& smartBuffer);
-    static const void readEntityRemoved(SmartBuffer& smartBuffer);
-    static const void readPlayerDeleted(SmartBuffer& smartBuffer);
-    static const void readMe(SmartBuffer& smartBuffer);
+    static const void readPingPong(SmartBuffer& smartBuffer);
+    static const void readCreateWorld(SmartBuffer& smartBuffer);
+    static const void readCreatePlayer(SmartBuffer& smartBuffer);
+    static const void readUpdateGameState(SmartBuffer& smartBuffer);
+    static const void readSpawnPellets(SmartBuffer& smartBuffer);
+    static const void readUpdatePlayer(SmartBuffer& smartBuffer);
+    static const void readDeleteEntity(SmartBuffer& smartBuffer);
+    static const void readDeletePlayer(SmartBuffer& smartBuffer);
 };

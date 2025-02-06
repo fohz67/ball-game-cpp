@@ -13,7 +13,7 @@ class Game {
     const void run();
 
     const void updateLoop();
-    const void updateGameState(Player& player);
+    const void updateGameState(Player* player);
 
   private:
     Game()  = default;

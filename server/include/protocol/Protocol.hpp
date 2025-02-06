@@ -12,8 +12,8 @@ class Protocol {
     static Protocol& get();
 
     const void injector(char* buffer, const size_t length, SmartBuffer& smartBuffer);
-    const void handleMessage(const std::shared_ptr<asio::ip::tcp::socket> client,
-                             SmartBuffer&                                 smartBuffer);
+    const void handleMessage(const std::shared_ptr<asio::ip::tcp::socket>& client,
+                             SmartBuffer&                                  smartBuffer);
 
   private:
     Protocol()  = default;

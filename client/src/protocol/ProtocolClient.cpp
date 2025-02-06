@@ -15,49 +15,45 @@ const void ProtocolClient::handleMessage(SmartBuffer& smartBuffer) {
     switch (static_cast<OpCodes>(opcode)) {
 
     case OpCodes::PINGPONG: {
-        ReadClient::readPing(smartBuffer);
+        ReadClient::readPingPong(smartBuffer);
         break;
     }
 
-    case OpCodes::WORLD_CREATED: {
-        ReadClient::readWorld(smartBuffer);
+    case OpCodes::CREATE_WORLD: {
+        ReadClient::readCreateWorld(smartBuffer);
         break;
     }
 
-    case OpCodes::NEW_PLAYER: {
-        ReadClient::readPlayer(smartBuffer);
+    case OpCodes::CREATE_PLAYER: {
+        ReadClient::readCreatePlayer(smartBuffer);
         break;
     }
 
-    case OpCodes::UPDATE_CELL: {
-        ReadClient::readCell(smartBuffer);
-        break;
-    }
-
-    case OpCodes::CREATE_PELLETS: {
-        ReadClient::readPellet(smartBuffer);
-        break;
-    }
-
-    case OpCodes::UPDATE_VIEWPORT: {
-        ReadClient::readViewport(smartBuffer);
-        break;
-    }
-
-    case OpCodes::DELETE_ENTITY: {
-        ReadClient::readEntityRemoved(smartBuffer);
+    case OpCodes::UPDATE_PLAYER: {
+        ReadClient::readUpdatePlayer(smartBuffer);
         break;
     }
 
     case OpCodes::DELETE_PLAYER: {
-        ReadClient::readPlayerDeleted(smartBuffer);
+        ReadClient::readDeletePlayer(smartBuffer);
         break;
     }
 
-    case OpCodes::UPDATE_SELF_DATA: {
-        ReadClient::readMe(smartBuffer);
+    case OpCodes::SPAWN_PELLETS: {
+        ReadClient::readSpawnPellets(smartBuffer);
         break;
     }
+
+    case OpCodes::UPDATE_GAME_STATE: {
+        ReadClient::readUpdateGameState(smartBuffer);
+        break;
+    }
+
+    case OpCodes::DELETE_ENTITY: {
+        ReadClient::readDeleteEntity(smartBuffer);
+        break;
+    }
+
 
     default:
         std::cout << "Unknown opcode received: " << static_cast<int>(opcode) << std::endl;

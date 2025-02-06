@@ -26,7 +26,7 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
 - **Sent To**: Server.
 - **Send From**: Server.
 
-### 1. **WORLD_CREATED**
+### 1. **CREATE_WORLD**
 - **Value**: `1`
 - **Description**: Sends the game world configuration to the client.
 - **Payload**:
@@ -39,7 +39,7 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
 - **Payload**: None.
 - **Sent To**: Server.
 
-### 3. **NEW_PLAYER**
+### 3. **CREATE_PLAYER**
 - **Value**: `3`
 - **Description**: Sends new player.
 - **Payload**:
@@ -48,7 +48,7 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
   - `cellColor` (uint32_t): Color of the cells.
 - **Sent To**: All clients.
 
-### 4. **UPDATE_CELL**
+### 4. **UPDATE_GAME_STATE**
 - **Value**: `4`
 - **Description**: Sends all cells.
 - **Payload**:
@@ -59,7 +59,7 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
   - `radius` (double): Radius of the cell.
 - **Sent To**: All clients.
 
-### 5. **CREATE_PELLETS**
+### 5. **SPAWN_PELLETS**
 - **Value**: `5`
 - **Description**: Sends all pellets.
 - **Payload**:
@@ -70,7 +70,7 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
   - `color` (uint32_t): Color of the pellet.
 - **Sent To**: Client.
 
-### 6 **UPDATE_VIEWPORT**
+### 6 **UPDATE_PLAYER**
 - **Value**: `6`
 - **Description**: Sends viewport updates to clients.
 - **Payload**:
@@ -100,13 +100,6 @@ Each message begins with an **OpCode**, followed by a **payload** containing rel
   - `entityType` (uint8_t): Player or not (0 = player, otherwise, it's not).
   - `entityId` (uint32_t): ID of the entity.
 - **Sent To**: All clients.
-
-### 10. **UPDATE_SELF_DATA**
-- **Value**: `10`
-- **Description**: Return the ID of the current client associated with the player
-- **Payload**:
-  - `id` (uint32_t): ID of the player.
-- **Sent To**: Client.
 
 ---
 

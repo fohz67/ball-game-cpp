@@ -1,9 +1,9 @@
 #include "components/Player.hpp"
 
-Player::Player(const uint32_t                               id,
-               const std::shared_ptr<asio::ip::tcp::socket> client,
-               const std::vector<double>                    color,
-               const std::vector<double>                    cellColor)
+Player::Player(const uint32_t                                id,
+               const std::shared_ptr<asio::ip::tcp::socket>& client,
+               const std::vector<double>                     color,
+               const std::vector<double>                     cellColor)
     : id(id), client(client), color(color), cellColor(cellColor) {}
 
 uint32_t Player::getId() const {
@@ -34,14 +34,38 @@ std::string Player::getNickname() const {
     return nickname;
 }
 
-void Player::setViewport(const Vector2& newViewport) {
+double Player::getScore() const {
+    return score;
+}
+
+double Player::getTotalMass() const {
+    return totalMass;
+}
+
+double Player::getCellCount() const {
+    return cellCount;
+}
+
+const void Player::setViewport(const Vector2& newViewport) {
     viewport = newViewport;
 }
 
-void Player::setMousePosition(const Vector2& newMousePosition) {
+const void Player::setMousePosition(const Vector2& newMousePosition) {
     mousePosition = newMousePosition;
 }
 
-void Player::setNickname(const std::string& newNickname) {
+const void Player::setNickname(const std::string& newNickname) {
     nickname = newNickname;
+}
+
+const void Player::setScore(const double newScore) {
+    score = newScore;
+}
+
+const void Player::setTotalMass(const double newTotalMass) {
+    totalMass = newTotalMass;
+}
+
+const void Player::setCellCount(const double newCellCount) {
+    cellCount = newCellCount;
 }

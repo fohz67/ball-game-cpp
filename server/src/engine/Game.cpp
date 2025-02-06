@@ -25,7 +25,10 @@ const void Game::updateLoop() {
         auto start = std::chrono::steady_clock::now();
 
         CellManager::get().updateCells();
-        for (Player& player : PlayerManager::get().getPlayers()) {
+
+        const std::vector<Player*> players = PlayerManager::get().getPlayers();
+
+        for (Player* player : players) {
             updateGameState(player);
         }
 
@@ -38,15 +41,15 @@ const void Game::updateLoop() {
     }
 }
 
-const void Game::updateGameState(Player& player) {
-    const std::vector<Cell*> playerCells = CellManager::get().getCellsByPlayerId(player.getId());
+const void Game::updateGameState(Player* player) {
+    const std::vector<Cell*> playerCells = CellManager::get().getCellsByPlayerId(player->getId());
 
     if (playerCells.empty()) {
         return;
     }
 
     Vector2      center(0.0f, 0.0f);
-    Vector2      dir       = player.getMousePosition();
+    Vector2      dir       = player->getMousePosition();
     const double magnitude = dir.magnitude();
     const double decrease  = Config::Gameplay::Cell::DECREASE_SPEED_THRESHOLD;
     const double slowdown  = (magnitude < decrease) ? magnitude / decrease : 1.0f;
@@ -62,5 +65,5 @@ const void Game::updateGameState(Player& player) {
 
     center /= playerCells.size();
 
-    player.setViewport(center);
+    player->setViewport(center);
 }

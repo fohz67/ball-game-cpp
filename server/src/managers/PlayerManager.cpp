@@ -1,6 +1,5 @@
 #include "managers/PlayerManager.hpp"
 #include "config/Config.hpp"
-#include "engine/Game.hpp"
 #include "managers/CellManager.hpp"
 #include "protocol/Send.hpp"
 #include "util/AtomicID.hpp"
@@ -11,40 +10,41 @@ PlayerManager& PlayerManager::get() {
     return instance;
 }
 
-const void PlayerManager::newPlayer(const std::shared_ptr<asio::ip::tcp::socket> client) {
-    const uint32_t            playerId      = AtomicID::get().getNextId();
+const void PlayerManager::newPlayer(const std::shared_ptr<asio::ip::tcp::socket>& client) {
+    uint32_t                  playerId      = AtomicID::get().getNextId();
     const std::vector<double> nicknameColor = Config::Gameplay::Player::COLOR;
     const std::vector<double> cellColor     = Util::getRandomColor();
 
-    players.emplace_back(playerId, client, nicknameColor, cellColor);
+    players.emplace(client, Player(playerId, client, nicknameColor, cellColor));
 }
 
-const void PlayerManager::removePlayer(const std::shared_ptr<asio::ip::tcp::socket> client) {
-    for (auto it = players.begin(); it != players.end(); ++it) {
-        if (it->getClient() == client) {
-            uint32_t id = it->getId();
+const void PlayerManager::removePlayer(const std::shared_ptr<asio::ip::tcp::socket>& client) {
+    auto it = players.find(client);
 
-            players.erase(it);
+    if (it != players.end()) {
+        uint32_t id = it->second.getId();
 
-            Send::sendPlayerDeleted(id);
-            CellManager::get().removeCells(id);
-            AtomicID::get().removeId(id);
+        players.erase(it);
 
-            break;
-        }
+        Send::sendPlayerDeleted(id);
+        CellManager::get().removeCells(id);
+        AtomicID::get().removeId(id);
     }
 }
 
-Player* PlayerManager::getPlayer(const std::shared_ptr<asio::ip::tcp::socket> client) {
-    for (Player& player : players) {
-        if (player.getClient() == client) {
-            return &player;
-        }
-    }
-
-    return nullptr;
+Player* PlayerManager::getPlayer(const std::shared_ptr<asio::ip::tcp::socket>& client) {
+    auto it = players.find(client);
+    return (it != players.end()) ? &it->second : nullptr;
 }
 
-std::vector<Player>& PlayerManager::getPlayers() {
-    return players;
+std::vector<Player*> PlayerManager::getPlayers() {
+    std::vector<Player*> result;
+
+    result.reserve(players.size());
+
+    for (auto& pair : players) {
+        result.push_back(&pair.second);
+    }
+
+    return result;
 }

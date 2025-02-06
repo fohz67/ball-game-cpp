@@ -41,5 +41,9 @@ struct Config {
         struct Player {
             static inline std::vector<double> COLOR = {255, 255, 255, 255};
         };
+
+        struct Leaderboard {
+            static constexpr int COUNT = 10;
+        };
     };
 };

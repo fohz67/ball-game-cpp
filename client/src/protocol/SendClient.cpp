@@ -41,10 +41,3 @@ const void SendClient::sendMousePosition(const sf::RenderWindow& window,
         NetworkClient::get().send(smartBuffer);
     }
 }
-
-const void SendClient::sendKeyPressed(const std::string keyName) {
-    SmartBuffer smartBuffer;
-    smartBuffer << OpCodes::KEY_PRESSED << keyName;
-
-    NetworkClient::get().send(smartBuffer);
-}

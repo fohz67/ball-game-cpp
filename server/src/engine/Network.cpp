@@ -55,8 +55,8 @@ const void Network::asyncRead(const std::shared_ptr<asio::ip::tcp::socket> socke
         });
 }
 
-const void Network::sendToClient(const std::shared_ptr<asio::ip::tcp::socket> client,
-                                 SmartBuffer&                                 smartBuffer) {
+const void Network::sendToClient(const std::shared_ptr<asio::ip::tcp::socket>& client,
+                                 SmartBuffer&                                  smartBuffer) {
     if (client && client->is_open()) {
         const uint32_t packetSize = smartBuffer.getSize();
 
@@ -70,10 +70,10 @@ const void Network::sendToClient(const std::shared_ptr<asio::ip::tcp::socket> cl
 }
 
 const void Network::sendToAll(SmartBuffer& smartBuffer) {
-    const std::vector<Player>& players = PlayerManager::get().getPlayers();
+    const std::vector<Player*> players = PlayerManager::get().getPlayers();
 
-    for (const Player& player : players) {
-        sendToClient(player.getClient(), smartBuffer);
+    for (const Player* player : players) {
+        sendToClient(player->getClient(), smartBuffer);
     }
 }
 
@@ -82,7 +82,7 @@ const void Network::sendLoop() {
         auto start = std::chrono::steady_clock::now();
 
         Send::sendCells();
-        Send::sendViewport();
+        Send::sendPlayerUpdate();
 
         auto   end      = std::chrono::steady_clock::now();
         double duration = std::chrono::duration<double, std::milli>(end - start).count();

@@ -19,30 +19,25 @@ const void Protocol::injector(char* buffer, const size_t length, SmartBuffer& sm
     smartBuffer.inject(reinterpret_cast<uint8_t*>(buffer), length);
 }
 
-const void Protocol::handleMessage(const std::shared_ptr<asio::ip::tcp::socket> client,
-                                   SmartBuffer&                                 smartBuffer) {
+const void Protocol::handleMessage(const std::shared_ptr<asio::ip::tcp::socket>& client,
+                                   SmartBuffer&                                  smartBuffer) {
     uint8_t opcode;
     smartBuffer >> opcode;
 
     switch (static_cast<OpCodes>(opcode)) {
 
     case OpCodes::PINGPONG: {
-        Read::readPing(client, smartBuffer);
+        Read::readPingPong(client, smartBuffer);
         break;
     }
 
     case OpCodes::JOIN_SERVER: {
-        Read::readJoin(client, smartBuffer);
+        Read::readJoinServer(client, smartBuffer);
         break;
     }
 
     case OpCodes::UPDATE_MOUSE_POSITION: {
-        Read::readMousePosition(client, smartBuffer);
-        break;
-    }
-
-    case OpCodes::KEY_PRESSED: {
-        Read::readKeyPressed(client, smartBuffer);
+        Read::readUpdateMousePosition(client, smartBuffer);
         break;
     }
 

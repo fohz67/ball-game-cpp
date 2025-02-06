@@ -7,42 +7,34 @@
 #include "protocol/OpCodes.hpp"
 #include "protocol/Send.hpp"
 
-const void Read::readPing(const std::shared_ptr<asio::ip::tcp::socket> client,
-                          SmartBuffer&                                 smartBuffer) {
+const void Read::readPingPong(const std::shared_ptr<asio::ip::tcp::socket>& client,
+                              SmartBuffer&                                  smartBuffer) {
     Network::get().sendToClient(client, smartBuffer);
 }
 
-const void Read::readJoin(const std::shared_ptr<asio::ip::tcp::socket> client,
-                          SmartBuffer&                                 smartBuffer) {
-    JoinInterface joinInterface;
+const void Read::readJoinServer(const std::shared_ptr<asio::ip::tcp::socket>& client,
+                                SmartBuffer&                                  smartBuffer) {
+    IJoinServer joinInterface;
     smartBuffer >> joinInterface.nickname;
 
-    Player player = *PlayerManager::get().getPlayer(client);
-    player.setNickname(joinInterface.nickname);
+    Player* player = PlayerManager::get().getPlayer(client);
 
-    Send::sendMe(client);
+    player->setNickname(joinInterface.nickname);
+
     Send::sendPlayer(player);
     Send::sendPlayers(client);
 
-    CellManager::get().createCell(player.getId());
+    CellManager::get().createCell(player->getId());
 
     Send::sendWorld(client);
     Send::sendPellets(client);
 }
 
-const void Read::readMousePosition(const std::shared_ptr<asio::ip::tcp::socket> client,
-                                   SmartBuffer&                                 smartBuffer) {
-    MousePositionInterface mousePositionInterface;
+const void Read::readUpdateMousePosition(const std::shared_ptr<asio::ip::tcp::socket>& client,
+                                         SmartBuffer& smartBuffer) {
+    IUpdateMousePosition mousePositionInterface;
     smartBuffer >> mousePositionInterface.x >> mousePositionInterface.y;
 
     PlayerManager::get().getPlayer(client)->setMousePosition(
         Vector2(mousePositionInterface.x, mousePositionInterface.y));
-}
-
-const void Read::readKeyPressed(const std::shared_ptr<asio::ip::tcp::socket> client,
-                                SmartBuffer&                                 smartBuffer) {
-    KeyPressedInterface keyPressedInterface;
-    smartBuffer >> keyPressedInterface.key;
-
-    // @TODO Implement key press handling
 }

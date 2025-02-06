@@ -3,18 +3,18 @@
 #include <cstdint>
 #include <string>
 
-struct WorldInterface {
+struct ICreateWorld {
     uint16_t size;
 };
 
-struct PlayerInterface {
+struct ICreatePlayer {
     uint32_t    id;
     std::string nickname;
     uint32_t    color;
     uint32_t    cellColor;
 };
 
-struct CellInterface {
+struct IUpdateGameState {
     uint32_t id;
     uint32_t ownerId;
     double   x;
@@ -22,7 +22,7 @@ struct CellInterface {
     double   radius;
 };
 
-struct PelletInterface {
+struct ISpawnPellets {
     uint32_t id;
     double   x;
     double   y;
@@ -30,20 +30,20 @@ struct PelletInterface {
     uint32_t color;
 };
 
-struct ViewportInterface {
+struct IUpdatePlayer {
     double x;
     double y;
 };
 
-struct EntityInterface {
+struct IEntity {
     uint32_t id;
 };
 
-struct JoinInterface {
+struct IJoinServer {
     std::string nickname;
 };
 
-struct MousePositionInterface {
+struct IUpdateMousePosition {
     double x;
     double y;
 };

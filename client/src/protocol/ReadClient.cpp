@@ -1,5 +1,4 @@
 #include "protocol/ReadClient.hpp"
-#include <cmath>
 #include "components/Viewport.hpp"
 #include "engine/NetworkClient.hpp"
 #include "managers/EntityManager.hpp"
@@ -8,7 +7,7 @@
 #include "protocol/OpCodes.hpp"
 #include "util/ColorConverterClient.hpp"
 
-const void ReadClient::readPing(SmartBuffer& smartBuffer) {
+const void ReadClient::readPingPong(SmartBuffer& smartBuffer) {
     uint64_t sentTimestamp;
     smartBuffer >> sentTimestamp;
 
@@ -19,15 +18,15 @@ const void ReadClient::readPing(SmartBuffer& smartBuffer) {
     NetworkClient::get().setPing(receivedTimestamp - sentTimestamp);
 }
 
-const void ReadClient::readWorld(SmartBuffer& smartBuffer) {
-    WorldInterface world;
+const void ReadClient::readCreateWorld(SmartBuffer& smartBuffer) {
+    ICreateWorld world;
     smartBuffer >> world.size;
 
     EntityManager::get().createWorld(world.size);
 }
 
-const void ReadClient::readPlayer(SmartBuffer& smartBuffer) {
-    PlayerInterface player;
+const void ReadClient::readCreatePlayer(SmartBuffer& smartBuffer) {
+    ICreatePlayer player;
     smartBuffer >> player.id >> player.nickname >> player.color >> player.cellColor;
 
     PlayerManagerClient::get().players.emplace_back(
@@ -39,16 +38,16 @@ const void ReadClient::readPlayer(SmartBuffer& smartBuffer) {
     PlayerManagerClient::get().getPlayer(player.id)->setNickname(player.nickname);
 }
 
-const void ReadClient::readCell(SmartBuffer& smartBuffer) {
+const void ReadClient::readUpdateGameState(SmartBuffer& smartBuffer) {
     uint32_t            actualOwnerId  = 0;
     std::vector<double> actualColor    = {};
     std::string         actualNickname = "";
 
     const size_t cellsNb =
-        NetworkClient::get().getCutPacketSize(smartBuffer, sizeof(CellInterface));
+        NetworkClient::get().getCutPacketSize(smartBuffer, sizeof(IUpdateGameState));
 
     for (size_t i = 0; i < cellsNb; i++) {
-        CellInterface cell;
+        IUpdateGameState cell;
         smartBuffer >> cell.id >> cell.ownerId >> cell.x >> cell.y >> cell.radius;
 
         if (cell.ownerId != actualOwnerId) {
@@ -71,12 +70,12 @@ const void ReadClient::readCell(SmartBuffer& smartBuffer) {
     }
 }
 
-const void ReadClient::readPellet(SmartBuffer& smartBuffer) {
+const void ReadClient::readSpawnPellets(SmartBuffer& smartBuffer) {
     const size_t pelletsNb =
-        NetworkClient::get().getCutPacketSize(smartBuffer, sizeof(PelletInterface));
+        NetworkClient::get().getCutPacketSize(smartBuffer, sizeof(ISpawnPellets));
 
     for (size_t i = 0; i < pelletsNb; i++) {
-        PelletInterface cell;
+        ISpawnPellets cell;
         smartBuffer >> cell.id >> cell.x >> cell.y >> cell.radius >> cell.color;
 
         EntityManager::get().createCell(
@@ -84,35 +83,28 @@ const void ReadClient::readPellet(SmartBuffer& smartBuffer) {
     }
 }
 
-const void ReadClient::readViewport(SmartBuffer& smartBuffer) {
-    ViewportInterface viewport;
+const void ReadClient::readUpdatePlayer(SmartBuffer& smartBuffer) {
+    IUpdatePlayer viewport;
     smartBuffer >> viewport.x >> viewport.y;
 
     Viewport::get().setViewport({viewport.x, viewport.y});
 }
 
-const void ReadClient::readEntityRemoved(SmartBuffer& smartBuffer) {
+const void ReadClient::readDeleteEntity(SmartBuffer& smartBuffer) {
     const size_t deletedEntitiesNb =
-        NetworkClient::get().getCutPacketSize(smartBuffer, sizeof(EntityInterface));
+        NetworkClient::get().getCutPacketSize(smartBuffer, sizeof(IEntity));
 
     for (size_t i = 0; i < deletedEntitiesNb; i++) {
-        EntityInterface entity;
+        IEntity entity;
         smartBuffer >> entity.id;
 
         EntityManager::get().removeEntity(entity.id);
     }
 }
 
-const void ReadClient::readPlayerDeleted(SmartBuffer& smartBuffer) {
-    EntityInterface entity;
-    smartBuffer >> entity.id;
+const void ReadClient::readDeletePlayer(SmartBuffer& smartBuffer) {
+    IEntity player;
+    smartBuffer >> player.id;
 
-    PlayerManagerClient::get().removePlayer(entity.id);
-}
-
-const void ReadClient::readMe(SmartBuffer& smartBuffer) {
-    EntityInterface entity;
-    smartBuffer >> entity.id;
-
-    PlayerManagerClient::get().setMyId(entity.id);
+    PlayerManagerClient::get().removePlayer(player.id);
 }

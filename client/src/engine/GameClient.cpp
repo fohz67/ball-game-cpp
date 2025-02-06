@@ -64,9 +64,11 @@ const void GameClient::processEvents() {
             window.close();
             return;
         }
+
         if (event.type == sf::Event::KeyPressed) {
-            SendClient::sendKeyPressed(Hotkeys::keyToString(event.key.code));
+            // @TODO refactor this
         }
+
         if (event.type == sf::Event::MouseWheelScrolled) {
             if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel) {
                 Zoom::get().setZoom(event.mouseWheelScroll.delta, view);
