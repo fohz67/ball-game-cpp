@@ -10,4 +10,4 @@ file(GLOB_RECURSE HEADERS include/*.hpp include/**/*.hpp)
 add_executable(Client ${SOURCES} ${HEADERS})
 
 target_include_directories(Client PUBLIC include ${CMAKE_SOURCE_DIR}/smart-buffer-cpp/include ${CMAKE_SOURCE_DIR}/asio/asio/include)
-target_link_libraries(Client sfml-graphics sfml-window sfml-system sfml-audio smart_buffer GEngine)
+target_link_libraries(Client sfml-graphics sfml-window sfml-system sfml-audio smart_buffer GameEngine)

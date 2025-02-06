@@ -24,7 +24,7 @@ class GameClient {
     void initWindow();
     void initView();
     void processEvents();
-    void render(GEngine::System& system);
+    void render(GameEngine::System& system);
 
     sf::RenderWindow window;
     sf::View         view;

@@ -4,7 +4,7 @@
 #include <components/Text.hpp>
 #include "System.hpp"
 
-void GEngine::System::updateEntityPosition(const int                        id,
+void GameEngine::System::updateEntityPosition(const int                        id,
                                            std::map<double, Entity>&        entities,
                                            const std::pair<double, double>& pos,
                                            const int                        posId) {
@@ -44,7 +44,7 @@ void GEngine::System::updateEntityPosition(const int                        id,
     }
 }
 
-void GEngine::System::updateText(Entity& entity, const std::string& text) {
+void GameEngine::System::updateText(Entity& entity, const std::string& text) {
     if (entity.hasComponent<Text>()) {
         auto& textComp = entity.getComponent<Text>();
 
@@ -54,7 +54,7 @@ void GEngine::System::updateText(Entity& entity, const std::string& text) {
     }
 }
 
-void GEngine::System::updateTextFont(Entity& entity, const std::string& font) {
+void GameEngine::System::updateTextFont(Entity& entity, const std::string& font) {
     static std::unordered_map<std::string, sf::Font> fontCache;
 
     if (entity.hasComponent<Text>()) {
@@ -73,7 +73,7 @@ void GEngine::System::updateTextFont(Entity& entity, const std::string& font) {
     }
 }
 
-void GEngine::System::updateTextSize(const int                 id,
+void GameEngine::System::updateTextSize(const int                 id,
                                      std::map<double, Entity>& entities,
                                      const unsigned int        textSize) {
     Entity& entity = entities.at(id);
@@ -93,7 +93,7 @@ void GEngine::System::updateTextSize(const int                 id,
     }
 }
 
-void GEngine::System::updateTexture(Entity& entity, std::string& texture) {
+void GameEngine::System::updateTexture(Entity& entity, std::string& texture) {
     static std::unordered_map<std::string, sf::Texture> textureCache;
 
     if (entity.hasComponent<Texture>()) {
@@ -129,7 +129,7 @@ void GEngine::System::updateTexture(Entity& entity, std::string& texture) {
     }
 }
 
-void GEngine::System::updateShapeSize(Entity& entity, double radius) {
+void GameEngine::System::updateShapeSize(Entity& entity, double radius) {
     if (entity.hasComponent<Shape>()) {
         auto& shapeComp = entity.getComponent<Shape>();
 
@@ -142,7 +142,7 @@ void GEngine::System::updateShapeSize(Entity& entity, double radius) {
     }
 }
 
-void GEngine::System::update(const double              id,
+void GameEngine::System::update(const double              id,
                              std::map<double, Entity>& entities,
                              const UpdateType          type,
                              const std::any&           value,

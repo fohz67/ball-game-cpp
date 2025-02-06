@@ -2,7 +2,7 @@
 #include <unordered_map>
 #include "System.hpp"
 
-void GEngine::System::loadText(GEngine::Entity& entity, auto& textComp) {
+void GameEngine::System::loadText(GameEngine::Entity& entity, auto& textComp) {
     static std::unordered_map<std::string, sf::Font> fontCache;
 
     if (!textComp.isLoaded()) {
@@ -41,7 +41,7 @@ void GEngine::System::loadText(GEngine::Entity& entity, auto& textComp) {
     }
 }
 
-void GEngine::System::textSystem(sf::RenderWindow& window, GEngine::Entity& entity) {
+void GameEngine::System::textSystem(sf::RenderWindow& window, GameEngine::Entity& entity) {
     if (entity.hasComponent<Text>() && entity.hasComponent<Position>()) {
         auto& textComp = entity.getComponent<Text>();
 

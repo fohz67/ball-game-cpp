@@ -7,7 +7,7 @@
 #include <memory>
 #include "Entity.hpp"
 
-namespace GEngine {
+namespace GameEngine {
 
 enum class UpdateType { Position, Text, TextSize, TextFont, Texture, ShapeSize };
 
@@ -115,4 +115,4 @@ void System::updatePosition(Entity&                          entity,
     }
 }
 
-} // namespace GEngine
+} // namespace GameEngine

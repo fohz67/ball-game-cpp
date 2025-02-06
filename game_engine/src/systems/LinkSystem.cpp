@@ -5,13 +5,13 @@
 #include <components/Text.hpp>
 #include "System.hpp"
 
-void GEngine::System::linkSystem(int                                id,
-                                 std::map<double, GEngine::Entity>& entities,
+void GameEngine::System::linkSystem(int                                id,
+                                 std::map<double, GameEngine::Entity>& entities,
                                  std::pair<double, double>          newLinkedEntityPos,
                                  const int                          posId) {
     for (auto& [_, entity] : entities) {
         if (entity.hasComponent<Link>() && entity.getComponent<Link>().getId() == id) {
-            GEngine::Entity entityLinked = entities[id];
+            GameEngine::Entity entityLinked = entities[id];
 
             auto            oldLinkedEntityPos = entityLinked.getComponent<Position>();
             const std::pair dist               = {

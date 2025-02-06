@@ -4,7 +4,7 @@
 
 #include <unordered_map>
 
-void GEngine::System::loadRectangle(GEngine::Entity& entity, auto& shapeComp) {
+void GameEngine::System::loadRectangle(GameEngine::Entity& entity, auto& shapeComp) {
     if (!shapeComp.isLoaded()) {
         shapeComp.getRect().setSize(
             sf::Vector2f(shapeComp.getSize().first, shapeComp.getSize().second));
@@ -43,7 +43,7 @@ void GEngine::System::loadRectangle(GEngine::Entity& entity, auto& shapeComp) {
     }
 }
 
-void GEngine::System::loadCircle(GEngine::Entity& entity, auto& shapeComp) {
+void GameEngine::System::loadCircle(GameEngine::Entity& entity, auto& shapeComp) {
     if (!shapeComp.isLoaded()) {
         sf::CircleShape circle;
 
@@ -71,7 +71,7 @@ void GEngine::System::loadCircle(GEngine::Entity& entity, auto& shapeComp) {
     }
 }
 
-void GEngine::System::shapeSystem(sf::RenderWindow& window, GEngine::Entity& entity) {
+void GameEngine::System::shapeSystem(sf::RenderWindow& window, GameEngine::Entity& entity) {
     if (entity.hasComponent<Shape>() && entity.hasComponent<Position>()) {
         auto& shapeComp    = entity.getComponent<Shape>();
         auto& positionComp = entity.getComponent<Position>();

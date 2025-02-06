@@ -2,7 +2,7 @@
 #include <unordered_map>
 #include "System.hpp"
 
-void GEngine::System::loadSprite(GEngine::Entity& entity, auto& spriteComp, auto& textureComp) {
+void GameEngine::System::loadSprite(GameEngine::Entity& entity, auto& spriteComp, auto& textureComp) {
     static std::unordered_map<std::string, sf::Texture> textureCache;
 
     if (!spriteComp.isLoaded()) {
@@ -33,7 +33,7 @@ void GEngine::System::loadSprite(GEngine::Entity& entity, auto& spriteComp, auto
     }
 }
 
-void GEngine::System::spriteSystem(sf::RenderWindow& window, GEngine::Entity& entity) {
+void GameEngine::System::spriteSystem(sf::RenderWindow& window, GameEngine::Entity& entity) {
     if (entity.hasComponent<Sprite>() && entity.hasComponent<Texture>()) {
         auto& spriteComp   = entity.getComponent<Sprite>();
         auto& textureComp  = entity.getComponent<Texture>();

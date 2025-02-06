@@ -29,7 +29,7 @@ class HUD {
 
     double currentId = ConfigClient::World::ID;
 
-    std::map<double, GEngine::Entity> leaderboardEntities;
-    std::map<double, GEngine::Entity> statsEntity;
-    std::map<double, GEngine::Entity> chatBoxEntitites;
+    std::map<double, GameEngine::Entity> leaderboardEntities;
+    std::map<double, GameEngine::Entity> statsEntity;
+    std::map<double, GameEngine::Entity> chatBoxEntitites;
 };

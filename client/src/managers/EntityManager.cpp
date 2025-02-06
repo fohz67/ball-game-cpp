@@ -24,7 +24,7 @@ void EntityManager::createCell(uint32_t            id,
         color = {255, 255, 255, 255};
     }
 
-    auto newCell = GEngine::Entity(id);
+    auto newCell = GameEngine::Entity(id);
 
     newCell.addComponent(Shape(ShapeType::Circle, {radius * 2, radius * 2}, radius));
     newCell.addComponent(Position({{x, y}}));
@@ -39,7 +39,7 @@ void EntityManager::createCell(uint32_t            id,
 
 void EntityManager::createNickname(
     uint32_t id, double x, double y, double radius, std::string nickname) {
-    auto newNickname = GEngine::Entity(id + ConfigClient::Network::ENTITY_LINKING_BIAS);
+    auto newNickname = GameEngine::Entity(id + ConfigClient::Network::ENTITY_LINKING_BIAS);
 
     newNickname.addComponent(
         Text(nickname,
@@ -56,15 +56,15 @@ void EntityManager::createNickname(
 }
 
 void EntityManager::updateCell(uint32_t id, double x, double y, double radius, bool isNickname) {
-    GEngine::System           system;
+    GameEngine::System           system;
     std::pair<double, double> position = {x, y};
 
-    system.update(id, entities, GEngine::UpdateType::Position, position);
-    system.update(id, entities, GEngine::UpdateType::ShapeSize, radius);
+    system.update(id, entities, GameEngine::UpdateType::Position, position);
+    system.update(id, entities, GameEngine::UpdateType::ShapeSize, radius);
 }
 
 void EntityManager::createWorld(uint16_t size) {
-    auto newEntity = GEngine::Entity(ConfigClient::World::ID);
+    auto newEntity = GameEngine::Entity(ConfigClient::World::ID);
 
     newEntity.addComponent(Shape(ShapeType::Rectangle, {size, size}));
     newEntity.addComponent(Position({{0.0f, 0.0f}}));
@@ -82,8 +82,8 @@ void EntityManager::removeEntity(double id) {
     }
 }
 
-std::map<double, GEngine::Entity> EntityManager::getGameEntities() const {
-    std::map<double, GEngine::Entity> gameEntities;
+std::map<double, GameEngine::Entity> EntityManager::getGameEntities() const {
+    std::map<double, GameEngine::Entity> gameEntities;
 
     for (const auto& [id, entity] : entities) {
         if (id <= ConfigClient::World::ID || id > ConfigClient::World::ID + 1) {
@@ -94,8 +94,8 @@ std::map<double, GEngine::Entity> EntityManager::getGameEntities() const {
     return gameEntities;
 }
 
-std::map<double, GEngine::Entity> EntityManager::getHUDEntities() const {
-    std::map<double, GEngine::Entity> hudEntities;
+std::map<double, GameEngine::Entity> EntityManager::getHUDEntities() const {
+    std::map<double, GameEngine::Entity> hudEntities;
 
     for (const auto& [id, entity] : entities) {
         if (id > ConfigClient::World::ID && id <= ConfigClient::World::ID + 1) {

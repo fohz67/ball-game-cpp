@@ -1,6 +1,6 @@
 #include "System.hpp"
 
-void GEngine::System::render(sf::RenderWindow& window, std::map<double, Entity>& entities) {
+void GameEngine::System::render(sf::RenderWindow& window, std::map<double, Entity>& entities) {
     for (auto& [id, entity] : entities) {
         spriteSystem(window, entity);
         textSystem(window, entity);

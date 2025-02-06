@@ -40,7 +40,7 @@ void HUD::createLeaderboard() {
     // Box
     increaseId();
 
-    auto newEntity = GEngine::Entity(currentId);
+    auto newEntity = GameEngine::Entity(currentId);
     newEntity.addComponent(
         Shape(ShapeType::Rectangle,
               {ConfigClient::HUD::Leaderboard::WIDTH, ConfigClient::HUD::Leaderboard::HEIGHT}));
@@ -56,7 +56,7 @@ void HUD::createLeaderboard() {
     // Title
     increaseId();
 
-    auto newEntityTitle = GEngine::Entity(currentId);
+    auto newEntityTitle = GameEngine::Entity(currentId);
     newEntityTitle.addComponent(Text(ConfigClient::HUD::Leaderboard::TITLE,
                                      "assets/fonts/" + ConfigClient::HUD::FONT_FAMILY + "/" +
                                          std::to_string(ConfigClient::HUD::FONT_WEIGHT) + ".ttf",
@@ -80,7 +80,7 @@ void HUD::createLeaderboard() {
 
         increaseId();
 
-        auto newPlayerEntity = GEngine::Entity(currentId);
+        auto newPlayerEntity = GameEngine::Entity(currentId);
         newPlayerEntity.addComponent(Text(std::to_string(i) + ". " + player.getNickname(),
                                           "assets/fonts/" + ConfigClient::HUD::FONT_FAMILY + "/" +
                                               std::to_string(ConfigClient::HUD::FONT_WEIGHT) +
@@ -105,7 +105,7 @@ void HUD::createStats() {
     increaseId();
 
     // Box
-    auto newEntity = GEngine::Entity(currentId);
+    auto newEntity = GameEngine::Entity(currentId);
     newEntity.addComponent(Shape(
         ShapeType::Rectangle, {ConfigClient::HUD::Stats::WIDTH, ConfigClient::HUD::Stats::HEIGHT}));
     newEntity.addComponent(Position({{ConfigClient::HUD::PADDING, ConfigClient::HUD::PADDING}}));
@@ -122,7 +122,7 @@ void HUD::createStats() {
         increaseId();
 
         // Label
-        auto newLabelEntity = GEngine::Entity(currentId);
+        auto newLabelEntity = GameEngine::Entity(currentId);
         newLabelEntity.addComponent(Text(label,
                                          "assets/fonts/" + ConfigClient::HUD::FONT_FAMILY + "/" +
                                              std::to_string(ConfigClient::HUD::FONT_WEIGHT) +
@@ -139,7 +139,7 @@ void HUD::createStats() {
         // Value
         increaseId();
 
-        auto newValueEntity = GEngine::Entity(currentId);
+        auto newValueEntity = GameEngine::Entity(currentId);
         newValueEntity.addComponent(Text("0",
                                          "assets/fonts/" + ConfigClient::HUD::FONT_FAMILY + "/" +
                                              std::to_string(ConfigClient::HUD::FONT_WEIGHT) +
@@ -160,7 +160,7 @@ void HUD::createStats() {
 }
 
 void HUD::updateStats() {
-    GEngine::System system;
+    GameEngine::System system;
     double          bias = ConfigClient::World::ID +
                   (leaderboardEntities.size() * ConfigClient::Network::ENTITY_LINKING_BIAS);
     auto me = PlayerManagerClient::get().getMe();
@@ -169,28 +169,28 @@ void HUD::updateStats() {
 
     system.update(bias,
                   EntityManager::get().entities,
-                  GEngine::UpdateType::Text,
+                  GameEngine::UpdateType::Text,
                   std::to_string(me->getScore()));
 
     bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
 
     system.update(bias,
                   EntityManager::get().entities,
-                  GEngine::UpdateType::Text,
+                  GameEngine::UpdateType::Text,
                   std::to_string(me->getMass()));
 
     bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
 
     system.update(bias,
                   EntityManager::get().entities,
-                  GEngine::UpdateType::Text,
+                  GameEngine::UpdateType::Text,
                   std::to_string(NetworkClient::get().getPing()));
 
     bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
 
     system.update(bias,
                   EntityManager::get().entities,
-                  GEngine::UpdateType::Text,
+                  GameEngine::UpdateType::Text,
                   std::to_string(GameClient::get().getFPS()));
 }
 
@@ -198,7 +198,7 @@ void HUD::createChatBox() {
     increaseId();
 
     // Box
-    auto newEntity = GEngine::Entity(currentId);
+    auto newEntity = GameEngine::Entity(currentId);
     newEntity.addComponent(
         Shape(ShapeType::Rectangle,
               {ConfigClient::HUD::ChatBox::WIDTH, ConfigClient::HUD::ChatBox::HEIGHT}));

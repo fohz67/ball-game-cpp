@@ -6,7 +6,7 @@
 #include <unordered_map>
 #include "components/Components.hpp"
 
-namespace GEngine {
+namespace GameEngine {
 
 class Entity {
   public:
@@ -72,4 +72,4 @@ template <typename ComponentType> bool Entity::hasComponent() const {
     return components.find(std::type_index(typeid(ComponentType))) != components.end();
 }
 
-}; // namespace GEngine
+}; // namespace GameEngine

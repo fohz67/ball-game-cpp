@@ -14,7 +14,7 @@ GameClient& GameClient::get() {
 }
 
 void GameClient::run() {
-    GEngine::System system;
+    GameEngine::System system;
     sf::Vector2i    lastMousePos = sf::Mouse::getPosition(window);
     sf::Clock       clock;
     float           deltaTime = 0.0f;
@@ -71,19 +71,19 @@ void GameClient::processEvents() {
     }
 }
 
-void GameClient::render(GEngine::System& system) {
+void GameClient::render(GameEngine::System& system) {
     // Gameplay
     view.setCenter(
         Viewport::get().getPreviousViewport().first, Viewport::get().getPreviousViewport().second);
     window.setView(view);
     window.clear();
 
-    std::map<double, GEngine::Entity> gameEntities = EntityManager::get().getGameEntities();
+    std::map<double, GameEngine::Entity> gameEntities = EntityManager::get().getGameEntities();
     system.render(window, gameEntities);
 
     // HUD
     window.setView(window.getDefaultView());
-    std::map<double, GEngine::Entity> hudEntities = EntityManager::get().getHUDEntities();
+    std::map<double, GameEngine::Entity> hudEntities = EntityManager::get().getHUDEntities();
     system.render(window, hudEntities);
 
     // Final render
