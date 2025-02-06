@@ -8,7 +8,6 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'your-org',
   projectName: 'doc',
-
   presets: [
     [
       'classic',

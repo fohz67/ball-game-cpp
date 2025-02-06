@@ -39,15 +39,15 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '9a1'),
+    component: ComponentCreator('/docs', '080'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', 'b47'),
+        component: ComponentCreator('/docs', '7e9'),
         routes: [
           {
             path: '/docs',
-            component: ComponentCreator('/docs', '19f'),
+            component: ComponentCreator('/docs', 'b2b'),
             routes: [
               {
                 path: '/docs/blank',
@@ -61,8 +61,9 @@ export default [
               },
               {
                 path: '/docs/game-engine',
-                component: ComponentCreator('/docs/game-engine', 'fd8'),
-                exact: true
+                component: ComponentCreator('/docs/game-engine', '9ab'),
+                exact: true,
+                sidebar: "tutorialSidebar"
               },
               {
                 path: '/docs/game-engine/architecture',
@@ -79,12 +80,6 @@ export default [
               {
                 path: '/docs/game-engine/entity',
                 component: ComponentCreator('/docs/game-engine/entity', '473'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/game-engine/intro',
-                component: ComponentCreator('/docs/game-engine/intro', '483'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },

@@ -8,7 +8,7 @@
           "label": "Next",
           "isLast": true,
           "path": "/docs",
-          "mainDocId": "game-engine/architecture",
+          "mainDocId": "game-engine/index",
           "docs": [
             {
               "id": "blank",
@@ -35,11 +35,7 @@
             },
             {
               "id": "game-engine/index",
-              "path": "/docs/game-engine"
-            },
-            {
-              "id": "game-engine/intro",
-              "path": "/docs/game-engine/intro",
+              "path": "/docs/game-engine",
               "sidebar": "tutorialSidebar"
             },
             {
@@ -61,8 +57,8 @@
           "sidebars": {
             "tutorialSidebar": {
               "link": {
-                "path": "/docs/game-engine/architecture",
-                "label": "game-engine/architecture"
+                "path": "/docs/game-engine",
+                "label": "game-engine/index"
               }
             }
           }
