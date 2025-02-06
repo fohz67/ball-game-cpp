@@ -107,8 +107,10 @@ const void Send::sendPlayerUpdate() {
         const Vector2 viewport = player->getViewport();
 
         smartBuffer.reset();
-        smartBuffer << OpCodes::UPDATE_PLAYER << viewport.x << viewport.y << player->getScore()
-                    << player->getTotalMass() << player->getCellCount();
+        smartBuffer << OpCodes::UPDATE_PLAYER << viewport.x << viewport.y
+                    << static_cast<uint32_t>(player->getScore())
+                    << static_cast<uint32_t>(player->getTotalMass())
+                    << static_cast<uint32_t>(player->getCellCount());
 
         Network::get().sendToClient(player->getClient(), smartBuffer);
     }

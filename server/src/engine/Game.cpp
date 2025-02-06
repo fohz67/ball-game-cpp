@@ -7,6 +7,7 @@
 #include "config/Config.hpp"
 #include "geometry/FastInvSqrt.hpp"
 #include "managers/CellManager.hpp"
+#include "managers/LeaderboardManager.hpp"
 #include "managers/PlayerManager.hpp"
 
 Game& Game::get() {
@@ -25,12 +26,9 @@ const void Game::updateLoop() {
         auto start = std::chrono::steady_clock::now();
 
         CellManager::get().updateCells();
+        LeaderboardManager::get().updateLeaderboard();
 
-        const std::vector<Player*> players = PlayerManager::get().getPlayers();
-
-        for (Player* player : players) {
-            updateGameState(player);
-        }
+        updateGameState();
 
         auto   end      = std::chrono::steady_clock::now();
         double duration = std::chrono::duration<double, std::milli>(end - start).count();
@@ -41,29 +39,34 @@ const void Game::updateLoop() {
     }
 }
 
-const void Game::updateGameState(Player* player) {
-    const std::vector<Cell*> playerCells = CellManager::get().getCellsByPlayerId(player->getId());
+const void Game::updateGameState() {
+    const std::vector<Player*> players = PlayerManager::get().getPlayers();
 
-    if (playerCells.empty()) {
-        return;
+    for (Player* player : players) {
+        const std::vector<Cell*> playerCells =
+            CellManager::get().getCellsByPlayerId(player->getId());
+
+        if (playerCells.empty()) {
+            return;
+        }
+
+        Vector2      center(0.0f, 0.0f);
+        Vector2      dir       = player->getMousePosition();
+        const double magnitude = dir.magnitude();
+        const double decrease  = Config::Gameplay::Cell::DECREASE_SPEED_THRESHOLD;
+        const double slowdown  = (magnitude < decrease) ? magnitude / decrease : 1.0f;
+
+        if (magnitude) {
+            dir /= magnitude;
+        }
+
+        for (Cell* cell : playerCells) {
+            center += cell->getCenter();
+            cell->move(dir, Config::Gameplay::Cell::SPEED * slowdown);
+        }
+
+        center /= playerCells.size();
+
+        player->setViewport(center);
     }
-
-    Vector2      center(0.0f, 0.0f);
-    Vector2      dir       = player->getMousePosition();
-    const double magnitude = dir.magnitude();
-    const double decrease  = Config::Gameplay::Cell::DECREASE_SPEED_THRESHOLD;
-    const double slowdown  = (magnitude < decrease) ? magnitude / decrease : 1.0f;
-
-    if (magnitude) {
-        dir /= magnitude;
-    }
-
-    for (Cell* cell : playerCells) {
-        center += cell->getCenter();
-        cell->move(dir, Config::Gameplay::Cell::SPEED * slowdown);
-    }
-
-    center /= playerCells.size();
-
-    player->setViewport(center);
 }

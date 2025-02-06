@@ -20,8 +20,9 @@ class HUD {
 
     const void increaseId();
 
-    const void setMass(const long mass);
-    const void setScore(const long score);
+    const void setMass(const uint32_t mass);
+    const void setScore(const uint32_t score);
+    const void setCellCount(const uint32_t cellCount);
 
   private:
     HUD()  = default;
@@ -33,6 +34,7 @@ class HUD {
     std::map<double, GameEngine::Entity> statsEntity;
     std::map<double, GameEngine::Entity> chatBoxEntitites;
 
-    long score = 0;
-    long mass  = 0;
+    uint32_t score     = 0;
+    uint32_t mass      = 0;
+    uint32_t cellCount = 0;
 };

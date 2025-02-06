@@ -1,4 +1,5 @@
 #include "protocol/ReadClient.hpp"
+#include "components/HUD.hpp"
 #include "components/Viewport.hpp"
 #include "engine/NetworkClient.hpp"
 #include "managers/EntityManager.hpp"
@@ -105,7 +106,11 @@ const void ReadClient::readUpdatePlayer(SmartBuffer& smartBuffer) {
     smartBuffer >> updatePlayer.x >> updatePlayer.y >> updatePlayer.score >>
         updatePlayer.totalMass >> updatePlayer.cellCount;
 
-    Viewport::get().setViewport({viewport.x, viewport.y});
+    Viewport::get().setViewport({updatePlayer.x, updatePlayer.y});
+
+    HUD::get().setScore(updatePlayer.score);
+    HUD::get().setMass(updatePlayer.totalMass);
+    HUD::get().setCellCount(updatePlayer.cellCount);
 }
 
 const void ReadClient::readDeleteEntity(SmartBuffer& smartBuffer) {

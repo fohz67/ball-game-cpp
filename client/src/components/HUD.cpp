@@ -116,7 +116,7 @@ const void HUD::createStats() {
 
     // Titles & Values
     float                    yOffset = ConfigClient::HUD::PADDING + 20;
-    std::vector<std::string> labels  = {"Score:", "Mass:", "Ping:", "FPS:"};
+    std::vector<std::string> labels  = {"Score:", "Mass:", "Cells:", "Ping:", "FPS:"};
 
     for (const auto& label : labels) {
         increaseId();
@@ -180,6 +180,13 @@ const void HUD::updateStats() {
     system.update(bias,
                   EntityManager::get().entities,
                   GameEngine::UpdateType::Text,
+                  std::to_string(cellCount));
+
+    bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
+
+    system.update(bias,
+                  EntityManager::get().entities,
+                  GameEngine::UpdateType::Text,
                   std::to_string(NetworkClient::get().getPing()));
 
     bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
@@ -210,4 +217,16 @@ const void HUD::createChatBox() {
 
 const void HUD::increaseId() {
     currentId += ConfigClient::Network::ENTITY_LINKING_BIAS;
+}
+
+const void HUD::setMass(const uint32_t newMass) {
+    mass = newMass;
+}
+
+const void HUD::setScore(const uint32_t newScore) {
+    score = newScore;
+}
+
+const void HUD::setCellCount(const uint32_t newCellCount) {
+    cellCount = newCellCount;
 }

@@ -31,11 +31,11 @@ struct ISpawnPellets {
 };
 
 struct IUpdatePlayer {
-    double x;
-    double y;
-    double score;
-    double totalMass;
-    size_t cellCount;
+    double   x;
+    double   y;
+    uint32_t score;
+    uint32_t totalMass;
+    uint32_t cellCount;
 };
 
 struct IEntity {

@@ -10,7 +10,7 @@ LeaderboardManager& LeaderboardManager::get() {
     return instance;
 }
 
-std::vector<LeaderboardEntry> LeaderboardManager::getLeaderboard() {
+const void LeaderboardManager::updateLeaderboard() {
     std::vector<Player*>          players = PlayerManager::get().getPlayers();
     std::vector<LeaderboardEntry> leaderboard;
 
@@ -30,7 +30,7 @@ std::vector<LeaderboardEntry> LeaderboardManager::getLeaderboard() {
 
         if (totalMass > score) {
             score = totalMass;
-            player->setScore(totalMass);
+            player->setScore(score);
         }
 
         player->setTotalMass(totalMass);
@@ -51,6 +51,8 @@ std::vector<LeaderboardEntry> LeaderboardManager::getLeaderboard() {
     if (leaderboard.size() > count) {
         leaderboard.resize(count);
     }
+}
 
+std::vector<LeaderboardEntry> LeaderboardManager::getLeaderboard() {
     return leaderboard;
 }

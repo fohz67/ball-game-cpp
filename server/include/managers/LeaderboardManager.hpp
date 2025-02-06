@@ -18,9 +18,13 @@ class LeaderboardManager {
 
     static LeaderboardManager& get();
 
+    const void updateLeaderboard();
+
     std::vector<LeaderboardEntry> getLeaderboard();
 
   private:
     LeaderboardManager()  = default;
     ~LeaderboardManager() = default;
+
+    std::vector<LeaderboardEntry> leaderboard;
 };
