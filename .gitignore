@@ -46,3 +46,7 @@ Makefile
 .DS_Store
 .vscode
 logs/*
+
+# Docusaurus
+doc/node_modules/
+doc/package-lock.json

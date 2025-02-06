@@ -1,0 +1,47 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "server",
+          "docs": [
+            {
+              "id": "blank",
+              "path": "/docs/blank"
+            },
+            {
+              "id": "client",
+              "path": "/docs/client",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "game-engine",
+              "path": "/docs/game-engine",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "server",
+              "path": "/docs/server",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/docs/server",
+                "label": "🖥️ Server"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "blank",
+  "title": "Yo",
+  "description": "",
+  "source": "@site/docs/blank.md",
+  "sourceDirName": ".",
+  "slug": "/blank",
+  "permalink": "/docs/blank",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}
