@@ -1,10 +1,11 @@
 #include "managers/CellManager.hpp"
 #include "config/Config.hpp"
-#include "managers/PlayerManager.hpp"
-#include "protocol/Protocol.hpp"
-#include "protocol/Send.hpp"
 #include "util/AtomicID.hpp"
 #include "util/Util.hpp"
+#include "protocol/Send.hpp"
+#include <algorithm>
+#include <unordered_set>
+#include <iostream>
 
 CellManager& CellManager::get() {
     static CellManager instance;
@@ -12,91 +13,148 @@ CellManager& CellManager::get() {
 }
 
 const void CellManager::generatePellets() {
-    for (int i = 0; i < Config::Gameplay::Pellet::COUNT; i++) {
-        const uint32_t            pelletId = AtomicID::get().getNextId();
-        const Vector2             location = Util::getRandomLocation();
-        const double              mass     = Config::Gameplay::Pellet::MASS;
-        const std::vector<double> color    = Util::getRandomColor();
+    pelletCells.clear();
+    pelletCells.reserve(Config::Gameplay::Pellet::COUNT);
 
-        cells.emplace_back(pelletId, pelletId, CellType::CREATE_PELLETS, location, mass, color);
+    for (int i = 0; i < Config::Gameplay::Pellet::COUNT; i++) {
+       createPellet();
     }
 }
 
-const void CellManager::createCell(uint32_t ownerId) {
-    const Vector2             location = Util::getRandomLocation();
-    const uint32_t            cellId   = AtomicID::get().getNextId();
-    const double              mass     = Config::Gameplay::Cell::SPAWN_MASS;
-    const std::vector<double> color    = Util::getRandomColor();
+const void CellManager::createPellet() {
+    uint32_t pelletId = AtomicID::get().getNextId();
+    Vector2 location = Util::getRandomLocation();
+    double mass = Config::Gameplay::Pellet::MASS;
+    std::vector<double> color = Util::getRandomColor();
 
-    cells.emplace_back(cellId, ownerId, CellType::NEW_PLAYER, location, mass, color);
+    pelletCells.emplace_back(pelletId, 0, CellType::PELLET, location, mass, color);
+}
+
+const void CellManager::createCell(const uint32_t ownerId) {
+    uint32_t cellId = AtomicID::get().getNextId();
+    Vector2 location = Util::getRandomLocation();
+    double mass = Config::Gameplay::Cell::SPAWN_MASS;
+    std::vector<double> color = Util::getRandomColor();
+
+    playerCells.emplace_back(cellId, ownerId, CellType::PLAYER, location, mass, color);
 }
 
 const void CellManager::updateCells() {
     std::vector<uint32_t> ids;
+    size_t n = playerCells.size();
 
-    for (Cell& cell : cells) {
-        if (cell.getType() != CellType::NEW_PLAYER) {
-            continue;
-        }
 
+    for (size_t i = 0; i < n; i++) {
+        Cell& cell = playerCells[i];
+        
         cell.decay();
 
-        for (Cell& target : cells) {
-            if (cell.getId() == target.getId() || target.isMarkedForDeletion()) {
+        for (Cell& pellet : pelletCells) {
+            if (pellet.isMarkedForDeletion()) {
                 continue;
             }
 
+            if (cell.canEat(pellet)) {
+                cell.absorb(pellet);
+                pellet.markForDeletion();
+                ids.push_back(pellet.getId());
+            }
+        }
+
+        for (size_t j = i + 1; j < n; j++) {
+            Cell& target = playerCells[j];
+
+            if (cell.getId() == target.getId() || target.isMarkedForDeletion()) {
+                continue;
+            }
+            
             if (cell.canEat(target)) {
                 cell.absorb(target);
                 target.markForDeletion();
                 ids.push_back(target.getId());
             }
+
+            if (target.canEat(cell)) {
+                target.absorb(cell);
+                cell.markForDeletion();
+                ids.push_back(cell.getId());
+            }
         }
     }
 
-    deleteCells(ids);
+    deleteCells(ids, 2);
 }
 
 const void CellManager::removeCells(const uint32_t ownerId) {
     std::vector<uint32_t> ids;
 
-    for (const Cell& cell : cells) {
+    for (const Cell& cell : playerCells) {
         if (cell.getOwnerId() == ownerId) {
             ids.push_back(cell.getId());
         }
     }
 
-    deleteCells(ids);
+    deleteCells(ids, 1);
 }
 
-const void CellManager::deleteCells(const std::vector<uint32_t>& ids) {
+const void CellManager::deleteCells(const std::vector<uint32_t>& ids, const int many) {
     if (ids.empty()) {
         return;
     }
 
-    for (auto it = cells.begin(); it != cells.end();) {
-        if (std::find(ids.begin(), ids.end(), it->getId()) != ids.end()) {
-            it = cells.erase(it);
-        } else {
-            ++it;
-        }
+    std::unordered_set<uint32_t> idSet(ids.begin(), ids.end());
+
+    if (many > 0) {
+        playerCells.erase(std::remove_if(playerCells.begin(), playerCells.end(),
+            [&idSet](const Cell& cell) {
+                return idSet.find(cell.getId()) != idSet.end();
+            }), playerCells.end());
+    }
+
+    if (many > 1) {
+        pelletCells.erase(std::remove_if(pelletCells.begin(), pelletCells.end(),
+            [&idSet](const Cell& cell) {
+                return idSet.find(cell.getId()) != idSet.end();
+            }), pelletCells.end());
     }
 
     Send::sendEntityRemoved(ids);
 }
 
-std::vector<Cell*> CellManager::getCells(uint32_t ownerId) {
-    std::vector<Cell*> playerCells;
+std::vector<Cell*> CellManager::getPlayerCells() const {
+    std::vector<Cell*> result;
 
-    for (Cell& cell : cells) {
-        if (cell.getType() == CellType::NEW_PLAYER && cell.getOwnerId() == ownerId) {
-            playerCells.push_back(&cell);
+    result.reserve(playerCells.size());
+
+    for (const Cell& cell : playerCells) {
+        result.push_back(const_cast<Cell*>(&cell));
+    }
+
+    return result;
+}
+
+std::vector<Cell*> CellManager::getPelletCells() const {
+    std::vector<Cell*> result;
+
+    result.reserve(pelletCells.size());
+
+    for (const Cell& cell : pelletCells) {
+        result.push_back(const_cast<Cell*>(&cell));
+    }
+
+    return result;
+}
+
+std::vector<Cell*> CellManager::getCellsByPlayerId(const uint32_t ownerId) const {
+    std::vector<Cell*> result;
+
+    result.reserve(playerCells.size());
+
+    for (const Cell& cell : playerCells) {
+        if (cell.getOwnerId() == ownerId) {
+            result.push_back(const_cast<Cell*>(&cell));
         }
     }
 
-    return playerCells;
-}
-
-std::vector<Cell>& CellManager::getAllCells() {
-    return cells;
+    return result;
 }

@@ -51,13 +51,9 @@ const void Send::sendCells() {
     SmartBuffer smartBuffer;
     smartBuffer << OpCodes::UPDATE_CELL;
 
-    const std::vector<Cell>& cells = CellManager::get().getAllCells();
+    const std::vector<Cell*> cells = CellManager::get().getPlayerCells();
 
-    for (const Cell& cell : cells) {
-        if (cell.getType() != CellType::NEW_PLAYER) {
-            continue;
-        }
-
+    for (const Cell* cell : cells) {
         if (sizeof(uint32_t) + smartBuffer.getSize() + sizeof(CellInterface) >=
             Config::Network::MAX_SIZE) {
             Network::get().sendToAll(smartBuffer);
@@ -66,9 +62,9 @@ const void Send::sendCells() {
             smartBuffer << OpCodes::UPDATE_CELL;
         }
 
-        const Vector2 pos = cell.getPosition();
+        const Vector2 pos = cell->getPosition();
 
-        smartBuffer << cell.getId() << cell.getOwnerId() << pos.x << pos.y << cell.getRadius();
+        smartBuffer << cell->getId() << cell->getOwnerId() << pos.x << pos.y << cell->getRadius();
     }
 
     if (smartBuffer.getSize() >= sizeof(CellInterface) + sizeof(OpCodes)) {
@@ -80,13 +76,9 @@ const void Send::sendPellets(const std::shared_ptr<asio::ip::tcp::socket> client
     SmartBuffer smartBuffer;
     smartBuffer << OpCodes::CREATE_PELLETS;
 
-    const std::vector<Cell>& cells = CellManager::get().getAllCells();
+    const std::vector<Cell*> pellets = CellManager::get().getPelletCells();
 
-    for (const Cell& cell : cells) {
-        if (cell.getType() != CellType::CREATE_PELLETS) {
-            continue;
-        }
-
+    for (const Cell* pellet : pellets) {
         if (sizeof(uint32_t) + smartBuffer.getSize() + sizeof(PelletInterface) >=
             Config::Network::MAX_SIZE) {
             Network::get().sendToClient(client, smartBuffer);
@@ -95,10 +87,10 @@ const void Send::sendPellets(const std::shared_ptr<asio::ip::tcp::socket> client
             smartBuffer << OpCodes::CREATE_PELLETS;
         }
 
-        const Vector2 pos = cell.getPosition();
+        const Vector2 pos = pellet->getPosition();
 
-        smartBuffer << cell.getId() << pos.x << pos.y << cell.getRadius()
-                    << ColorConverter::vecToInt(cell.getColor());
+        smartBuffer << pellet->getId() << pos.x << pos.y << pellet->getRadius()
+                    << ColorConverter::vecToInt(pellet->getColor());
     }
 
     if (smartBuffer.getSize() >= sizeof(PelletInterface) + sizeof(OpCodes)) {

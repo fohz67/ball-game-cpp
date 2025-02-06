@@ -15,4 +15,7 @@ enum class OpCodes : uint8_t {
     DELETE_ENTITY,
     DELETE_PLAYER,
     UPDATE_SELF_DATA,
+    UPDATE_LEADERBOARD,
+    UPDATE_STATS,
+    NEW_MESSAGE,
 };

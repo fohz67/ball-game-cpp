@@ -87,7 +87,7 @@ bool Cell::canEat(const Cell& other) const {
 void Cell::absorb(const Cell& other) {
     const double oldRadius = getRadius();
 
-    if (other.type == CellType::CREATE_PELLETS) {
+    if (other.type == CellType::PELLET) {
         mass += (other.getMass() * Config::Gameplay::Pellet::EAT_FACTOR);
     } else {
         mass += other.getMass();
