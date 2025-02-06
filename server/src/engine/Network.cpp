@@ -26,7 +26,7 @@ const void Network::asyncAccept() {
             const auto client = std::make_shared<asio::ip::tcp::socket>(std::move(socket));
 
             PlayerManager::get().newPlayer(client);
-            
+
             asyncRead(client);
         }
 
@@ -53,9 +53,9 @@ const void Network::asyncRead(const std::shared_ptr<asio::ip::tcp::socket> socke
 }
 
 const void Network::sendToClient(const std::shared_ptr<asio::ip::tcp::socket> client,
-                           SmartBuffer&                           smartBuffer) {
+                                 SmartBuffer&                                 smartBuffer) {
     if (client && client->is_open()) {
-        const uint32_t             packetSize = smartBuffer.getSize();
+        const uint32_t packetSize = smartBuffer.getSize();
 
         std::vector<uint8_t> data(sizeof(uint32_t) + packetSize);
 

@@ -14,7 +14,8 @@ class Network {
 
     const void run();
 
-    const void sendToClient(const std::shared_ptr<asio::ip::tcp::socket> client, SmartBuffer& smartBuffer);
+    const void sendToClient(const std::shared_ptr<asio::ip::tcp::socket> client,
+                            SmartBuffer&                                 smartBuffer);
     const void sendToAll(SmartBuffer& smartBuffer);
 
   private:

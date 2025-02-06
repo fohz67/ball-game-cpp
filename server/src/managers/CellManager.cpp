@@ -1,5 +1,4 @@
 #include "managers/CellManager.hpp"
-#include "components/Cell.hpp"
 #include "config/Config.hpp"
 #include "managers/PlayerManager.hpp"
 #include "protocol/Protocol.hpp"

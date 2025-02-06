@@ -10,10 +10,10 @@ class Game {
 
     static Game& get();
 
-    void run();
-    void updateLoop();
-    void viewportUpdate(Player& player);
-    void moveUpdate(const Player& player);
+    const void run();
+
+    const void updateLoop();
+    const void updateGameState(Player& player);
 
   private:
     Game()  = default;

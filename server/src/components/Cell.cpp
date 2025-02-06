@@ -62,9 +62,9 @@ void Cell::decay() {
 }
 
 void Cell::move(const Vector2& dir, const double speed) {
-    Vector2             newPos(pos + dir * speed);
-    std::vector<double> boundaries  = World::getWorldBoundaries();
-    double              limitRadius = getRadius() * 2;
+    Vector2                   newPos(pos + dir * speed);
+    const std::vector<double> boundaries  = World::getWorldBoundaries();
+    const double              limitRadius = getRadius() * 2;
 
     newPos.x = std::max(boundaries[0], std::min(boundaries[1] - limitRadius, newPos.x));
     newPos.y = std::max(boundaries[2], std::min(boundaries[3] - limitRadius, newPos.y));
@@ -76,16 +76,16 @@ bool Cell::canEat(const Cell& other) const {
         return false;
     }
 
-    Vector2 diff(getCenter() - other.getCenter());
-    double  distanceSquared = diff.dot(diff);
-    double  minEatDistance =
+    Vector2      diff(getCenter() - other.getCenter());
+    const double distanceSquared = diff.dot(diff);
+    const double minEatDistance =
         getRadius() - (other.getRadius() * Config::Gameplay::Eat::Eat::RESOLVE_OVERLAP);
 
     return distanceSquared < minEatDistance * minEatDistance;
 }
 
 void Cell::absorb(const Cell& other) {
-    double oldRadius = getRadius();
+    const double oldRadius = getRadius();
 
     if (other.type == CellType::PELLET) {
         mass += (other.getMass() * Config::Gameplay::Pellet::EAT_FACTOR);

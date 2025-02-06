@@ -11,13 +11,6 @@ PlayerManager& PlayerManager::get() {
     return instance;
 }
 
-const void PlayerManager::updatePlayers() {
-    for (Player& player : players) {
-        Game::get().viewportUpdate(player);
-        Game::get().moveUpdate(player);
-    }
-}
-
 const void PlayerManager::newPlayer(const std::shared_ptr<asio::ip::tcp::socket> client) {
     const uint32_t            playerId      = AtomicID::get().getNextId();
     const std::vector<double> nicknameColor = Config::Gameplay::Player::COLOR;
