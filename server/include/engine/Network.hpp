@@ -12,22 +12,18 @@ class Network {
 
     static Network& get();
 
-    void run();
+    const void run();
 
-    void prepare(std::shared_ptr<asio::ip::tcp::socket> socket,
-                 std::shared_ptr<std::vector<char>>     buffer,
-                 std::size_t                            length);
-
-    void sendToClient(std::shared_ptr<asio::ip::tcp::socket> client, SmartBuffer& smartBuffer);
-    void sendToAll(SmartBuffer& smartBuffer);
+    const void sendToClient(const std::shared_ptr<asio::ip::tcp::socket> client, SmartBuffer& smartBuffer);
+    const void sendToAll(SmartBuffer& smartBuffer);
 
   private:
     Network();
     ~Network() = default;
 
-    void doAccept();
-    void newClient(std::shared_ptr<asio::ip::tcp::socket> socket);
-    void sendLoop();
+    const void asyncAccept();
+    const void asyncRead(const std::shared_ptr<asio::ip::tcp::socket> socket);
+    const void sendLoop();
 
     asio::io_context        io_context;
     asio::ip::tcp::acceptor acceptor;

@@ -18,7 +18,7 @@ const void PlayerManager::updatePlayers() {
     }
 }
 
-const void PlayerManager::addPlayer(const std::shared_ptr<asio::ip::tcp::socket> client) {
+const void PlayerManager::newPlayer(const std::shared_ptr<asio::ip::tcp::socket> client) {
     const uint32_t            playerId      = AtomicID::get().getNextId();
     const std::vector<double> nicknameColor = Config::Gameplay::Player::COLOR;
     const std::vector<double> cellColor     = Util::getRandomColor();

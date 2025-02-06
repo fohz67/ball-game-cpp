@@ -1,5 +1,4 @@
 #include "engine/Network.hpp"
-#include <iostream>
 #include "config/Config.hpp"
 #include "managers/PlayerManager.hpp"
 #include "protocol/Protocol.hpp"
@@ -13,26 +12,29 @@ Network& Network::get() {
 Network::Network()
     : acceptor(io_context, asio::ip::tcp::endpoint(asio::ip::tcp::v4(), Config::Network::PORT)) {}
 
-void Network::run() {
-    doAccept();
+const void Network::run() {
+    asyncAccept();
+
     sendThread = std::thread(&Network::sendLoop, this);
+
     io_context.run();
 }
 
-void Network::doAccept() {
+const void Network::asyncAccept() {
     acceptor.async_accept([this](std::error_code ec, asio::ip::tcp::socket socket) {
         if (!ec) {
-            auto clientSocket = std::make_shared<asio::ip::tcp::socket>(std::move(socket));
+            const auto client = std::make_shared<asio::ip::tcp::socket>(std::move(socket));
 
-            PlayerManager::get().addPlayer(clientSocket);
-            newClient(clientSocket);
+            PlayerManager::get().newPlayer(client);
+            
+            asyncRead(client);
         }
 
-        doAccept();
+        asyncAccept();
     });
 }
 
-void Network::newClient(std::shared_ptr<asio::ip::tcp::socket> socket) {
+const void Network::asyncRead(const std::shared_ptr<asio::ip::tcp::socket> socket) {
     auto buffer = std::make_shared<std::vector<char>>(Config::Network::MAX_SIZE);
 
     socket->async_read_some(
@@ -43,17 +45,18 @@ void Network::newClient(std::shared_ptr<asio::ip::tcp::socket> socket) {
                 Protocol::get().injector(buffer->data(), length, smartBuffer);
                 Protocol::get().handleMessage(socket, smartBuffer);
 
-                this->newClient(socket);
+                this->asyncRead(socket);
             } else {
                 PlayerManager::get().removePlayer(socket);
             }
         });
 }
 
-void Network::sendToClient(std::shared_ptr<asio::ip::tcp::socket> client,
+const void Network::sendToClient(const std::shared_ptr<asio::ip::tcp::socket> client,
                            SmartBuffer&                           smartBuffer) {
     if (client && client->is_open()) {
-        uint32_t             packetSize = smartBuffer.getSize();
+        const uint32_t             packetSize = smartBuffer.getSize();
+
         std::vector<uint8_t> data(sizeof(uint32_t) + packetSize);
 
         std::memcpy(data.data(), &packetSize, sizeof(uint32_t));
@@ -63,15 +66,15 @@ void Network::sendToClient(std::shared_ptr<asio::ip::tcp::socket> client,
     }
 }
 
-void Network::sendToAll(SmartBuffer& smartBuffer) {
-    const auto& players = PlayerManager::get().getPlayers();
+const void Network::sendToAll(SmartBuffer& smartBuffer) {
+    const std::vector<Player>& players = PlayerManager::get().getPlayers();
 
-    for (const auto& player : players) {
+    for (const Player& player : players) {
         sendToClient(player.getClient(), smartBuffer);
     }
 }
 
-void Network::sendLoop() {
+const void Network::sendLoop() {
     while (true) {
         Send::sendCells();
         Send::sendViewport();

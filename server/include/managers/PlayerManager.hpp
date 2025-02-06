@@ -14,7 +14,7 @@ class PlayerManager {
 
     const void updatePlayers();
 
-    const void addPlayer(const std::shared_ptr<asio::ip::tcp::socket> client);
+    const void newPlayer(const std::shared_ptr<asio::ip::tcp::socket> client);
     const void removePlayer(const std::shared_ptr<asio::ip::tcp::socket> client);
     Player*    getPlayer(const std::shared_ptr<asio::ip::tcp::socket> client);
 
