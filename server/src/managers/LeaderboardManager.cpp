@@ -1,34 +1,41 @@
 #include "managers/LeaderboardManager.hpp"
+
 #include <algorithm>
+
 #include "config/Config.hpp"
 #include "managers/CellManager.hpp"
 #include "managers/PlayerManager.hpp"
 #include "protocol/Send.hpp"
 
-LeaderboardManager& LeaderboardManager::get() {
+LeaderboardManager& LeaderboardManager::get()
+{
     static LeaderboardManager instance;
     return instance;
 }
 
-const void LeaderboardManager::updateLeaderboard() {
-    std::vector<Player*>          players = PlayerManager::get().getPlayers();
+const void LeaderboardManager::updateLeaderboard()
+{
+    std::vector<Player*> players = PlayerManager::get().getPlayers();
     std::vector<LeaderboardEntry> leaderboard;
 
     leaderboard.reserve(players.size());
 
-    for (Player* player : players) {
-        uint32_t id        = player->getId();
-        double   score     = player->getScore();
-        double   totalMass = 0.0;
+    for (Player* player : players)
+    {
+        uint32_t id = player->getId();
+        double score = player->getScore();
+        double totalMass = 0.0;
 
-        std::vector<Cell*> cells     = CellManager::get().getCellsByPlayerId(id);
-        size_t             cellCount = cells.size();
+        std::vector<Cell*> cells = CellManager::get().getCellsByPlayerId(id);
+        size_t cellCount = cells.size();
 
-        for (Cell* cell : cells) {
+        for (Cell* cell : cells)
+        {
             totalMass += cell->getMass();
         }
 
-        if (totalMass > score) {
+        if (totalMass > score)
+        {
             score = totalMass;
             player->setScore(score);
         }
@@ -42,17 +49,15 @@ const void LeaderboardManager::updateLeaderboard() {
 
     std::sort(leaderboard.begin(),
               leaderboard.end(),
-              [](const LeaderboardEntry& a, const LeaderboardEntry& b) {
-                  return a.totalMass > b.totalMass;
-              });
+              [](const LeaderboardEntry& a, const LeaderboardEntry& b)
+              { return a.totalMass > b.totalMass; });
 
     const int count = Config::Gameplay::Leaderboard::COUNT;
 
-    if (leaderboard.size() > count) {
+    if (leaderboard.size() > count)
+    {
         leaderboard.resize(count);
     }
 }
 
-std::vector<LeaderboardEntry> LeaderboardManager::getLeaderboard() {
-    return leaderboard;
-}
+std::vector<LeaderboardEntry> LeaderboardManager::getLeaderboard() { return leaderboard; }

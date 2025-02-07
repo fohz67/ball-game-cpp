@@ -2,11 +2,13 @@
 
 #include <cstdint>
 #include <vector>
+
 #include "components/Cell.hpp"
 
-class CellManager {
-  public:
-    CellManager(const CellManager&)            = delete;
+class CellManager
+{
+   public:
+    CellManager(const CellManager&) = delete;
     CellManager& operator=(const CellManager&) = delete;
 
     static CellManager& get();
@@ -26,8 +28,8 @@ class CellManager {
     std::vector<Cell*> getPelletCells() const;
     std::vector<Cell*> getCellsByPlayerId(const uint32_t ownerId) const;
 
-  private:
-    CellManager()  = default;
+   private:
+    CellManager() = default;
     ~CellManager() = default;
 
     std::vector<Cell> playerCells;

@@ -1,12 +1,14 @@
 #pragma once
 
 #include <utility>
+
 #include "components/Components.hpp"
 #include "components/Point.hpp"
 #include "components/Texture.hpp"
 
-class Sprite : public Component {
-  public:
+class Sprite : public Component
+{
+   public:
     // Constants
     static inline Point DEFAULT_SIZE = {-1, -1};
 
@@ -16,8 +18,8 @@ class Sprite : public Component {
 
     // Getters
     std::string getTexturePath() const;
-    Point       getSize() const;
-    bool        isLoaded() const;
+    Point getSize() const;
+    bool isLoaded() const;
     sf::Sprite& getSprite();
 
     // Setters
@@ -29,13 +31,13 @@ class Sprite : public Component {
     // Methods
     void display() const override;
 
-  private:
+   private:
     // Constants
     static constexpr bool DEFAULT_LOADED = false;
 
     // Attributes
     std::string texturePath;
-    Point       size;
-    sf::Sprite  sprite;
-    bool        loaded = DEFAULT_LOADED;
+    Point size;
+    sf::Sprite sprite;
+    bool loaded = DEFAULT_LOADED;
 };

@@ -3,10 +3,12 @@
 #include <SmartBuffer.hpp>
 #include <asio.hpp>
 #include <memory>
+
 #include "components/Player.hpp"
 
-class Send {
-  public:
+class Send
+{
+   public:
     static const void sendWorld(const std::shared_ptr<asio::ip::tcp::socket>& client);
     static const void sendPlayer(const Player* player);
     static const void sendPlayers(const std::shared_ptr<asio::ip::tcp::socket>& client);

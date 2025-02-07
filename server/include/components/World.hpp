@@ -2,7 +2,8 @@
 
 #include <vector>
 
-class World {
-  public:
+class World
+{
+   public:
     static std::vector<double> getWorldBoundaries();
 };

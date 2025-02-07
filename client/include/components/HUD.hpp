@@ -3,9 +3,10 @@
 #include "config/ConfigClient.hpp"
 #include "engine/GameClient.hpp"
 
-class HUD {
-  public:
-    HUD(const HUD&)            = delete;
+class HUD
+{
+   public:
+    HUD(const HUD&) = delete;
     HUD& operator=(const HUD&) = delete;
 
     static HUD& get();
@@ -24,8 +25,8 @@ class HUD {
     const void setScore(const uint32_t score);
     const void setCellCount(const uint32_t cellCount);
 
-  private:
-    HUD()  = default;
+   private:
+    HUD() = default;
     ~HUD() = default;
 
     double currentId = ConfigClient::World::ID;
@@ -34,7 +35,7 @@ class HUD {
     std::map<double, GameEngine::Entity> statsEntity;
     std::map<double, GameEngine::Entity> chatBoxEntitites;
 
-    uint32_t score     = 0;
-    uint32_t mass      = 0;
+    uint32_t score = 0;
+    uint32_t mass = 0;
     uint32_t cellCount = 0;
 };

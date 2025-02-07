@@ -1,12 +1,15 @@
 #include "managers/PlayerManagerClient.hpp"
+
 #include <algorithm>
 
-PlayerManagerClient& PlayerManagerClient::get() {
+PlayerManagerClient& PlayerManagerClient::get()
+{
     static PlayerManagerClient instance;
     return instance;
 }
 
-const void PlayerManagerClient::removePlayer(const uint32_t playerId) {
+const void PlayerManagerClient::removePlayer(const uint32_t playerId)
+{
     players.erase(
         std::remove_if(players.begin(),
                        players.end(),
@@ -14,9 +17,12 @@ const void PlayerManagerClient::removePlayer(const uint32_t playerId) {
         players.end());
 }
 
-PlayerClient* PlayerManagerClient::getPlayer(uint32_t playerId) {
-    for (auto& player : players) {
-        if (player.getId() == playerId) {
+PlayerClient* PlayerManagerClient::getPlayer(uint32_t playerId)
+{
+    for (auto& player : players)
+    {
+        if (player.getId() == playerId)
+        {
             return &player;
         }
     }
@@ -24,14 +30,8 @@ PlayerClient* PlayerManagerClient::getPlayer(uint32_t playerId) {
     return nullptr;
 }
 
-PlayerClient* PlayerManagerClient::getMe() {
-    return getPlayer(myId);
-}
+PlayerClient* PlayerManagerClient::getMe() { return getPlayer(myId); }
 
-uint32_t PlayerManagerClient::getMyId() {
-    return myId;
-}
+uint32_t PlayerManagerClient::getMyId() { return myId; }
 
-const void PlayerManagerClient::setMyId(const uint32_t id) {
-    myId = id;
-}
+const void PlayerManagerClient::setMyId(const uint32_t id) { myId = id; }

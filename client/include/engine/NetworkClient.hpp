@@ -5,9 +5,10 @@
 #include <cstdint>
 #include <thread>
 
-class NetworkClient {
-  public:
-    NetworkClient(const NetworkClient&)            = delete;
+class NetworkClient
+{
+   public:
+    NetworkClient(const NetworkClient&) = delete;
     NetworkClient& operator=(const NetworkClient&) = delete;
 
     static NetworkClient& get();
@@ -21,16 +22,16 @@ class NetworkClient {
 
     const void setPing(const uint64_t newPing);
 
-  private:
+   private:
     NetworkClient();
     ~NetworkClient() = default;
 
     const void receive();
 
-    asio::io_context      io_context;
+    asio::io_context io_context;
     asio::ip::tcp::socket socket;
-    std::string           host;
-    unsigned short        port;
-    std::thread           networkThread;
-    uint64_t              ping = 0;
+    std::string host;
+    unsigned short port;
+    std::thread networkThread;
+    uint64_t ping = 0;
 };

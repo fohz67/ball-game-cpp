@@ -2,9 +2,10 @@
 
 #include <thread>
 
-class Game {
-  public:
-    Game(const Game&)            = delete;
+class Game
+{
+   public:
+    Game(const Game&) = delete;
     Game& operator=(const Game&) = delete;
 
     static Game& get();
@@ -14,8 +15,8 @@ class Game {
     const void updateLoop();
     const void updateGameState();
 
-  private:
-    Game()  = default;
+   private:
+    Game() = default;
     ~Game() = default;
 
     std::thread updateThread;

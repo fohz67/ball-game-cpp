@@ -5,43 +5,56 @@
 #include <components/Color.hpp>
 #include <components/Position.hpp>
 #include <memory>
+
 #include "Entity.hpp"
 
-namespace GameEngine {
+namespace GameEngine
+{
 
-enum class UpdateType { Position, Text, TextSize, TextFont, Texture, ShapeSize };
+enum class UpdateType
+{
+    Position,
+    Text,
+    TextSize,
+    TextFont,
+    Texture,
+    ShapeSize
+};
 
-class System {
-  public:
+class System
+{
+   public:
     // Constructor / Destructor
-    System()  = default;
+    System() = default;
     ~System() = default;
 
     // Methods
     void render(sf::RenderWindow& window, std::map<double, Entity>& entities);
-    void update(const double              id,
+    void update(const double id,
                 std::map<double, Entity>& entities,
-                UpdateType                type,
-                const std::any&           value,
-                int                       posId = 0);
+                UpdateType type,
+                const std::any& value,
+                int posId = 0);
 
-  private:
+   private:
     std::string fontFile;
 
     // Color
-    template <typename Drawable> void setColor(Entity& entity, Drawable& drawable);
+    template <typename Drawable>
+    void setColor(Entity& entity, Drawable& drawable);
 
     // Position
-    template <typename Drawable> void setPosition(Entity& entity, Drawable& drawable);
     template <typename Drawable>
-    void updatePosition(Entity&                          entity,
-                        Drawable&                        drawable,
+    void setPosition(Entity& entity, Drawable& drawable);
+    template <typename Drawable>
+    void updatePosition(Entity& entity,
+                        Drawable& drawable,
                         const std::pair<double, double>& pos,
-                        const int&                       posId);
-    void updateEntityPosition(int                              id,
-                              std::map<double, Entity>&        entities,
+                        const int& posId);
+    void updateEntityPosition(int id,
+                              std::map<double, Entity>& entities,
                               const std::pair<double, double>& pos,
-                              int                              posId);
+                              int posId);
 
     // Texture
     void updateTexture(Entity& entity, std::string& texture);
@@ -51,10 +64,10 @@ class System {
     void spriteSystem(sf::RenderWindow& window, Entity& entity);
 
     // Link
-    void linkSystem(int                       id,
+    void linkSystem(int id,
                     std::map<double, Entity>& entities,
                     std::pair<double, double> newLinkedEntityPos,
-                    int                       posId);
+                    int posId);
 
     // Text
     void loadText(Entity& entity, auto& textComp);
@@ -78,22 +91,31 @@ class System {
     void sliderSystem(sf::RenderWindow& window, Entity& entity, std::map<double, Entity>& entities);
 };
 
-template <typename Drawable> void System::setColor(Entity& entity, Drawable& drawable) {
-    if (entity.hasComponent<Color>() && entity.getComponent<Color>().getColor().size() == 4) {
+template <typename Drawable>
+void System::setColor(Entity& entity, Drawable& drawable)
+{
+    if (entity.hasComponent<Color>() && entity.getComponent<Color>().getColor().size() == 4)
+    {
         const auto& color = entity.getComponent<Color>().getColor();
 
-        if constexpr (std::is_same_v<Drawable, sf::Sprite>) {
+        if constexpr (std::is_same_v<Drawable, sf::Sprite>)
+        {
             drawable.setColor(sf::Color(color[0], color[1], color[2], color[3]));
-        } else if constexpr (std::is_same_v<Drawable, sf::Text> ||
-                             std::is_same_v<Drawable, sf::RectangleShape> ||
-                             std::is_same_v<Drawable, sf::CircleShape>) {
+        }
+        else if constexpr (std::is_same_v<Drawable, sf::Text> ||
+                           std::is_same_v<Drawable, sf::RectangleShape> ||
+                           std::is_same_v<Drawable, sf::CircleShape>)
+        {
             drawable.setFillColor(sf::Color(color[0], color[1], color[2], color[3]));
         }
     }
 }
 
-template <typename Drawable> void System::setPosition(Entity& entity, Drawable& drawable) {
-    if (entity.hasComponent<Position>()) {
+template <typename Drawable>
+void System::setPosition(Entity& entity, Drawable& drawable)
+{
+    if (entity.hasComponent<Position>())
+    {
         auto& positionComp = entity.getComponent<Position>();
 
         drawable.setPosition(positionComp.getPositionX(0), positionComp.getPositionY(0));
@@ -101,11 +123,13 @@ template <typename Drawable> void System::setPosition(Entity& entity, Drawable& 
 }
 
 template <typename Drawable>
-void System::updatePosition(Entity&                          entity,
-                            Drawable&                        drawable,
+void System::updatePosition(Entity& entity,
+                            Drawable& drawable,
                             const std::pair<double, double>& pos,
-                            const int&                       posId) {
-    if (entity.hasComponent<Position>()) {
+                            const int& posId)
+{
+    if (entity.hasComponent<Position>())
+    {
         auto& positionComp = entity.getComponent<Position>();
 
         positionComp.setPositionX(posId, pos.first);
@@ -115,4 +139,4 @@ void System::updatePosition(Entity&                          entity,
     }
 }
 
-} // namespace GameEngine
+}  // namespace GameEngine

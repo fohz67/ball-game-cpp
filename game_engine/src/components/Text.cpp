@@ -1,64 +1,41 @@
 #include "components/Text.hpp"
+
 #include <iostream>
 
 Text::Text(const std::string& text,
            const std::string& fontFile,
-           const double       characterSize,
-           const int          centering)
+           const double characterSize,
+           const int centering)
     : initText(text),
       fontFile(fontFile),
       charSize(characterSize),
       initSize(characterSize),
-      centering(centering) {}
-
-std::string Text::getString() const {
-    return this->initText;
+      centering(centering)
+{
 }
 
-sf::Font& Text::getFont() {
-    return this->font;
-}
+std::string Text::getString() const { return this->initText; }
 
-double Text::getCharacterSize() const {
-    return this->charSize;
-}
+sf::Font& Text::getFont() { return this->font; }
 
-double Text::getInitCharacterSize() const {
-    return this->initSize;
-}
+double Text::getCharacterSize() const { return this->charSize; }
 
-bool Text::isLoaded() const {
-    return this->loaded;
-}
+double Text::getInitCharacterSize() const { return this->initSize; }
 
-std::string Text::getFontFile() const {
-    return this->fontFile;
-}
+bool Text::isLoaded() const { return this->loaded; }
 
-sf::Text& Text::getText() {
-    return this->text;
-}
+std::string Text::getFontFile() const { return this->fontFile; }
 
-int Text::getCentering() const {
-    return this->centering;
-}
+sf::Text& Text::getText() { return this->text; }
 
-void Text::setString(const std::string& val) {
-    this->initText = val;
-}
+int Text::getCentering() const { return this->centering; }
 
-void Text::setCharacterSize(const double val) {
-    this->charSize = val;
-}
+void Text::setString(const std::string& val) { this->initText = val; }
 
-void Text::setFontFile(const std::string val) {
-    this->fontFile = val;
-}
+void Text::setCharacterSize(const double val) { this->charSize = val; }
 
-void Text::setLoaded(const bool val) {
-    this->loaded = val;
-}
+void Text::setFontFile(const std::string val) { this->fontFile = val; }
 
-void Text::display() const {
-    std::cout << "Text component displayed!" << std::endl;
-}
+void Text::setLoaded(const bool val) { this->loaded = val; }
+
+void Text::display() const { std::cout << "Text component displayed!" << std::endl; }

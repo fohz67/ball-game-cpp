@@ -1,11 +1,13 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+
 #include "System.hpp"
 
-class GameClient {
-  public:
-    GameClient(const GameClient&)            = delete;
+class GameClient
+{
+   public:
+    GameClient(const GameClient&) = delete;
     GameClient& operator=(const GameClient&) = delete;
 
     static GameClient& get();
@@ -13,12 +15,12 @@ class GameClient {
     const void run();
 
     sf::RenderWindow& getWindow();
-    sf::View&         getView();
-    sf::Vector2u      getWindowSize() const;
-    int               getFPS() const;
+    sf::View& getView();
+    sf::Vector2u getWindowSize() const;
+    int getFPS() const;
 
-  private:
-    GameClient()  = default;
+   private:
+    GameClient() = default;
     ~GameClient() = default;
 
     const void initWindow();
@@ -27,8 +29,8 @@ class GameClient {
     const void render(GameEngine::System& system);
 
     sf::RenderWindow window;
-    sf::View         view;
-    sf::Vector2u     windowSize;
+    sf::View view;
+    sf::Vector2u windowSize;
 
     int fps = 0;
 };

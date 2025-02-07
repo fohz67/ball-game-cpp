@@ -1,5 +1,7 @@
 #include "components/HUD.hpp"
+
 #include <iostream>
+
 #include "components/Color.hpp"
 #include "components/Position.hpp"
 #include "components/Shape.hpp"
@@ -11,23 +13,27 @@
 #include "managers/PlayerManagerClient.hpp"
 #include "protocol/SendClient.hpp"
 
-HUD& HUD::get() {
+HUD& HUD::get()
+{
     static HUD instance;
     return instance;
 }
 
-const void HUD::create() {
+const void HUD::create()
+{
     createLeaderboard();
     createStats();
     createChatBox();
 }
 
-const void HUD::update() {
+const void HUD::update()
+{
     static auto lastUpdate = std::chrono::high_resolution_clock::now();
-    auto        now        = std::chrono::high_resolution_clock::now();
-    auto        elapsed    = std::chrono::duration_cast<std::chrono::seconds>(now - lastUpdate);
+    auto now = std::chrono::high_resolution_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(now - lastUpdate);
 
-    if (elapsed.count() < 1) {
+    if (elapsed.count() < 1)
+    {
         return;
     }
     lastUpdate = now;
@@ -36,7 +42,8 @@ const void HUD::update() {
     updateStats();
 }
 
-const void HUD::createLeaderboard() {
+const void HUD::createLeaderboard()
+{
     // Box
     increaseId();
 
@@ -73,9 +80,10 @@ const void HUD::createLeaderboard() {
 
     // Players List
     float yOffset = ConfigClient::HUD::PADDING + 85;
-    auto  players = PlayerManagerClient::get().players;
+    auto players = PlayerManagerClient::get().players;
 
-    for (const auto& player : players) {
+    for (const auto& player : players)
+    {
         int i = 1;
 
         increaseId();
@@ -101,7 +109,8 @@ const void HUD::createLeaderboard() {
     }
 }
 
-const void HUD::createStats() {
+const void HUD::createStats()
+{
     increaseId();
 
     // Box
@@ -115,10 +124,11 @@ const void HUD::createStats() {
     statsEntity.emplace(currentId, std::move(newEntity));
 
     // Titles & Values
-    float                    yOffset = ConfigClient::HUD::PADDING + 20;
-    std::vector<std::string> labels  = {"Score:", "Mass:", "Cells:", "Ping:", "FPS:"};
+    float yOffset = ConfigClient::HUD::PADDING + 20;
+    std::vector<std::string> labels = {"Score:", "Mass:", "Cells:", "Ping:", "FPS:"};
 
-    for (const auto& label : labels) {
+    for (const auto& label : labels)
+    {
         increaseId();
 
         // Label
@@ -159,9 +169,10 @@ const void HUD::createStats() {
     }
 }
 
-const void HUD::updateStats() {
+const void HUD::updateStats()
+{
     GameEngine::System system;
-    double             bias = ConfigClient::World::ID +
+    double bias = ConfigClient::World::ID +
                   (leaderboardEntities.size() * ConfigClient::Network::ENTITY_LINKING_BIAS);
     auto me = PlayerManagerClient::get().getMe();
 
@@ -197,7 +208,8 @@ const void HUD::updateStats() {
                   std::to_string(GameClient::get().getFPS()));
 }
 
-const void HUD::createChatBox() {
+const void HUD::createChatBox()
+{
     increaseId();
 
     // Box
@@ -215,18 +227,10 @@ const void HUD::createChatBox() {
     chatBoxEntitites.emplace(currentId, std::move(newEntity));
 }
 
-const void HUD::increaseId() {
-    currentId += ConfigClient::Network::ENTITY_LINKING_BIAS;
-}
+const void HUD::increaseId() { currentId += ConfigClient::Network::ENTITY_LINKING_BIAS; }
 
-const void HUD::setMass(const uint32_t newMass) {
-    mass = newMass;
-}
+const void HUD::setMass(const uint32_t newMass) { mass = newMass; }
 
-const void HUD::setScore(const uint32_t newScore) {
-    score = newScore;
-}
+const void HUD::setScore(const uint32_t newScore) { score = newScore; }
 
-const void HUD::setCellCount(const uint32_t newCellCount) {
-    cellCount = newCellCount;
-}
+const void HUD::setCellCount(const uint32_t newCellCount) { cellCount = newCellCount; }

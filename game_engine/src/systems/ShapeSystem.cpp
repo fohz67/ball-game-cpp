@@ -1,26 +1,32 @@
 #include <components/Shape.hpp>
 #include <components/Texture.hpp>
-#include "System.hpp"
-
 #include <unordered_map>
 
-void GameEngine::System::loadRectangle(GameEngine::Entity& entity, auto& shapeComp) {
-    if (!shapeComp.isLoaded()) {
+#include "System.hpp"
+
+void GameEngine::System::loadRectangle(GameEngine::Entity& entity, auto& shapeComp)
+{
+    if (!shapeComp.isLoaded())
+    {
         shapeComp.getRect().setSize(
             sf::Vector2f(shapeComp.getSize().first, shapeComp.getSize().second));
 
         setPosition(entity, shapeComp.getRect());
         setColor(entity, shapeComp.getRect());
 
-        if (entity.hasComponent<Texture>()) {
+        if (entity.hasComponent<Texture>())
+        {
             auto& textureComp = entity.getComponent<Texture>();
             static std::unordered_map<std::string, sf::Texture> textureCache;
 
-            if (!textureComp.isLoaded()) {
-                if (textureCache.find(textureComp.getTexturePath()) == textureCache.end()) {
+            if (!textureComp.isLoaded())
+            {
+                if (textureCache.find(textureComp.getTexturePath()) == textureCache.end())
+                {
                     sf::Texture texture;
 
-                    if (texture.loadFromFile(textureComp.getTexturePath())) {
+                    if (texture.loadFromFile(textureComp.getTexturePath()))
+                    {
                         textureCache[textureComp.getTexturePath()] = std::move(texture);
                     }
                 }
@@ -31,7 +37,8 @@ void GameEngine::System::loadRectangle(GameEngine::Entity& entity, auto& shapeCo
 
             shapeComp.getRect().setTexture(&textureComp.getTexture());
 
-            if (textureComp.getTextureRect().size() == 4) {
+            if (textureComp.getTextureRect().size() == 4)
+            {
                 const auto& textureRect = textureComp.getTextureRect();
 
                 shapeComp.getRect().setTextureRect(
@@ -43,8 +50,10 @@ void GameEngine::System::loadRectangle(GameEngine::Entity& entity, auto& shapeCo
     }
 }
 
-void GameEngine::System::loadCircle(GameEngine::Entity& entity, auto& shapeComp) {
-    if (!shapeComp.isLoaded()) {
+void GameEngine::System::loadCircle(GameEngine::Entity& entity, auto& shapeComp)
+{
+    if (!shapeComp.isLoaded())
+    {
         sf::CircleShape circle;
 
         circle.setRadius(shapeComp.getRadius());
@@ -53,11 +62,13 @@ void GameEngine::System::loadCircle(GameEngine::Entity& entity, auto& shapeComp)
 
         shapeComp.setShape(circle);
 
-        if (entity.hasComponent<Texture>() && !entity.getComponent<Texture>().isLoaded()) {
+        if (entity.hasComponent<Texture>() && !entity.getComponent<Texture>().isLoaded())
+        {
             auto& textureComp = entity.getComponent<Texture>();
             textureComp.getTexture().loadFromFile(textureComp.getTexturePath());
 
-            if (textureComp.getTextureRect().size() == 4) {
+            if (textureComp.getTextureRect().size() == 4)
+            {
                 const auto& textureRect = textureComp.getTextureRect();
                 shapeComp.getCircle().setTextureRect(
                     sf::IntRect(textureRect[0], textureRect[1], textureRect[2], textureRect[3]));
@@ -71,18 +82,22 @@ void GameEngine::System::loadCircle(GameEngine::Entity& entity, auto& shapeComp)
     }
 }
 
-void GameEngine::System::shapeSystem(sf::RenderWindow& window, GameEngine::Entity& entity) {
-    if (entity.hasComponent<Shape>() && entity.hasComponent<Position>()) {
-        auto& shapeComp    = entity.getComponent<Shape>();
+void GameEngine::System::shapeSystem(sf::RenderWindow& window, GameEngine::Entity& entity)
+{
+    if (entity.hasComponent<Shape>() && entity.hasComponent<Position>())
+    {
+        auto& shapeComp = entity.getComponent<Shape>();
         auto& positionComp = entity.getComponent<Position>();
 
         static std::unordered_map<uint32_t, std::pair<double, double>> lastPositions;
 
-        if (shapeComp.getShapeType() == Rectangle) {
+        if (shapeComp.getShapeType() == Rectangle)
+        {
             loadRectangle(entity, shapeComp);
 
             auto newPos = positionComp.getPositions()[0];
-            if (lastPositions[entity.getEntityId()] != newPos) {
+            if (lastPositions[entity.getEntityId()] != newPos)
+            {
                 shapeComp.getRect().setPosition(newPos.first, newPos.second);
                 lastPositions[entity.getEntityId()] = newPos;
             }
@@ -90,11 +105,13 @@ void GameEngine::System::shapeSystem(sf::RenderWindow& window, GameEngine::Entit
             window.draw(shapeComp.getRect());
         }
 
-        if (shapeComp.getShapeType() == Circle) {
+        if (shapeComp.getShapeType() == Circle)
+        {
             loadCircle(entity, shapeComp);
 
             auto newPos = positionComp.getPositions()[0];
-            if (lastPositions[entity.getEntityId()] != newPos) {
+            if (lastPositions[entity.getEntityId()] != newPos)
+            {
                 shapeComp.getCircle().setPosition(newPos.first, newPos.second);
                 lastPositions[entity.getEntityId()] = newPos;
             }

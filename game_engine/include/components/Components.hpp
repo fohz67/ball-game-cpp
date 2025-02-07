@@ -2,8 +2,9 @@
 
 #include <SFML/Graphics.hpp>
 
-class Component {
-  public:
+class Component
+{
+   public:
     // Constructor / Destructor
     virtual ~Component() = default;
 

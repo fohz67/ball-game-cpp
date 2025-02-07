@@ -3,31 +3,33 @@
 #include <cstdint>
 #include <functional>
 #include <utility>
+
 #include "components/Components.hpp"
 #include "components/Point.hpp"
 
-class Button : public Component {
-  public:
+class Button : public Component
+{
+   public:
     // Constants
-    static inline std::string DEFAULT_TEXT           = "";
-    static inline std::string FONT_FILE              = "";
+    static inline std::string DEFAULT_TEXT = "";
+    static inline std::string FONT_FILE = "";
     static constexpr uint16_t DEFAULT_CHARACTER_SIZE = 30;
 
     // Constructor / Destructor
-    Button(const std::string text          = DEFAULT_TEXT,
-           const std::string fontFile      = FONT_FILE,
-           const uint16_t    characterSize = DEFAULT_CHARACTER_SIZE);
+    Button(const std::string text = DEFAULT_TEXT,
+           const std::string fontFile = FONT_FILE,
+           const uint16_t characterSize = DEFAULT_CHARACTER_SIZE);
     ~Button() = default;
 
     // Getters
     sf::RectangleShape& getButton();
-    sf::Text&           getText();
-    std::string         getString() const;
-    std::string         getFontFile() const;
-    uint16_t            getCharacterSize() const;
-    Point               getSize() const;
-    sf::Font&           getFont();
-    bool                isLoaded() const;
+    sf::Text& getText();
+    std::string getString() const;
+    std::string getFontFile() const;
+    uint16_t getCharacterSize() const;
+    Point getSize() const;
+    sf::Font& getFont();
+    bool isLoaded() const;
 
     // Setters
     void setString(const std::string val);
@@ -39,18 +41,18 @@ class Button : public Component {
     void display() const override;
     void executeCallback() const;
 
-  private:
+   private:
     // Constants
     static constexpr bool DEFAULT_LOADED = false;
 
     // Attributes
-    sf::RectangleShape    button;
-    sf::Text              text;
-    std::string           initText;
-    std::string           fontFile;
-    uint16_t              characterSize;
-    Point                 size;
-    sf::Font              font;
-    bool                  load = DEFAULT_LOADED;
+    sf::RectangleShape button;
+    sf::Text text;
+    std::string initText;
+    std::string fontFile;
+    uint16_t characterSize;
+    Point size;
+    sf::Font font;
+    bool load = DEFAULT_LOADED;
     std::function<void()> callback;
 };

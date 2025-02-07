@@ -1,58 +1,43 @@
 #include "components/Cell.hpp"
+
 #include "components/World.hpp"
 #include "config/Config.hpp"
 #include "geometry/FastInvSqrt.hpp"
 
-Cell::Cell(const uint32_t            id,
-           const uint32_t            ownerId,
-           const CellType            type,
-           const Vector2&            pos,
-           const double              mass,
+Cell::Cell(const uint32_t id,
+           const uint32_t ownerId,
+           const CellType type,
+           const Vector2& pos,
+           const double mass,
            const std::vector<double> color)
-    : id(id), ownerId(ownerId), type(type), pos(pos), mass(mass), color(color) {}
-
-uint32_t Cell::getId() const {
-    return id;
+    : id(id), ownerId(ownerId), type(type), pos(pos), mass(mass), color(color)
+{
 }
 
-uint32_t Cell::getOwnerId() const {
-    return ownerId;
-}
+uint32_t Cell::getId() const { return id; }
 
-CellType Cell::getType() const {
-    return type;
-}
+uint32_t Cell::getOwnerId() const { return ownerId; }
 
-Vector2 Cell::getPosition() const {
-    return pos;
-}
+CellType Cell::getType() const { return type; }
 
-double Cell::getMass() const {
-    return mass;
-}
+Vector2 Cell::getPosition() const { return pos; }
 
-double Cell::getRadius() const {
-    return mass * FIS(M_PI * mass);
-}
+double Cell::getMass() const { return mass; }
 
-Vector2 Cell::getCenter() const {
-    return Vector2(pos.x + getRadius(), pos.y + getRadius());
-}
+double Cell::getRadius() const { return mass * FIS(M_PI * mass); }
 
-std::vector<double> Cell::getColor() const {
-    return color;
-}
+Vector2 Cell::getCenter() const { return Vector2(pos.x + getRadius(), pos.y + getRadius()); }
 
-void Cell::setPosition(const Vector2& newPos) {
-    pos = newPos;
-}
+std::vector<double> Cell::getColor() const { return color; }
 
-void Cell::setMass(const double mass) {
-    this->mass = mass;
-}
+void Cell::setPosition(const Vector2& newPos) { pos = newPos; }
 
-void Cell::decay() {
-    if (decayResolver < Config::Gameplay::Cell::DECAY_TIMING) {
+void Cell::setMass(const double mass) { this->mass = mass; }
+
+void Cell::decay()
+{
+    if (decayResolver < Config::Gameplay::Cell::DECAY_TIMING)
+    {
         decayResolver += Config::Game::FREQUENCY;
         return;
     }
@@ -61,22 +46,25 @@ void Cell::decay() {
     mass -= mass * Config::Gameplay::Cell::DECAY_RATE;
 }
 
-void Cell::move(const Vector2& dir, const double speed) {
-    Vector2                   newPos(pos + dir * speed);
-    const std::vector<double> boundaries  = World::getWorldBoundaries();
-    const double              limitRadius = getRadius() * 2;
+void Cell::move(const Vector2& dir, const double speed)
+{
+    Vector2 newPos(pos + dir * speed);
+    const std::vector<double> boundaries = World::getWorldBoundaries();
+    const double limitRadius = getRadius() * 2;
 
     newPos.x = std::max(boundaries[0], std::min(boundaries[1] - limitRadius, newPos.x));
     newPos.y = std::max(boundaries[2], std::min(boundaries[3] - limitRadius, newPos.y));
-    pos      = newPos;
+    pos = newPos;
 }
 
-bool Cell::canEat(const Cell& other) const {
-    if (mass < other.mass * Config::Gameplay::Eat::Eat::RESOLVE_FACTOR) {
+bool Cell::canEat(const Cell& other) const
+{
+    if (mass < other.mass * Config::Gameplay::Eat::Eat::RESOLVE_FACTOR)
+    {
         return false;
     }
 
-    Vector2      diff(getCenter() - other.getCenter());
+    Vector2 diff(getCenter() - other.getCenter());
     const double distanceSquared = diff.dot(diff);
     const double minEatDistance =
         getRadius() - (other.getRadius() * Config::Gameplay::Eat::Eat::RESOLVE_OVERLAP);
@@ -84,22 +72,22 @@ bool Cell::canEat(const Cell& other) const {
     return distanceSquared < minEatDistance * minEatDistance;
 }
 
-void Cell::absorb(const Cell& other) {
+void Cell::absorb(const Cell& other)
+{
     const double oldRadius = getRadius();
 
-    if (other.type == CellType::PELLET) {
+    if (other.type == CellType::PELLET)
+    {
         mass += (other.getMass() * Config::Gameplay::Pellet::EAT_FACTOR);
-    } else {
+    }
+    else
+    {
         mass += other.getMass();
     }
 
     pos -= (getRadius() - oldRadius) / 2.0;
 }
 
-void Cell::markForDeletion() {
-    markedForDeletion = true;
-}
+void Cell::markForDeletion() { markedForDeletion = true; }
 
-bool Cell::isMarkedForDeletion() const {
-    return markedForDeletion;
-}
+bool Cell::isMarkedForDeletion() const { return markedForDeletion; }

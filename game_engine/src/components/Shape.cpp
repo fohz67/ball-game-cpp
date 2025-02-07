@@ -1,49 +1,30 @@
 #include "components/Shape.hpp"
+
 #include <iostream>
 
 Shape::Shape(const ShapeType type, const Point& size, const double radius)
-    : type(type), size(size), radius(radius) {}
-
-Point Shape::getSize() const {
-    return size;
+    : type(type), size(size), radius(radius)
+{
 }
 
-ShapeType Shape::getShapeType() const {
-    return type;
-}
+Point Shape::getSize() const { return size; }
 
-sf::RectangleShape& Shape::getRect() {
-    return rectangle;
-}
+ShapeType Shape::getShapeType() const { return type; }
 
-sf::CircleShape& Shape::getCircle() {
-    return circle;
-}
+sf::RectangleShape& Shape::getRect() { return rectangle; }
 
-bool Shape::isLoaded() const {
-    return loaded;
-}
+sf::CircleShape& Shape::getCircle() { return circle; }
 
-double Shape::getRadius() const {
-    return radius;
-}
+bool Shape::isLoaded() const { return loaded; }
 
-void Shape::setSize(const Point& val) {
-    size = val;
-}
+double Shape::getRadius() const { return radius; }
 
-void Shape::setLoaded(const bool val) {
-    loaded = val;
-}
+void Shape::setSize(const Point& val) { size = val; }
 
-void Shape::setShape(const sf::RectangleShape& val) {
-    rectangle = val;
-}
+void Shape::setLoaded(const bool val) { loaded = val; }
 
-void Shape::setShape(const sf::CircleShape& val) {
-    circle = val;
-}
+void Shape::setShape(const sf::RectangleShape& val) { rectangle = val; }
 
-void Shape::display() const {
-    std::cout << "Shape component displayed!" << std::endl;
-}
+void Shape::setShape(const sf::CircleShape& val) { circle = val; }
+
+void Shape::display() const { std::cout << "Shape component displayed!" << std::endl; }

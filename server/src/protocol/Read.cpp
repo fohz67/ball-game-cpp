@@ -1,4 +1,5 @@
 #include "protocol/Read.hpp"
+
 #include "config/Config.hpp"
 #include "engine/Network.hpp"
 #include "managers/CellManager.hpp"
@@ -8,12 +9,14 @@
 #include "protocol/Send.hpp"
 
 const void Read::readPingPong(const std::shared_ptr<asio::ip::tcp::socket>& client,
-                              SmartBuffer&                                  smartBuffer) {
+                              SmartBuffer& smartBuffer)
+{
     Network::get().sendToClient(client, smartBuffer);
 }
 
 const void Read::readJoinServer(const std::shared_ptr<asio::ip::tcp::socket>& client,
-                                SmartBuffer&                                  smartBuffer) {
+                                SmartBuffer& smartBuffer)
+{
     IJoinServer joinInterface;
     smartBuffer >> joinInterface.nickname;
 
@@ -31,7 +34,8 @@ const void Read::readJoinServer(const std::shared_ptr<asio::ip::tcp::socket>& cl
 }
 
 const void Read::readUpdateMousePosition(const std::shared_ptr<asio::ip::tcp::socket>& client,
-                                         SmartBuffer& smartBuffer) {
+                                         SmartBuffer& smartBuffer)
+{
     IUpdateMousePosition mousePositionInterface;
     smartBuffer >> mousePositionInterface.x >> mousePositionInterface.y;
 

@@ -1,10 +1,12 @@
 #pragma once
 
 #include <vector>
+
 #include "components/Components.hpp"
 
-class Color : public Component {
-  public:
+class Color : public Component
+{
+   public:
     // Constants
     static inline std::vector<double> DEFAULT_COLOR = {0, 0, 0};
 
@@ -21,7 +23,7 @@ class Color : public Component {
     // Methods
     void display() const override;
 
-  private:
+   private:
     // Attributes
     std::vector<double> _initColor;
 };

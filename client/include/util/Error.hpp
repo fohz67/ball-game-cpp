@@ -1,6 +1,7 @@
 #pragma once
 
-class Error {
-  public:
+class Error
+{
+   public:
     static const void checkArgs(const int ac, const char** av);
 };

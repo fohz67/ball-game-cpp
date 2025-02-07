@@ -2,7 +2,8 @@
 
 #include <cstdint>
 
-enum class OpCodes : uint8_t {
+enum class OpCodes : uint8_t
+{
     PINGPONG = 0,
 
     CREATE_WORLD = 1,
@@ -15,7 +16,7 @@ enum class OpCodes : uint8_t {
 
     SPAWN_PELLETS = 30,
 
-    UPDATE_GAME_STATE  = 40,
+    UPDATE_GAME_STATE = 40,
     UPDATE_LEADERBOARD = 41,
 
     DELETE_ENTITY = 50,

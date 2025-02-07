@@ -5,9 +5,10 @@
 #include <memory>
 #include <thread>
 
-class Network {
-  public:
-    Network(const Network&)            = delete;
+class Network
+{
+   public:
+    Network(const Network&) = delete;
     Network& operator=(const Network&) = delete;
 
     static Network& get();
@@ -15,10 +16,10 @@ class Network {
     const void run();
 
     const void sendToClient(const std::shared_ptr<asio::ip::tcp::socket>& client,
-                            SmartBuffer&                                  smartBuffer);
+                            SmartBuffer& smartBuffer);
     const void sendToAll(SmartBuffer& smartBuffer);
 
-  private:
+   private:
     Network();
     ~Network() = default;
 
@@ -26,7 +27,7 @@ class Network {
     const void asyncRead(const std::shared_ptr<asio::ip::tcp::socket> socket);
     const void sendLoop();
 
-    asio::io_context        io_context;
+    asio::io_context io_context;
     asio::ip::tcp::acceptor acceptor;
-    std::thread             sendThread;
+    std::thread sendThread;
 };

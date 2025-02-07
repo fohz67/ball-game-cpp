@@ -4,11 +4,14 @@
 #include <stdexcept>
 #include <vector>
 
-struct ColorConverterClient {
-    static uint32_t vecToInt(const std::vector<double>& color) {
+struct ColorConverterClient
+{
+    static uint32_t vecToInt(const std::vector<double>& color)
+    {
         std::vector<double> finalColor = {255, 255, 255, 255};
 
-        if (color.size() == 4) {
+        if (color.size() == 4)
+        {
             finalColor = color;
         }
 
@@ -20,7 +23,8 @@ struct ColorConverterClient {
         return (r << 24) | (g << 16) | (b << 8) | a;
     }
 
-    static std::vector<double> intToVec(uint32_t color) {
+    static std::vector<double> intToVec(uint32_t color)
+    {
         return {static_cast<double>((color >> 24) & 0xFF),
                 static_cast<double>((color >> 16) & 0xFF),
                 static_cast<double>((color >> 8) & 0xFF),

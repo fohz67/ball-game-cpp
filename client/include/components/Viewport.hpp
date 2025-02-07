@@ -1,11 +1,13 @@
 #pragma once
 
 #include <utility>
+
 #include "components/Point.hpp"
 
-class Viewport {
-  public:
-    Viewport(const Viewport&)            = delete;
+class Viewport
+{
+   public:
+    Viewport(const Viewport&) = delete;
     Viewport& operator=(const Viewport&) = delete;
 
     static Viewport& get();
@@ -17,8 +19,8 @@ class Viewport {
 
     const void applyInterpolation();
 
-  private:
-    Viewport()  = default;
+   private:
+    Viewport() = default;
     ~Viewport() = default;
 
     Point viewport{0.0f, 0.0f};

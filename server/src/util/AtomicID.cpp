@@ -1,12 +1,15 @@
 #include "util/AtomicID.hpp"
 
-AtomicID& AtomicID::get() {
+AtomicID& AtomicID::get()
+{
     static AtomicID instance;
     return instance;
 }
 
-uint32_t AtomicID::getNextId() {
-    if (!recycledIds.empty()) {
+uint32_t AtomicID::getNextId()
+{
+    if (!recycledIds.empty())
+    {
         uint32_t id = recycledIds.top();
 
         recycledIds.pop();
@@ -20,8 +23,10 @@ uint32_t AtomicID::getNextId() {
     return nextId++;
 }
 
-void AtomicID::removeId(uint32_t id) {
-    if (usedIds.erase(id)) {
+void AtomicID::removeId(uint32_t id)
+{
+    if (usedIds.erase(id))
+    {
         recycledIds.push(id);
     }
 }

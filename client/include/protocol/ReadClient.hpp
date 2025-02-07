@@ -2,8 +2,9 @@
 
 #include <SmartBuffer.hpp>
 
-class ReadClient {
-  public:
+class ReadClient
+{
+   public:
     static const void readPingPong(SmartBuffer& smartBuffer);
     static const void readCreateWorld(SmartBuffer& smartBuffer);
     static const void readCreatePlayer(SmartBuffer& smartBuffer);

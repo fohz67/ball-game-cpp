@@ -1,10 +1,12 @@
 #pragma once
 
 #include <cstdint>
+
 #include "components/Components.hpp"
 
-class Link : public Component {
-  public:
+class Link : public Component
+{
+   public:
     // Constructor / Destructor
     Link(uint32_t id);
     ~Link() = default;
@@ -18,7 +20,7 @@ class Link : public Component {
     // Methods
     void display() const override;
 
-  private:
+   private:
     // Attributes
     uint32_t id;
 };

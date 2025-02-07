@@ -3,51 +3,60 @@
 #include <cstdint>
 #include <string>
 
-struct ICreateWorld {
+struct ICreateWorld
+{
     uint16_t size;
 };
 
-struct ICreatePlayer {
-    uint32_t    id;
+struct ICreatePlayer
+{
+    uint32_t id;
     std::string nickname;
-    uint32_t    color;
-    uint32_t    cellColor;
+    uint32_t color;
+    uint32_t cellColor;
 };
 
-struct IUpdateGameState {
+struct IUpdateGameState
+{
     uint32_t id;
     uint32_t ownerId;
-    double   x;
-    double   y;
-    double   radius;
+    double x;
+    double y;
+    double radius;
 };
 
-struct ISpawnPellets {
+struct ISpawnPellets
+{
     uint32_t id;
-    double   x;
-    double   y;
-    double   radius;
+    double x;
+    double y;
+    double radius;
     uint32_t color;
 };
 
-struct IUpdatePlayer {
+struct IUpdatePlayer
+{
     double x;
     double y;
 };
 
-struct IEntity {
+struct IEntity
+{
     uint32_t id;
 };
 
-struct IJoinServer {
+struct IJoinServer
+{
     std::string nickname;
 };
 
-struct IUpdateMousePosition {
+struct IUpdateMousePosition
+{
     double x;
     double y;
 };
 
-struct KeyPressedInterface {
+struct KeyPressedInterface
+{
     std::string key;
 };
