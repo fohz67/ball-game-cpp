@@ -7,27 +7,60 @@ Button::Button(const std::string text, const std::string fontFile, const uint16_
 {
 }
 
-sf::RectangleShape& Button::getButton() { return button; }
+sf::RectangleShape& Button::getButton()
+{
+    return button;
+}
 
-sf::Text& Button::getText() { return text; }
+sf::Text& Button::getText()
+{
+    return text;
+}
 
-std::string Button::getString() const { return initText; }
+std::string Button::getString() const
+{
+    return initText;
+}
 
-std::string Button::getFontFile() const { return fontFile; }
+std::string Button::getFontFile() const
+{
+    return fontFile;
+}
 
-uint16_t Button::getCharacterSize() const { return characterSize; }
+uint16_t Button::getCharacterSize() const
+{
+    return characterSize;
+}
 
-Point Button::getSize() const { return size; }
+Point Button::getSize() const
+{
+    return size;
+}
 
-sf::Font& Button::getFont() { return font; }
+sf::Font& Button::getFont()
+{
+    return font;
+}
 
-bool Button::isLoaded() const { return load; }
+bool Button::isLoaded() const
+{
+    return load;
+}
 
-void Button::setString(const std::string val) { initText = val; }
+void Button::setString(const std::string val)
+{
+    initText = val;
+}
 
-void Button::setLoaded(const bool val) { load = val; }
+void Button::setLoaded(const bool val)
+{
+    load = val;
+}
 
-void Button::setCallback(const std::function<void()> val) { callback = val; }
+void Button::setCallback(const std::function<void()> val)
+{
+    callback = val;
+}
 
 bool Button::isHovered(const sf::Vector2i mousePos) const
 {
@@ -35,7 +68,10 @@ bool Button::isHovered(const sf::Vector2i mousePos) const
                                              static_cast<float>(mousePos.y));
 }
 
-void Button::display() const { std::cout << "Button component displayed!" << std::endl; }
+void Button::display() const
+{
+    std::cout << "Button component displayed!" << std::endl;
+}
 
 void Button::executeCallback() const
 {

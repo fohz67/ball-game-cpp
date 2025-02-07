@@ -227,10 +227,22 @@ const void HUD::createChatBox()
     chatBoxEntitites.emplace(currentId, std::move(newEntity));
 }
 
-const void HUD::increaseId() { currentId += ConfigClient::Network::ENTITY_LINKING_BIAS; }
+const void HUD::increaseId()
+{
+    currentId += ConfigClient::Network::ENTITY_LINKING_BIAS;
+}
 
-const void HUD::setMass(const uint32_t newMass) { mass = newMass; }
+const void HUD::setMass(const uint32_t newMass)
+{
+    mass = newMass;
+}
 
-const void HUD::setScore(const uint32_t newScore) { score = newScore; }
+const void HUD::setScore(const uint32_t newScore)
+{
+    score = newScore;
+}
 
-const void HUD::setCellCount(const uint32_t newCellCount) { cellCount = newCellCount; }
+const void HUD::setCellCount(const uint32_t newCellCount)
+{
+    cellCount = newCellCount;
+}

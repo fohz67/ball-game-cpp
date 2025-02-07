@@ -8,11 +8,20 @@ Viewport& Viewport::get()
     return instance;
 }
 
-const void Viewport::setViewport(const Point newViewport) { viewport = newViewport; }
+const void Viewport::setViewport(const Point newViewport)
+{
+    viewport = newViewport;
+}
 
-Point Viewport::getViewport() const { return viewport; }
+Point Viewport::getViewport() const
+{
+    return viewport;
+}
 
-Point Viewport::getPreviousViewport() const { return previousViewport; }
+Point Viewport::getPreviousViewport() const
+{
+    return previousViewport;
+}
 
 const void Viewport::applyInterpolation()
 {

@@ -14,25 +14,55 @@ Cell::Cell(const uint32_t id,
 {
 }
 
-uint32_t Cell::getId() const { return id; }
+uint32_t Cell::getId() const
+{
+    return id;
+}
 
-uint32_t Cell::getOwnerId() const { return ownerId; }
+uint32_t Cell::getOwnerId() const
+{
+    return ownerId;
+}
 
-CellType Cell::getType() const { return type; }
+CellType Cell::getType() const
+{
+    return type;
+}
 
-Vector2 Cell::getPosition() const { return pos; }
+Vector2 Cell::getPosition() const
+{
+    return pos;
+}
 
-double Cell::getMass() const { return mass; }
+double Cell::getMass() const
+{
+    return mass;
+}
 
-double Cell::getRadius() const { return mass * FIS(M_PI * mass); }
+double Cell::getRadius() const
+{
+    return mass * FIS(M_PI * mass);
+}
 
-Vector2 Cell::getCenter() const { return Vector2(pos.x + getRadius(), pos.y + getRadius()); }
+Vector2 Cell::getCenter() const
+{
+    return Vector2(pos.x + getRadius(), pos.y + getRadius());
+}
 
-std::vector<double> Cell::getColor() const { return color; }
+std::vector<double> Cell::getColor() const
+{
+    return color;
+}
 
-void Cell::setPosition(const Vector2& newPos) { pos = newPos; }
+void Cell::setPosition(const Vector2& newPos)
+{
+    pos = newPos;
+}
 
-void Cell::setMass(const double mass) { this->mass = mass; }
+void Cell::setMass(const double mass)
+{
+    this->mass = mass;
+}
 
 void Cell::decay()
 {
@@ -88,6 +118,12 @@ void Cell::absorb(const Cell& other)
     pos -= (getRadius() - oldRadius) / 2.0;
 }
 
-void Cell::markForDeletion() { markedForDeletion = true; }
+void Cell::markForDeletion()
+{
+    markedForDeletion = true;
+}
 
-bool Cell::isMarkedForDeletion() const { return markedForDeletion; }
+bool Cell::isMarkedForDeletion() const
+{
+    return markedForDeletion;
+}

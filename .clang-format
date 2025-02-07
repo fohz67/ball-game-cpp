@@ -17,6 +17,8 @@ SpacesInParentheses: false
 SpacesInAngles: false
 
 AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortFunctionsOnASingleLine: None
+
 BinPackParameters: false
 BinPackArguments: false
 

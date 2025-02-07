@@ -30,8 +30,17 @@ PlayerClient* PlayerManagerClient::getPlayer(uint32_t playerId)
     return nullptr;
 }
 
-PlayerClient* PlayerManagerClient::getMe() { return getPlayer(myId); }
+PlayerClient* PlayerManagerClient::getMe()
+{
+    return getPlayer(myId);
+}
 
-uint32_t PlayerManagerClient::getMyId() { return myId; }
+uint32_t PlayerManagerClient::getMyId()
+{
+    return myId;
+}
 
-const void PlayerManagerClient::setMyId(const uint32_t id) { myId = id; }
+const void PlayerManagerClient::setMyId(const uint32_t id)
+{
+    myId = id;
+}

@@ -12,7 +12,9 @@ NetworkClient& NetworkClient::get()
     return instance;
 }
 
-NetworkClient::NetworkClient() : socket(io_context) {}
+NetworkClient::NetworkClient() : socket(io_context)
+{
+}
 
 const void NetworkClient::init(const std::string ip, const unsigned short port)
 {
@@ -93,6 +95,12 @@ uint32_t NetworkClient::getCutPacketSize(SmartBuffer smartBuffer, const uint32_t
     return (smartBuffer.getSize() - sizeof(OpCodes)) / size;
 }
 
-uint64_t NetworkClient::getPing() const { return ping; }
+uint64_t NetworkClient::getPing() const
+{
+    return ping;
+}
 
-const void NetworkClient::setPing(const uint64_t newPing) { ping = newPing; }
+const void NetworkClient::setPing(const uint64_t newPing)
+{
+    ping = newPing;
+}

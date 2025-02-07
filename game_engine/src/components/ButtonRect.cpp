@@ -9,19 +9,40 @@ ButtonRect::ButtonRect(const std::pair<uint16_t, uint16_t>& sizeRect,
 {
 }
 
-sf::RectangleShape& ButtonRect::getButtonRect() { return buttonRect; }
+sf::RectangleShape& ButtonRect::getButtonRect()
+{
+    return buttonRect;
+}
 
-std::pair<uint16_t, uint16_t> ButtonRect::getSize() const { return size; }
+std::pair<uint16_t, uint16_t> ButtonRect::getSize() const
+{
+    return size;
+}
 
-sf::Color ButtonRect::getColor() const { return color; }
+sf::Color ButtonRect::getColor() const
+{
+    return color;
+}
 
-bool ButtonRect::isLoaded() const { return load; }
+bool ButtonRect::isLoaded() const
+{
+    return load;
+}
 
-bool ButtonRect::isShowOutline() const { return showOutline; }
+bool ButtonRect::isShowOutline() const
+{
+    return showOutline;
+}
 
-void ButtonRect::setLoaded(bool val) { load = val; }
+void ButtonRect::setLoaded(bool val)
+{
+    load = val;
+}
 
-void ButtonRect::setCallback(const std::function<void()>& val) { callback = val; }
+void ButtonRect::setCallback(const std::function<void()>& val)
+{
+    callback = val;
+}
 
 bool ButtonRect::isHovered(sf::Vector2i mousePos) const
 {
@@ -29,7 +50,10 @@ bool ButtonRect::isHovered(sf::Vector2i mousePos) const
                                                  static_cast<float>(mousePos.y));
 }
 
-void ButtonRect::display() const { std::cout << "ButtonRect component displayed!" << std::endl; }
+void ButtonRect::display() const
+{
+    std::cout << "ButtonRect component displayed!" << std::endl;
+}
 
 void ButtonRect::executeCallback() const
 {

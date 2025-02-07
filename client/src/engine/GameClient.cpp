@@ -108,10 +108,22 @@ const void GameClient::render(GameEngine::System& system)
     window.display();
 }
 
-sf::RenderWindow& GameClient::getWindow() { return window; }
+sf::RenderWindow& GameClient::getWindow()
+{
+    return window;
+}
 
-sf::View& GameClient::getView() { return view; }
+sf::View& GameClient::getView()
+{
+    return view;
+}
 
-sf::Vector2u GameClient::getWindowSize() const { return windowSize; }
+sf::Vector2u GameClient::getWindowSize() const
+{
+    return windowSize;
+}
 
-int GameClient::getFPS() const { return fps; }
+int GameClient::getFPS() const
+{
+    return fps;
+}

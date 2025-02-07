@@ -8,12 +8,27 @@ PlayerClient::PlayerClient(uint32_t id,
 {
 }
 
-uint32_t PlayerClient::getId() const { return id; }
+uint32_t PlayerClient::getId() const
+{
+    return id;
+}
 
-const std::string& PlayerClient::getNickname() const { return nickname; }
+const std::string& PlayerClient::getNickname() const
+{
+    return nickname;
+}
 
-std::vector<double> PlayerClient::getColor() const { return color; }
+std::vector<double> PlayerClient::getColor() const
+{
+    return color;
+}
 
-std::vector<double> PlayerClient::getCellColor() const { return cellColor; }
+std::vector<double> PlayerClient::getCellColor() const
+{
+    return cellColor;
+}
 
-const void PlayerClient::setNickname(const std::string& nickname) { this->nickname = nickname; }
+const void PlayerClient::setNickname(const std::string& nickname)
+{
+    this->nickname = nickname;
+}

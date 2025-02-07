@@ -11,10 +11,17 @@ class Vector2
     double x;
     double y;
 
-    Vector2() : x(0), y(0) {}
-    Vector2(double x, double y) : x(x), y(y) {}
+    Vector2() : x(0), y(0)
+    {
+    }
+    Vector2(double x, double y) : x(x), y(y)
+    {
+    }
 
-    Vector2 operator+(const Vector2& rhs) const { return Vector2(x + rhs.x, y + rhs.y); }
+    Vector2 operator+(const Vector2& rhs) const
+    {
+        return Vector2(x + rhs.x, y + rhs.y);
+    }
 
     Vector2& operator+=(const Vector2& rhs)
     {
@@ -23,7 +30,10 @@ class Vector2
         return *this;
     }
 
-    Vector2 operator-(const Vector2& rhs) const { return Vector2(x - rhs.x, y - rhs.y); }
+    Vector2 operator-(const Vector2& rhs) const
+    {
+        return Vector2(x - rhs.x, y - rhs.y);
+    }
 
     Vector2& operator-=(const Vector2& rhs)
     {
@@ -39,7 +49,10 @@ class Vector2
         return *this;
     }
 
-    Vector2 operator*(double scalar) const { return Vector2(x * scalar, y * scalar); }
+    Vector2 operator*(double scalar) const
+    {
+        return Vector2(x * scalar, y * scalar);
+    }
 
     Vector2& operator*=(double scalar)
     {
@@ -48,7 +61,10 @@ class Vector2
         return *this;
     }
 
-    Vector2 operator/(double scalar) const { return Vector2(x / scalar, y / scalar); }
+    Vector2 operator/(double scalar) const
+    {
+        return Vector2(x / scalar, y / scalar);
+    }
 
     Vector2& operator/=(double scalar)
     {
@@ -57,7 +73,10 @@ class Vector2
         return *this;
     }
 
-    double magnitude() const { return 1.0f / FIS(x * x + y * y); }
+    double magnitude() const
+    {
+        return 1.0f / FIS(x * x + y * y);
+    }
 
     Vector2 normalized() const
     {
@@ -65,5 +84,8 @@ class Vector2
         return (mag == 0) ? Vector2(0, 0) : Vector2(x / mag, y / mag);
     }
 
-    double dot(const Vector2& rhs) const { return x * rhs.x + y * rhs.y; }
+    double dot(const Vector2& rhs) const
+    {
+        return x * rhs.x + y * rhs.y;
+    }
 };

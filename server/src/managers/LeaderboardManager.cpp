@@ -60,4 +60,7 @@ const void LeaderboardManager::updateLeaderboard()
     }
 }
 
-std::vector<LeaderboardEntry> LeaderboardManager::getLeaderboard() { return leaderboard; }
+std::vector<LeaderboardEntry> LeaderboardManager::getLeaderboard()
+{
+    return leaderboard;
+}
