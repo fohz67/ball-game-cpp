@@ -17,6 +17,12 @@ struct Config
         static constexpr int MAX_SIZE = 1024;
     };
 
+    struct Quadtree
+    {
+        static constexpr int MAX_OBJECTS = 10;
+        static constexpr int MAX_LEVELS = 5;
+    };
+
     struct Gameplay
     {
         struct World
@@ -35,7 +41,7 @@ struct Config
 
         struct Bot
         {
-            static constexpr int COUNT = 0;
+            static constexpr int COUNT = 5;
             static constexpr double MASS = 1000.0f;
         };
 
@@ -47,7 +53,7 @@ struct Config
 
         struct Pellet
         {
-            static constexpr int COUNT = 10000;
+            static constexpr int COUNT = 5000;
             static constexpr double MASS = 2.0f;
             static constexpr double EAT_FACTOR = 10.0f;
         };

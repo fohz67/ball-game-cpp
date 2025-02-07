@@ -52,3 +52,6 @@ doc/node_modules/
 doc/package-lock.json
 doc/.DS_Store
 doc/.docusaurus
+
+# Benchmark
+benchmark/*

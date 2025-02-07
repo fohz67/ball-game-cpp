@@ -54,6 +54,11 @@ std::vector<double> Cell::getColor() const
     return color;
 }
 
+FloatRect2 Cell::getBounds() const
+{
+    return FloatRect2(pos.x, pos.y, getRadius() * 2, getRadius() * 2);
+}
+
 void Cell::setPosition(const Vector2& newPos)
 {
     pos = newPos;

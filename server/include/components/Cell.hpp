@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "geometry/Vector2.hpp"
+#include "geometry/FloatRect2.hpp"
 
 enum CellType
 {
@@ -31,6 +32,7 @@ class Cell
     double getRadius() const;
     Vector2 getCenter() const;
     std::vector<double> getColor() const;
+    FloatRect2 getBounds() const;
 
     void setPosition(const Vector2& newPos);
     void setMass(const double mass);
