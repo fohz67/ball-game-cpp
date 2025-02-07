@@ -4,8 +4,8 @@
 #include <utility>
 #include <vector>
 
-#include "geometry/Vector2.hpp"
 #include "geometry/FloatRect2.hpp"
+#include "geometry/Vector2.hpp"
 
 enum CellType
 {
