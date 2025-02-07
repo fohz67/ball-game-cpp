@@ -1,85 +1,104 @@
 ---
+# Base style and language standard
+BasedOnStyle: LLVM
 Language: Cpp
 
-# Indentation & Tabs
+#----------------------------------------------------------------------
+# Indentation, column width, and basic spacing
+#----------------------------------------------------------------------
 IndentWidth: 4
 TabWidth: 4
-UseTab: Never  # Always use spaces instead of tabs
+UseTab: Never
+ColumnLimit: 100
 
-# Brace Wrapping (Places where `{` goes to the next line)
-BraceWrapping:
-  AfterClass: true
-  AfterControlStatement: true
-  AfterEnum: true
-  AfterFunction: true
-  AfterNamespace: true
-  AfterStruct: true
-  AfterUnion: true
-  SplitEmptyFunction: true
-  SplitEmptyRecord: true
-  SplitEmptyNamespace: true
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+SpaceBeforeParens: ControlStatements
+SpaceBeforeAssignmentOperators: true
 
-# Line Length & Formatting
-ColumnLimit: 100  # Increase from 80 to 100 for better readability
+#----------------------------------------------------------------------
+# Brace wrapping
+#----------------------------------------------------------------------
 BreakBeforeBraces: Attach
+BraceWrapping:
+    AfterClass:          true
+    AfterControlStatement: true
+    AfterEnum:           true
+    AfterFunction:       true
+    AfterNamespace:      true
+    AfterStruct:         true
+    AfterUnion:          true
+    SplitEmptyFunction:  true
+    SplitEmptyRecord:    true
+    SplitEmptyNamespace: true
+
+#----------------------------------------------------------------------
+# Function and control statement formatting
+#----------------------------------------------------------------------
 AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: false
 AllowShortLoopsOnASingleLine: false
 
-# Alignment Rules
+#----------------------------------------------------------------------
+# Alignment settings for better readability
+#----------------------------------------------------------------------
 AlignAfterOpenBracket: Align
-AlignOperands: Align
-AlignEscapedNewlines: Right
-AlignArrayOfStructures: None
-AlignConsecutiveAssignments: true
+AlignOperands:         Align
+AlignEscapedNewlines:  Right
+AlignConsecutiveAssignments:  true
 AlignConsecutiveDeclarations: true
-AlignConsecutiveMacros: true
-AlignTrailingComments: true
+AlignConsecutiveMacros:       true
+AlignTrailingComments:        true
 
-# Spaces & Parentheses
-SpaceBeforeParens: ControlStatements
-SpacesInParentheses: false
-SpacesInSquareBrackets: false
-PointerAlignment: Left  # `int* ptr;` instead of `int *ptr;`
+#----------------------------------------------------------------------
+# Pointers, references, and access modifiers
+#----------------------------------------------------------------------
+PointerAlignment: Left
+AccessModifierOffset: -2
 
-# Access Specifier Alignment
-AccessModifierOffset: -2  # Makes `private:` and `public:` properly aligned
-
-# Include Formatting
+#----------------------------------------------------------------------
+# Include sorting and namespace comments
+#----------------------------------------------------------------------
 SortIncludes: true
 IncludeBlocks: Preserve
 IncludeCategories:
-  - Regex: '^<.*>$'
-    Priority: 1
-  - Regex: '^".*"$'
-    Priority: 2
-
-# Namespace Handling
+    - Regex: "^<.*>$"
+      Priority: 1
+    - Regex: '^".*"$'
+      Priority: 2
 FixNamespaceComments: true
 
-# Formatting of Lambdas, Operators & Templates
+#----------------------------------------------------------------------
+# Operator wrapping and binary expressions
+#----------------------------------------------------------------------
 BreakBeforeBinaryOperators: None
 BreakBeforeTernaryOperators: true
+
+#----------------------------------------------------------------------
+# C++11 braced list style and initializer formatting
+#----------------------------------------------------------------------
 Cpp11BracedListStyle: true
+PackConstructorInitializers: NextLine
+
+#----------------------------------------------------------------------
+# Bin packing and penalty adjustments for fine tuning
+#----------------------------------------------------------------------
 DerivePointerAlignment: false
 ExperimentalAutoDetectBinPacking: false
-
-# Keep simple code blocks readable
-KeepEmptyLinesAtTheStartOfBlocks: true
-MaxEmptyLinesToKeep: 2
-
-# Wrapping rules for function declarations
-PackConstructorInitializers: NextLine
-PenaltyBreakAssignment: 2
-PenaltyBreakBeforeFirstCallParameter: 0
 BinPackArguments: false
 BinPackParameters: false
+
+PenaltyBreakAssignment: 2
+PenaltyBreakBeforeFirstCallParameter: 0
 PenaltyBreakString: 2
 PenaltyExcessCharacter: 100
 PenaltyReturnTypeOnItsOwnLine: 60
-ReflowComments: true
 
-# Struct & Union Formatting
-SpaceBeforeAssignmentOperators: true
+#----------------------------------------------------------------------
+# Miscellaneous options
+#----------------------------------------------------------------------
+KeepEmptyLinesAtTheStartOfBlocks: true
+MaxEmptyLinesToKeep: 2
+ReflowComments: true
 SortUsingDeclarations: true
-UseCRLF: false  # Use LF instead of CRLF (Unix-friendly)
+UseCRLF: false
