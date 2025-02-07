@@ -5,8 +5,6 @@
 #include <unordered_set>
 
 #include "config/Config.hpp"
-#include "geometry/FloatRect2.hpp"
-#include "geometry/Quadtree.hpp"
 #include "protocol/Send.hpp"
 #include "util/AtomicID.hpp"
 #include "util/Util.hpp"
@@ -71,14 +69,6 @@ const void CellManager::updateCells()
     std::vector<uint32_t> ids;
     size_t n = playerCells.size();
 
-    Quadtree quadtree(
-        0, FloatRect2(0, 0, Config::Gameplay::World::SIZE, Config::Gameplay::World::SIZE));
-
-    for (Cell& cell : playerCells)
-    {
-        quadtree.insert(&cell);
-    }
-
     for (size_t i = 0; i < n; i++)
     {
         Cell& cell = playerCells[i];
@@ -88,43 +78,40 @@ const void CellManager::updateCells()
             cell.decay();
         }
 
-        FloatRect2 cellBounds = cell.getBounds();
-        std::vector<Cell*> possiblePellets = quadtree.retrieve(cellBounds);
-
-        for (Cell* pellet : possiblePellets)
+        for (Cell& pellet : pelletCells)
         {
-            if (pellet->isMarkedForDeletion())
+            if (pellet.isMarkedForDeletion())
             {
                 continue;
             }
 
-            if (cell.canEat(*pellet))
+            if (cell.canEat(pellet))
             {
-                cell.absorb(*pellet);
-                pellet->markForDeletion();
-                ids.push_back(pellet->getId());
+                cell.absorb(pellet);
+                pellet.markForDeletion();
+                ids.push_back(pellet.getId());
             }
         }
 
-        std::vector<Cell*> possibleTargets = quadtree.retrieve(cellBounds);
-
-        for (Cell* target : possibleTargets)
+        for (size_t j = i + 1; j < n; j++)
         {
-            if (cell.getId() == target->getId() || target->isMarkedForDeletion())
+            Cell& target = playerCells[j];
+
+            if (cell.getId() == target.getId() || target.isMarkedForDeletion())
             {
                 continue;
             }
 
-            if (cell.canEat(*target))
+            if (cell.canEat(target))
             {
-                cell.absorb(*target);
-                target->markForDeletion();
-                ids.push_back(target->getId());
+                cell.absorb(target);
+                target.markForDeletion();
+                ids.push_back(target.getId());
             }
 
-            if (target->canEat(cell))
+            if (target.canEat(cell))
             {
-                target->absorb(cell);
+                target.absorb(cell);
                 cell.markForDeletion();
                 ids.push_back(cell.getId());
             }
