@@ -55,10 +55,6 @@ const void Send::sendCells() {
     const std::vector<Cell*> cells = CellManager::get().getPlayerCells();
 
     for (const Cell* cell : cells) {
-        std::cout << "All infos cell :" << cell->getId() << " " << cell->getOwnerId() << " "
-                  << cell->getPosition().x << " " << cell->getPosition().y << " "
-                  << cell->getRadius() << " " << cell->getType() << std::endl;
-
         if (sizeof(uint32_t) + smartBuffer.getSize() + sizeof(IUpdateGameState) >=
             Config::Network::MAX_SIZE) {
             Network::get().sendToAll(smartBuffer);
