@@ -1,10 +1,10 @@
 #include "components/PlayerClient.hpp"
 
-PlayerClient::PlayerClient(uint32_t id,
-                           std::string nickname,
-                           std::vector<double> color,
-                           std::vector<double> cellColor)
-    : id(id), color(color), cellColor(cellColor)
+PlayerClient::PlayerClient(const uint32_t id,
+                           const std::string& nickname,
+                           const std::vector<double> color,
+                           const std::vector<double> cellColor)
+    : id(id), nickname(nickname), color(color), cellColor(cellColor)
 {
 }
 

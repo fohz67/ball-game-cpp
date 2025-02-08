@@ -7,6 +7,7 @@
 #include <components/Sprite.hpp>
 #include <components/Text.hpp>
 #include <components/Texture.hpp>
+#include <iostream>
 
 #include "System.hpp"
 #include "config/ConfigClient.hpp"
@@ -22,7 +23,7 @@ const void EntityManager::createCell(const uint32_t id,
                                      const double y,
                                      const double radius,
                                      std::vector<double> color,
-                                     const std::string nickname)
+                                     const std::string& nickname)
 {
     if (color.size() != 4)
     {
@@ -36,13 +37,18 @@ const void EntityManager::createCell(const uint32_t id,
     newCell.addComponent(Color(color));
 
     entities.emplace(id, std::move(newCell));
+
+    if (nickname.length() > 0)
+    {
+        // createNickname(id, x, y, radius, nickname);
+    }
 }
 
 const void EntityManager::createNickname(const uint32_t id,
                                          const double x,
                                          const double y,
                                          const double radius,
-                                         const std::string nickname)
+                                         const std::string& nickname)
 {
     auto newNickname = GameEngine::Entity(id + ConfigClient::Network::ENTITY_LINKING_BIAS);
 

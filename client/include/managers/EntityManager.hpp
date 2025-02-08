@@ -17,12 +17,12 @@ class EntityManager
                           const double y,
                           const double radius,
                           std::vector<double> color,
-                          const std::string nickname);
+                          const std::string& nickname);
     const void createNickname(const uint32_t id,
                               const double x,
                               const double y,
                               const double radius,
-                              const std::string nickname);
+                              const std::string& nickname);
     const void createWorld(const uint16_t size);
 
     const void updateCell(const uint32_t id,

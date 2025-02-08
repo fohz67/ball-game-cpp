@@ -10,8 +10,8 @@ PlayerManagerClient& PlayerManagerClient::get()
 
 const void PlayerManagerClient::addPlayer(const uint32_t id,
                                           const std::string& nickname,
-                                          const std::vector<double>& color,
-                                          const std::vector<double>& cellColor)
+                                          const std::vector<double> color,
+                                          const std::vector<double> cellColor)
 {
     players.emplace_back(id, nickname, color, cellColor);
 }

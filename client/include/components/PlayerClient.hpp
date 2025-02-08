@@ -8,7 +8,7 @@ class PlayerClient
 {
    public:
     PlayerClient(const uint32_t id,
-                 const std::string nickname,
+                 const std::string& nickname,
                  const std::vector<double> color,
                  const std::vector<double> cellColor);
 
