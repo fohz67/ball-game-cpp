@@ -26,7 +26,7 @@ class GameClient
     const void initWindow();
     const void initView();
     const void processEvents();
-    const void render(GameEngine::System& system);
+    const void render(GameEngine::System& system, float deltaTime);
 
     sf::RenderWindow window;
     sf::View view;

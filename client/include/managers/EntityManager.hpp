@@ -34,10 +34,8 @@ class EntityManager
 
     const void removeEntity(const double id);
 
-    std::map<double, GameEngine::Entity> getGameEntities() const;
-    std::map<double, GameEngine::Entity> getHUDEntities() const;
-
     std::map<double, GameEngine::Entity> entities;
+    std::map<double, GameEngine::Entity> hudEntities;
 
    private:
     EntityManager() = default;

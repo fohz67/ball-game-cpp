@@ -33,21 +33,26 @@ const void GameClient::run()
     {
         processEvents();
 
-        deltaTime = clock.restart().asSeconds();
-        fps = static_cast<int>(1.0f / deltaTime);
-
         SendClient::sendMousePosition(window, lastMousePos);
         Viewport::get().applyInterpolation();
         HUD::get().update();
 
-        render(system);
+        deltaTime = clock.restart().asSeconds();
+        fps = static_cast<int>(1.0f / deltaTime);
+
+        render(system, deltaTime);
     }
 }
 
 const void GameClient::initWindow()
 {
+    sf::ContextSettings settings;
+    settings.antialiasingLevel = 8;
+
     window.create(sf::VideoMode(ConfigClient::Window::WIDTH, ConfigClient::Window::HEIGHT),
-                  ConfigClient::Window::NAME);
+                  ConfigClient::Window::NAME,
+                  sf::Style::Default,
+                  settings);
 
     windowSize = sf::Vector2u(window.getView().getSize());
 
@@ -75,11 +80,6 @@ const void GameClient::processEvents()
             return;
         }
 
-        if (event.type == sf::Event::KeyPressed)
-        {
-            // @TODO refactor this
-        }
-
         if (event.type == sf::Event::MouseWheelScrolled)
         {
             if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel)
@@ -90,7 +90,7 @@ const void GameClient::processEvents()
     }
 }
 
-const void GameClient::render(GameEngine::System& system)
+const void GameClient::render(GameEngine::System& system, float deltaTime)
 {
     view.setCenter(Viewport::get().getPreviousViewport().first,
                    Viewport::get().getPreviousViewport().second);
@@ -98,12 +98,10 @@ const void GameClient::render(GameEngine::System& system)
     window.setView(view);
     window.clear();
 
-    std::map<double, GameEngine::Entity> gameEntities = EntityManager::get().getGameEntities();
-    system.render(window, gameEntities);
+    system.render(window, EntityManager::get().entities, deltaTime);
 
     window.setView(window.getDefaultView());
-    std::map<double, GameEngine::Entity> hudEntities = EntityManager::get().getHUDEntities();
-    system.render(window, hudEntities);
+    system.render(window, EntityManager::get().hudEntities, deltaTime);
 
     window.display();
 }

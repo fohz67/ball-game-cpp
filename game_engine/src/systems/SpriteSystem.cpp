@@ -40,7 +40,9 @@ void GameEngine::System::loadSprite(GameEngine::Entity& entity, auto& spriteComp
     }
 }
 
-void GameEngine::System::spriteSystem(sf::RenderWindow& window, GameEngine::Entity& entity)
+void GameEngine::System::spriteSystem(sf::RenderWindow& window,
+                                      GameEngine::Entity& entity,
+                                      float deltaTime)
 {
     if (entity.hasComponent<Sprite>() && entity.hasComponent<Texture>())
     {
@@ -51,18 +53,14 @@ void GameEngine::System::spriteSystem(sf::RenderWindow& window, GameEngine::Enti
         loadSprite(entity, spriteComp, textureComp);
 
         static std::unordered_map<uint32_t, std::pair<double, double>> lastPositions;
+        auto newPos = positionComp.getPosition();
 
-        if (positionComp.getPositions().size() == 1)
+        if (lastPositions[entity.getEntityId()] != newPos)
         {
-            auto newPos = positionComp.getPositions()[0];
-
-            if (lastPositions[entity.getEntityId()] != newPos)
-            {
-                spriteComp.getSprite().setPosition(newPos.first, newPos.second);
-                lastPositions[entity.getEntityId()] = newPos;
-            }
-
-            window.draw(spriteComp.getSprite());
+            spriteComp.getSprite().setPosition(newPos.first, newPos.second);
+            lastPositions[entity.getEntityId()] = newPos;
         }
+
+        window.draw(spriteComp.getSprite());
     }
 }

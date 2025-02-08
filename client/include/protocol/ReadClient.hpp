@@ -9,6 +9,7 @@ class ReadClient
     static const void readCreateWorld(SmartBuffer& smartBuffer);
     static const void readCreatePlayer(SmartBuffer& smartBuffer);
     static const void readUpdateGameState(SmartBuffer& smartBuffer);
+    static const void readUpdateLeaderboard(SmartBuffer& smartBuffer);
     static const void readSpawnPellets(SmartBuffer& smartBuffer);
     static const void readUpdatePlayer(SmartBuffer& smartBuffer);
     static const void readDeleteEntity(SmartBuffer& smartBuffer);

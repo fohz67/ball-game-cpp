@@ -8,8 +8,7 @@
 
 void GameEngine::System::linkSystem(int id,
                                     std::map<double, GameEngine::Entity>& entities,
-                                    std::pair<double, double> newLinkedEntityPos,
-                                    const int posId)
+                                    std::pair<double, double> newLinkedEntityPos)
 {
     for (auto& [_, entity] : entities)
     {
@@ -18,22 +17,21 @@ void GameEngine::System::linkSystem(int id,
             GameEngine::Entity entityLinked = entities[id];
 
             auto oldLinkedEntityPos = entityLinked.getComponent<Position>();
-            const std::pair dist = {
-                newLinkedEntityPos.first - oldLinkedEntityPos.getPositionX(posId),
-                newLinkedEntityPos.second - oldLinkedEntityPos.getPositionY(posId)};
+            const std::pair dist = {newLinkedEntityPos.first - oldLinkedEntityPos.getPositionX(),
+                                    newLinkedEntityPos.second - oldLinkedEntityPos.getPositionY()};
 
             auto entityPos = entity.getComponent<Position>();
-            const std::pair newPos = {entityPos.getPositionX(0) + dist.first,
-                                      entityPos.getPositionY(0) + dist.second};
+            const std::pair newPos = {entityPos.getPositionX() + dist.first,
+                                      entityPos.getPositionY() + dist.second};
 
             if (entity.hasComponent<Sprite>())
             {
-                updatePosition(entity, entity.getComponent<Sprite>().getSprite(), newPos, 0);
+                updatePosition(entity, entity.getComponent<Sprite>().getSprite(), newPos);
             }
 
             if (entity.hasComponent<Text>())
             {
-                updatePosition(entity, entity.getComponent<Text>().getText(), newPos, 0);
+                updatePosition(entity, entity.getComponent<Text>().getText(), newPos);
             }
         }
     }

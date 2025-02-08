@@ -28,67 +28,51 @@ class System
     System() = default;
     ~System() = default;
 
-    // Methods
-    void render(sf::RenderWindow& window, std::map<double, Entity>& entities);
+    // Main Methods
+    void render(sf::RenderWindow& window, std::map<double, Entity>& entities, float deltaTime);
+
+    // Set Methods
+    template <typename Drawable>
+    void setColor(Entity& entity, Drawable& drawable);
+    template <typename Drawable>
+    void setPosition(Entity& entity, Drawable& drawable);
+
+    // Update Methods
     void update(const double id,
                 std::map<double, Entity>& entities,
                 UpdateType type,
-                const std::any& value,
-                int posId = 0);
-
-   private:
-    std::string fontFile;
-
-    // Color
+                const std::any& value);
     template <typename Drawable>
-    void setColor(Entity& entity, Drawable& drawable);
-
-    // Position
-    template <typename Drawable>
-    void setPosition(Entity& entity, Drawable& drawable);
-    template <typename Drawable>
-    void updatePosition(Entity& entity,
-                        Drawable& drawable,
-                        const std::pair<double, double>& pos,
-                        const int& posId);
+    void updatePosition(Entity& entity, Drawable& drawable, const std::pair<double, double>& pos);
     void updateEntityPosition(int id,
                               std::map<double, Entity>& entities,
-                              const std::pair<double, double>& pos,
-                              int posId);
-
-    // Texture
+                              const std::pair<double, double>& pos);
     void updateTexture(Entity& entity, std::string& texture);
-
-    // Sprite
-    void loadSprite(Entity& entity, auto& spriteComp, auto& textureComp);
-    void spriteSystem(sf::RenderWindow& window, Entity& entity);
-
-    // Link
-    void linkSystem(int id,
-                    std::map<double, Entity>& entities,
-                    std::pair<double, double> newLinkedEntityPos,
-                    int posId);
-
-    // Text
-    void loadText(Entity& entity, auto& textComp);
     void updateText(Entity& entity, const std::string& text);
     void updateTextSize(int id, std::map<double, Entity>& entities, unsigned int textSize);
     void updateTextFont(Entity& entity, const std::string& font);
-    void textSystem(sf::RenderWindow& window, Entity& entity);
-
-    // Shape
-    void loadRectangle(Entity& entity, auto& shapeComp);
-    void loadCircle(Entity& entity, auto& shapeComp);
-    void shapeSystem(sf::RenderWindow& window, Entity& entity);
     void updateShapeSize(Entity& entity, double radius);
 
-    // Button
-    void buttonSystem(sf::RenderWindow& window, Entity& entity);
-    void optionButtonSystem(sf::RenderWindow& window, Entity& entity);
-    void buttonRectSystem(sf::RenderWindow& window, Entity& entity);
+    // Load Methods
+    void loadSprite(Entity& entity, auto& spriteComp, auto& textureComp);
+    void loadText(Entity& entity, auto& textComp);
+    void loadRectangle(Entity& entity, auto& shapeComp);
+    void loadCircle(Entity& entity, auto& shapeComp);
 
-    // Slider
-    void sliderSystem(sf::RenderWindow& window, Entity& entity, std::map<double, Entity>& entities);
+    // System Methods
+    void spriteSystem(sf::RenderWindow& window, Entity& entity, float deltaTime);
+    void textSystem(sf::RenderWindow& window, Entity& entity, float deltaTime);
+    void shapeSystem(sf::RenderWindow& window, Entity& entity, float deltaTime);
+    void buttonSystem(sf::RenderWindow& window, Entity& entity, float deltaTime);
+    void optionButtonSystem(sf::RenderWindow& window, Entity& entity, float deltaTime);
+    void buttonRectSystem(sf::RenderWindow& window, Entity& entity, float deltaTime);
+    void linkSystem(int id,
+                    std::map<double, Entity>& entities,
+                    std::pair<double, double> newLinkedEntityPos);
+    void sliderSystem(sf::RenderWindow& window,
+                      Entity& entity,
+                      std::map<double, Entity>& entities,
+                      float deltaTime);
 };
 
 template <typename Drawable>
@@ -118,22 +102,21 @@ void System::setPosition(Entity& entity, Drawable& drawable)
     {
         auto& positionComp = entity.getComponent<Position>();
 
-        drawable.setPosition(positionComp.getPositionX(0), positionComp.getPositionY(0));
+        drawable.setPosition(positionComp.getPositionX(), positionComp.getPositionY());
     }
 }
 
 template <typename Drawable>
 void System::updatePosition(Entity& entity,
                             Drawable& drawable,
-                            const std::pair<double, double>& pos,
-                            const int& posId)
+                            const std::pair<double, double>& pos)
 {
     if (entity.hasComponent<Position>())
     {
         auto& positionComp = entity.getComponent<Position>();
 
-        positionComp.setPositionX(posId, pos.first);
-        positionComp.setPositionY(posId, pos.second);
+        positionComp.setPositionX(pos.first);
+        positionComp.setPositionY(pos.second);
 
         drawable.setPosition(pos.first, pos.second);
     }

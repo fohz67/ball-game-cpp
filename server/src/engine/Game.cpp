@@ -36,10 +36,13 @@ const void Game::updateLoop()
         LeaderboardManager::get().updateLeaderboard();
         updateGameState();
 
-        auto end = std::chrono::steady_clock::now();
-        double duration = std::chrono::duration<double, std::milli>(end - start).count();
-        std::cout << "[Game] Loop iteration took " << std::fixed << std::setprecision(5) << duration
-                  << " ms" << std::endl;
+        if (Config::Game::DEBUG)
+        {
+            auto end = std::chrono::steady_clock::now();
+            double duration = std::chrono::duration<double, std::milli>(end - start).count();
+            std::cout << "[Game] Loop iteration took " << std::fixed << std::setprecision(5)
+                      << duration << " ms" << std::endl;
+        }
 
         std::this_thread::sleep_for(std::chrono::milliseconds(Config::Game::FREQUENCY));
     }

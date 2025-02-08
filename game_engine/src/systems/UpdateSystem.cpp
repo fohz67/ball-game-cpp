@@ -7,10 +7,9 @@
 
 void GameEngine::System::updateEntityPosition(const int id,
                                               std::map<double, Entity>& entities,
-                                              const std::pair<double, double>& pos,
-                                              const int posId)
+                                              const std::pair<double, double>& pos)
 {
-    linkSystem(id, entities, pos, posId);
+    linkSystem(id, entities, pos);
 
     auto it = entities.find(id);
     if (it == entities.end()) return;
@@ -19,7 +18,7 @@ void GameEngine::System::updateEntityPosition(const int id,
 
     if (entity.hasComponent<Sprite>())
     {
-        updatePosition(entity, entity.getComponent<Sprite>().getSprite(), pos, posId);
+        updatePosition(entity, entity.getComponent<Sprite>().getSprite(), pos);
     }
 
     if (entity.hasComponent<Text>())
@@ -43,11 +42,11 @@ void GameEngine::System::updateEntityPosition(const int id,
 
         if (shapeComp.getShapeType() == Rectangle)
         {
-            updatePosition(entity, shapeComp.getRect(), pos, posId);
+            updatePosition(entity, shapeComp.getRect(), pos);
         }
         else if (shapeComp.getShapeType() == Circle)
         {
-            updatePosition(entity, shapeComp.getCircle(), pos, posId);
+            updatePosition(entity, shapeComp.getCircle(), pos);
         }
     }
 }
@@ -103,9 +102,9 @@ void GameEngine::System::updateTextSize(const int id,
         {
             auto& positionComp = entity.getComponent<Position>();
             auto currentPos =
-                std::make_pair(positionComp.getPositionX(0), positionComp.getPositionY(0));
+                std::make_pair(positionComp.getPositionX(), positionComp.getPositionY());
 
-            updateEntityPosition(id, entities, currentPos, 0);
+            updateEntityPosition(id, entities, currentPos);
         }
     }
 }
@@ -175,8 +174,7 @@ void GameEngine::System::updateShapeSize(Entity& entity, double radius)
 void GameEngine::System::update(const double id,
                                 std::map<double, Entity>& entities,
                                 const UpdateType type,
-                                const std::any& value,
-                                const int posId)
+                                const std::any& value)
 {
     auto it = entities.find(id);
     if (it == entities.end()) return;
@@ -186,8 +184,7 @@ void GameEngine::System::update(const double id,
     switch (type)
     {
         case UpdateType::Position:
-            updateEntityPosition(
-                id, entities, std::any_cast<std::pair<double, double>>(value), posId);
+            updateEntityPosition(id, entities, std::any_cast<std::pair<double, double>>(value));
             break;
         case UpdateType::Text:
             updateText(entity, std::any_cast<std::string>(value));

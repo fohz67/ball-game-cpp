@@ -2,46 +2,73 @@
 
 #include <iostream>
 
-Position::Position(const std::vector<Point>& positions) : positions(positions)
+Position::Position(const Point& position)
+    : position(position), previousPosition(position), targetPosition(position)
 {
 }
 
-std::vector<Point> Position::getPositions() const
+Point Position::getPosition() const
 {
-    return positions;
+    return position;
+}
+Point Position::getInterpolatedPosition(float dt)
+{
+    interpolationFactor += dt * interpolationSpeed;
+
+    if (interpolationFactor > 1.0f)
+    {
+        interpolationFactor = 1.0f;
+    }
+
+    float t = interpolationFactor;
+    t = t * t * (3 - 2 * t);
+
+    return {previousPosition.first + (targetPosition.first - previousPosition.first) * t,
+            previousPosition.second + (targetPosition.second - previousPosition.second) * t};
 }
 
-double Position::getPositionX(const uint32_t id) const
+double Position::getPositionX() const
 {
-    return this->positions[id].first;
+    return position.first;
 }
 
-double Position::getPositionY(const uint32_t id) const
+double Position::getPositionY() const
 {
-    return this->positions[id].second;
+    return position.second;
 }
 
-void Position::setPositionX(const uint32_t id, const double x)
+void Position::setPosition(const Point& pos)
 {
-    this->positions[id].first = x;
+    if (std::fabs(targetPosition.first - pos.first) > 0.01 ||
+        std::fabs(targetPosition.second - pos.second) > 0.01)
+    {
+        previousPosition = getInterpolatedPosition(1.0f);
+        targetPosition = pos;
+        interpolationFactor = 0.0f;
+    }
 }
 
-void Position::setPositionY(const uint32_t id, const double y)
+void Position::setPositionX(double x)
 {
-    this->positions[id].second = y;
+    if (position.first != x)
+    {
+        previousPosition.first = position.first;
+        targetPosition.first = x;
+        interpolationFactor = 0.0f;
+    }
 }
 
-void Position::addPosition(const double x, const double y)
+void Position::setPositionY(double y)
 {
-    this->positions.emplace_back(x, y);
-}
-
-void Position::removePosition(const uint32_t id)
-{
-    this->positions.erase(this->positions.begin() + id);
+    if (position.second != y)
+    {
+        previousPosition.second = position.second;
+        targetPosition.second = y;
+        interpolationFactor = 0.0f;
+    }
 }
 
 void Position::display() const
 {
-    std::cout << "Position component displayed!" << std::endl;
+    std::cout << "Position: (" << position.first << ", " << position.second << ")" << std::endl;
 }

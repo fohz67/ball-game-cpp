@@ -1,8 +1,7 @@
 #include "components/HUD.hpp"
 
-#include <iostream>
-
 #include "components/Color.hpp"
+#include "components/Leaderboard.hpp"
 #include "components/Position.hpp"
 #include "components/Shape.hpp"
 #include "components/Text.hpp"
@@ -36,10 +35,13 @@ const void HUD::update()
     {
         return;
     }
+
     lastUpdate = now;
 
     SendClient::sendPing();
+
     updateStats();
+    updateLeaderboard();
 }
 
 const void HUD::createLeaderboard()
@@ -57,7 +59,7 @@ const void HUD::createLeaderboard()
                    ConfigClient::HUD::PADDING}}));
     newEntity.addComponent(Color(ConfigClient::HUD::BACKGROUND_COLOR));
 
-    EntityManager::get().entities.emplace(currentId, std::move(newEntity));
+    EntityManager::get().hudEntities.emplace(currentId, std::move(newEntity));
     leaderboardEntities.emplace(currentId, std::move(newEntity));
 
     // Title
@@ -72,14 +74,15 @@ const void HUD::createLeaderboard()
     newEntityTitle.addComponent(
         Position({{GameClient::get().getWindowSize().x - ConfigClient::HUD::Leaderboard::WIDTH / 2 -
                        ConfigClient::HUD::PADDING,
-                   ConfigClient::HUD::PADDING + 40}}));
+                   ConfigClient::HUD::PADDING + ConfigClient::HUD::Leaderboard::MARGIN_TOP}}));
     newEntityTitle.addComponent(Color(ConfigClient::HUD::TEXT_COLOR));
 
-    EntityManager::get().entities.emplace(currentId, std::move(newEntityTitle));
+    EntityManager::get().hudEntities.emplace(currentId, std::move(newEntityTitle));
     leaderboardEntities.emplace(currentId, std::move(newEntityTitle));
 
     // Players List
-    float yOffset = ConfigClient::HUD::PADDING + 85;
+    float yOffset = ConfigClient::HUD::PADDING +
+                    ConfigClient::HUD::Leaderboard::MARGIN_BETWEEN_TITLE_AND_CONTENT;
     auto players = PlayerManagerClient::get().players;
 
     for (const auto& player : players)
@@ -101,10 +104,10 @@ const void HUD::createLeaderboard()
                        yOffset}}));
         newPlayerEntity.addComponent(Color(ConfigClient::HUD::TEXT_COLOR));
 
-        EntityManager::get().entities.emplace(currentId, std::move(newPlayerEntity));
+        EntityManager::get().hudEntities.emplace(currentId, std::move(newPlayerEntity));
         leaderboardEntities.emplace(currentId, std::move(newPlayerEntity));
 
-        yOffset += 50;
+        yOffset += ConfigClient::HUD::Leaderboard::MARGIN_BETWEEN_LINES;
         i++;
     }
 }
@@ -120,11 +123,11 @@ const void HUD::createStats()
     newEntity.addComponent(Position({{ConfigClient::HUD::PADDING, ConfigClient::HUD::PADDING}}));
     newEntity.addComponent(Color(ConfigClient::HUD::BACKGROUND_COLOR));
 
-    EntityManager::get().entities.emplace(currentId, std::move(newEntity));
+    EntityManager::get().hudEntities.emplace(currentId, std::move(newEntity));
     statsEntity.emplace(currentId, std::move(newEntity));
 
     // Titles & Values
-    float yOffset = ConfigClient::HUD::PADDING + 20;
+    float yOffset = ConfigClient::HUD::PADDING + ConfigClient::HUD::Stats::MARGIN_TOP;
     std::vector<std::string> labels = {"Score:", "Mass:", "Cells:", "Ping:", "FPS:"};
 
     for (const auto& label : labels)
@@ -143,7 +146,7 @@ const void HUD::createStats()
             Position({{ConfigClient::HUD::PADDING + ConfigClient::HUD::TEXT_PADDING, yOffset}}));
         newLabelEntity.addComponent(Color(ConfigClient::HUD::TEXT_COLOR));
 
-        EntityManager::get().entities.emplace(currentId, std::move(newLabelEntity));
+        EntityManager::get().hudEntities.emplace(currentId, std::move(newLabelEntity));
         statsEntity.emplace(currentId, std::move(newLabelEntity));
 
         // Value
@@ -162,50 +165,11 @@ const void HUD::createStats()
                        yOffset}}));
         newValueEntity.addComponent(Color(ConfigClient::HUD::Stats::VALUE_COLOR));
 
-        EntityManager::get().entities.emplace(currentId, std::move(newValueEntity));
+        EntityManager::get().hudEntities.emplace(currentId, std::move(newValueEntity));
         statsEntity.emplace(currentId, std::move(newValueEntity));
 
-        yOffset += 40;
+        yOffset += ConfigClient::HUD::Stats::MARGIN_BETWEEN_LINES;
     }
-}
-
-const void HUD::updateStats()
-{
-    GameEngine::System system;
-    double bias = ConfigClient::World::ID +
-                  (leaderboardEntities.size() * ConfigClient::Network::ENTITY_LINKING_BIAS);
-    auto me = PlayerManagerClient::get().getMe();
-
-    bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 3;
-
-    system.update(
-        bias, EntityManager::get().entities, GameEngine::UpdateType::Text, std::to_string(score));
-
-    bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
-
-    system.update(
-        bias, EntityManager::get().entities, GameEngine::UpdateType::Text, std::to_string(mass));
-
-    bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
-
-    system.update(bias,
-                  EntityManager::get().entities,
-                  GameEngine::UpdateType::Text,
-                  std::to_string(cellCount));
-
-    bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
-
-    system.update(bias,
-                  EntityManager::get().entities,
-                  GameEngine::UpdateType::Text,
-                  std::to_string(NetworkClient::get().getPing()));
-
-    bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
-
-    system.update(bias,
-                  EntityManager::get().entities,
-                  GameEngine::UpdateType::Text,
-                  std::to_string(GameClient::get().getFPS()));
 }
 
 const void HUD::createChatBox()
@@ -223,8 +187,64 @@ const void HUD::createChatBox()
                        (ConfigClient::HUD::ChatBox::HEIGHT + ConfigClient::HUD::PADDING)}}));
     newEntity.addComponent(Color(ConfigClient::HUD::BACKGROUND_COLOR));
 
-    EntityManager::get().entities.emplace(currentId, std::move(newEntity));
+    EntityManager::get().hudEntities.emplace(currentId, std::move(newEntity));
     chatBoxEntitites.emplace(currentId, std::move(newEntity));
+}
+
+const void HUD::updateLeaderboard()
+{
+    GameEngine::System system;
+    double bias = ConfigClient::World::ID + ConfigClient::Network::ENTITY_LINKING_BIAS * 3;
+
+    const std::vector<std::string> leaderboard = Leaderboard::get().getLeaderboard();
+
+    for (const std::string& nickname : leaderboard)
+    {
+        system.update(
+            bias, EntityManager::get().hudEntities, GameEngine::UpdateType::Text, nickname);
+
+        bias += ConfigClient::Network::ENTITY_LINKING_BIAS;
+    }
+}
+
+const void HUD::updateStats()
+{
+    GameEngine::System system;
+    double bias = ConfigClient::World::ID +
+                  (leaderboardEntities.size() * ConfigClient::Network::ENTITY_LINKING_BIAS);
+
+    bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 3;
+
+    system.update(bias,
+                  EntityManager::get().hudEntities,
+                  GameEngine::UpdateType::Text,
+                  std::to_string(score));
+
+    bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
+
+    system.update(
+        bias, EntityManager::get().hudEntities, GameEngine::UpdateType::Text, std::to_string(mass));
+
+    bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
+
+    system.update(bias,
+                  EntityManager::get().hudEntities,
+                  GameEngine::UpdateType::Text,
+                  std::to_string(cellCount));
+
+    bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
+
+    system.update(bias,
+                  EntityManager::get().hudEntities,
+                  GameEngine::UpdateType::Text,
+                  std::to_string(NetworkClient::get().getPing()));
+
+    bias += ConfigClient::Network::ENTITY_LINKING_BIAS * 2;
+
+    system.update(bias,
+                  EntityManager::get().hudEntities,
+                  GameEngine::UpdateType::Text,
+                  std::to_string(GameClient::get().getFPS()));
 }
 
 const void HUD::increaseId()

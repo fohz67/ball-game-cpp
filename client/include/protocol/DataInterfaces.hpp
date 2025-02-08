@@ -59,7 +59,7 @@ struct IUpdateMousePosition
     double y;
 };
 
-struct KeyPressedInterface
+struct IUpdateLeaderboard
 {
-    std::string key;
+    std::string nickname;
 };

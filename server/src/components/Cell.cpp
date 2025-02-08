@@ -71,13 +71,6 @@ void Cell::setMass(const double mass)
 
 void Cell::decay()
 {
-    if (decayResolver < Config::Gameplay::Cell::DECAY_TIMING)
-    {
-        decayResolver += Config::Game::FREQUENCY;
-        return;
-    }
-
-    decayResolver = 0;
     mass -= mass * Config::Gameplay::Cell::DECAY_RATE;
 }
 

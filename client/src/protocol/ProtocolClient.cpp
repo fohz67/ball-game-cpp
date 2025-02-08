@@ -60,6 +60,12 @@ const void ProtocolClient::handleMessage(SmartBuffer& smartBuffer)
             break;
         }
 
+        case OpCodes::UPDATE_LEADERBOARD:
+        {
+            ReadClient::readUpdateLeaderboard(smartBuffer);
+            break;
+        }
+
         case OpCodes::DELETE_ENTITY:
         {
             ReadClient::readDeleteEntity(smartBuffer);

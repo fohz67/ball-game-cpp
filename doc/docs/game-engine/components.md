@@ -20,7 +20,7 @@ player.addComponent<Text>("Player 1", "arial.ttf", 24);
 ```cpp
 if (player.hasComponent<Position>()) {
     Position& pos = player.getComponent<Position>();
-    std::cout << "X: " << pos.getPositionX(0) << ", Y: " << pos.getPositionY(0) << std::endl;
+    std::cout << "X: " << pos.getPositionX() << ", Y: " << pos.getPositionY() << std::endl;
 }
 ```
 

@@ -5,7 +5,9 @@
 
 #include "System.hpp"
 
-void GameEngine::System::buttonSystem(sf::RenderWindow& window, GameEngine::Entity& entity)
+void GameEngine::System::buttonSystem(sf::RenderWindow& window,
+                                      GameEngine::Entity& entity,
+                                      float deltaTime)
 {
     if (entity.hasComponent<Button>() && entity.hasComponent<Position>())
     {
@@ -26,8 +28,8 @@ void GameEngine::System::buttonSystem(sf::RenderWindow& window, GameEngine::Enti
             buttonComp.getButton().setSize(
                 sf::Vector2f(textBounds.width + 2 * padding, textBounds.height + 2 * padding));
             buttonComp.getButton().setFillColor(sf::Color::Transparent);
-            buttonComp.getButton().setPosition(positionComp.getPositionX(0),
-                                               positionComp.getPositionY(0));
+            buttonComp.getButton().setPosition(positionComp.getPositionX(),
+                                               positionComp.getPositionY());
             buttonComp.getText().setOrigin(textBounds.left + textBounds.width / 2,
                                            textBounds.top + textBounds.height / 2);
             buttonComp.getText().setPosition(
@@ -62,7 +64,9 @@ void GameEngine::System::buttonSystem(sf::RenderWindow& window, GameEngine::Enti
     }
 }
 
-void GameEngine::System::optionButtonSystem(sf::RenderWindow& window, GameEngine::Entity& entity)
+void GameEngine::System::optionButtonSystem(sf::RenderWindow& window,
+                                            GameEngine::Entity& entity,
+                                            float deltaTime)
 {
     if (entity.hasComponent<OptionButton>() && entity.hasComponent<Position>())
     {
@@ -75,7 +79,7 @@ void GameEngine::System::optionButtonSystem(sf::RenderWindow& window, GameEngine
 
             buttonShape.setSize({static_cast<float>(buttonComp.getSize().first),
                                  static_cast<float>(buttonComp.getSize().second)});
-            buttonShape.setPosition(positionComp.getPositionX(0), positionComp.getPositionY(0));
+            buttonShape.setPosition(positionComp.getPositionX(), positionComp.getPositionY());
             buttonShape.setOutlineThickness(2);
 
             if (entity.hasComponent<Color>() && entity.getComponent<Color>().getColor().size() == 4)
@@ -128,7 +132,8 @@ void GameEngine::System::optionButtonSystem(sf::RenderWindow& window, GameEngine
 
 void GameEngine::System::sliderSystem(sf::RenderWindow& window,
                                       GameEngine::Entity& entity,
-                                      std::map<double, Entity>& entities)
+                                      std::map<double, Entity>& entities,
+                                      float deltaTime)
 {
     GameEngine::System system;
     if (entity.hasComponent<Slider>() && entity.hasComponent<Position>())
@@ -140,7 +145,7 @@ void GameEngine::System::sliderSystem(sf::RenderWindow& window,
         {
             sf::RectangleShape barShape;
 
-            barShape.setPosition(positionComp.getPositionX(0), positionComp.getPositionY(0));
+            barShape.setPosition(positionComp.getPositionX(), positionComp.getPositionY());
             barShape.setSize({static_cast<float>(sliderComp.getSize().first),
                               static_cast<float>(sliderComp.getSize().second)});
             barShape.setOutlineThickness(5);
@@ -216,7 +221,9 @@ void GameEngine::System::sliderSystem(sf::RenderWindow& window,
     }
 }
 
-void GameEngine::System::buttonRectSystem(sf::RenderWindow& window, GameEngine::Entity& entity)
+void GameEngine::System::buttonRectSystem(sf::RenderWindow& window,
+                                          GameEngine::Entity& entity,
+                                          float deltaTime)
 {
     if (entity.hasComponent<ButtonRect>() && entity.hasComponent<Position>())
     {
@@ -227,8 +234,8 @@ void GameEngine::System::buttonRectSystem(sf::RenderWindow& window, GameEngine::
         {
             buttonRectComp.getButtonRect().setSize(
                 sf::Vector2f(buttonRectComp.getSize().first, buttonRectComp.getSize().second));
-            buttonRectComp.getButtonRect().setPosition(positionComp.getPositionX(0),
-                                                       positionComp.getPositionY(0));
+            buttonRectComp.getButtonRect().setPosition(positionComp.getPositionX(),
+                                                       positionComp.getPositionY());
 
             if (!buttonRectComp.isShowOutline())
             {

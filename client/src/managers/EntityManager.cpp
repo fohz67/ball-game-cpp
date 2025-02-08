@@ -79,11 +79,18 @@ const void EntityManager::updateCell(const uint32_t id,
                                      const double radius,
                                      const bool isNickname)
 {
+    if (entities.find(id) == entities.end())
+    {
+        return;
+    }
+
+    auto& entity = entities.at(id);
+    auto& positionComp = entity.getComponent<Position>();
+
+    positionComp.setPosition({x, y});
+
     GameEngine::System system;
 
-    const std::pair<double, double> position = {x, y};
-
-    system.update(id, entities, GameEngine::UpdateType::Position, position);
     system.update(id, entities, GameEngine::UpdateType::ShapeSize, radius);
 }
 
@@ -98,34 +105,4 @@ const void EntityManager::removeEntity(const double id)
     {
         linkedEntitiesBiases.erase(id);
     }
-}
-
-std::map<double, GameEngine::Entity> EntityManager::getGameEntities() const
-{
-    std::map<double, GameEngine::Entity> gameEntities;
-
-    for (const auto& [id, entity] : entities)
-    {
-        if (id <= ConfigClient::World::ID || id > ConfigClient::World::ID + 1)
-        {
-            gameEntities.emplace(id, entity);
-        }
-    }
-
-    return gameEntities;
-}
-
-std::map<double, GameEngine::Entity> EntityManager::getHUDEntities() const
-{
-    std::map<double, GameEngine::Entity> hudEntities;
-
-    for (const auto& [id, entity] : entities)
-    {
-        if (id > ConfigClient::World::ID && id <= ConfigClient::World::ID + 1)
-        {
-            hudEntities.emplace(id, entity);
-        }
-    }
-
-    return hudEntities;
 }

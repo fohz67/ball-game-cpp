@@ -82,40 +82,28 @@ void GameEngine::System::loadCircle(GameEngine::Entity& entity, auto& shapeComp)
     }
 }
 
-void GameEngine::System::shapeSystem(sf::RenderWindow& window, GameEngine::Entity& entity)
+void GameEngine::System::shapeSystem(sf::RenderWindow& window,
+                                     GameEngine::Entity& entity,
+                                     float deltaTime)
 {
     if (entity.hasComponent<Shape>() && entity.hasComponent<Position>())
     {
         auto& shapeComp = entity.getComponent<Shape>();
         auto& positionComp = entity.getComponent<Position>();
 
-        static std::unordered_map<uint32_t, std::pair<double, double>> lastPositions;
+        auto interpolatedPos = positionComp.getInterpolatedPosition(deltaTime);
 
         if (shapeComp.getShapeType() == Rectangle)
         {
             loadRectangle(entity, shapeComp);
-
-            auto newPos = positionComp.getPositions()[0];
-            if (lastPositions[entity.getEntityId()] != newPos)
-            {
-                shapeComp.getRect().setPosition(newPos.first, newPos.second);
-                lastPositions[entity.getEntityId()] = newPos;
-            }
-
+            shapeComp.getRect().setPosition(interpolatedPos.first, interpolatedPos.second);
             window.draw(shapeComp.getRect());
         }
 
         if (shapeComp.getShapeType() == Circle)
         {
             loadCircle(entity, shapeComp);
-
-            auto newPos = positionComp.getPositions()[0];
-            if (lastPositions[entity.getEntityId()] != newPos)
-            {
-                shapeComp.getCircle().setPosition(newPos.first, newPos.second);
-                lastPositions[entity.getEntityId()] = newPos;
-            }
-
+            shapeComp.getCircle().setPosition(interpolatedPos.first, interpolatedPos.second);
             window.draw(shapeComp.getCircle());
         }
     }

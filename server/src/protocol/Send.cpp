@@ -5,6 +5,7 @@
 #include "config/Config.hpp"
 #include "engine/Network.hpp"
 #include "managers/CellManager.hpp"
+#include "managers/LeaderboardManager.hpp"
 #include "managers/PlayerManager.hpp"
 #include "protocol/DataInterfaces.hpp"
 #include "protocol/OpCodes.hpp"
@@ -56,7 +57,7 @@ const void Send::sendPlayers(const std::shared_ptr<asio::ip::tcp::socket>& clien
     }
 }
 
-const void Send::sendCells()
+const void Send::sendUpdateGameState()
 {
     SmartBuffer smartBuffer;
     smartBuffer << OpCodes::UPDATE_GAME_STATE;
@@ -115,7 +116,7 @@ const void Send::sendPellets(const std::shared_ptr<asio::ip::tcp::socket>& clien
     }
 }
 
-const void Send::sendPlayerUpdate()
+const void Send::sendUpdatePlayer()
 {
     SmartBuffer smartBuffer;
 
@@ -165,4 +166,31 @@ const void Send::sendPlayerDeleted(const uint32_t playerId)
     smartBuffer << OpCodes::DELETE_PLAYER << playerId;
 
     Network::get().sendToAll(smartBuffer);
+}
+
+const void Send::sendUpdateLeaderboard()
+{
+    SmartBuffer smartBuffer;
+    smartBuffer << OpCodes::UPDATE_LEADERBOARD;
+
+    const std::vector<LeaderboardEntry> leaderboard = LeaderboardManager::get().getLeaderboard();
+
+    for (const LeaderboardEntry& entry : leaderboard)
+    {
+        if (sizeof(uint32_t) + smartBuffer.getSize() + sizeof(IUpdateLeaderboard) >=
+            Config::Network::MAX_SIZE)
+        {
+            Network::get().sendToAll(smartBuffer);
+
+            smartBuffer.reset();
+            smartBuffer << OpCodes::UPDATE_LEADERBOARD;
+        }
+
+        smartBuffer << entry.nickname;
+    }
+
+    if (smartBuffer.getSize() >= sizeof(IUpdateLeaderboard) + sizeof(OpCodes))
+    {
+        Network::get().sendToAll(smartBuffer);
+    }
 }

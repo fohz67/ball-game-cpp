@@ -1,6 +1,7 @@
 #include "protocol/ReadClient.hpp"
 
 #include "components/HUD.hpp"
+#include "components/Leaderboard.hpp"
 #include "components/Viewport.hpp"
 #include "engine/NetworkClient.hpp"
 #include "managers/EntityManager.hpp"
@@ -92,6 +93,23 @@ const void ReadClient::readUpdateGameState(SmartBuffer& smartBuffer)
                                             true);
         }
     }
+}
+
+const void ReadClient::readUpdateLeaderboard(SmartBuffer& smartBuffer)
+{
+    const size_t leaderboardNb =
+        NetworkClient::get().getCutPacketSize(smartBuffer, sizeof(IUpdateLeaderboard));
+    std::vector<std::string> leaderboard;
+
+    for (size_t i = 0; i < leaderboardNb; i++)
+    {
+        IUpdateLeaderboard updateLeaderboard;
+        smartBuffer >> updateLeaderboard.nickname;
+
+        leaderboard.push_back(updateLeaderboard.nickname);
+    }
+
+    Leaderboard::get().setLeaderboard(leaderboard);
 }
 
 const void ReadClient::readSpawnPellets(SmartBuffer& smartBuffer)

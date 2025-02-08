@@ -13,12 +13,7 @@ class PlayerManagerClient
     static PlayerManagerClient& get();
 
     const void removePlayer(const uint32_t playerId);
-
     PlayerClient* getPlayer(const uint32_t playerId);
-    PlayerClient* getMe();
-    uint32_t getMyId();
-
-    const void setMyId(const uint32_t id);
 
     std::vector<PlayerClient> players;
 

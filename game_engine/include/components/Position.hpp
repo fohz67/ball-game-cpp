@@ -11,27 +11,32 @@ class Position : public Component
 {
    public:
     // Constants
-    static inline std::vector<Point> DEFAULT_POSITIONS = {{0.0f, 0.0f}};
+    static inline Point DEFAULT_POSITION = {0.0f, 0.0f};
 
     // Constructor / Destructor
-    Position(const std::vector<Point>& positions = DEFAULT_POSITIONS);
+    Position(const Point& positions = DEFAULT_POSITION);
     ~Position() = default;
 
     // Getters
-    std::vector<Point> getPositions() const;
-    double getPositionX(const uint32_t id) const;
-    double getPositionY(const uint32_t id) const;
+    Point getPosition() const;
+    Point getInterpolatedPosition(float dt);
+    double getPositionX() const;
+    double getPositionY() const;
 
     // Setters
-    void setPositionX(const uint32_t id, const double x);
-    void setPositionY(const uint32_t id, const double y);
+    void setPosition(const Point& pos);
+    void setPositionX(const double x);
+    void setPositionY(const double y);
 
     // Methods
-    void addPosition(const double x, const double y);
-    void removePosition(const uint32_t id);
     void display() const override;
 
    private:
     // Attributes
-    std::vector<Point> positions;
+    Point position;
+    Point previousPosition;
+    Point targetPosition;
+
+    float interpolationFactor = 0.0f;
+    float interpolationSpeed = 10.0f;
 };

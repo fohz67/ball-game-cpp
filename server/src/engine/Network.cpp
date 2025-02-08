@@ -102,13 +102,17 @@ const void Network::sendLoop()
     {
         auto start = std::chrono::steady_clock::now();
 
-        Send::sendCells();
-        Send::sendPlayerUpdate();
+        Send::sendUpdateGameState();
+        Send::sendUpdatePlayer();
+        Send::sendUpdateLeaderboard();
 
-        auto end = std::chrono::steady_clock::now();
-        double duration = std::chrono::duration<double, std::milli>(end - start).count();
-        std::cout << "[Network] Loop iteration took " << std::fixed << std::setprecision(5)
-                  << duration << " ms" << std::endl;
+        if (Config::Game::DEBUG)
+        {
+            auto end = std::chrono::steady_clock::now();
+            double duration = std::chrono::duration<double, std::milli>(end - start).count();
+            std::cout << "[Network] Loop iteration took " << std::fixed << std::setprecision(5)
+                      << duration << " ms" << std::endl;
+        }
 
         std::this_thread::sleep_for(std::chrono::milliseconds(Config::Network::FREQUENCY));
     }

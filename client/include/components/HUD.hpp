@@ -17,6 +17,7 @@ class HUD
     const void createChatBox();
 
     const void update();
+    const void updateLeaderboard();
     const void updateStats();
 
     const void increaseId();

@@ -1,15 +1,17 @@
 #include "System.hpp"
 
-void GameEngine::System::render(sf::RenderWindow& window, std::map<double, Entity>& entities)
+void GameEngine::System::render(sf::RenderWindow& window,
+                                std::map<double, Entity>& entities,
+                                float deltaTime)
 {
     for (auto& [id, entity] : entities)
     {
-        spriteSystem(window, entity);
-        textSystem(window, entity);
-        buttonSystem(window, entity);
-        buttonRectSystem(window, entity);
-        optionButtonSystem(window, entity);
-        sliderSystem(window, entity, entities);
-        shapeSystem(window, entity);
+        spriteSystem(window, entity, deltaTime);
+        textSystem(window, entity, deltaTime);
+        buttonSystem(window, entity, deltaTime);
+        buttonRectSystem(window, entity, deltaTime);
+        optionButtonSystem(window, entity, deltaTime);
+        sliderSystem(window, entity, entities, deltaTime);
+        shapeSystem(window, entity, deltaTime);
     }
 }

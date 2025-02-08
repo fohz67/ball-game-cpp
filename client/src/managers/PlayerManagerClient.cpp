@@ -17,9 +17,9 @@ const void PlayerManagerClient::removePlayer(const uint32_t playerId)
         players.end());
 }
 
-PlayerClient* PlayerManagerClient::getPlayer(uint32_t playerId)
+PlayerClient* PlayerManagerClient::getPlayer(const uint32_t playerId)
 {
-    for (auto& player : players)
+    for (PlayerClient& player : players)
     {
         if (player.getId() == playerId)
         {
@@ -28,19 +28,4 @@ PlayerClient* PlayerManagerClient::getPlayer(uint32_t playerId)
     }
 
     return nullptr;
-}
-
-PlayerClient* PlayerManagerClient::getMe()
-{
-    return getPlayer(myId);
-}
-
-uint32_t PlayerManagerClient::getMyId()
-{
-    return myId;
-}
-
-const void PlayerManagerClient::setMyId(const uint32_t id)
-{
-    myId = id;
 }

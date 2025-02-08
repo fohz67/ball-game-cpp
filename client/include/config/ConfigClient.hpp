@@ -67,10 +67,11 @@ struct ConfigClient
         {
             static constexpr double WIDTH = 210.0f;
             static constexpr double HEIGHT = 180.0f;
-            static inline const std::string TITLE = "Stats";
             static constexpr double LABEL_SIZE = 18.0f;
             static constexpr double VALUE_SIZE = 18.0f;
             static inline const std::vector<double> VALUE_COLOR = {120, 107, 242, 255};
+            static constexpr int MARGIN_TOP = 20;
+            static constexpr int MARGIN_BETWEEN_LINES = 40;
         };
 
         struct Leaderboard
@@ -80,6 +81,9 @@ struct ConfigClient
             static inline const std::string TITLE = "Leaderboard";
             static constexpr double TITLE_SIZE = 23.0f;
             static constexpr double CONTENT_SIZE = 18.0f;
+            static constexpr int MARGIN_TOP = 40;
+            static constexpr int MARGIN_BETWEEN_TITLE_AND_CONTENT = 85;
+            static constexpr int MARGIN_BETWEEN_LINES = 50;
         };
 
         struct ChatBox

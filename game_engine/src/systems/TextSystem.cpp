@@ -50,7 +50,9 @@ void GameEngine::System::loadText(GameEngine::Entity& entity, auto& textComp)
     }
 }
 
-void GameEngine::System::textSystem(sf::RenderWindow& window, GameEngine::Entity& entity)
+void GameEngine::System::textSystem(sf::RenderWindow& window,
+                                    GameEngine::Entity& entity,
+                                    float deltaTime)
 {
     if (entity.hasComponent<Text>() && entity.hasComponent<Position>())
     {
@@ -60,18 +62,6 @@ void GameEngine::System::textSystem(sf::RenderWindow& window, GameEngine::Entity
 
         auto& positionComp = entity.getComponent<Position>();
 
-        if (positionComp.getPositions().size() > 1)
-        {
-            for (auto& position : positionComp.getPositions())
-            {
-                textComp.getText().setPosition(position.first, position.second);
-
-                window.draw(textComp.getText());
-            }
-        }
-        else
-        {
-            window.draw(textComp.getText());
-        }
+        window.draw(textComp.getText());
     }
 }

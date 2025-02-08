@@ -54,5 +54,4 @@ class Cell
     std::vector<double> color;
     double speed;
     bool markedForDeletion = false;
-    int decayResolver = 0;
 };
