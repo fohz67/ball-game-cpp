@@ -54,6 +54,12 @@ const void ProtocolClient::handleMessage(SmartBuffer& smartBuffer)
             break;
         }
 
+        case OpCodes::SPAWN_PELLET:
+        {
+            ReadClient::readSpawnPellet(smartBuffer);
+            break;
+        }
+
         case OpCodes::UPDATE_GAME_STATE:
         {
             ReadClient::readUpdateGameState(smartBuffer);

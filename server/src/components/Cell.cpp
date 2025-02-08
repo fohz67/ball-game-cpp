@@ -71,7 +71,16 @@ void Cell::setMass(const double mass)
 
 void Cell::decay()
 {
-    mass -= mass * Config::Gameplay::Cell::DECAY_RATE;
+    double decayRate = Config::Gameplay::Cell::DECAY_RATE;
+    double massFactor = std::pow(mass / Config::Gameplay::Cell::SPAWN_MASS, 
+                                 Config::Gameplay::Cell::DECAY_EXPONENT);
+    double adjustedDecay = decayRate * (1.0 + massFactor * Config::Gameplay::Cell::DECAY_SCALING);
+
+    mass -= mass * adjustedDecay;
+
+    if (mass < Config::Gameplay::Cell::MIN_MASS) {
+        mass = Config::Gameplay::Cell::MIN_MASS;
+    }
 }
 
 void Cell::move(const Vector2& dir, const double speed)

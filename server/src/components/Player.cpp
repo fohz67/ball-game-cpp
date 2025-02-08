@@ -4,7 +4,14 @@ Player::Player(const uint32_t id,
                const std::shared_ptr<asio::ip::tcp::socket>& client,
                const std::vector<double> color,
                const std::vector<double> cellColor)
-    : id(id), client(client), color(color), cellColor(cellColor)
+    : id(id), client(client), color(color), cellColor(cellColor), isBot(false)
+{
+}
+
+Player::Player(uint32_t id,
+               const std::vector<double>& nicknameColor,
+               const std::vector<double>& cellColor)
+    : id(id), client(nullptr), color(nicknameColor), cellColor(cellColor), isBot(true)
 {
 }
 
@@ -58,6 +65,11 @@ double Player::getCellCount() const
     return cellCount;
 }
 
+bool Player::getIsBot() const
+{
+    return isBot;
+}
+
 const void Player::setViewport(const Vector2& newViewport)
 {
     viewport = newViewport;
@@ -86,4 +98,9 @@ const void Player::setTotalMass(const double newTotalMass)
 const void Player::setCellCount(const double newCellCount)
 {
     cellCount = newCellCount;
+}
+
+const void Player::setBot(const bool newIsBot)
+{
+    isBot = newIsBot;
 }

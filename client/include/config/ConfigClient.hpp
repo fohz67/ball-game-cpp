@@ -85,8 +85,8 @@ struct ConfigClient
             static constexpr int FONT_WEIGHT_VALUE = 700;
             static constexpr double CONTENT_SIZE = 18.0f;
             static constexpr int MARGIN_TOP = 40;
-            static constexpr int MARGIN_BETWEEN_TITLE_AND_CONTENT = 85;
-            static constexpr int MARGIN_BETWEEN_LINES = 50;
+            static constexpr int MARGIN_BETWEEN_TITLE_AND_CONTENT = 75;
+            static constexpr int MARGIN_BETWEEN_LINES = 30;
             static constexpr int MAX_ENTRIES = 10;
         };
 

@@ -63,7 +63,8 @@ std::vector<LeaderboardEntry> LeaderboardManager::getLeaderboard() const
 std::vector<LeaderboardEntry> LeaderboardManager::getClientLeaderboard() const
 {
     return leaderboard.size() > Config::Gameplay::Leaderboard::MAX_ENTRIES
-               ? std::vector<LeaderboardEntry>(leaderboard.begin(),
-                                               leaderboard.begin() + Config::Gameplay::Leaderboard::MAX_ENTRIES)
+               ? std::vector<LeaderboardEntry>(
+                     leaderboard.begin(),
+                     leaderboard.begin() + Config::Gameplay::Leaderboard::MAX_ENTRIES)
                : leaderboard;
 }

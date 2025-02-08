@@ -30,32 +30,17 @@ const void Send::sendPlayer(const Player* player)
 
 const void Send::sendPlayers(const std::shared_ptr<asio::ip::tcp::socket>& client)
 {
-    size_t playerSize = sizeof(uint32_t) * 3;
-
     SmartBuffer smartBuffer;
-    smartBuffer << OpCodes::CREATE_PLAYER;
 
     const std::vector<Player*> players = PlayerManager::get().getPlayers();
 
     for (const Player* player : players)
     {
-        if (sizeof(uint32_t) + smartBuffer.getSize() + playerSize +
-                static_cast<uint32_t>(player->getNickname().size()) >=
-            Config::Network::MAX_SIZE)
-        {
-            Network::get().sendToClient(client, smartBuffer);
-
-            smartBuffer.reset();
-            smartBuffer << OpCodes::CREATE_PLAYER;
-        }
-
-        smartBuffer << player->getId() << player->getNickname()
+        smartBuffer.reset();
+        smartBuffer << OpCodes::CREATE_PLAYER << player->getId() << player->getNickname()
                     << ColorConverter::vecToInt(player->getColor())
                     << ColorConverter::vecToInt(player->getCellColor());
-    }
 
-    if (smartBuffer.getSize() >= playerSize + sizeof(OpCodes))
-    {
         Network::get().sendToClient(client, smartBuffer);
     }
 }
@@ -95,7 +80,8 @@ const void Send::sendUpdateLeaderboard()
     SmartBuffer smartBuffer;
     smartBuffer << OpCodes::UPDATE_LEADERBOARD;
 
-    const std::vector<LeaderboardEntry> leaderboard = LeaderboardManager::get().getClientLeaderboard();
+    const std::vector<LeaderboardEntry> leaderboard =
+        LeaderboardManager::get().getClientLeaderboard();
     smartBuffer << leaderboard.size();
 
     for (const LeaderboardEntry& entry : leaderboard)
@@ -138,6 +124,20 @@ const void Send::sendPellets(const std::shared_ptr<asio::ip::tcp::socket>& clien
     {
         Network::get().sendToClient(client, smartBuffer);
     }
+}
+
+const void Send::sendPellet(const uint32_t pelletId,
+                            const Vector2& location,
+                            const double radius,
+                            const std::vector<double> color)
+{
+    SmartBuffer smartBuffer;
+    smartBuffer << OpCodes::SPAWN_PELLET;
+
+    smartBuffer << pelletId << location.x << location.y << radius
+                << ColorConverter::vecToInt(color);
+
+    Network::get().sendToAll(smartBuffer);
 }
 
 const void Send::sendUpdatePlayer()

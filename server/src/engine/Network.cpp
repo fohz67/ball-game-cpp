@@ -92,6 +92,10 @@ const void Network::sendToAll(SmartBuffer& smartBuffer)
 
     for (const Player* player : players)
     {
+        if (player->getIsBot())
+        {
+            continue;
+        }
         sendToClient(player->getClient(), smartBuffer);
     }
 }

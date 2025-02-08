@@ -15,6 +15,7 @@ enum class OpCodes : uint8_t
     DELETE_PLAYER = 22,
 
     SPAWN_PELLETS = 30,
+    SPAWN_PELLET = 31,
 
     UPDATE_GAME_STATE = 40,
     UPDATE_LEADERBOARD = 41,

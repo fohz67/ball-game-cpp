@@ -7,6 +7,7 @@
 
 #include "components/Cell.hpp"
 #include "config/Config.hpp"
+#include "engine/AI.hpp"
 #include "geometry/FastInvSqrt.hpp"
 #include "managers/CellManager.hpp"
 #include "managers/LeaderboardManager.hpp"
@@ -20,8 +21,8 @@ Game& Game::get()
 
 const void Game::run()
 {
+    PlayerManager::get().generateBots();
     CellManager::get().generatePellets();
-    CellManager::get().generateBots();
 
     updateThread = std::thread(&Game::updateLoop, this);
 }
@@ -63,7 +64,17 @@ const void Game::updateGameState()
         }
 
         Vector2 center(0.0f, 0.0f);
-        Vector2 dir = player->getMousePosition();
+        Vector2 dir;
+
+        if (player->getIsBot())
+        {
+            dir = AI::computeAIMovement(player->getId());
+        }
+        else
+        {
+            dir = player->getMousePosition();
+        }
+
         const double magnitude = dir.magnitude();
         const double decrease = Config::Gameplay::Cell::DECREASE_SPEED_THRESHOLD;
         const double slowdown = (magnitude < decrease) ? magnitude / decrease : 1.0f;

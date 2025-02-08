@@ -39,6 +39,7 @@ const void NetworkClient::run()
     catch (const std::exception& e)
     {
         std::cerr << "Network connection error: " << e.what() << std::endl;
+        exit(0);
     }
 }
 
@@ -51,6 +52,7 @@ const void NetworkClient::send(SmartBuffer& smartBuffer)
     catch (const std::exception& e)
     {
         std::cerr << "Send error: " << e.what() << std::endl;
+        exit(0);
     }
 }
 

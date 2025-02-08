@@ -21,36 +21,24 @@ const void CellManager::generatePellets()
 
     for (int i = 0; i < Config::Gameplay::Pellet::COUNT; i++)
     {
-        createPellet();
+        createPellet(false);
     }
 }
 
-const void CellManager::createPellet()
+const void CellManager::createPellet(const bool sendNewPellet)
 {
     uint32_t pelletId = AtomicID::get().getNextId();
     Vector2 location = Util::getRandomLocation();
     double mass = Config::Gameplay::Pellet::MASS;
     std::vector<double> color = Util::getRandomColor();
 
-    pelletCells.emplace_back(pelletId, 0, CellType::PELLET, location, mass, color);
-}
+    Cell pellet = Cell(pelletId, pelletId, CellType::PELLET, location, mass, color);
+    pelletCells.push_back(pellet);
 
-const void CellManager::generateBots()
-{
-    for (int i = 0; i < Config::Gameplay::Bot::COUNT; i++)
+    if (sendNewPellet)
     {
-        createBot();
+        Send::sendPellet(pelletId, location, pellet.getRadius(), color);
     }
-}
-
-const void CellManager::createBot()
-{
-    uint32_t botId = AtomicID::get().getNextId();
-    Vector2 location = Util::getRandomLocation();
-    double mass = Config::Gameplay::Bot::MASS;
-    std::vector<double> color = Util::getRandomColor();
-
-    playerCells.emplace_back(botId, 0, CellType::BOT, location, mass, color);
 }
 
 const void CellManager::createCell(const uint32_t ownerId)
@@ -72,10 +60,7 @@ const void CellManager::updateCells()
     {
         Cell& cell = playerCells[i];
 
-        if (cell.getType() != CellType::BOT)
-        {
-            cell.decay();
-        }
+        cell.decay();
 
         for (Cell& pellet : pelletCells)
         {
@@ -155,11 +140,20 @@ const void CellManager::deleteCells(const std::vector<uint32_t>& ids, const int 
 
     if (many > 1)
     {
+        uint32_t pelletCount = pelletCells.size();
+
         pelletCells.erase(std::remove_if(pelletCells.begin(),
                                          pelletCells.end(),
                                          [&idSet](const Cell& cell)
                                          { return idSet.find(cell.getId()) != idSet.end(); }),
                           pelletCells.end());
+
+        uint32_t deletedNb = pelletCount - pelletCells.size();
+
+        for (uint i = 0; i < deletedNb; i++)
+        {
+            createPellet(true);
+        }
     }
 
     Send::sendEntityRemoved(ids);

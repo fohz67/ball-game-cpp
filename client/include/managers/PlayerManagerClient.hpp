@@ -16,7 +16,7 @@ class PlayerManagerClient
                          const std::string& nickname,
                          const std::vector<double>& color,
                          const std::vector<double>& cellColor);
-                         
+
     const void removePlayer(const uint32_t playerId);
 
     PlayerClient* getPlayer(const uint32_t playerId);

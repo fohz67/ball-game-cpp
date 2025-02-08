@@ -15,6 +15,8 @@ class PlayerManager
 
     static PlayerManager& get();
 
+    const void generateBots();
+
     const void newPlayer(const std::shared_ptr<asio::ip::tcp::socket>& client);
     const void removePlayer(const std::shared_ptr<asio::ip::tcp::socket>& client);
     Player* getPlayer(const std::shared_ptr<asio::ip::tcp::socket>& client);
@@ -25,4 +27,5 @@ class PlayerManager
     ~PlayerManager() = default;
 
     std::unordered_map<std::shared_ptr<asio::ip::tcp::socket>, Player> players;
+    std::vector<Player> bots;
 };

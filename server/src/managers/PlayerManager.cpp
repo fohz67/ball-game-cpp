@@ -1,5 +1,7 @@
 #include "managers/PlayerManager.hpp"
 
+#include <iostream>
+
 #include "config/Config.hpp"
 #include "managers/CellManager.hpp"
 #include "protocol/Send.hpp"
@@ -10,6 +12,21 @@ PlayerManager& PlayerManager::get()
 {
     static PlayerManager instance;
     return instance;
+}
+
+const void PlayerManager::generateBots()
+{
+    for (int i = 0; i < Config::Gameplay::Bot::COUNT; i++)
+    {
+        uint32_t botId = AtomicID::get().getNextId();
+        const std::vector<double> nicknameColor = Config::Gameplay::Player::COLOR;
+        const std::vector<double> cellColor = Util::getRandomColor();
+
+        bots.emplace_back(botId, nicknameColor, cellColor);
+        bots.back().setNickname("Bot " + std::to_string(i + 1));
+
+        CellManager::get().createCell(botId);
+    }
 }
 
 const void PlayerManager::newPlayer(const std::shared_ptr<asio::ip::tcp::socket>& client)
@@ -46,12 +63,16 @@ Player* PlayerManager::getPlayer(const std::shared_ptr<asio::ip::tcp::socket>& c
 std::vector<Player*> PlayerManager::getPlayers()
 {
     std::vector<Player*> result;
-
-    result.reserve(players.size());
+    result.reserve(players.size() + bots.size());
 
     for (auto& pair : players)
     {
         result.push_back(&pair.second);
+    }
+
+    for (auto& bot : bots)
+    {
+        result.push_back(&bot);
     }
 
     return result;

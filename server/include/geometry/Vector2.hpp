@@ -88,4 +88,14 @@ class Vector2
     {
         return x * rhs.x + y * rhs.y;
     }
+
+    void normalize()
+    {
+        double mag = magnitude();
+        if (mag != 0)
+        {
+            x /= mag;
+            y /= mag;
+        }
+    }
 };

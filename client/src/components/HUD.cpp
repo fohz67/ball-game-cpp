@@ -24,7 +24,7 @@ const void HUD::create()
 {
     createLeaderboard();
     createStats();
-    createChatBox();
+    // createChatBox();
 }
 
 const void HUD::update()
@@ -197,15 +197,18 @@ const void HUD::updateLeaderboard()
 
     const std::vector<std::string> leaderboard = Leaderboard::get().getLeaderboard();
 
+    int i = 0;
+
     for (const std::string& nickname : leaderboard)
     {
-        int i = 0;
-
-        system.update(
-            bias, EntityManager::get().hudEntities, GameEngine::UpdateType::Text, std::to_string(i) + ". " + nickname);
+        ;
+        i++;
+        system.update(bias,
+                      EntityManager::get().hudEntities,
+                      GameEngine::UpdateType::Text,
+                      std::to_string(i) + ". " + nickname);
 
         bias += ConfigClient::Network::ENTITY_LINKING_BIAS;
-        i++;
     }
 }
 

@@ -24,20 +24,20 @@ const void Read::readJoinServer(const std::shared_ptr<asio::ip::tcp::socket>& cl
     if (nickname.length() > Config::Gameplay::Player::MAX_NICKNAME_LENGTH)
     {
         nickname = Config::Gameplay::Player::NICKNAME_TOO_LONG_FALLBACK;
-    } else if (nickname.empty())
+    }
+    else if (nickname.empty())
     {
         nickname = Config::Gameplay::Player::NICKNAME_EMPTY_FALLBACK;
     }
 
     player->setNickname(nickname);
 
-    Send::sendPlayer(player);
-    Send::sendPlayers(client);
-
     CellManager::get().createCell(player->getId());
 
     Send::sendWorld(client);
     Send::sendPellets(client);
+    Send::sendPlayer(player);
+    Send::sendPlayers(client);
 }
 
 const void Read::readUpdateMousePosition(const std::shared_ptr<asio::ip::tcp::socket>& client,

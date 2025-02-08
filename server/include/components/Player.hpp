@@ -15,6 +15,10 @@ class Player
            const std::vector<double> color,
            const std::vector<double> cellColor);
 
+    Player(uint32_t id,
+           const std::vector<double>& nicknameColor,
+           const std::vector<double>& cellColor);
+
     uint32_t getId() const;
     const std::shared_ptr<asio::ip::tcp::socket>& getClient() const;
     const Vector2& getViewport() const;
@@ -25,6 +29,7 @@ class Player
     double getScore() const;
     double getTotalMass() const;
     double getCellCount() const;
+    bool getIsBot() const;
 
     const void setViewport(const Vector2& newViewport);
     const void setMousePosition(const Vector2& newMousePosition);
@@ -32,6 +37,7 @@ class Player
     const void setScore(const double newScore);
     const void setTotalMass(const double newTotalMass);
     const void setCellCount(const double newCellCount);
+    const void setBot(const bool newIsBot);
 
    private:
     uint32_t id;
@@ -44,4 +50,5 @@ class Player
     double score;
     double totalMass;
     double cellCount;
+    bool isBot;
 };

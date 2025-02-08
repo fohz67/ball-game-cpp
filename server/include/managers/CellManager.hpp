@@ -14,10 +14,7 @@ class CellManager
     static CellManager& get();
 
     const void generatePellets();
-    const void createPellet();
-
-    const void generateBots();
-    const void createBot();
+    const void createPellet(const bool sendNewPellet);
 
     const void createCell(const uint32_t ownerId);
     const void updateCells();

@@ -38,9 +38,9 @@ const void ReadClient::readCreatePlayer(SmartBuffer& smartBuffer)
     smartBuffer >> id >> nickname >> color >> cellColor;
 
     PlayerManagerClient::get().addPlayer(id,
-                                                    nickname,
-                                                    ColorConverterClient::intToVec(color),
-                                                    ColorConverterClient::intToVec(cellColor));
+                                         nickname,
+                                         ColorConverterClient::intToVec(color),
+                                         ColorConverterClient::intToVec(cellColor));
 }
 
 const void ReadClient::readUpdateGameState(SmartBuffer& smartBuffer)
@@ -114,6 +114,15 @@ const void ReadClient::readSpawnPellets(SmartBuffer& smartBuffer)
         EntityManager::get().createCell(
             id, x, y, radius, ColorConverterClient::intToVec(color), "");
     }
+}
+
+const void ReadClient::readSpawnPellet(SmartBuffer& smartBuffer)
+{
+    uint32_t id, color;
+    double x, y, radius;
+    smartBuffer >> id >> x >> y >> radius >> color;
+
+    EntityManager::get().createCell(id, x, y, radius, ColorConverterClient::intToVec(color), "");
 }
 
 const void ReadClient::readUpdatePlayer(SmartBuffer& smartBuffer)
