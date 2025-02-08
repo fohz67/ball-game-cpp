@@ -72,13 +72,14 @@ void Cell::setMass(const double mass)
 void Cell::decay()
 {
     double decayRate = Config::Gameplay::Cell::DECAY_RATE;
-    double massFactor = std::pow(mass / Config::Gameplay::Cell::SPAWN_MASS, 
-                                 Config::Gameplay::Cell::DECAY_EXPONENT);
+    double massFactor =
+        std::pow(mass / Config::Gameplay::Cell::SPAWN_MASS, Config::Gameplay::Cell::DECAY_EXPONENT);
     double adjustedDecay = decayRate * (1.0 + massFactor * Config::Gameplay::Cell::DECAY_SCALING);
 
     mass -= mass * adjustedDecay;
 
-    if (mass < Config::Gameplay::Cell::MIN_MASS) {
+    if (mass < Config::Gameplay::Cell::MIN_MASS)
+    {
         mass = Config::Gameplay::Cell::MIN_MASS;
     }
 }
