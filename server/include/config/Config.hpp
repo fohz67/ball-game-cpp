@@ -61,11 +61,14 @@ struct Config
         struct Player
         {
             static inline std::vector<double> COLOR = {255, 255, 255, 255};
+            static constexpr int MAX_NICKNAME_LENGTH = 20;
+            static inline std::string NICKNAME_TOO_LONG_FALLBACK = "Long Name";
+            static inline std::string NICKNAME_EMPTY_FALLBACK = "An Unnamed Cell";
         };
 
         struct Leaderboard
         {
-            static constexpr int COUNT = 10;
+            static constexpr int MAX_ENTRIES = 10;
         };
     };
 };

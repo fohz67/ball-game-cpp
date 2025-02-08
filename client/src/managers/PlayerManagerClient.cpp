@@ -8,6 +8,14 @@ PlayerManagerClient& PlayerManagerClient::get()
     return instance;
 }
 
+const void PlayerManagerClient::addPlayer(const uint32_t id,
+                                          const std::string& nickname,
+                                          const std::vector<double>& color,
+                                          const std::vector<double>& cellColor)
+{
+    players.emplace_back(id, nickname, color, cellColor);
+}
+
 const void PlayerManagerClient::removePlayer(const uint32_t playerId)
 {
     players.erase(
@@ -28,4 +36,9 @@ PlayerClient* PlayerManagerClient::getPlayer(const uint32_t playerId)
     }
 
     return nullptr;
+}
+
+std::vector<PlayerClient> PlayerManagerClient::getPlayers() const
+{
+    return players;
 }

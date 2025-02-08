@@ -90,6 +90,25 @@ const void Send::sendUpdateGameState()
     }
 }
 
+const void Send::sendUpdateLeaderboard()
+{
+    SmartBuffer smartBuffer;
+    smartBuffer << OpCodes::UPDATE_LEADERBOARD;
+
+    const std::vector<LeaderboardEntry> leaderboard = LeaderboardManager::get().getClientLeaderboard();
+    smartBuffer << leaderboard.size();
+
+    for (const LeaderboardEntry& entry : leaderboard)
+    {
+        smartBuffer << entry.nickname;
+    }
+
+    if (smartBuffer.getSize() > sizeof(OpCodes))
+    {
+        Network::get().sendToAll(smartBuffer);
+    }
+}
+
 const void Send::sendPellets(const std::shared_ptr<asio::ip::tcp::socket>& client)
 {
     size_t pelletSize = sizeof(uint32_t) * 2 + sizeof(double) * 3;
@@ -173,32 +192,4 @@ const void Send::sendPlayerDeleted(const uint32_t playerId)
     smartBuffer << OpCodes::DELETE_PLAYER << playerId;
 
     Network::get().sendToAll(smartBuffer);
-}
-
-const void Send::sendUpdateLeaderboard()
-{
-    SmartBuffer smartBuffer;
-    smartBuffer << OpCodes::UPDATE_LEADERBOARD;
-
-    const std::vector<LeaderboardEntry> leaderboard = LeaderboardManager::get().getLeaderboard();
-
-    for (const LeaderboardEntry& entry : leaderboard)
-    {
-        if (sizeof(uint32_t) + smartBuffer.getSize() +
-                static_cast<uint32_t>(entry.nickname.size()) >=
-            Config::Network::MAX_SIZE)
-        {
-            Network::get().sendToAll(smartBuffer);
-
-            smartBuffer.reset();
-            smartBuffer << OpCodes::UPDATE_LEADERBOARD;
-        }
-
-        smartBuffer << entry.nickname;
-    }
-
-    if (smartBuffer.getSize() > sizeof(OpCodes))
-    {
-        Network::get().sendToAll(smartBuffer);
-    }
 }

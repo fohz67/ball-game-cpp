@@ -37,7 +37,7 @@ const void ReadClient::readCreatePlayer(SmartBuffer& smartBuffer)
     std::string nickname;
     smartBuffer >> id >> nickname >> color >> cellColor;
 
-    PlayerManagerClient::get().players.emplace_back(id,
+    PlayerManagerClient::get().addPlayer(id,
                                                     nickname,
                                                     ColorConverterClient::intToVec(color),
                                                     ColorConverterClient::intToVec(cellColor));
@@ -84,12 +84,12 @@ const void ReadClient::readUpdateGameState(SmartBuffer& smartBuffer)
 
 const void ReadClient::readUpdateLeaderboard(SmartBuffer& smartBuffer)
 {
-    const size_t leaderboardNb =
-        NetworkClient::get().getCutPacketSize(smartBuffer, sizeof(std::string));
+    size_t nicknameNb;
+    smartBuffer >> nicknameNb;
 
     std::vector<std::string> leaderboard;
 
-    for (size_t i = 0; i < leaderboardNb; i++)
+    for (size_t i = 0; i < nicknameNb; i++)
     {
         std::string nickname;
         smartBuffer >> nickname;

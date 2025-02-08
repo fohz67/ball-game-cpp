@@ -23,7 +23,8 @@ class LeaderboardManager
 
     const void updateLeaderboard();
 
-    std::vector<LeaderboardEntry> getLeaderboard();
+    std::vector<LeaderboardEntry> getLeaderboard() const;
+    std::vector<LeaderboardEntry> getClientLeaderboard() const;
 
    private:
     LeaderboardManager() = default;

@@ -86,24 +86,21 @@ const void HUD::createLeaderboard()
     // Players List
     float yOffset = ConfigClient::HUD::PADDING +
                     ConfigClient::HUD::Leaderboard::MARGIN_BETWEEN_TITLE_AND_CONTENT;
-    auto players = PlayerManagerClient::get().players;
 
-    for (const auto& player : players)
+    for (int i = 0; i < ConfigClient::HUD::Leaderboard::MAX_ENTRIES; i++)
     {
-        int i = 1;
-
         increaseId();
 
         auto newPlayerEntity = GameEngine::Entity(currentId);
         newPlayerEntity.addComponent(
-            Text(std::to_string(i) + ". " + player.getNickname(),
+            Text("",
                  "assets/fonts/" + ConfigClient::HUD::FONT_FAMILY + "/" +
                      std::to_string(ConfigClient::HUD::Leaderboard::FONT_WEIGHT_VALUE) + ".ttf",
                  ConfigClient::HUD::Leaderboard::CONTENT_SIZE,
-                 1));
+                 0));
         newPlayerEntity.addComponent(
             Position({{GameClient::get().getWindowSize().x -
-                           ConfigClient::HUD::Leaderboard::WIDTH / 2 - ConfigClient::HUD::PADDING,
+                           (ConfigClient::HUD::Leaderboard::WIDTH - ConfigClient::HUD::PADDING * 3),
                        yOffset}}));
         newPlayerEntity.addComponent(Color(ConfigClient::HUD::TEXT_COLOR));
 
@@ -111,7 +108,6 @@ const void HUD::createLeaderboard()
         leaderboardEntities.emplace(currentId, std::move(newPlayerEntity));
 
         yOffset += ConfigClient::HUD::Leaderboard::MARGIN_BETWEEN_LINES;
-        i++;
     }
 }
 
@@ -203,10 +199,13 @@ const void HUD::updateLeaderboard()
 
     for (const std::string& nickname : leaderboard)
     {
+        int i = 0;
+
         system.update(
-            bias, EntityManager::get().hudEntities, GameEngine::UpdateType::Text, nickname);
+            bias, EntityManager::get().hudEntities, GameEngine::UpdateType::Text, std::to_string(i) + ". " + nickname);
 
         bias += ConfigClient::Network::ENTITY_LINKING_BIAS;
+        i++;
     }
 }
 

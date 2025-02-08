@@ -87,6 +87,7 @@ struct ConfigClient
             static constexpr int MARGIN_TOP = 40;
             static constexpr int MARGIN_BETWEEN_TITLE_AND_CONTENT = 85;
             static constexpr int MARGIN_BETWEEN_LINES = 50;
+            static constexpr int MAX_ENTRIES = 10;
         };
 
         struct ChatBox

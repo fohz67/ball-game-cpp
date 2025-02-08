@@ -21,6 +21,14 @@ const void Read::readJoinServer(const std::shared_ptr<asio::ip::tcp::socket>& cl
 
     Player* player = PlayerManager::get().getPlayer(client);
 
+    if (nickname.length() > Config::Gameplay::Player::MAX_NICKNAME_LENGTH)
+    {
+        nickname = Config::Gameplay::Player::NICKNAME_TOO_LONG_FALLBACK;
+    } else if (nickname.empty())
+    {
+        nickname = Config::Gameplay::Player::NICKNAME_EMPTY_FALLBACK;
+    }
+
     player->setNickname(nickname);
 
     Send::sendPlayer(player);

@@ -38,5 +38,5 @@ class Position : public Component
     Point targetPosition;
 
     float interpolationFactor = 0.0f;
-    float interpolationSpeed = 10.0f;
+    float interpolationSpeed = 15.0f;
 };

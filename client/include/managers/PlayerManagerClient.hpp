@@ -12,14 +12,20 @@ class PlayerManagerClient
 
     static PlayerManagerClient& get();
 
+    const void addPlayer(const uint32_t id,
+                         const std::string& nickname,
+                         const std::vector<double>& color,
+                         const std::vector<double>& cellColor);
+                         
     const void removePlayer(const uint32_t playerId);
-    PlayerClient* getPlayer(const uint32_t playerId);
 
-    std::vector<PlayerClient> players;
+    PlayerClient* getPlayer(const uint32_t playerId);
+    std::vector<PlayerClient> getPlayers() const;
 
    private:
     PlayerManagerClient() = default;
     ~PlayerManagerClient() = default;
 
+    std::vector<PlayerClient> players;
     uint32_t myId;
 };
