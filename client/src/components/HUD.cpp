@@ -68,7 +68,7 @@ const void HUD::createLeaderboard()
     auto newEntityTitle = GameEngine::Entity(currentId);
     newEntityTitle.addComponent(Text(ConfigClient::HUD::Leaderboard::TITLE,
                                      "assets/fonts/" + ConfigClient::HUD::FONT_FAMILY + "/" +
-                                         std::to_string(ConfigClient::HUD::FONT_WEIGHT) + ".ttf",
+                                         std::to_string(ConfigClient::HUD::Leaderboard::FONT_WEIGHT_LABEL) + ".ttf",
                                      ConfigClient::HUD::Leaderboard::TITLE_SIZE,
                                      1));
     newEntityTitle.addComponent(
@@ -94,7 +94,7 @@ const void HUD::createLeaderboard()
         auto newPlayerEntity = GameEngine::Entity(currentId);
         newPlayerEntity.addComponent(Text(std::to_string(i) + ". " + player.getNickname(),
                                           "assets/fonts/" + ConfigClient::HUD::FONT_FAMILY + "/" +
-                                              std::to_string(ConfigClient::HUD::FONT_WEIGHT) +
+                                              std::to_string(ConfigClient::HUD::Leaderboard::FONT_WEIGHT_VALUE) +
                                               ".ttf",
                                           ConfigClient::HUD::Leaderboard::CONTENT_SIZE,
                                           1));
@@ -138,7 +138,7 @@ const void HUD::createStats()
         auto newLabelEntity = GameEngine::Entity(currentId);
         newLabelEntity.addComponent(Text(label,
                                          "assets/fonts/" + ConfigClient::HUD::FONT_FAMILY + "/" +
-                                             std::to_string(ConfigClient::HUD::FONT_WEIGHT) +
+                                             std::to_string(ConfigClient::HUD::Stats::FONT_WEIGHT_LABEL) +
                                              ".ttf",
                                          ConfigClient::HUD::Stats::LABEL_SIZE,
                                          0));
@@ -155,18 +155,18 @@ const void HUD::createStats()
         auto newValueEntity = GameEngine::Entity(currentId);
         newValueEntity.addComponent(Text("0",
                                          "assets/fonts/" + ConfigClient::HUD::FONT_FAMILY + "/" +
-                                             std::to_string(ConfigClient::HUD::FONT_WEIGHT) +
+                                             std::to_string(ConfigClient::HUD::Stats::FONT_WEIGHT_VALUE) +
                                              ".ttf",
                                          ConfigClient::HUD::Stats::VALUE_SIZE,
                                          2));
         newValueEntity.addComponent(
             Position({{ConfigClient::HUD::PADDING + ConfigClient::HUD::Stats::WIDTH -
-                           ConfigClient::HUD::TEXT_PADDING,
+                           ConfigClient::HUD::TEXT_PADDING * 2.8 ,
                        yOffset}}));
         newValueEntity.addComponent(Color(ConfigClient::HUD::Stats::VALUE_COLOR));
 
         EntityManager::get().hudEntities.emplace(currentId, std::move(newValueEntity));
-        statsEntity.emplace(currentId, std::move(newValueEntity));
+        statsEntity.emplace(currentId, std::move(newValueEntity)); 
 
         yOffset += ConfigClient::HUD::Stats::MARGIN_BETWEEN_LINES;
     }

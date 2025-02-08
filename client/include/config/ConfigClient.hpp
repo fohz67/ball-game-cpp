@@ -60,15 +60,16 @@ struct ConfigClient
         static constexpr double PADDING = 10.0f;
         static constexpr double TEXT_PADDING = 25.0f;
         static inline std::string FONT_FAMILY = "Montserrat";
-        static constexpr int FONT_WEIGHT = 800;
         static inline const std::vector<double> TEXT_COLOR = {255, 255, 255, 255};
 
         struct Stats
         {
-            static constexpr double WIDTH = 210.0f;
-            static constexpr double HEIGHT = 180.0f;
+            static constexpr double WIDTH = 180.0f;
+            static constexpr double HEIGHT = 220.0f;
             static constexpr double LABEL_SIZE = 18.0f;
-            static constexpr double VALUE_SIZE = 18.0f;
+            static constexpr double VALUE_SIZE = 19.0f;
+            static constexpr int FONT_WEIGHT_LABEL = 500;
+            static constexpr int FONT_WEIGHT_VALUE = 900;
             static inline const std::vector<double> VALUE_COLOR = {120, 107, 242, 255};
             static constexpr int MARGIN_TOP = 20;
             static constexpr int MARGIN_BETWEEN_LINES = 40;
@@ -80,6 +81,8 @@ struct ConfigClient
             static constexpr double HEIGHT = 400.0f;
             static inline const std::string TITLE = "Leaderboard";
             static constexpr double TITLE_SIZE = 23.0f;
+            static constexpr int FONT_WEIGHT_LABEL = 900;
+            static constexpr int FONT_WEIGHT_VALUE = 700;
             static constexpr double CONTENT_SIZE = 18.0f;
             static constexpr int MARGIN_TOP = 40;
             static constexpr int MARGIN_BETWEEN_TITLE_AND_CONTENT = 85;

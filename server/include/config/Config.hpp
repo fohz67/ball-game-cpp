@@ -28,21 +28,21 @@ struct Config
     {
         struct World
         {
-            static constexpr uint16_t SIZE = 1500.0f;
+            static constexpr uint16_t SIZE = 1000.0f;
         };
 
         struct Cell
         {
             static constexpr double SPAWN_MASS = 10000.0f;
-            static constexpr double SPEED = 4.0f;
+            static constexpr double SPEED = 2.5f;
             static constexpr double DECREASE_SPEED_THRESHOLD = 0.05f;
-            static constexpr double DECAY_RATE = 0.001f;
+            static constexpr double DECAY_RATE = 0.005f;
         };
 
         struct Bot
         {
-            static constexpr int COUNT = 0;
-            static constexpr double MASS = 1000.0f;
+            static constexpr int COUNT = 100;
+            static constexpr double MASS = 10000.0f;
         };
 
         struct Eat
@@ -53,8 +53,8 @@ struct Config
 
         struct Pellet
         {
-            static constexpr int COUNT = 2500;
-            static constexpr double MASS = 4.0f;
+            static constexpr int COUNT = 5000;
+            static constexpr double MASS = 1.0f;
             static constexpr double EAT_FACTOR = 4.0f;
         };
 
