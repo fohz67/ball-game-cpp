@@ -7,7 +7,6 @@
 #include <components/Sprite.hpp>
 #include <components/Text.hpp>
 #include <components/Texture.hpp>
-#include <iostream>
 
 #include "System.hpp"
 #include "config/ConfigClient.hpp"

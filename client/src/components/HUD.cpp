@@ -1,7 +1,5 @@
 #include "components/HUD.hpp"
 
-#include <iostream>
-
 #include "components/Color.hpp"
 #include "components/Leaderboard.hpp"
 #include "components/Position.hpp"

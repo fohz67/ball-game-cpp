@@ -1,7 +1,5 @@
 #include "protocol/ReadClient.hpp"
 
-#include <iostream>
-
 #include "components/HUD.hpp"
 #include "components/Leaderboard.hpp"
 #include "components/Viewport.hpp"

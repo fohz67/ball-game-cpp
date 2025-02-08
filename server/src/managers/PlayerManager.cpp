@@ -1,7 +1,5 @@
 #include "managers/PlayerManager.hpp"
 
-#include <iostream>
-
 #include "config/Config.hpp"
 #include "managers/CellManager.hpp"
 #include "protocol/Send.hpp"

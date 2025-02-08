@@ -1,7 +1,5 @@
 #include "protocol/Send.hpp"
 
-#include <iostream>
-
 #include "config/Config.hpp"
 #include "engine/Network.hpp"
 #include "managers/CellManager.hpp"
