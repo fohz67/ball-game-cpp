@@ -14,6 +14,7 @@ static Vector2 getRandomDirection()
     static std::uniform_real_distribution<float> angleDist(0.0f, 2.0f * M_PI);
 
     float angle = angleDist(rng);
+
     return Vector2(std::cos(angle), std::sin(angle));
 }
 
@@ -34,18 +35,23 @@ Vector2 AI::computeAIMovement(const uint32_t myId)
     bool foundTarget = false;
     bool escaping = false;
 
-    const std::vector<Cell*> myCells = CellManager::get().getCellsByPlayerId(myId);
-    if (myCells.empty()) return getRandomDirection() * Config::Gameplay::Bot::RANDOM_WANDER_SPEED;
+    const std::vector<Cell*> botCells = CellManager::get().getCellsByPlayerId(myId);
+
+    if (botCells.empty())
+    {
+        return getRandomDirection() * Config::Gameplay::Bot::RANDOM_WANDER_SPEED;
+    }
 
     Vector2 myCenter(0.0f, 0.0f);
     double myMass = 0.0;
 
-    for (Cell* cell : myCells)
+    for (Cell* cell : botCells)
     {
         myCenter += cell->getCenter();
         myMass += cell->getMass();
     }
-    myCenter /= myCells.size();
+
+    myCenter /= botCells.size();
 
     Vector2 escapeDirection(0.0f, 0.0f);
     double escapeThreatLevel = 0.0;
@@ -53,10 +59,17 @@ Vector2 AI::computeAIMovement(const uint32_t myId)
 
     for (Player* player : PlayerManager::get().getPlayers())
     {
-        if (player->getId() == myId) continue;
+        if (player->getId() == myId)
+        {
+            continue;
+        }
 
         std::vector<Cell*> targetCells = CellManager::get().getCellsByPlayerId(player->getId());
-        if (targetCells.empty()) continue;
+
+        if (targetCells.empty())
+        {
+            continue;
+        }
 
         Vector2 targetCenter(0.0f, 0.0f);
         double targetMass = 0.0;
@@ -66,6 +79,7 @@ Vector2 AI::computeAIMovement(const uint32_t myId)
             targetCenter += cell->getCenter();
             targetMass += cell->getMass();
         }
+
         targetCenter /= targetCells.size();
 
         double distance = (targetCenter - myCenter).magnitude();
@@ -89,6 +103,7 @@ Vector2 AI::computeAIMovement(const uint32_t myId)
             if (distance < Config::Gameplay::Bot::ESCAPE_RADIUS)
             {
                 Vector2 threatDirection = myCenter - targetCenter;
+
                 threatDirection.normalize();
                 escapeDirection += threatDirection * (1.0 / distance);
                 escapeThreatLevel += 1.0 / distance;
@@ -108,6 +123,7 @@ Vector2 AI::computeAIMovement(const uint32_t myId)
         for (Cell* pellet : CellManager::get().getPelletCells())
         {
             double distance = (pellet->getCenter() - myCenter).magnitude();
+
             if (distance < bestDistance)
             {
                 bestDistance = distance;
@@ -118,6 +134,7 @@ Vector2 AI::computeAIMovement(const uint32_t myId)
     }
 
     uint64_t currentTime = getCurrentTimeMillis();
+
     if (!foundTarget || bestDistance > Config::Gameplay::Bot::CHASE_ABORT_DISTANCE)
     {
         if (currentTime - lastTargetChange > Config::Gameplay::Bot::ABANDON_TARGET_TIME)
@@ -127,19 +144,33 @@ Vector2 AI::computeAIMovement(const uint32_t myId)
         }
 
         Vector2 movement = lastRandomDirection * Config::Gameplay::Bot::RANDOM_WANDER_SPEED;
-
         Vector2 worldSize(Config::Gameplay::World::SIZE, Config::Gameplay::World::SIZE);
-        if (myCenter.x < Config::Gameplay::Bot::WORLD_PADDING) movement.x = std::abs(movement.x);
-        if (myCenter.y < Config::Gameplay::Bot::WORLD_PADDING) movement.y = std::abs(movement.y);
+
+        if (myCenter.x < Config::Gameplay::Bot::WORLD_PADDING)
+        {
+            movement.x = std::abs(movement.x);
+        }
+
+        if (myCenter.y < Config::Gameplay::Bot::WORLD_PADDING)
+        {
+            movement.y = std::abs(movement.y);
+        }
+
         if (myCenter.x > worldSize.x - Config::Gameplay::Bot::WORLD_PADDING)
+        {
             movement.x = -std::abs(movement.x);
+        }
+
         if (myCenter.y > worldSize.y - Config::Gameplay::Bot::WORLD_PADDING)
+        {
             movement.y = -std::abs(movement.y);
+        }
 
         return movement;
     }
 
     Vector2 movement = targetPosition - myCenter;
     movement.normalize();
+
     return movement * (Config::Gameplay::Bot::ATTACK_INTENSITY * 0.02f);
 }
