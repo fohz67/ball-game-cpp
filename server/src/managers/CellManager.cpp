@@ -1,7 +1,6 @@
 #include "managers/CellManager.hpp"
 
 #include <algorithm>
-#include <iostream>
 #include <unordered_set>
 
 #include "config/Config.hpp"

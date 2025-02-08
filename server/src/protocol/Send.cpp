@@ -7,7 +7,6 @@
 #include "managers/CellManager.hpp"
 #include "managers/LeaderboardManager.hpp"
 #include "managers/PlayerManager.hpp"
-#include "protocol/DataInterfaces.hpp"
 #include "protocol/OpCodes.hpp"
 #include "util/ColorConverter.hpp"
 
@@ -31,13 +30,17 @@ const void Send::sendPlayer(const Player* player)
 
 const void Send::sendPlayers(const std::shared_ptr<asio::ip::tcp::socket>& client)
 {
+    size_t playerSize = sizeof(uint32_t) * 3;
+
     SmartBuffer smartBuffer;
+    smartBuffer << OpCodes::CREATE_PLAYER;
 
     const std::vector<Player*> players = PlayerManager::get().getPlayers();
 
     for (const Player* player : players)
     {
-        if (sizeof(uint32_t) + smartBuffer.getSize() + sizeof(ICreatePlayer) >=
+        if (sizeof(uint32_t) + smartBuffer.getSize() + playerSize +
+                static_cast<uint32_t>(player->getNickname().size()) >=
             Config::Network::MAX_SIZE)
         {
             Network::get().sendToClient(client, smartBuffer);
@@ -46,12 +49,12 @@ const void Send::sendPlayers(const std::shared_ptr<asio::ip::tcp::socket>& clien
             smartBuffer << OpCodes::CREATE_PLAYER;
         }
 
-        smartBuffer << OpCodes::CREATE_PLAYER << player->getId() << player->getNickname()
+        smartBuffer << player->getId() << player->getNickname()
                     << ColorConverter::vecToInt(player->getColor())
                     << ColorConverter::vecToInt(player->getCellColor());
     }
 
-    if (smartBuffer.getSize() >= sizeof(ICreatePlayer) + sizeof(OpCodes))
+    if (smartBuffer.getSize() >= playerSize + sizeof(OpCodes))
     {
         Network::get().sendToClient(client, smartBuffer);
     }
@@ -59,6 +62,8 @@ const void Send::sendPlayers(const std::shared_ptr<asio::ip::tcp::socket>& clien
 
 const void Send::sendUpdateGameState()
 {
+    size_t cellSize = sizeof(uint32_t) * 2 + sizeof(double) * 3;
+
     SmartBuffer smartBuffer;
     smartBuffer << OpCodes::UPDATE_GAME_STATE;
 
@@ -66,8 +71,7 @@ const void Send::sendUpdateGameState()
 
     for (const Cell* cell : cells)
     {
-        if (sizeof(uint32_t) + smartBuffer.getSize() + sizeof(IUpdateGameState) >=
-            Config::Network::MAX_SIZE)
+        if (sizeof(uint32_t) + smartBuffer.getSize() + cellSize >= Config::Network::MAX_SIZE)
         {
             Network::get().sendToAll(smartBuffer);
 
@@ -80,7 +84,7 @@ const void Send::sendUpdateGameState()
         smartBuffer << cell->getId() << cell->getOwnerId() << pos.x << pos.y << cell->getRadius();
     }
 
-    if (smartBuffer.getSize() >= sizeof(IUpdateGameState) + sizeof(OpCodes))
+    if (smartBuffer.getSize() >= cellSize + sizeof(OpCodes))
     {
         Network::get().sendToAll(smartBuffer);
     }
@@ -88,6 +92,8 @@ const void Send::sendUpdateGameState()
 
 const void Send::sendPellets(const std::shared_ptr<asio::ip::tcp::socket>& client)
 {
+    size_t pelletSize = sizeof(uint32_t) * 2 + sizeof(double) * 3;
+
     SmartBuffer smartBuffer;
     smartBuffer << OpCodes::SPAWN_PELLETS;
 
@@ -95,8 +101,7 @@ const void Send::sendPellets(const std::shared_ptr<asio::ip::tcp::socket>& clien
 
     for (const Cell* pellet : pellets)
     {
-        if (sizeof(uint32_t) + smartBuffer.getSize() + sizeof(ISpawnPellets) >=
-            Config::Network::MAX_SIZE)
+        if (sizeof(uint32_t) + smartBuffer.getSize() + pelletSize >= Config::Network::MAX_SIZE)
         {
             Network::get().sendToClient(client, smartBuffer);
 
@@ -110,7 +115,7 @@ const void Send::sendPellets(const std::shared_ptr<asio::ip::tcp::socket>& clien
                     << ColorConverter::vecToInt(pellet->getColor());
     }
 
-    if (smartBuffer.getSize() >= sizeof(ISpawnPellets) + sizeof(OpCodes))
+    if (smartBuffer.getSize() >= pelletSize + sizeof(OpCodes))
     {
         Network::get().sendToClient(client, smartBuffer);
     }
@@ -138,12 +143,14 @@ const void Send::sendUpdatePlayer()
 
 const void Send::sendEntityRemoved(const std::vector<uint32_t>& deletedIds)
 {
+    size_t entitySize = sizeof(uint32_t);
+
     SmartBuffer smartBuffer;
     smartBuffer << OpCodes::DELETE_ENTITY;
 
     for (uint32_t cellId : deletedIds)
     {
-        if (smartBuffer.getSize() + sizeof(IEntity) >= Config::Network::MAX_SIZE)
+        if (smartBuffer.getSize() + entitySize >= Config::Network::MAX_SIZE)
         {
             Network::get().sendToAll(smartBuffer);
 
@@ -154,7 +161,7 @@ const void Send::sendEntityRemoved(const std::vector<uint32_t>& deletedIds)
         smartBuffer << cellId;
     }
 
-    if (smartBuffer.getSize() >= sizeof(IEntity) + sizeof(OpCodes))
+    if (smartBuffer.getSize() >= entitySize + sizeof(OpCodes))
     {
         Network::get().sendToAll(smartBuffer);
     }
@@ -177,7 +184,8 @@ const void Send::sendUpdateLeaderboard()
 
     for (const LeaderboardEntry& entry : leaderboard)
     {
-        if (sizeof(uint32_t) + smartBuffer.getSize() + sizeof(IUpdateLeaderboard) >=
+        if (sizeof(uint32_t) + smartBuffer.getSize() +
+                static_cast<uint32_t>(entry.nickname.size()) >=
             Config::Network::MAX_SIZE)
         {
             Network::get().sendToAll(smartBuffer);
@@ -189,7 +197,7 @@ const void Send::sendUpdateLeaderboard()
         smartBuffer << entry.nickname;
     }
 
-    if (smartBuffer.getSize() >= sizeof(IUpdateLeaderboard) + sizeof(OpCodes))
+    if (smartBuffer.getSize() > sizeof(OpCodes))
     {
         Network::get().sendToAll(smartBuffer);
     }

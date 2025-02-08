@@ -1,5 +1,7 @@
 #include "components/HUD.hpp"
 
+#include <iostream>
+
 #include "components/Color.hpp"
 #include "components/Leaderboard.hpp"
 #include "components/Position.hpp"
@@ -66,11 +68,12 @@ const void HUD::createLeaderboard()
     increaseId();
 
     auto newEntityTitle = GameEngine::Entity(currentId);
-    newEntityTitle.addComponent(Text(ConfigClient::HUD::Leaderboard::TITLE,
-                                     "assets/fonts/" + ConfigClient::HUD::FONT_FAMILY + "/" +
-                                         std::to_string(ConfigClient::HUD::Leaderboard::FONT_WEIGHT_LABEL) + ".ttf",
-                                     ConfigClient::HUD::Leaderboard::TITLE_SIZE,
-                                     1));
+    newEntityTitle.addComponent(
+        Text(ConfigClient::HUD::Leaderboard::TITLE,
+             "assets/fonts/" + ConfigClient::HUD::FONT_FAMILY + "/" +
+                 std::to_string(ConfigClient::HUD::Leaderboard::FONT_WEIGHT_LABEL) + ".ttf",
+             ConfigClient::HUD::Leaderboard::TITLE_SIZE,
+             1));
     newEntityTitle.addComponent(
         Position({{GameClient::get().getWindowSize().x - ConfigClient::HUD::Leaderboard::WIDTH / 2 -
                        ConfigClient::HUD::PADDING,
@@ -92,12 +95,12 @@ const void HUD::createLeaderboard()
         increaseId();
 
         auto newPlayerEntity = GameEngine::Entity(currentId);
-        newPlayerEntity.addComponent(Text(std::to_string(i) + ". " + player.getNickname(),
-                                          "assets/fonts/" + ConfigClient::HUD::FONT_FAMILY + "/" +
-                                              std::to_string(ConfigClient::HUD::Leaderboard::FONT_WEIGHT_VALUE) +
-                                              ".ttf",
-                                          ConfigClient::HUD::Leaderboard::CONTENT_SIZE,
-                                          1));
+        newPlayerEntity.addComponent(
+            Text(std::to_string(i) + ". " + player.getNickname(),
+                 "assets/fonts/" + ConfigClient::HUD::FONT_FAMILY + "/" +
+                     std::to_string(ConfigClient::HUD::Leaderboard::FONT_WEIGHT_VALUE) + ".ttf",
+                 ConfigClient::HUD::Leaderboard::CONTENT_SIZE,
+                 1));
         newPlayerEntity.addComponent(
             Position({{GameClient::get().getWindowSize().x -
                            ConfigClient::HUD::Leaderboard::WIDTH / 2 - ConfigClient::HUD::PADDING,
@@ -136,12 +139,12 @@ const void HUD::createStats()
 
         // Label
         auto newLabelEntity = GameEngine::Entity(currentId);
-        newLabelEntity.addComponent(Text(label,
-                                         "assets/fonts/" + ConfigClient::HUD::FONT_FAMILY + "/" +
-                                             std::to_string(ConfigClient::HUD::Stats::FONT_WEIGHT_LABEL) +
-                                             ".ttf",
-                                         ConfigClient::HUD::Stats::LABEL_SIZE,
-                                         0));
+        newLabelEntity.addComponent(
+            Text(label,
+                 "assets/fonts/" + ConfigClient::HUD::FONT_FAMILY + "/" +
+                     std::to_string(ConfigClient::HUD::Stats::FONT_WEIGHT_LABEL) + ".ttf",
+                 ConfigClient::HUD::Stats::LABEL_SIZE,
+                 0));
         newLabelEntity.addComponent(
             Position({{ConfigClient::HUD::PADDING + ConfigClient::HUD::TEXT_PADDING, yOffset}}));
         newLabelEntity.addComponent(Color(ConfigClient::HUD::TEXT_COLOR));
@@ -153,20 +156,20 @@ const void HUD::createStats()
         increaseId();
 
         auto newValueEntity = GameEngine::Entity(currentId);
-        newValueEntity.addComponent(Text("0",
-                                         "assets/fonts/" + ConfigClient::HUD::FONT_FAMILY + "/" +
-                                             std::to_string(ConfigClient::HUD::Stats::FONT_WEIGHT_VALUE) +
-                                             ".ttf",
-                                         ConfigClient::HUD::Stats::VALUE_SIZE,
-                                         2));
+        newValueEntity.addComponent(
+            Text("0",
+                 "assets/fonts/" + ConfigClient::HUD::FONT_FAMILY + "/" +
+                     std::to_string(ConfigClient::HUD::Stats::FONT_WEIGHT_VALUE) + ".ttf",
+                 ConfigClient::HUD::Stats::VALUE_SIZE,
+                 2));
         newValueEntity.addComponent(
             Position({{ConfigClient::HUD::PADDING + ConfigClient::HUD::Stats::WIDTH -
-                           ConfigClient::HUD::TEXT_PADDING * 2.8 ,
+                           ConfigClient::HUD::TEXT_PADDING * 2.8,
                        yOffset}}));
         newValueEntity.addComponent(Color(ConfigClient::HUD::Stats::VALUE_COLOR));
 
         EntityManager::get().hudEntities.emplace(currentId, std::move(newValueEntity));
-        statsEntity.emplace(currentId, std::move(newValueEntity)); 
+        statsEntity.emplace(currentId, std::move(newValueEntity));
 
         yOffset += ConfigClient::HUD::Stats::MARGIN_BETWEEN_LINES;
     }

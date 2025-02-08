@@ -6,7 +6,6 @@
 #include "engine/Network.hpp"
 #include "managers/CellManager.hpp"
 #include "managers/PlayerManager.hpp"
-#include "protocol/DataInterfaces.hpp"
 #include "protocol/OpCodes.hpp"
 #include "protocol/Read.hpp"
 #include "util/ColorConverter.hpp"

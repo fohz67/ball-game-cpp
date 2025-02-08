@@ -3,7 +3,6 @@
 #include <map>
 
 #include "Entity.hpp"
-#include "protocol/DataInterfaces.hpp"
 
 class EntityManager
 {

@@ -52,12 +52,7 @@ const void LeaderboardManager::updateLeaderboard()
               [](const LeaderboardEntry& a, const LeaderboardEntry& b)
               { return a.totalMass > b.totalMass; });
 
-    const int count = Config::Gameplay::Leaderboard::COUNT;
-
-    if (leaderboard.size() > count)
-    {
-        leaderboard.resize(count);
-    }
+    this->leaderboard = leaderboard;
 }
 
 std::vector<LeaderboardEntry> LeaderboardManager::getLeaderboard()

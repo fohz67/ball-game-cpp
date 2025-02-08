@@ -1,12 +1,13 @@
 #include "protocol/ReadClient.hpp"
 
+#include <iostream>
+
 #include "components/HUD.hpp"
 #include "components/Leaderboard.hpp"
 #include "components/Viewport.hpp"
 #include "engine/NetworkClient.hpp"
 #include "managers/EntityManager.hpp"
 #include "managers/PlayerManagerClient.hpp"
-#include "protocol/DataInterfaces.hpp"
 #include "protocol/OpCodes.hpp"
 #include "util/ColorConverterClient.hpp"
 
@@ -24,48 +25,44 @@ const void ReadClient::readPingPong(SmartBuffer& smartBuffer)
 
 const void ReadClient::readCreateWorld(SmartBuffer& smartBuffer)
 {
-    ICreateWorld world;
-    smartBuffer >> world.size;
+    uint16_t worldSize;
+    smartBuffer >> worldSize;
 
-    EntityManager::get().createWorld(world.size);
+    EntityManager::get().createWorld(worldSize);
 }
 
 const void ReadClient::readCreatePlayer(SmartBuffer& smartBuffer)
 {
-    ICreatePlayer createPlayer;
-    smartBuffer >> createPlayer.id >> createPlayer.nickname >> createPlayer.color >>
-        createPlayer.cellColor;
+    uint32_t id, color, cellColor;
+    std::string nickname;
+    smartBuffer >> id >> nickname >> color >> cellColor;
 
-    PlayerManagerClient::get().players.emplace_back(
-        createPlayer.id,
-        createPlayer.nickname,
-        ColorConverterClient::intToVec(createPlayer.color),
-        ColorConverterClient::intToVec(createPlayer.cellColor));
-
-    PlayerManagerClient::get().getPlayer(createPlayer.id)->setNickname(createPlayer.nickname);
+    PlayerManagerClient::get().players.emplace_back(id,
+                                                    nickname,
+                                                    ColorConverterClient::intToVec(color),
+                                                    ColorConverterClient::intToVec(cellColor));
 }
 
 const void ReadClient::readUpdateGameState(SmartBuffer& smartBuffer)
 {
+    const size_t cellSize = sizeof(uint32_t) * 2 + sizeof(double) * 3;
+    const size_t cellsNb = NetworkClient::get().getCutPacketSize(smartBuffer, cellSize);
+
     uint32_t actualOwnerId = 0;
     std::vector<double> actualColor = {};
     std::string actualNickname = "";
 
-    const size_t cellsNb =
-        NetworkClient::get().getCutPacketSize(smartBuffer, sizeof(IUpdateGameState));
-
     for (size_t i = 0; i < cellsNb; i++)
     {
-        IUpdateGameState updateGameState;
-        smartBuffer >> updateGameState.id >> updateGameState.ownerId >> updateGameState.x >>
-            updateGameState.y >> updateGameState.radius;
+        uint32_t id, ownerId;
+        double x, y, radius;
+        smartBuffer >> id >> ownerId >> x >> y >> radius;
 
-        if (updateGameState.ownerId != 0 && updateGameState.ownerId != actualOwnerId)
+        if (ownerId != 0 && ownerId != actualOwnerId)
         {
-            actualOwnerId = updateGameState.ownerId;
+            actualOwnerId = ownerId;
 
-            PlayerClient* createPlayer =
-                PlayerManagerClient::get().getPlayer(updateGameState.ownerId);
+            PlayerClient* createPlayer = PlayerManagerClient::get().getPlayer(ownerId);
 
             if (createPlayer)
             {
@@ -74,23 +71,13 @@ const void ReadClient::readUpdateGameState(SmartBuffer& smartBuffer)
             }
         }
 
-        if (EntityManager::get().entities.find(updateGameState.id) ==
-            EntityManager::get().entities.end())
+        if (EntityManager::get().entities.find(id) == EntityManager::get().entities.end())
         {
-            EntityManager::get().createCell(updateGameState.id,
-                                            updateGameState.x,
-                                            updateGameState.y,
-                                            updateGameState.radius,
-                                            actualColor,
-                                            actualNickname);
+            EntityManager::get().createCell(id, x, y, radius, actualColor, actualNickname);
         }
         else
         {
-            EntityManager::get().updateCell(updateGameState.id,
-                                            updateGameState.x,
-                                            updateGameState.y,
-                                            updateGameState.radius,
-                                            true);
+            EntityManager::get().updateCell(id, x, y, radius, true);
         }
     }
 }
@@ -98,15 +85,16 @@ const void ReadClient::readUpdateGameState(SmartBuffer& smartBuffer)
 const void ReadClient::readUpdateLeaderboard(SmartBuffer& smartBuffer)
 {
     const size_t leaderboardNb =
-        NetworkClient::get().getCutPacketSize(smartBuffer, sizeof(IUpdateLeaderboard));
+        NetworkClient::get().getCutPacketSize(smartBuffer, sizeof(std::string));
+
     std::vector<std::string> leaderboard;
 
     for (size_t i = 0; i < leaderboardNb; i++)
     {
-        IUpdateLeaderboard updateLeaderboard;
-        smartBuffer >> updateLeaderboard.nickname;
+        std::string nickname;
+        smartBuffer >> nickname;
 
-        leaderboard.push_back(updateLeaderboard.nickname);
+        leaderboard.push_back(nickname);
     }
 
     Leaderboard::get().setLeaderboard(leaderboard);
@@ -114,55 +102,51 @@ const void ReadClient::readUpdateLeaderboard(SmartBuffer& smartBuffer)
 
 const void ReadClient::readSpawnPellets(SmartBuffer& smartBuffer)
 {
-    const size_t pelletsNb =
-        NetworkClient::get().getCutPacketSize(smartBuffer, sizeof(ISpawnPellets));
+    const size_t pelletSize = sizeof(uint32_t) * 2 + sizeof(double) * 3;
+    const size_t pelletsNb = NetworkClient::get().getCutPacketSize(smartBuffer, pelletSize);
 
     for (size_t i = 0; i < pelletsNb; i++)
     {
-        ISpawnPellets spawnPellets;
-        smartBuffer >> spawnPellets.id >> spawnPellets.x >> spawnPellets.y >> spawnPellets.radius >>
-            spawnPellets.color;
+        uint32_t id, color;
+        double x, y, radius;
+        smartBuffer >> id >> x >> y >> radius >> color;
 
-        EntityManager::get().createCell(spawnPellets.id,
-                                        spawnPellets.x,
-                                        spawnPellets.y,
-                                        spawnPellets.radius,
-                                        ColorConverterClient::intToVec(spawnPellets.color),
-                                        "");
+        EntityManager::get().createCell(
+            id, x, y, radius, ColorConverterClient::intToVec(color), "");
     }
 }
 
 const void ReadClient::readUpdatePlayer(SmartBuffer& smartBuffer)
 {
-    IUpdatePlayer updatePlayer;
-    smartBuffer >> updatePlayer.x >> updatePlayer.y >> updatePlayer.score >>
-        updatePlayer.totalMass >> updatePlayer.cellCount;
+    double x, y;
+    uint32_t score, totalMass, cellCount;
+    smartBuffer >> x >> y >> score >> totalMass >> cellCount;
 
-    Viewport::get().setViewport({updatePlayer.x, updatePlayer.y});
+    Viewport::get().setViewport({x, y});
 
-    HUD::get().setScore(updatePlayer.score);
-    HUD::get().setMass(updatePlayer.totalMass);
-    HUD::get().setCellCount(updatePlayer.cellCount);
+    HUD::get().setScore(score);
+    HUD::get().setMass(totalMass);
+    HUD::get().setCellCount(cellCount);
 }
 
 const void ReadClient::readDeleteEntity(SmartBuffer& smartBuffer)
 {
-    const size_t deletedEntitiesNb =
-        NetworkClient::get().getCutPacketSize(smartBuffer, sizeof(IEntity));
+    const size_t entitySize = sizeof(uint32_t);
+    const size_t deletedEntitiesNb = NetworkClient::get().getCutPacketSize(smartBuffer, entitySize);
 
     for (size_t i = 0; i < deletedEntitiesNb; i++)
     {
-        IEntity deleteEntity;
-        smartBuffer >> deleteEntity.id;
+        uint32_t id;
+        smartBuffer >> id;
 
-        EntityManager::get().removeEntity(deleteEntity.id);
+        EntityManager::get().removeEntity(id);
     }
 }
 
 const void ReadClient::readDeletePlayer(SmartBuffer& smartBuffer)
 {
-    IEntity deletePlayer;
-    smartBuffer >> deletePlayer.id;
+    uint32_t id;
+    smartBuffer >> id;
 
-    PlayerManagerClient::get().removePlayer(deletePlayer.id);
+    PlayerManagerClient::get().removePlayer(id);
 }

@@ -24,15 +24,15 @@ void GameEngine::System::loadText(GameEngine::Entity& entity, auto& textComp)
         textComp.getText().setFont(fontCache[textComp.getFontFile()]);
         textComp.getText().setString(textComp.getString());
 
-        if (textComp.getCentering() == 1) // center alignement
+        if (textComp.getCentering() == 1)  // center alignement
         {
             sf::FloatRect bounds = textComp.getText().getLocalBounds();
 
             textComp.getText().setOrigin(bounds.left + bounds.width / 2,
-                         bounds.top + bounds.height / 2);
+                                         bounds.top + bounds.height / 2);
         }
 
-        if (textComp.getCentering() == 2) // right alignement
+        if (textComp.getCentering() == 2)  // right alignement
         {
             sf::FloatRect bounds = textComp.getText().getLocalBounds();
 
