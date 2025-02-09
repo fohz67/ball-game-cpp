@@ -7,6 +7,5 @@ For detailed documentation, please visit the [documentation page](https://fohz67
 
 ## Quick Links
 - [Documentation](https://fohz67.github.io/ball-game-cpp/)
-- [Issues](https://github.com/Fohz67/ball-game-cpp/issues)
-- [License](FREE_TO_SKID)
-- [Author](Fōhz)
+- **License**: None, free to skid
+- **Author** : Fōhz
