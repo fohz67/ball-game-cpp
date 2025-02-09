@@ -1,6 +1,9 @@
 #include "Client.hpp"
+
 #include <getopt.h>
+
 #include <iostream>
+
 #include "config/ConfigClient.hpp"
 #include "engine/GameClient.hpp"
 #include "engine/NetworkClient.hpp"
@@ -19,8 +22,10 @@ const void Client::run(const int ac, const char** av)
     std::string nickname = "";
 
     int opt;
-    while ((opt = getopt(ac, const_cast<char**>(av), "i:p:n:")) != -1) {
-        switch (opt) {
+    while ((opt = getopt(ac, const_cast<char**>(av), "i:p:n:")) != -1)
+    {
+        switch (opt)
+        {
             case 'i':
                 host = optarg;
                 break;

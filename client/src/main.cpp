@@ -7,7 +7,7 @@
 int main(const int ac, const char** av)
 {
     try
-    { 
+    {
         Client::get().run(ac, av);
     }
     catch (const std::exception& e)
