@@ -14,6 +14,7 @@ class NetworkClient
     static NetworkClient& get();
 
     const void init(const std::string ip, const unsigned short port);
+    const void stop();
     const void run();
     const void send(SmartBuffer& smartBuffer);
 
@@ -24,7 +25,7 @@ class NetworkClient
 
    private:
     NetworkClient();
-    ~NetworkClient() = default;
+    ~NetworkClient();
 
     const void receive();
 
@@ -34,4 +35,5 @@ class NetworkClient
     unsigned short port;
     std::thread networkThread;
     uint64_t ping = 0;
+    bool running = true;
 };

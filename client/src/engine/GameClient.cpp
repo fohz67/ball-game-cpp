@@ -7,6 +7,7 @@
 #include "components/Viewport.hpp"
 #include "components/Zoom.hpp"
 #include "config/ConfigClient.hpp"
+#include "engine/NetworkClient.hpp"
 #include "managers/EntityManager.hpp"
 #include "protocol/SendClient.hpp"
 
@@ -76,6 +77,7 @@ const void GameClient::processEvents()
     {
         if (event.type == sf::Event::Closed)
         {
+            NetworkClient::get().stop();
             window.close();
             return;
         }

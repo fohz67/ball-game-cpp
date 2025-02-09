@@ -101,12 +101,12 @@ const void EntityManager::updateCell(const uint32_t id,
 
 const void EntityManager::removeEntity(const double id)
 {
-    if (entities.contains(id))
+    if (entities.find(id) != entities.end())
     {
         entities.erase(id);
     }
 
-    if (linkedEntitiesBiases.contains(id))
+    if (linkedEntitiesBiases.find(id) != linkedEntitiesBiases.end())
     {
         linkedEntitiesBiases.erase(id);
     }

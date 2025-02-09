@@ -16,10 +16,26 @@ NetworkClient::NetworkClient() : socket(io_context)
 {
 }
 
+NetworkClient::~NetworkClient()
+{
+    stop();
+}
+
 const void NetworkClient::init(const std::string ip, const unsigned short port)
 {
     this->host = ip;
     this->port = port;
+}
+
+const void NetworkClient::stop()
+{
+    running = false;
+    io_context.stop();
+
+    if (networkThread.joinable())
+    {
+        networkThread.join();
+    }
 }
 
 const void NetworkClient::run()
@@ -62,7 +78,7 @@ const void NetworkClient::receive()
 
     try
     {
-        while (true)
+        while (running)
         {
             asio::error_code error;
 
@@ -88,7 +104,10 @@ const void NetworkClient::receive()
     }
     catch (const std::exception& e)
     {
-        std::cerr << "Receive error: " << e.what() << std::endl;
+        if (running)
+        {
+            std::cerr << "Receive error: " << e.what() << std::endl;
+        }
     }
 }
 
