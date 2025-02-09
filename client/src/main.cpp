@@ -3,14 +3,12 @@
 #include <string>
 
 #include "Client.hpp"
-#include "util/Error.hpp"
 
 int main(const int ac, const char** av)
 {
     try
-    {
-        Error::checkArgs(ac, av);
-        Client::get().run(av);
+    { 
+        Client::get().run(ac, av);
     }
     catch (const std::exception& e)
     {

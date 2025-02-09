@@ -8,7 +8,7 @@ class Client
 
     static Client& get();
 
-    const void run(const char** av);
+    const void run(const int ac, const char** av);
 
    private:
     Client() = default;

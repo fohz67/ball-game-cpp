@@ -1,5 +1,6 @@
 #include "Client.hpp"
-
+#include <getopt.h>
+#include <iostream>
 #include "config/ConfigClient.hpp"
 #include "engine/GameClient.hpp"
 #include "engine/NetworkClient.hpp"
@@ -11,12 +12,29 @@ Client& Client::get()
     return instance;
 }
 
-const void Client::run(const char** av)
+const void Client::run(const int ac, const char** av)
 {
-    const std::string host = av[1] ? av[1] : ConfigClient::Network::HOST;
-    const unsigned short port =
-        av[2] ? static_cast<unsigned short>(std::stoi(av[2])) : ConfigClient::Network::PORT;
-    const std::string nickname = av[3] ? av[3] : "An Unnamed Cell";
+    std::string host = ConfigClient::Network::HOST;
+    unsigned short port = ConfigClient::Network::PORT;
+    std::string nickname = "";
+
+    int opt;
+    while ((opt = getopt(ac, const_cast<char**>(av), "i:p:n:")) != -1) {
+        switch (opt) {
+            case 'i':
+                host = optarg;
+                break;
+            case 'p':
+                port = static_cast<unsigned short>(std::stoi(optarg));
+                break;
+            case 'n':
+                nickname = optarg;
+                break;
+            default:
+                std::cerr << "Usage: " << av[0] << " [-i ip] [-p port] [-n nickname]" << std::endl;
+                exit(1);
+        }
+    }
 
     NetworkClient::get().init(host, port);
     NetworkClient::get().run();
