@@ -59,10 +59,16 @@ Open a new terminal and execute:
 ./build/client/Client
 ```
 
-By default, the client will connect to `127.0.0.1:12345`. If you want to connect to a different server, specify the IP and port:
+By default, the client will connect to `127.0.0.1:12345`. If you want to connect to a different server, specify the IP, port and nickname by their flags:
+
+**-i** : IP
+**-p** : Port
+**-n** : Nickname
+
+In any order...
 
 ```bash
-./build/client/Client -s <server_ip> -p <port> -n <nickname>
+./build/client/Client -i <server_ip> -p <port> -n <nickname>
 ```
 
 ---
