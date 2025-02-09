@@ -46,9 +46,11 @@ function HomepageContent() {
         gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
         gap: '2rem',
       }}>
+        <Section title="Installation" link="/docs/install" description="How to install the game." isDark={isDark} />
         <Section title="Server" link="/docs/server" description="Everything about the game's backend." isDark={isDark} />
         <Section title="Client" link="/docs/client" description="How the client interacts with the game." isDark={isDark} />
         <Section title="Game Engine" link="/docs/game-engine" description="The game's rendering and logic engine." isDark={isDark} />
+        <Section title="Protocol" link="/docs/protocol" description="How the data is sent to clients" isDark={isDark} />
       </div>
     </main>
   );

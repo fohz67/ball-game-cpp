@@ -25,7 +25,7 @@ const void Send::sendPlayer(const Player* player)
 
     Network::get().sendToAll(smartBuffer);
 }
-
+ 
 const void Send::sendPlayers(const std::shared_ptr<asio::ip::tcp::socket>& client)
 {
     SmartBuffer smartBuffer;

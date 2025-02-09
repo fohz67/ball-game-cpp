@@ -1,5 +1,6 @@
 ---
-title: Entity System
+title: Entity
+slug: /game-engine/entity
 ---
 
 # Entity System

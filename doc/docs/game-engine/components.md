@@ -1,5 +1,6 @@
 ---
-title: Component System
+title: Components
+slug: /game-engine/components
 ---
 
 # Component System

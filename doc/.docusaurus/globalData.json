@@ -8,15 +8,45 @@
           "label": "Next",
           "isLast": true,
           "path": "/docs",
-          "mainDocId": "game-engine/index",
+          "mainDocId": "install/index",
           "docs": [
             {
               "id": "blank",
               "path": "/docs/blank"
             },
             {
-              "id": "client",
-              "path": "/docs/client"
+              "id": "client/architecture",
+              "path": "/docs/client/architecture",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "client/components",
+              "path": "/docs/client/components",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "client/config",
+              "path": "/docs/client/config"
+            },
+            {
+              "id": "client/game-mechanics",
+              "path": "/docs/client/game-mechanics",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "client/index",
+              "path": "/docs/client",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "client/network",
+              "path": "/docs/client/network",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "client/rendering",
+              "path": "/docs/client/rendering",
+              "sidebar": "tutorialSidebar"
             },
             {
               "id": "game-engine/architecture",
@@ -49,16 +79,52 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "server",
-              "path": "/docs/server"
+              "id": "install/index",
+              "path": "/docs/install/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "protocol/index",
+              "path": "/docs/protocol",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "server/components",
+              "path": "/docs/server/components",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "server/config",
+              "path": "/docs/server/config",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "server/index",
+              "path": "/docs/server",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "server/mechanics",
+              "path": "/docs/server/mechanics",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "server/network",
+              "path": "/docs/server/network",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "server/optimizations",
+              "path": "/docs/server/optimizations",
+              "sidebar": "tutorialSidebar"
             }
           ],
           "draftIds": [],
           "sidebars": {
             "tutorialSidebar": {
               "link": {
-                "path": "/docs/game-engine",
-                "label": "game-engine/index"
+                "path": "/docs/install/",
+                "label": "install/index"
               }
             }
           }

@@ -39,15 +39,15 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '080'),
+    component: ComponentCreator('/docs', '291'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', '7e9'),
+        component: ComponentCreator('/docs', '9ac'),
         routes: [
           {
             path: '/docs',
-            component: ComponentCreator('/docs', 'b2b'),
+            component: ComponentCreator('/docs', '4df'),
             routes: [
               {
                 path: '/docs/blank',
@@ -56,8 +56,44 @@ export default [
               },
               {
                 path: '/docs/client',
-                component: ComponentCreator('/docs/client', 'f42'),
+                component: ComponentCreator('/docs/client', 'f96'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/client/architecture',
+                component: ComponentCreator('/docs/client/architecture', 'fad'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/client/components',
+                component: ComponentCreator('/docs/client/components', 'a5d'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/client/config',
+                component: ComponentCreator('/docs/client/config', '7fc'),
                 exact: true
+              },
+              {
+                path: '/docs/client/game-mechanics',
+                component: ComponentCreator('/docs/client/game-mechanics', '401'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/client/network',
+                component: ComponentCreator('/docs/client/network', 'e25'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/client/rendering',
+                component: ComponentCreator('/docs/client/rendering', '729'),
+                exact: true,
+                sidebar: "tutorialSidebar"
               },
               {
                 path: '/docs/game-engine',
@@ -96,9 +132,52 @@ export default [
                 sidebar: "tutorialSidebar"
               },
               {
+                path: '/docs/install/',
+                component: ComponentCreator('/docs/install/', '1a8'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/protocol',
+                component: ComponentCreator('/docs/protocol', 'f9c'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
                 path: '/docs/server',
-                component: ComponentCreator('/docs/server', '6b7'),
-                exact: true
+                component: ComponentCreator('/docs/server', '2b6'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/server/components',
+                component: ComponentCreator('/docs/server/components', '21f'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/server/config',
+                component: ComponentCreator('/docs/server/config', '625'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/server/mechanics',
+                component: ComponentCreator('/docs/server/mechanics', 'b9e'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/server/network',
+                component: ComponentCreator('/docs/server/network', '46f'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/server/optimizations',
+                component: ComponentCreator('/docs/server/optimizations', '031'),
+                exact: true,
+                sidebar: "tutorialSidebar"
               }
             ]
           }

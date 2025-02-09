@@ -1,5 +1,6 @@
 ---
-title: Update System
+title: Update
+slug: /game-engine/update
 ---
 
 # Update System

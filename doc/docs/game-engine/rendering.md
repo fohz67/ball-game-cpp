@@ -1,5 +1,6 @@
 ---
-title: Rendering System
+title: Rendering
+slug: /game-engine/rendering
 ---
 
 # Rendering System

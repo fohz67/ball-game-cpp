@@ -44,7 +44,7 @@ struct Config
 
         struct Bot
         {
-            static constexpr int COUNT = 50;
+            static constexpr int COUNT = 15;
             static constexpr double MASS = 5000.0f;
             static constexpr float ATTACK_INTENSITY = 1.5f;
             static constexpr float DEFENSE_INTENSITY = 2.0f;

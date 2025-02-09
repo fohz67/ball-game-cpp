@@ -1,5 +1,6 @@
 ---
 title: Architecture
+slug: /game-engine/architecture
 ---
 
 # Game Engine Architecture

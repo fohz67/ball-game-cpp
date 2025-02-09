@@ -23,15 +23,15 @@ The Game Engine is the core framework responsible for managing game entities, re
 ### [1. Architecture](./game-engine/architecture)
 Understand the **Entity-Component-System (ECS)** model and how the Game Engine is structured.
 
-### [2. Component System](./game-engine/components)
+### [2. Component](./game-engine/components)
 Explore how **components** define entity behavior, including **position, texture, and text**.
 
-### [3. Entity System](./game-engine/entity)
+### [3. Entity](./game-engine/entity)
 Understand how entities are created, modified, and stored dynamically.
 
-### [4. Rendering System](./game-engine/rendering)
+### [4. Rendering](./game-engine/rendering)
 Learn how **System::render()** processes entities and displays **sprites, text, and shapes** using SFML.
 
-### [5. Update System](./game-engine/update)
+### [5. Update](./game-engine/update)
 Learn how the **System::update()** function modifies entity attributes dynamically, including **position, text, and textures**.
 Each section contains in-depth explanations and code examples to help you understand the **Game Engine**.
