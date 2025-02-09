@@ -1,7 +1,7 @@
 #include "components/Position.hpp"
 
-#include <iostream>
 #include <cmath>
+#include <iostream>
 
 Position::Position(const Point& position)
     : position(position), previousPosition(position), targetPosition(position)
