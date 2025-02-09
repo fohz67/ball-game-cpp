@@ -1,16 +1,18 @@
 {
-  "name": "doc",
+  "name": "Ball Game C++ Documentation",
   "version": "0.0.1",
+  "homepage": "https://fohz67.github.io/ball-game-cpp",
   "private": true,
   "scripts": {
     "start": "docusaurus start",
     "build": "docusaurus build",
     "serve": "docusaurus serve",
-    "deploy": "docusaurus deploy"
+    "deploy": "docusaurus build && gh-pages -d build"
   },
   "dependencies": {
     "@docusaurus/core": "^3.0.0",
     "@docusaurus/preset-classic": "^3.0.0",
+    "gh-pages": "^6.3.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   }

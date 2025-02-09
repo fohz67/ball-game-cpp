@@ -1,121 +1,121 @@
 {
   "docusaurus-plugin-content-docs": {
     "default": {
-      "path": "/docs",
+      "path": "/ball-game-cpp/docs",
       "versions": [
         {
           "name": "current",
           "label": "Next",
           "isLast": true,
-          "path": "/docs",
+          "path": "/ball-game-cpp/docs",
           "mainDocId": "install/index",
           "docs": [
             {
               "id": "blank",
-              "path": "/docs/blank"
+              "path": "/ball-game-cpp/docs/blank"
             },
             {
               "id": "client/architecture",
-              "path": "/docs/client/architecture",
+              "path": "/ball-game-cpp/docs/client/architecture",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "client/components",
-              "path": "/docs/client/components",
+              "path": "/ball-game-cpp/docs/client/components",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "client/config",
-              "path": "/docs/client/config"
+              "path": "/ball-game-cpp/docs/client/config"
             },
             {
               "id": "client/game-mechanics",
-              "path": "/docs/client/game-mechanics",
+              "path": "/ball-game-cpp/docs/client/game-mechanics",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "client/index",
-              "path": "/docs/client",
+              "path": "/ball-game-cpp/docs/client",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "client/network",
-              "path": "/docs/client/network",
+              "path": "/ball-game-cpp/docs/client/network",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "client/rendering",
-              "path": "/docs/client/rendering",
+              "path": "/ball-game-cpp/docs/client/rendering",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "game-engine/architecture",
-              "path": "/docs/game-engine/architecture",
+              "path": "/ball-game-cpp/docs/game-engine/architecture",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "game-engine/components",
-              "path": "/docs/game-engine/components",
+              "path": "/ball-game-cpp/docs/game-engine/components",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "game-engine/entity",
-              "path": "/docs/game-engine/entity",
+              "path": "/ball-game-cpp/docs/game-engine/entity",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "game-engine/index",
-              "path": "/docs/game-engine",
+              "path": "/ball-game-cpp/docs/game-engine",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "game-engine/rendering",
-              "path": "/docs/game-engine/rendering",
+              "path": "/ball-game-cpp/docs/game-engine/rendering",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "game-engine/update",
-              "path": "/docs/game-engine/update",
+              "path": "/ball-game-cpp/docs/game-engine/update",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "install/index",
-              "path": "/docs/install/",
+              "path": "/ball-game-cpp/docs/install/",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "protocol/index",
-              "path": "/docs/protocol",
+              "path": "/ball-game-cpp/docs/protocol",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "server/components",
-              "path": "/docs/server/components",
+              "path": "/ball-game-cpp/docs/server/components",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "server/config",
-              "path": "/docs/server/config",
+              "path": "/ball-game-cpp/docs/server/config",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "server/index",
-              "path": "/docs/server",
+              "path": "/ball-game-cpp/docs/server",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "server/mechanics",
-              "path": "/docs/server/mechanics",
+              "path": "/ball-game-cpp/docs/server/mechanics",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "server/network",
-              "path": "/docs/server/network",
+              "path": "/ball-game-cpp/docs/server/network",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "server/optimizations",
-              "path": "/docs/server/optimizations",
+              "path": "/ball-game-cpp/docs/server/optimizations",
               "sidebar": "tutorialSidebar"
             }
           ],
@@ -123,7 +123,7 @@
           "sidebars": {
             "tutorialSidebar": {
               "link": {
-                "path": "/docs/install/",
+                "path": "/ball-game-cpp/docs/install/",
                 "label": "install/index"
               }
             }

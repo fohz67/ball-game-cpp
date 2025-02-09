@@ -1,153 +1,110 @@
 {
-  "/__docusaurus/debug-5ff": {
-    "__comp": "__comp---theme-debug-config-23-a-2ff",
+  "/ball-game-cpp/docs-33c": {
+    "__comp": "5e95c892",
     "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
+      "plugin": "aba21aa0"
     }
   },
-  "/__docusaurus/debug/config-5ba": {
-    "__comp": "__comp---theme-debug-config-23-a-2ff",
-    "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
-    }
+  "/ball-game-cpp/docs-13a": {
+    "__comp": "a7bd4aaa",
+    "__props": "e59f43c6"
   },
-  "/__docusaurus/debug/content-a2b": {
-    "__comp": "__comp---theme-debug-contentba-8-ce7",
+  "/ball-game-cpp/docs-9ce": {
+    "__comp": "a94703ab"
+  },
+  "/ball-game-cpp/docs/blank-51e": {
+    "__comp": "17896441",
+    "content": "c7e89efa"
+  },
+  "/ball-game-cpp/docs/client-9e2": {
+    "__comp": "17896441",
+    "content": "21532248"
+  },
+  "/ball-game-cpp/docs/client/architecture-903": {
+    "__comp": "17896441",
+    "content": "4f9b2e99"
+  },
+  "/ball-game-cpp/docs/client/components-724": {
+    "__comp": "17896441",
+    "content": "8ddea302"
+  },
+  "/ball-game-cpp/docs/client/config-7b7": {
+    "__comp": "17896441",
+    "content": "0a1c304d"
+  },
+  "/ball-game-cpp/docs/client/game-mechanics-a51": {
+    "__comp": "17896441",
+    "content": "64b5b8e9"
+  },
+  "/ball-game-cpp/docs/client/network-2e9": {
+    "__comp": "17896441",
+    "content": "5861ae5b"
+  },
+  "/ball-game-cpp/docs/client/rendering-f7b": {
+    "__comp": "17896441",
+    "content": "9624e213"
+  },
+  "/ball-game-cpp/docs/game-engine-9bd": {
+    "__comp": "17896441",
+    "content": "c83ec6d6"
+  },
+  "/ball-game-cpp/docs/game-engine/architecture-c66": {
+    "__comp": "17896441",
+    "content": "36ddab91"
+  },
+  "/ball-game-cpp/docs/game-engine/components-e7b": {
+    "__comp": "17896441",
+    "content": "8b279ac3"
+  },
+  "/ball-game-cpp/docs/game-engine/entity-189": {
+    "__comp": "17896441",
+    "content": "7783b8d2"
+  },
+  "/ball-game-cpp/docs/game-engine/rendering-481": {
+    "__comp": "17896441",
+    "content": "7cb67302"
+  },
+  "/ball-game-cpp/docs/game-engine/update-9a0": {
+    "__comp": "17896441",
+    "content": "7d9cf96b"
+  },
+  "/ball-game-cpp/docs/install/-51c": {
+    "__comp": "17896441",
+    "content": "c19ed093"
+  },
+  "/ball-game-cpp/docs/protocol-93c": {
+    "__comp": "17896441",
+    "content": "a21738db"
+  },
+  "/ball-game-cpp/docs/server-e07": {
+    "__comp": "17896441",
+    "content": "877d4050"
+  },
+  "/ball-game-cpp/docs/server/components-1ec": {
+    "__comp": "17896441",
+    "content": "0e7b0ae6"
+  },
+  "/ball-game-cpp/docs/server/config-5b0": {
+    "__comp": "17896441",
+    "content": "0c0137d7"
+  },
+  "/ball-game-cpp/docs/server/mechanics-0a6": {
+    "__comp": "17896441",
+    "content": "92a6ac5f"
+  },
+  "/ball-game-cpp/docs/server/network-821": {
+    "__comp": "17896441",
+    "content": "d7e8dff9"
+  },
+  "/ball-game-cpp/docs/server/optimizations-c32": {
+    "__comp": "17896441",
+    "content": "b02c0bcc"
+  },
+  "/ball-game-cpp/-f66": {
+    "__comp": "c4f5d8e4",
     "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
+      "plugin": "a7456010"
     },
-    "__props": "__props---docusaurus-debug-content-3-c-0-be2"
-  },
-  "/__docusaurus/debug/globalData-c3c": {
-    "__comp": "__comp---theme-debug-global-dataede-0fa",
-    "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
-    }
-  },
-  "/__docusaurus/debug/metadata-156": {
-    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
-    "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
-    }
-  },
-  "/__docusaurus/debug/registry-88c": {
-    "__comp": "__comp---theme-debug-registry-679-501",
-    "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
-    }
-  },
-  "/__docusaurus/debug/routes-000": {
-    "__comp": "__comp---theme-debug-routes-946-699",
-    "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
-    }
-  },
-  "/docs-291": {
-    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
-    "__context": {
-      "plugin": "plugin---docsaba-d7c"
-    }
-  },
-  "/docs-9ac": {
-    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
-    "__props": "__props---docs-005-788"
-  },
-  "/docs-4df": {
-    "__comp": "__comp---theme-doc-roota-94-67a"
-  },
-  "/docs/blank-5fc": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-blankc-7-e-1f3"
-  },
-  "/docs/client-f96": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-client-215-303"
-  },
-  "/docs/client/architecture-fad": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-client-architecture-4-f-9-2ed"
-  },
-  "/docs/client/components-a5d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-client-components-8-dd-ac5"
-  },
-  "/docs/client/config-7fc": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-client-config-0-a-1-d7e"
-  },
-  "/docs/client/game-mechanics-401": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-client-game-mechanics-64-b-aad"
-  },
-  "/docs/client/network-e25": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-client-network-586-be4"
-  },
-  "/docs/client/rendering-729": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-client-rendering-962-d26"
-  },
-  "/docs/game-engine-9ab": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-game-enginec-83-995"
-  },
-  "/docs/game-engine/architecture-042": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-game-engine-architecture-36-d-9f6"
-  },
-  "/docs/game-engine/components-705": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-game-engine-components-8-b-2-462"
-  },
-  "/docs/game-engine/entity-473": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-game-engine-entity-778-4d9"
-  },
-  "/docs/game-engine/rendering-d22": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-game-engine-rendering-7-cb-e8b"
-  },
-  "/docs/game-engine/update-0c7": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-game-engine-update-7-d-9-51d"
-  },
-  "/docs/install/-1a8": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-install-c-19-e40"
-  },
-  "/docs/protocol-f9c": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-protocola-21-7cd"
-  },
-  "/docs/server-2b6": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-server-877-41f"
-  },
-  "/docs/server/components-21f": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-server-components-0-e-7-d3c"
-  },
-  "/docs/server/config-625": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-server-config-0-c-0-775"
-  },
-  "/docs/server/mechanics-b9e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-server-mechanics-92-a-39c"
-  },
-  "/docs/server/network-46f": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-server-networkd-7-e-6c3"
-  },
-  "/docs/server/optimizations-031": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-server-optimizationsb-02-ba3"
-  },
-  "/-2e1": {
-    "__comp": "__comp---site-src-pages-index-jsc-4-f-f99",
-    "__context": {
-      "plugin": "plugin---a-74-9d6"
-    },
-    "config": "config---5-e-9-4f3"
+    "config": "5e9f5e1a"
   }
 }

@@ -3,179 +3,144 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 
 export default [
   {
-    path: '/__docusaurus/debug',
-    component: ComponentCreator('/__docusaurus/debug', '5ff'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/config',
-    component: ComponentCreator('/__docusaurus/debug/config', '5ba'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/content',
-    component: ComponentCreator('/__docusaurus/debug/content', 'a2b'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/globalData',
-    component: ComponentCreator('/__docusaurus/debug/globalData', 'c3c'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/metadata',
-    component: ComponentCreator('/__docusaurus/debug/metadata', '156'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/registry',
-    component: ComponentCreator('/__docusaurus/debug/registry', '88c'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/routes',
-    component: ComponentCreator('/__docusaurus/debug/routes', '000'),
-    exact: true
-  },
-  {
-    path: '/docs',
-    component: ComponentCreator('/docs', '291'),
+    path: '/ball-game-cpp/docs',
+    component: ComponentCreator('/ball-game-cpp/docs', '33c'),
     routes: [
       {
-        path: '/docs',
-        component: ComponentCreator('/docs', '9ac'),
+        path: '/ball-game-cpp/docs',
+        component: ComponentCreator('/ball-game-cpp/docs', '13a'),
         routes: [
           {
-            path: '/docs',
-            component: ComponentCreator('/docs', '4df'),
+            path: '/ball-game-cpp/docs',
+            component: ComponentCreator('/ball-game-cpp/docs', '9ce'),
             routes: [
               {
-                path: '/docs/blank',
-                component: ComponentCreator('/docs/blank', '5fc'),
+                path: '/ball-game-cpp/docs/blank',
+                component: ComponentCreator('/ball-game-cpp/docs/blank', '51e'),
                 exact: true
               },
               {
-                path: '/docs/client',
-                component: ComponentCreator('/docs/client', 'f96'),
+                path: '/ball-game-cpp/docs/client',
+                component: ComponentCreator('/ball-game-cpp/docs/client', '9e2'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/client/architecture',
-                component: ComponentCreator('/docs/client/architecture', 'fad'),
+                path: '/ball-game-cpp/docs/client/architecture',
+                component: ComponentCreator('/ball-game-cpp/docs/client/architecture', '903'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/client/components',
-                component: ComponentCreator('/docs/client/components', 'a5d'),
+                path: '/ball-game-cpp/docs/client/components',
+                component: ComponentCreator('/ball-game-cpp/docs/client/components', '724'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/client/config',
-                component: ComponentCreator('/docs/client/config', '7fc'),
+                path: '/ball-game-cpp/docs/client/config',
+                component: ComponentCreator('/ball-game-cpp/docs/client/config', '7b7'),
                 exact: true
               },
               {
-                path: '/docs/client/game-mechanics',
-                component: ComponentCreator('/docs/client/game-mechanics', '401'),
+                path: '/ball-game-cpp/docs/client/game-mechanics',
+                component: ComponentCreator('/ball-game-cpp/docs/client/game-mechanics', 'a51'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/client/network',
-                component: ComponentCreator('/docs/client/network', 'e25'),
+                path: '/ball-game-cpp/docs/client/network',
+                component: ComponentCreator('/ball-game-cpp/docs/client/network', '2e9'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/client/rendering',
-                component: ComponentCreator('/docs/client/rendering', '729'),
+                path: '/ball-game-cpp/docs/client/rendering',
+                component: ComponentCreator('/ball-game-cpp/docs/client/rendering', 'f7b'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/game-engine',
-                component: ComponentCreator('/docs/game-engine', '9ab'),
+                path: '/ball-game-cpp/docs/game-engine',
+                component: ComponentCreator('/ball-game-cpp/docs/game-engine', '9bd'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/game-engine/architecture',
-                component: ComponentCreator('/docs/game-engine/architecture', '042'),
+                path: '/ball-game-cpp/docs/game-engine/architecture',
+                component: ComponentCreator('/ball-game-cpp/docs/game-engine/architecture', 'c66'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/game-engine/components',
-                component: ComponentCreator('/docs/game-engine/components', '705'),
+                path: '/ball-game-cpp/docs/game-engine/components',
+                component: ComponentCreator('/ball-game-cpp/docs/game-engine/components', 'e7b'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/game-engine/entity',
-                component: ComponentCreator('/docs/game-engine/entity', '473'),
+                path: '/ball-game-cpp/docs/game-engine/entity',
+                component: ComponentCreator('/ball-game-cpp/docs/game-engine/entity', '189'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/game-engine/rendering',
-                component: ComponentCreator('/docs/game-engine/rendering', 'd22'),
+                path: '/ball-game-cpp/docs/game-engine/rendering',
+                component: ComponentCreator('/ball-game-cpp/docs/game-engine/rendering', '481'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/game-engine/update',
-                component: ComponentCreator('/docs/game-engine/update', '0c7'),
+                path: '/ball-game-cpp/docs/game-engine/update',
+                component: ComponentCreator('/ball-game-cpp/docs/game-engine/update', '9a0'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/install/',
-                component: ComponentCreator('/docs/install/', '1a8'),
+                path: '/ball-game-cpp/docs/install/',
+                component: ComponentCreator('/ball-game-cpp/docs/install/', '51c'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/protocol',
-                component: ComponentCreator('/docs/protocol', 'f9c'),
+                path: '/ball-game-cpp/docs/protocol',
+                component: ComponentCreator('/ball-game-cpp/docs/protocol', '93c'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/server',
-                component: ComponentCreator('/docs/server', '2b6'),
+                path: '/ball-game-cpp/docs/server',
+                component: ComponentCreator('/ball-game-cpp/docs/server', 'e07'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/server/components',
-                component: ComponentCreator('/docs/server/components', '21f'),
+                path: '/ball-game-cpp/docs/server/components',
+                component: ComponentCreator('/ball-game-cpp/docs/server/components', '1ec'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/server/config',
-                component: ComponentCreator('/docs/server/config', '625'),
+                path: '/ball-game-cpp/docs/server/config',
+                component: ComponentCreator('/ball-game-cpp/docs/server/config', '5b0'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/server/mechanics',
-                component: ComponentCreator('/docs/server/mechanics', 'b9e'),
+                path: '/ball-game-cpp/docs/server/mechanics',
+                component: ComponentCreator('/ball-game-cpp/docs/server/mechanics', '0a6'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/server/network',
-                component: ComponentCreator('/docs/server/network', '46f'),
+                path: '/ball-game-cpp/docs/server/network',
+                component: ComponentCreator('/ball-game-cpp/docs/server/network', '821'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/server/optimizations',
-                component: ComponentCreator('/docs/server/optimizations', '031'),
+                path: '/ball-game-cpp/docs/server/optimizations',
+                component: ComponentCreator('/ball-game-cpp/docs/server/optimizations', 'c32'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               }
@@ -186,8 +151,8 @@ export default [
     ]
   },
   {
-    path: '/',
-    component: ComponentCreator('/', '2e1'),
+    path: '/ball-game-cpp/',
+    component: ComponentCreator('/ball-game-cpp/', 'f66'),
     exact: true
   },
   {
