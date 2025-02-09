@@ -1,0 +1,57 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+.idea
+book/
+
+build/
+
+#CMAKE
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Custom
+.DS_Store
+.vscode
+logs/*
+
+# Docusaurus
+doc/node_modules/
+doc/package-lock.json
+doc/.DS_Store
+doc/.docusaurus
+
+# Benchmark
+benchmark/*

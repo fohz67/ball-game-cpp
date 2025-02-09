@@ -1,0 +1,16 @@
+{
+  "id": "server",
+  "title": "Server",
+  "description": "",
+  "source": "@site/docs/server.md",
+  "sourceDirName": ".",
+  "slug": "/server",
+  "permalink": "/docs/server",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Server"
+  }
+}

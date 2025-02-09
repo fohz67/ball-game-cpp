@@ -1,0 +1,16 @@
+{
+  "id": "client",
+  "title": "Client",
+  "description": "",
+  "source": "@site/docs/client.md",
+  "sourceDirName": ".",
+  "slug": "/client",
+  "permalink": "/docs/client",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Client"
+  }
+}
